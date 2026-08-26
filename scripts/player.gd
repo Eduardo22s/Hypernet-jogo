@@ -4,12 +4,14 @@ const JUMP_VELOCITY = 4.5
 @onready var cameras = [$Camera1,$Camera2,$Camera3,$Camera4,$Camera5,$Camera6,$Camera7,$Camera8]
 var camera_atual := 0
 
+
+# Belezinha
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-	var input_dir := Input.get_vector("ui_left","ui_right","ui_up","ui_down")
+	var input_dir := Input.get_vector("move_left","move_right","move_forward","move_backward")
 	var camera = cameras[camera_atual]
 	var forward = camera.global_transform.basis.z
 	var right = camera.global_transform.basis.x
