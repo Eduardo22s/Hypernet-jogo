@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c7j3rf2kjyybr"]
+
+[ext_resource type="PackedScene" uid="uid://tllsng3ee82y" path="res://cenas/chão.tscn" id="1_3rn4x"]
+[ext_resource type="PackedScene" uid="uid://dawu66n17p2am" path="res://cenas/player.tscn" id="2_k8w4s"]
+[ext_resource type="PackedScene" uid="uid://ckx72l7nqy3bo" path="res://cenas/objeto.tscn" id="3_k8w4s"]
+
+[sub_resource type="Environment" id="Environment_rxvj5"]
+
+[node name="Fase" type="Node3D" unique_id=1897027482]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1415024915]
+environment = SubResource("Environment_rxvj5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1783349070]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 11, 0)
+
+[node name="chão" parent="." unique_id=1793825970 instance=ExtResource("1_3rn4x")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.33361816, 0)
+
+[node name="Player" parent="." unique_id=1230296654 instance=ExtResource("2_k8w4s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5710449, 0)
+
+[node name="Objeto" parent="." unique_id=490991779 instance=ExtResource("3_k8w4s")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, 0.7416611, -3)

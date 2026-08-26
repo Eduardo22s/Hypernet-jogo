@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://ckx72l7nqy3bo"]
+
+[ext_resource type="Texture2D" uid="uid://bpcj4fhbv4mdl" path="res://imagens/template2.png" id="1_bgytb"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bgytb"]
+
+[node name="Objeto" type="StaticBody3D" unique_id=490991779]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=175862132]
+shape = SubResource("CapsuleShape3D_bgytb")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=841626989]
+billboard = 1
+texture = ExtResource("1_bgytb")
