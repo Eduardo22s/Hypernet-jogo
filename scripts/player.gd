@@ -4,7 +4,6 @@ const JUMP_VELOCITY = 4.5
 @onready var cameras = [$Camera1,$Camera2,$Camera3,$Camera4,$Camera5,$Camera6,$Camera7,$Camera8]
 var camera_atual := 0
 
-
 # Belezinha
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
