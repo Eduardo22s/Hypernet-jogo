@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://dawu66n17p2am"]
+
+[ext_resource type="Script" uid="uid://clodkfy3jwaxo" path="res://scripts/player/player_exploration.gd" id="1_w152q"]
+[ext_resource type="Texture2D" uid="uid://d1bmdxql1i4ls" path="res://assets/template.png" id="2_unwft"]
+[ext_resource type="PackedScene" uid="uid://dscbufc0mvnpb" path="res://global/cenas/hud.tscn" id="3_idagx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_unwft"]
+
+[node name="PlayerExploration" type="CharacterBody3D" unique_id=1230296654]
+script = ExtResource("1_w152q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=280077884]
+shape = SubResource("CapsuleShape3D_unwft")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=272167747]
+billboard = 1
+texture = ExtResource("2_unwft")
+
+[node name="Cameras" type="Node3D" parent="." unique_id=15005866]
+
+[node name="Camera1" type="Camera3D" parent="Cameras" unique_id=648094692]
+transform = Transform3D(1, 0, 0, 0, 0.95105654, 0.309017, 0, -0.309017, 0.95105654, 0, 1, 2.5)
+
+[node name="HUD" parent="Cameras/Camera1" unique_id=1747082955 instance=ExtResource("3_idagx")]
+
+[node name="Camera2" type="Camera3D" parent="Cameras" unique_id=419808414]
+transform = Transform3D(0.7071068, -0.21850802, 0.6724985, 0, 0.95105654, 0.309017, -0.7071068, -0.21850802, 0.6724985, 1.8000001, 1, 1.8000001)
+
+[node name="HUD" parent="Cameras/Camera2" unique_id=1958523873 instance=ExtResource("3_idagx")]
+
+[node name="Camera3" type="Camera3D" parent="Cameras" unique_id=1238088220]
+transform = Transform3D(-4.371139e-08, -0.309017, 0.95105654, 0, 0.95105654, 0.309017, -1, 1.3507562e-08, -4.1572e-08, 2.5, 1, 0)
+
+[node name="HUD" parent="Cameras/Camera3" unique_id=1568815544 instance=ExtResource("3_idagx")]
+
+[node name="Camera4" type="Camera3D" parent="Cameras" unique_id=203852609]
+transform = Transform3D(-0.7071068, -0.21850802, 0.6724985, 0, 0.95105654, 0.309017, -0.7071068, 0.21850802, -0.6724985, 1.8000001, 1, -1.8000001)
+
+[node name="HUD" parent="Cameras/Camera4" unique_id=2091094629 instance=ExtResource("3_idagx")]
+
+[node name="Camera5" type="Camera3D" parent="Cameras" unique_id=1386965702]
+transform = Transform3D(-1, -2.7015124e-08, 8.3144e-08, 0, 0.95105654, 0.309017, -8.742278e-08, 0.309017, -0.95105654, 0, 1, -2.5)
+
+[node name="HUD" parent="Cameras/Camera5" unique_id=578589751 instance=ExtResource("3_idagx")]
+
+[node name="Camera6" type="Camera3D" parent="Cameras" unique_id=494567624]
+transform = Transform3D(-0.7071068, 0.21850802, -0.6724985, 0, 0.95105654, 0.309017, 0.7071068, 0.21850802, -0.6724985, -1.8, 1, -1.8)
+
+[node name="HUD" parent="Cameras/Camera6" unique_id=1280227651 instance=ExtResource("3_idagx")]
+
+[node name="Camera7" type="Camera3D" parent="Cameras" unique_id=530864689]
+transform = Transform3D(-4.371139e-08, 0.309017, -0.95105654, 0, 0.95105654, 0.309017, 1, 1.3507562e-08, -4.1572e-08, -2.5, 1, 0)
+
+[node name="HUD" parent="Cameras/Camera7" unique_id=1600424132 instance=ExtResource("3_idagx")]
+
+[node name="Camera8" type="Camera3D" parent="Cameras" unique_id=1862488618]
+transform = Transform3D(0.7071068, 0.21850802, -0.6724985, 0, 0.95105654, 0.309017, 0.7071068, -0.21850802, 0.6724985, -1.8000001, 1, 1.8000001)
+
+[node name="HUD" parent="Cameras/Camera8" unique_id=1163737124 instance=ExtResource("3_idagx")]

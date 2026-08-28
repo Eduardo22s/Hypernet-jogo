@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c7j3rf2kjyybr"]
 
-[ext_resource type="PackedScene" uid="uid://tllsng3ee82y" path="res://cenas/chão.tscn" id="1_3rn4x"]
-[ext_resource type="PackedScene" uid="uid://dawu66n17p2am" path="res://cenas/player.tscn" id="2_k8w4s"]
-[ext_resource type="PackedScene" uid="uid://ckx72l7nqy3bo" path="res://cenas/objeto.tscn" id="3_k8w4s"]
+[ext_resource type="PackedScene" uid="uid://tllsng3ee82y" path="res://cenas/stages/chão.tscn" id="1_3rn4x"]
+[ext_resource type="PackedScene" uid="uid://dawu66n17p2am" path="res://cenas/player/player_exploration.tscn" id="2_k8w4s"]
+[ext_resource type="PackedScene" uid="uid://ckx72l7nqy3bo" path="res://cenas/npc/objeto.tscn" id="3_k8w4s"]
 
 [sub_resource type="Environment" id="Environment_rxvj5"]
 

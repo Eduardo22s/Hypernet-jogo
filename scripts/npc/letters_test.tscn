@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bygil3il06shl"]
+
+[ext_resource type="Script" uid="uid://bxs6bi103xw4" path="res://scripts/npc/letters_test.gd" id="1_1t8b0"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iu2kb"]
+load_path = "res://.godot/imported/template.png-7b4b93d9f34f28ec933ffc91e4233a03.s3tc.ctex"
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_38bsk"]
+radius = 1.0
+
+[node name="LettersTest" type="Node3D" unique_id=1970874904]
+script = ExtResource("1_1t8b0")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=817250136]
+modulate = Color(1, 0, 1, 1)
+billboard = 1
+texture = SubResource("CompressedTexture2D_iu2kb")
+
+[node name="Hitzone" type="Area3D" parent="." unique_id=161452993]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitzone" unique_id=898526246]
+shape = SubResource("CylinderShape3D_38bsk")
+
+[connection signal="area_entered" from="Hitzone" to="." method="_on_hitzone_area_entered"]
