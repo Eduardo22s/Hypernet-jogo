@@ -5,8 +5,8 @@ func _ready() -> void:
 
 func _on_interect_zone_body_entered(body: Node3D) -> void:
 	if body is PlayerExploration:
-		Global.trigger_dialogue = true
 		Global.npc_battle = "test"
+		Global.invert_bools(["trigger_dialogue", "stop_player"])
 
 func _take_damage():
 	$Sprite3D.modulate = Color.BLUE

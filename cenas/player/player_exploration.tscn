@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://dawu66n17p2am"]
 
 [ext_resource type="Script" uid="uid://clodkfy3jwaxo" path="res://scripts/player/player_exploration.gd" id="1_w152q"]
-[ext_resource type="Texture2D" uid="uid://d1bmdxql1i4ls" path="res://assets/template.png" id="2_unwft"]
 [ext_resource type="PackedScene" uid="uid://dscbufc0mvnpb" path="res://global/cenas/hud.tscn" id="3_idagx"]
+[ext_resource type="PackedScene" uid="uid://dv8w3h514rkxk" path="res://cenas/player/Player2DModel.tscn" id="4_w0700"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_unwft"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_wjsnp"]
+viewport_path = NodePath("SubViewport")
 
 [node name="PlayerExploration" type="CharacterBody3D" unique_id=1230296654]
 script = ExtResource("1_w152q")
@@ -13,8 +16,10 @@ script = ExtResource("1_w152q")
 shape = SubResource("CapsuleShape3D_unwft")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=272167747]
+pixel_size = 0.015
 billboard = 1
-texture = ExtResource("2_unwft")
+texture_filter = 0
+texture = SubResource("ViewportTexture_wjsnp")
 
 [node name="Cameras" type="Node3D" parent="." unique_id=15005866]
 
@@ -57,3 +62,9 @@ transform = Transform3D(-4.371139e-08, 0.309017, -0.95105654, 0, 0.95105654, 0.3
 transform = Transform3D(0.7071068, 0.21850802, -0.6724985, 0, 0.95105654, 0.309017, 0.7071068, -0.21850802, 0.6724985, -1.8000001, 1, 1.8000001)
 
 [node name="HUD" parent="Cameras/Camera8" unique_id=1163737124 instance=ExtResource("3_idagx")]
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1504833873]
+transparent_bg = true
+size = Vector2i(100, 100)
+
+[node name="Player2dModel" parent="SubViewport" unique_id=839670161 instance=ExtResource("4_w0700")]

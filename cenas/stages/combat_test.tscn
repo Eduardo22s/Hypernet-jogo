@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bfdo6d6fbul8t"]
 
-[ext_resource type="PackedScene" uid="uid://bygil3il06shl" path="res://scripts/npc/letters_test.tscn" id="3_1q77j"]
+[ext_resource type="PackedScene" uid="uid://bygil3il06shl" path="res://cenas/npc/letters_test.tscn" id="3_1q77j"]
 [ext_resource type="PackedScene" uid="uid://ckx72l7nqy3bo" path="res://cenas/npc/objeto.tscn" id="3_isskg"]
 [ext_resource type="PackedScene" uid="uid://c7fh4boeurlhb" path="res://cenas/player/player_combat.tscn" id="3_v543d"]
 

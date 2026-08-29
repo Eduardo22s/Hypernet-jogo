@@ -1,12 +1,22 @@
 [gd_scene format=3 uid="uid://c7fh4boeurlhb"]
 
 [ext_resource type="Script" uid="uid://c324wvuiu3kvv" path="res://scripts/player/player_combat.gd" id="1_pu85u"]
-[ext_resource type="Texture2D" uid="uid://d1bmdxql1i4ls" path="res://assets/template.png" id="2_h2iks"]
 [ext_resource type="Script" uid="uid://bguf3ys1es0a" path="res://scripts/player/attack.gd" id="3_h2iks"]
 [ext_resource type="PackedScene" uid="uid://dscbufc0mvnpb" path="res://global/cenas/hud.tscn" id="3_k218s"]
+[ext_resource type="Texture2D" uid="uid://ogvxg55im8u" path="res://assets/player/idle/ProtagRotacao1.png" id="5_y20ik"]
+[ext_resource type="Texture2D" uid="uid://21gc83yk0hjs" path="res://assets/player/idle/ProtagRotacao2.png" id="6_x6c6q"]
+[ext_resource type="Texture2D" uid="uid://duwbgkspxqxtr" path="res://assets/player/idle/ProtagRotacao3.png" id="7_3lb28"]
+[ext_resource type="Texture2D" uid="uid://6loq5aj34fxn" path="res://assets/player/idle/ProtagRotacao4.png" id="8_l441l"]
+[ext_resource type="Texture2D" uid="uid://ceennm55jy7t3" path="res://assets/player/idle/ProtagRotacao5.png" id="9_30d14"]
+[ext_resource type="Texture2D" uid="uid://cymoswu8rv8ho" path="res://assets/player/idle/ProtagRotacao6.png" id="10_nfaxx"]
+[ext_resource type="Texture2D" uid="uid://8vyvlpgytp4u" path="res://assets/player/idle/ProtagRotacao7.png" id="11_g5s6v"]
+[ext_resource type="Texture2D" uid="uid://cjraf7hwovl2x" path="res://assets/player/idle/ProtagRotacao8.png" id="12_kdjp4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_unwft"]
 height = 1.6572266
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ui4bd"]
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="Animation" id="Animation_k218s"]
 length = 0.001
@@ -47,6 +57,38 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_cqcrm"]
 size = Vector3(1, 1, 2)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_isfe7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_y20ik")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_x6c6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3lb28")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_l441l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_30d14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_nfaxx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_g5s6v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_kdjp4")
+}],
+"loop": 0,
+"name": &"idle",
+"speed": 5.0
+}]
+
 [node name="PlayerCombat" type="CharacterBody3D" unique_id=1230296654]
 script = ExtResource("1_pu85u")
 
@@ -55,8 +97,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17138672, 0)
 shape = SubResource("CapsuleShape3D_unwft")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=272167747]
+pixel_size = 0.015
 billboard = 1
-texture = ExtResource("2_h2iks")
+texture_filter = 0
+texture = SubResource("ViewportTexture_ui4bd")
 
 [node name="Cameras" type="Node3D" parent="." unique_id=1460602469]
 
@@ -115,3 +159,19 @@ script = ExtResource("3_h2iks")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 shape = SubResource("BoxShape3D_cqcrm")
 disabled = true
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1945331619]
+transparent_bg = true
+size = Vector2i(100, 100)
+
+[node name="Player2dModel" type="Node2D" parent="SubViewport" unique_id=839670161]
+
+[node name="ReferenceRect" type="ReferenceRect" parent="SubViewport/Player2dModel" unique_id=792831851]
+offset_right = 100.0
+offset_bottom = 100.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SubViewport/Player2dModel" unique_id=2127277115]
+texture_filter = 1
+position = Vector2(50, 45)
+sprite_frames = SubResource("SpriteFrames_isfe7")
+animation = &"idle"
