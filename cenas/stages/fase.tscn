@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://dawu66n17p2am" path="res://cenas/player/player_exploration.tscn" id="2_k8w4s"]
 [ext_resource type="PackedScene" uid="uid://l2hm8rn2frxa" path="res://cenas/npc/daydream.tscn" id="3_anrue"]
 [ext_resource type="PackedScene" uid="uid://b08skoj6sw6u1" path="res://cenas/npc/overseer.tscn" id="4_mhhvk"]
+[ext_resource type="Shader" uid="uid://p4lrvbn5t8tk" path="res://assets/VFX/_Shaders/SG_Hologram.tres" id="5_04dng"]
+[ext_resource type="Texture2D" uid="uid://cuna81r7dle6p" path="res://assets/VFX/_Textures/T_HologramTexture.png" id="6_3uapd"]
 
 [sub_resource type="Environment" id="Environment_rxvj5"]
 
@@ -21,6 +23,22 @@ size = Vector3(6, 1.5645142, 6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3uapd"]
 size = Vector3(3, 1.5645142, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fmxoq"]
+render_priority = 0
+shader = ExtResource("5_04dng")
+shader_parameter/Hologram_Speed = 1.0
+shader_parameter/Lines_Scale = 0.25
+shader_parameter/HologramLine_Texture = ExtResource("6_3uapd")
+shader_parameter/Noise_Size = 1.0
+shader_parameter/Line_Color = Color(0.60810435, 0, 1.4190066, 1)
+shader_parameter/Fresnel_Power = -1.25
+shader_parameter/Fresnel_Color = Color(0, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_cqcrm"]
+top_radius = 1.6542969
+bottom_radius = 1.6542969
+height = 11.390381
 
 [node name="Fase" type="Node3D" unique_id=1897027482]
 
@@ -81,10 +99,15 @@ transform = Transform3D(-3.371732e-08, -0.5, 0.8660254, -4.4703487e-08, 0.866025
 shape = SubResource("BoxShape3D_3uapd")
 
 [node name="Player" parent="." unique_id=1230296654 instance=ExtResource("2_k8w4s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.317497, 1.6765063, 0.124955416)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.191249, 1.6765063, 0.124955416)
 
 [node name="DayDream" parent="." unique_id=1162736262 instance=ExtResource("3_anrue")]
-transform = Transform3D(0, 0, 0.1, 0, 0.1, 0, -0.1, 0, 0, -5, 1.6272734, 0.21273041)
+transform = Transform3D(-8.742278e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -8.742278e-09, 10, 1.6272734, 0.21273041)
 
 [node name="Overseer" parent="." unique_id=28029168 instance=ExtResource("4_mhhvk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.43190557, 4.5820775, 0.20050538)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.43190557, 5.3644466, 0.20050538)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=991622020]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4125688, 8.777912, 0.15684462)
+material_override = SubResource("ShaderMaterial_fmxoq")
+mesh = SubResource("CylinderMesh_cqcrm")

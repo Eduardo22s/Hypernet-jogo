@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cipdocnxnsl4f"]
+
+[ext_resource type="AudioStream" uid="uid://c6jwrxge84xru" path="res://assets/musics/HyperNetMainTheme.wav" id="1_m7514"]
+
+[node name="MusicMenu" type="Node3D" unique_id=606236]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1831063130]
+stream = ExtResource("1_m7514")
+autoplay = true
