@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="HyperNetJogo"
-run/main_scene="uid://c7j3rf2kjyybr"
+run/main_scene="uid://dhm2sja38yvm8"
 config/features=PackedStringArray("4.7", "Forward Plus")
 
 [autoload]

@@ -89,24 +89,25 @@ func _physics_process(delta: float) -> void:
 	var direction = (right * input_dir.x +forward * input_dir.y).normalized()
 	
 	if direction:
-
 		var target_velocity = direction * SPEED
 		var velocidade_atual = Vector3(velocity.x,0,velocity.z)
 		var aceleracaoAtual = aceleracao
 		var freioAtual = freiar
 		
 		if not is_on_floor():
-
 			freioAtual = freiarAereo
 			aceleracaoAtual = controleAereo
+
 		#freiagem
 		if velocidade_atual.length() > 0:
 			var dot = velocidade_atual.normalized().dot(direction)
+			
 
 			if dot < 0:
 				# freiando
 				velocity.x = move_toward(velocity.x,0,freioAtual * delta)
 				velocity.z = move_toward(velocity.z,0,freioAtual * delta)
+				
 			else:
 				#normal
 				velocity.x = move_toward(velocity.x,target_velocity.x,aceleracaoAtual * delta)
@@ -115,11 +116,13 @@ func _physics_process(delta: float) -> void:
 			# aceleração
 			velocity.x = move_toward(velocity.x,target_velocity.x,aceleracaoAtual * delta)
 			velocity.z = move_toward(velocity.z,target_velocity.z,aceleracaoAtual * delta)
+			$AudioStreamPlayer3D.play()
 
 	# desaceleração
 	else:
 		velocity.x = move_toward(velocity.x,0,desaceleracao * delta)
 		velocity.z = move_toward(velocity.z,0,desaceleracao * delta)
+		$AudioStreamPlayer3D.stop()
 
 	move_and_slide()
 

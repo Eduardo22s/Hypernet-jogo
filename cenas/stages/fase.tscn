@@ -1,27 +1,90 @@
 [gd_scene format=3 uid="uid://c7j3rf2kjyybr"]
 
-[ext_resource type="PackedScene" uid="uid://tllsng3ee82y" path="res://cenas/stages/chão.tscn" id="1_3rn4x"]
+[ext_resource type="PackedScene" uid="uid://bnwjels4hlts6" path="res://assets/props3D/Stages/Fase.glb" id="1_anrue"]
 [ext_resource type="PackedScene" uid="uid://dawu66n17p2am" path="res://cenas/player/player_exploration.tscn" id="2_k8w4s"]
-[ext_resource type="PackedScene" uid="uid://ckx72l7nqy3bo" path="res://cenas/npc/objeto.tscn" id="3_k8w4s"]
+[ext_resource type="PackedScene" uid="uid://l2hm8rn2frxa" path="res://cenas/npc/daydream.tscn" id="3_anrue"]
+[ext_resource type="PackedScene" uid="uid://b08skoj6sw6u1" path="res://cenas/npc/overseer.tscn" id="4_mhhvk"]
 
 [sub_resource type="Environment" id="Environment_rxvj5"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_isfe7"]
+size = Vector3(16, 1.5645142, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mhhvk"]
+size = Vector3(7, 1.5645142, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jntqm"]
+size = Vector3(5, 1.5645142, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_04dng"]
+size = Vector3(6, 1.5645142, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3uapd"]
+size = Vector3(3, 1.5645142, 2)
+
 [node name="Fase" type="Node3D" unique_id=1897027482]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1415024915]
+[node name="Environment" type="Node" parent="." unique_id=88123216]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=1415024915]
 environment = SubResource("Environment_rxvj5")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1783349070]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=1783349070]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 11, 0)
 
-[node name="chão" parent="." unique_id=1793825970 instance=ExtResource("1_3rn4x")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.33361816, 0)
+[node name="Fase" parent="Environment" unique_id=167656911 instance=ExtResource("1_anrue")]
 
-[node name="chão2" parent="." unique_id=1483597773 instance=ExtResource("1_3rn4x")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 23.86409, -0.33361816, 0)
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Fase" unique_id=316802037]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Fase/StaticBody3D" unique_id=893316734]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.28225708, 0)
+shape = SubResource("BoxShape3D_isfe7")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Environment/Fase/StaticBody3D" unique_id=1353661967]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.5, 0.28225708, 0)
+shape = SubResource("BoxShape3D_mhhvk")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Environment/Fase/StaticBody3D" unique_id=1412582468]
+transform = Transform3D(0.7071067, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, 0.7071067, 2.1464467, 0.28225708, 2.3535533)
+shape = SubResource("BoxShape3D_mhhvk")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Environment/Fase/StaticBody3D" unique_id=865259885]
+transform = Transform3D(0.70710695, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710695, 1.1464467, 0.28225708, -2.6464467)
+shape = SubResource("BoxShape3D_mhhvk")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Environment/Fase/StaticBody3D" unique_id=336633819]
+transform = Transform3D(0.70710677, 0, 0.70710695, 0, 1, 0, -0.70710695, 0, 0.70710677, -1.8535533, 0.28225708, -2.6464467)
+shape = SubResource("BoxShape3D_mhhvk")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Environment/Fase/StaticBody3D" unique_id=1336432586]
+transform = Transform3D(-0.7071069, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.7071069, -2.5606601, 0.28225708, 2.6464465)
+shape = SubResource("BoxShape3D_jntqm")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Environment/Fase/StaticBody3D" unique_id=1826510389]
+transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, -0.5606601, 0.28225708, 3.6464465)
+shape = SubResource("BoxShape3D_jntqm")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Environment/Fase/StaticBody3D" unique_id=24099443]
+transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, -0.060660064, 2.282257, 0.14644642)
+shape = SubResource("BoxShape3D_04dng")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="Environment/Fase/StaticBody3D" unique_id=1007193984]
+transform = Transform3D(-1, 0, -8.940697e-08, 4.4703484e-08, 0.8660254, -0.5, 7.74287e-08, -0.5, -0.8660254, -0.56066006, -0.7177429, -6.853554)
+shape = SubResource("BoxShape3D_3uapd")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="Environment/Fase/StaticBody3D" unique_id=530414968]
+transform = Transform3D(-1, 0, -8.940697e-08, -4.4703484e-08, 0.8660254, 0.5, 7.742871e-08, 0.5, -0.8660254, -0.56066006, -0.7177429, 8.146446)
+shape = SubResource("BoxShape3D_3uapd")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="Environment/Fase/StaticBody3D" unique_id=616805323]
+transform = Transform3D(-3.371732e-08, -0.5, 0.8660254, -4.4703487e-08, 0.8660254, 0.5, -1, -2.1855694e-08, -5.15518e-08, -6.4266853, -0.21774292, 0.14644627)
+shape = SubResource("BoxShape3D_3uapd")
 
 [node name="Player" parent="." unique_id=1230296654 instance=ExtResource("2_k8w4s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5710449, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.317497, 1.6765063, 0.124955416)
 
-[node name="Objeto" parent="." unique_id=490991779 instance=ExtResource("3_k8w4s")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, 0.7416611, -3)
+[node name="DayDream" parent="." unique_id=1162736262 instance=ExtResource("3_anrue")]
+transform = Transform3D(0, 0, 0.1, 0, 0.1, 0, -0.1, 0, 0, -5, 1.6272734, 0.21273041)
+
+[node name="Overseer" parent="." unique_id=28029168 instance=ExtResource("4_mhhvk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.43190557, 4.5820775, 0.20050538)

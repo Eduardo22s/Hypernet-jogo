@@ -2,6 +2,11 @@ extends Node
 
 signal taking_damage
 
+var words = ["TEST", "STAGE"]
+var words_size = len(words) - 1
+var secret = words[0]
+var guessed_letter = ""
+
 var stop_player = false
 
 var trigger_dialogue = false

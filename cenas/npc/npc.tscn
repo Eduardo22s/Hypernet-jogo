@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://ckx72l7nqy3bo"]
+[gd_scene format=3 uid="uid://mab5inam8c3y"]
 
 [ext_resource type="Texture2D" uid="uid://bpcj4fhbv4mdl" path="res://assets/template2.png" id="1_bgytb"]
-[ext_resource type="Script" uid="uid://cyu3ftx7gto5r" path="res://scripts/npc/objeto.gd" id="1_h7enb"]
+[ext_resource type="Script" uid="uid://cyu3ftx7gto5r" path="res://scripts/npc/npc.gd" id="1_l2wt6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bgytb"]
 
@@ -9,7 +9,7 @@
 radius = 1.0
 
 [node name="Objeto" type="StaticBody3D" unique_id=490991779]
-script = ExtResource("1_h7enb")
+script = ExtResource("1_l2wt6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=175862132]
 shape = SubResource("CapsuleShape3D_bgytb")

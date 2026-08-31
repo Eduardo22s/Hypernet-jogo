@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://l2hm8rn2frxa"]
+
+[ext_resource type="PackedScene" uid="uid://c0t1e2kin21by" path="res://assets/props3D/NPC/Day_Dream2.glb" id="1_3jps7"]
+[ext_resource type="Script" uid="uid://cyu3ftx7gto5r" path="res://scripts/npc/npc.gd" id="1_epcot"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_isfe7"]
+radius = 5.0
+height = 20.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_isfe7"]
+height = 18.0
+radius = 10.0
+
+[sub_resource type="Animation" id="Animation_3jps7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Day_Dream2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_epcot"]
+resource_name = "damage"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Day_Dream2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.5235988), Vector3(0, 0, 0), Vector3(0, 0, 0.5235988), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jlea0"]
+_data = {
+&"RESET": SubResource("Animation_3jps7"),
+&"damage": SubResource("Animation_epcot")
+}
+
+[node name="DayDream" type="Node3D" unique_id=1162736262]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+script = ExtResource("1_epcot")
+
+[node name="Day_Dream2" parent="." unique_id=744138469 instance=ExtResource("1_3jps7")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=415985220]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=656672726]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+shape = SubResource("CapsuleShape3D_isfe7")
+
+[node name="InterectZone" type="Area3D" parent="." unique_id=353497713]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InterectZone" unique_id=1953322057]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.9999988, 0)
+shape = SubResource("CylinderShape3D_isfe7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=957095769]
+libraries/ = SubResource("AnimationLibrary_jlea0")
+
+[connection signal="area_entered" from="InterectZone" to="." method="_on_interect_zone_area_entered"]
+[connection signal="body_entered" from="InterectZone" to="." method="_on_interect_zone_body_entered"]

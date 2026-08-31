@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://b0vr71qh7oymu"]
+
+[ext_resource type="Texture2D" uid="uid://dgjc30cel6lxm" path="res://assets/overseer/Overseer1.png" id="1_agc4s"]
+[ext_resource type="Texture2D" uid="uid://drod5jfx3erju" path="res://assets/overseer/Overseer2.png" id="2_05b5x"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_isfe7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_agc4s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_agc4s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_agc4s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_05b5x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_05b5x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_05b5x")
+}],
+"loop": 1,
+"name": &"talking",
+"speed": 10.0
+}]
+
+[node name="Overseer2dModel" type="Node2D" unique_id=968144334]
+
+[node name="ReferenceRect" type="ReferenceRect" parent="." unique_id=1977279927]
+offset_right = 280.0
+offset_bottom = 300.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=43698582]
+position = Vector2(150, 150)
+sprite_frames = SubResource("SpriteFrames_isfe7")
+animation = &"talking"
+autoplay = "talking"
+frame_progress = 0.90287197

@@ -1,8 +1,23 @@
 [gd_scene format=3 uid="uid://dawu66n17p2am"]
 
 [ext_resource type="Script" uid="uid://clodkfy3jwaxo" path="res://scripts/player/player_exploration.gd" id="1_w152q"]
+[ext_resource type="AudioStream" uid="uid://vclec3auu6ab" path="res://assets/SFX/player/hypernetpassosgrama1sfx.mp3" id="2_w0700"]
 [ext_resource type="PackedScene" uid="uid://dscbufc0mvnpb" path="res://global/cenas/hud.tscn" id="3_idagx"]
+[ext_resource type="AudioStream" uid="uid://6x3cyxxci611" path="res://assets/SFX/player/hypernetpassosgrama2sfx.mp3" id="3_nius7"]
+[ext_resource type="AudioStream" uid="uid://dlyvbtpeuxoi3" path="res://assets/SFX/player/hypernetpassosgrama3sfx.mp3" id="4_omgaf"]
 [ext_resource type="PackedScene" uid="uid://dv8w3h514rkxk" path="res://cenas/player/Player2DModel.tscn" id="4_w0700"]
+[ext_resource type="AudioStream" uid="uid://b2a2labg0tde4" path="res://assets/SFX/player/hypernetpassosgrama4sfx.mp3" id="5_dpwul"]
+[ext_resource type="AudioStream" uid="uid://w7la3nl8m27h" path="res://assets/SFX/player/hypernetpassosgrama5sfx.mp3" id="6_dk6du"]
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_w0700"]
+shuffle = true
+fade_time = 0.0
+stream_count = 5
+stream_0 = ExtResource("2_w0700")
+stream_1 = ExtResource("3_nius7")
+stream_2 = ExtResource("4_omgaf")
+stream_3 = ExtResource("5_dpwul")
+stream_4 = ExtResource("6_dk6du")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_unwft"]
 
@@ -11,6 +26,10 @@ viewport_path = NodePath("SubViewport")
 
 [node name="PlayerExploration" type="CharacterBody3D" unique_id=1230296654]
 script = ExtResource("1_w152q")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=518711045]
+stream = SubResource("AudioStreamPlaylist_w0700")
+volume_db = 80.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=280077884]
 shape = SubResource("CapsuleShape3D_unwft")

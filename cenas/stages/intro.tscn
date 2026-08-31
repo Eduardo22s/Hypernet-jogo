@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://dhm2sja38yvm8"]
+
+[ext_resource type="Texture2D" uid="uid://cs8tm5lpbbvky" path="res://assets/cutscenes/intro/ConnectingFade1.png" id="1_47art"]
+[ext_resource type="Script" uid="uid://l4db8wq4pwqr" path="res://scripts/stages/intro.gd" id="1_ftupc"]
+[ext_resource type="Texture2D" uid="uid://yssl6qtlsiho" path="res://assets/cutscenes/intro/ConnectingFade2.png" id="2_ftupc"]
+[ext_resource type="Texture2D" uid="uid://34baqfqcvw3p" path="res://assets/cutscenes/intro/ConnectingFade3.png" id="3_xoxgt"]
+[ext_resource type="Texture2D" uid="uid://cmnegl53t2q04" path="res://assets/cutscenes/intro/ConnectingFade4.png" id="4_as77j"]
+[ext_resource type="Texture2D" uid="uid://ch7n3fcuqkkf5" path="res://assets/cutscenes/intro/ConnectingFade5.png" id="5_kw7yh"]
+[ext_resource type="Texture2D" uid="uid://drcaviqnp2nd8" path="res://assets/cutscenes/intro/ConnectingFade6.png" id="6_g578y"]
+[ext_resource type="Texture2D" uid="uid://b8xu24wdwrmuh" path="res://assets/cutscenes/intro/ConnectingFade7.png" id="7_gpnnd"]
+[ext_resource type="Texture2D" uid="uid://b3iy2afhiel62" path="res://assets/cutscenes/intro/ConnectingFade8.png" id="8_ikdbi"]
+[ext_resource type="Texture2D" uid="uid://d17ahutsn2jt5" path="res://assets/cutscenes/intro/ConnectingFade9.png" id="9_1kb63"]
+[ext_resource type="Texture2D" uid="uid://dtu3252c47n4e" path="res://assets/cutscenes/intro/ConnectingFade10.png" id="10_gx37j"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_isfe7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_47art")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ftupc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xoxgt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_as77j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kw7yh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_g578y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gpnnd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ikdbi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_1kb63")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_gx37j")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 24.0
+}]
+
+[node name="Intro" type="Node2D" unique_id=2039087493]
+script = ExtResource("1_ftupc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1407380175]
+position = Vector2(576, 324.00003)
+scale = Vector2(2.515284, 2.4)
+sprite_frames = SubResource("SpriteFrames_isfe7")

@@ -1,0 +1,217 @@
+[gd_scene format=3 uid="uid://cvs6eq03ykutb"]
+
+[ext_resource type="Script" uid="uid://chy6b3on7x6ae" path="res://scripts/letters/letter.gd" id="1_s5emf"]
+[ext_resource type="Texture2D" uid="uid://ywj3uel7iymt" path="res://assets/letters/A.png" id="1_ws8jx"]
+[ext_resource type="Texture2D" uid="uid://dfwmo76g3foiy" path="res://assets/letters/B.png" id="2_s5emf"]
+[ext_resource type="Texture2D" uid="uid://d1wih5yp657vc" path="res://assets/letters/C.png" id="3_ujkh3"]
+[ext_resource type="Texture2D" uid="uid://bpumse7tuk0xp" path="res://assets/letters/D.png" id="4_tqsis"]
+[ext_resource type="Texture2D" uid="uid://cuu3m432yieay" path="res://assets/letters/E.png" id="5_j702a"]
+[ext_resource type="Texture2D" uid="uid://d33heju8qkigv" path="res://assets/letters/F.png" id="6_rc55j"]
+[ext_resource type="Texture2D" uid="uid://chbc6ddtm3kug" path="res://assets/letters/G.png" id="7_nquuf"]
+[ext_resource type="Texture2D" uid="uid://c74au5cdmjsal" path="res://assets/letters/H.png" id="8_1fcn6"]
+[ext_resource type="Texture2D" uid="uid://ccmur15hwvwsh" path="res://assets/letters/I.png" id="9_nnmof"]
+[ext_resource type="Texture2D" uid="uid://4gi41onlgw2j" path="res://assets/letters/J.png" id="10_cxusw"]
+[ext_resource type="Texture2D" uid="uid://cfn7dbn55174c" path="res://assets/letters/K.png" id="11_0oekv"]
+[ext_resource type="Texture2D" uid="uid://d4b1gyrfv2om6" path="res://assets/letters/L.png" id="12_u2cjp"]
+[ext_resource type="Texture2D" uid="uid://i4amjd0p46xr" path="res://assets/letters/M.png" id="13_1nltc"]
+[ext_resource type="Texture2D" uid="uid://5wexkv22bokw" path="res://assets/letters/N.png" id="14_jqddm"]
+[ext_resource type="Texture2D" uid="uid://bc2bamwsk4vqh" path="res://assets/letters/O.png" id="15_w5qoo"]
+[ext_resource type="Texture2D" uid="uid://d2yhj28wyv8tx" path="res://assets/letters/P.png" id="16_72i2m"]
+[ext_resource type="Texture2D" uid="uid://ct2kk7gol5lcc" path="res://assets/letters/Q.png" id="17_ygd2l"]
+[ext_resource type="Texture2D" uid="uid://b4g4mcxljb7gq" path="res://assets/letters/R.png" id="18_dvln7"]
+[ext_resource type="Texture2D" uid="uid://mr8ougn2omim" path="res://assets/letters/S.png" id="19_02r6a"]
+[ext_resource type="Texture2D" uid="uid://dxvl5m84qwrkm" path="res://assets/letters/T.png" id="20_ijxuj"]
+[ext_resource type="Texture2D" uid="uid://crpuuwfcyk4gn" path="res://assets/letters/U.png" id="21_5koxn"]
+[ext_resource type="Texture2D" uid="uid://cfegg0vcey8e5" path="res://assets/letters/V.png" id="22_ckey1"]
+[ext_resource type="Texture2D" uid="uid://cq7re2d3rg3tk" path="res://assets/letters/W.png" id="23_1u16v"]
+[ext_resource type="Texture2D" uid="uid://botkyyhymbd3s" path="res://assets/letters/X.png" id="24_ywurj"]
+[ext_resource type="Texture2D" uid="uid://b638hq3sxd2fg" path="res://assets/letters/Y.png" id="25_uxfp7"]
+[ext_resource type="Texture2D" uid="uid://d2g7enchct1qa" path="res://assets/letters/Z.png" id="26_7bt74"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_isfe7"]
+radius = 1.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_hnbem"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Letter" type="Node3D" unique_id=1860207865]
+script = ExtResource("1_s5emf")
+
+[node name="Hitzone" type="Area3D" parent="." unique_id=1550800486]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitzone" unique_id=401302420]
+shape = SubResource("CylinderShape3D_isfe7")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1459073240]
+billboard = 1
+texture_filter = 0
+texture = SubResource("ViewportTexture_hnbem")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1647949860]
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(100, 100)
+
+[node name="Letters2DModels" type="Node2D" parent="SubViewport" unique_id=295239854]
+texture_filter = 1
+
+[node name="ReferenceRect" type="ReferenceRect" parent="SubViewport/Letters2DModels" unique_id=314710826]
+offset_right = 100.0
+offset_bottom = 100.0
+
+[node name="letter_A" type="Sprite2D" parent="SubViewport/Letters2DModels" unique_id=683510201]
+texture_filter = 1
+position = Vector2(51, 49)
+texture = ExtResource("1_ws8jx")
+
+[node name="letter_B" type="Sprite2D" parent="SubViewport/Letters2DModels" unique_id=1297040480]
+visible = false
+texture_filter = 1
+position = Vector2(51, 49)
+texture = ExtResource("2_s5emf")
+
+[node name="letter_C" type="Sprite2D" parent="SubViewport/Letters2DModels" unique_id=174563753]
+visible = false
+texture_filter = 1
+position = Vector2(51, 49)
+texture = ExtResource("3_ujkh3")
+
+[node name="letter_D" type="Sprite2D" parent="SubViewport/Letters2DModels" unique_id=1813916535]
+visible = false
+texture_filter = 1
+position = Vector2(51, 49)
+texture = ExtResource("4_tqsis")
+
+[node name="letter_E" type="Sprite2D" parent="SubViewport/Letters2DModels" unique_id=496676734]
+visible = false
+texture_filter = 1
+position = Vector2(51, 49)
+texture = ExtResource("5_j702a")
+
+[node name="letter_F" type="Sprite2D" parent="SubViewport/Letters2DModels" unique_id=1596420222]
+visible = false
+texture_filter = 1
+position = Vector2(51, 49)
+texture = ExtResource("6_rc55j")
+
+[node name="letter_G" type="Sprite2D" parent="SubViewport/Letters2DModels" unique_id=1931061713]
+visible = false
+texture_filter = 1
+position = Vector2(51, 49)
+texture = ExtResource("7_nquuf")
+
+[node name="letter_H" type="Sprite2D" parent="SubViewport/Letters2DModels" unique_id=1307399799]
+visible = false
+texture_filter = 1
+position = Vector2(51, 49)
+texture = ExtResource("8_1fcn6")
+
+[node name="letter_I" type="Sprite2D" parent="SubViewport/Letters2DModels" unique_id=1262938920]
+visible = false
+texture_filter = 1
+position = Vector2(51, 49)
+texture = ExtResource("9_nnmof")
+
+[node name="letter_J" type="Sprite2D" parent="SubViewport/Letters2DModels" unique_id=1308082369]
+visible = false
+texture_filter = 1
+position = Vector2(51, 49)
+texture = ExtResource("10_cxusw")
+
+[node name="letter_K" type="Sprite2D" parent="SubViewport/Letters2DModels" unique_id=2027041439]
+visible = false
+texture_filter = 1
+position = Vector2(51, 49)
+texture = ExtResource("11_0oekv")
+
+[node name="letter_L" type="Sprite2D" parent="SubViewport/Letters2DModels" unique_id=2053782822]
+visible = false
+texture_filter = 1
+position = Vector2(51, 49)
+texture = ExtResource("12_u2cjp")
+
+[node name="letter_M" type="Sprite2D" parent="SubViewport/Letters2DModels" unique_id=1014890918]
+visible = false
+texture_filter = 1
+position = Vector2(51, 49)
+texture = ExtResource("13_1nltc")
+
+[node name="letter_N" type="Sprite2D" parent="SubViewport/Letters2DModels" unique_id=240001739]
+visible = false
+texture_filter = 1
+position = Vector2(51, 49)
+texture = ExtResource("14_jqddm")
+
+[node name="letter_O" type="Sprite2D" parent="SubViewport/Letters2DModels" unique_id=804839238]
+visible = false
+texture_filter = 1
+position = Vector2(51, 49)
+texture = ExtResource("15_w5qoo")
+
+[node name="letter_P" type="Sprite2D" parent="SubViewport/Letters2DModels" unique_id=149493447]
+visible = false
+texture_filter = 1
+position = Vector2(51, 49)
+texture = ExtResource("16_72i2m")
+
+[node name="letter_Q" type="Sprite2D" parent="SubViewport/Letters2DModels" unique_id=2011453934]
+visible = false
+texture_filter = 1
+position = Vector2(51, 49)
+texture = ExtResource("17_ygd2l")
+
+[node name="letter_R" type="Sprite2D" parent="SubViewport/Letters2DModels" unique_id=1779437463]
+visible = false
+texture_filter = 1
+position = Vector2(51, 49)
+texture = ExtResource("18_dvln7")
+
+[node name="letter_S" type="Sprite2D" parent="SubViewport/Letters2DModels" unique_id=2060462628]
+visible = false
+texture_filter = 1
+position = Vector2(51, 49)
+texture = ExtResource("19_02r6a")
+
+[node name="letter_T" type="Sprite2D" parent="SubViewport/Letters2DModels" unique_id=1292406667]
+visible = false
+texture_filter = 1
+position = Vector2(51, 49)
+texture = ExtResource("20_ijxuj")
+
+[node name="letter_U" type="Sprite2D" parent="SubViewport/Letters2DModels" unique_id=396729469]
+visible = false
+texture_filter = 1
+position = Vector2(51, 49)
+texture = ExtResource("21_5koxn")
+
+[node name="letter_V" type="Sprite2D" parent="SubViewport/Letters2DModels" unique_id=326256144]
+visible = false
+texture_filter = 1
+position = Vector2(51, 49)
+texture = ExtResource("22_ckey1")
+
+[node name="letter_W" type="Sprite2D" parent="SubViewport/Letters2DModels" unique_id=437198207]
+visible = false
+texture_filter = 1
+position = Vector2(51, 49)
+texture = ExtResource("23_1u16v")
+
+[node name="letter_X" type="Sprite2D" parent="SubViewport/Letters2DModels" unique_id=149574837]
+visible = false
+texture_filter = 1
+position = Vector2(51, 49)
+texture = ExtResource("24_ywurj")
+
+[node name="letter_Y" type="Sprite2D" parent="SubViewport/Letters2DModels" unique_id=1028857195]
+visible = false
+texture_filter = 1
+position = Vector2(51, 49)
+texture = ExtResource("25_uxfp7")
+
+[node name="letter_Z" type="Sprite2D" parent="SubViewport/Letters2DModels" unique_id=945394382]
+visible = false
+texture_filter = 1
+position = Vector2(51, 49)
+texture = ExtResource("26_7bt74")
+
+[connection signal="area_entered" from="Hitzone" to="." method="_on_hitzone_area_entered"]

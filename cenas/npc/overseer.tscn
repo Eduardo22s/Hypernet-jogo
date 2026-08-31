@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://b08skoj6sw6u1"]
+
+[ext_resource type="Texture2D" uid="uid://dgjc30cel6lxm" path="res://assets/overseer/Overseer1.png" id="2_nvcwa"]
+[ext_resource type="Texture2D" uid="uid://drod5jfx3erju" path="res://assets/overseer/Overseer2.png" id="3_6fqbe"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_2btrb"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_isfe7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nvcwa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_nvcwa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_nvcwa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6fqbe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6fqbe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6fqbe")
+}],
+"loop": 1,
+"name": &"talking",
+"speed": 10.0
+}]
+
+[node name="Overseer" type="Node3D" unique_id=28029168]
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1368585303]
+billboard = 1
+texture_filter = 0
+texture = SubResource("ViewportTexture_2btrb")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=688263593]
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(280, 300)
+
+[node name="Overseer2dModel" type="Node2D" parent="SubViewport" unique_id=968144334]
+texture_filter = 1
+
+[node name="ReferenceRect" type="ReferenceRect" parent="SubViewport/Overseer2dModel" unique_id=1977279927]
+offset_right = 280.0
+offset_bottom = 300.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SubViewport/Overseer2dModel" unique_id=43698582]
+position = Vector2(150, 150)
+sprite_frames = SubResource("SpriteFrames_isfe7")
+animation = &"talking"
+autoplay = "talking"
