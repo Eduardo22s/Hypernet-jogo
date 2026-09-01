@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dscbufc0mvnpb"]
 
 [ext_resource type="Script" uid="uid://cnvfl5hujjfih" path="res://global/script/hud.gd" id="1_taf06"]
-[ext_resource type="Shader" uid="uid://8abv6u5uvg7x" path="res://assets/VFX/_Shaders/CRTFilter.gdshader" id="2_hcsof"]
+[ext_resource type="Shader" uid="uid://fsl3lmqgpnp5" path="res://global/cenas/VFX/_Shaders/CRTFilter.gdshader" id="2_hcsof"]
 
 [sub_resource type="Animation" id="Animation_jfthx"]
 length = 0.001
