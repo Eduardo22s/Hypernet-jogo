@@ -17,7 +17,7 @@ var SPEED = 5.0
 var bufferTimer = 0.0
 var coyoteTimer = 0.0
 
-@onready var cameras = [$Cameras/Camera1,$Cameras/Camera2,$Cameras/Camera3,$Cameras/Camera4,$Cameras/Camera5,$Cameras/Camera6,$Cameras/Camera7,$Cameras/Camera8]
+@onready var cameras = [$Cameras/SpringArm1/Camera1,$Cameras/SpringArm2/Camera2,$Cameras/SpringArm3/Camera3,$Cameras/SpringArm4/Camera4,$Cameras/SpringArm5/Camera5,$Cameras/SpringArm6/Camera6,$Cameras/SpringArm7/Camera7,$Cameras/SpringArm8/Camera8]
 
 var camera_atual := 0
 

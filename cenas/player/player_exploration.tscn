@@ -24,6 +24,22 @@ stream_4 = ExtResource("6_dk6du")
 [sub_resource type="ViewportTexture" id="ViewportTexture_wjsnp"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_mhgj0"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ref4y"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_b6r26"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yumig"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pddbp"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hgm3x"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7r1ti"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mp6gn"]
+
 [node name="PlayerExploration" type="CharacterBody3D" unique_id=1230296654]
 script = ExtResource("1_w152q")
 
@@ -42,45 +58,72 @@ texture = SubResource("ViewportTexture_wjsnp")
 
 [node name="Cameras" type="Node3D" parent="." unique_id=15005866]
 
-[node name="Camera1" type="Camera3D" parent="Cameras" unique_id=648094692]
+[node name="SpringArm1" type="SpringArm3D" parent="Cameras" unique_id=1750265599]
 transform = Transform3D(1, 0, 0, 0, 0.95105654, 0.309017, 0, -0.309017, 0.95105654, 0, 1, 2.5)
+shape = SubResource("SphereShape3D_mhgj0")
 
-[node name="HUD" parent="Cameras/Camera1" unique_id=1747082955 instance=ExtResource("3_idagx")]
+[node name="Camera1" type="Camera3D" parent="Cameras/SpringArm1" unique_id=648094692]
 
-[node name="Camera2" type="Camera3D" parent="Cameras" unique_id=419808414]
-transform = Transform3D(0.7071068, -0.21850802, 0.6724985, 0, 0.95105654, 0.309017, -0.7071068, -0.21850802, 0.6724985, 1.8000001, 1, 1.8000001)
+[node name="HUD" parent="Cameras/SpringArm1/Camera1" unique_id=1747082955 instance=ExtResource("3_idagx")]
 
-[node name="HUD" parent="Cameras/Camera2" unique_id=1958523873 instance=ExtResource("3_idagx")]
+[node name="SpringArm2" type="SpringArm3D" parent="Cameras" unique_id=1144160767]
+transform = Transform3D(0.7071068, -0.21850799, 0.6724985, -1.4901161e-08, 0.95105654, 0.309017, -0.70710677, -0.21850802, 0.6724986, 1.8000001, 1, 1.8000002)
+shape = SubResource("SphereShape3D_ref4y")
 
-[node name="Camera3" type="Camera3D" parent="Cameras" unique_id=1238088220]
+[node name="Camera2" type="Camera3D" parent="Cameras/SpringArm2" unique_id=419808414]
+transform = Transform3D(1, 0, 0, 0, 1, -1.4901161e-08, 0, 1.4901161e-08, 1, 0, 0, 0)
+
+[node name="HUD" parent="Cameras/SpringArm2/Camera2" unique_id=1958523873 instance=ExtResource("3_idagx")]
+
+[node name="SpringArm3" type="SpringArm3D" parent="Cameras" unique_id=627102556]
 transform = Transform3D(-4.371139e-08, -0.309017, 0.95105654, 0, 0.95105654, 0.309017, -1, 1.3507562e-08, -4.1572e-08, 2.5, 1, 0)
+shape = SubResource("SphereShape3D_b6r26")
 
-[node name="HUD" parent="Cameras/Camera3" unique_id=1568815544 instance=ExtResource("3_idagx")]
+[node name="Camera3" type="Camera3D" parent="Cameras/SpringArm3" unique_id=1238088220]
+transform = Transform3D(1, 0, 0, 0, 1, -5.6153636e-16, 0, -5.6153636e-16, 1, 0, 0, 0)
 
-[node name="Camera4" type="Camera3D" parent="Cameras" unique_id=203852609]
+[node name="HUD" parent="Cameras/SpringArm3/Camera3" unique_id=1568815544 instance=ExtResource("3_idagx")]
+
+[node name="SpringArm4" type="SpringArm3D" parent="Cameras" unique_id=1618556382]
 transform = Transform3D(-0.7071068, -0.21850802, 0.6724985, 0, 0.95105654, 0.309017, -0.7071068, 0.21850802, -0.6724985, 1.8000001, 1, -1.8000001)
+shape = SubResource("SphereShape3D_yumig")
 
-[node name="HUD" parent="Cameras/Camera4" unique_id=2091094629 instance=ExtResource("3_idagx")]
+[node name="Camera4" type="Camera3D" parent="Cameras/SpringArm4" unique_id=203852609]
 
-[node name="Camera5" type="Camera3D" parent="Cameras" unique_id=1386965702]
+[node name="HUD" parent="Cameras/SpringArm4/Camera4" unique_id=2091094629 instance=ExtResource("3_idagx")]
+
+[node name="SpringArm5" type="SpringArm3D" parent="Cameras" unique_id=464277034]
 transform = Transform3D(-1, -2.7015124e-08, 8.3144e-08, 0, 0.95105654, 0.309017, -8.742278e-08, 0.309017, -0.95105654, 0, 1, -2.5)
+shape = SubResource("SphereShape3D_pddbp")
 
-[node name="HUD" parent="Cameras/Camera5" unique_id=578589751 instance=ExtResource("3_idagx")]
+[node name="Camera5" type="Camera3D" parent="Cameras/SpringArm5" unique_id=1386965702]
 
-[node name="Camera6" type="Camera3D" parent="Cameras" unique_id=494567624]
+[node name="HUD" parent="Cameras/SpringArm5/Camera5" unique_id=578589751 instance=ExtResource("3_idagx")]
+
+[node name="SpringArm6" type="SpringArm3D" parent="Cameras" unique_id=1316862995]
 transform = Transform3D(-0.7071068, 0.21850802, -0.6724985, 0, 0.95105654, 0.309017, 0.7071068, 0.21850802, -0.6724985, -1.8, 1, -1.8)
+shape = SubResource("SphereShape3D_hgm3x")
 
-[node name="HUD" parent="Cameras/Camera6" unique_id=1280227651 instance=ExtResource("3_idagx")]
+[node name="Camera6" type="Camera3D" parent="Cameras/SpringArm6" unique_id=494567624]
 
-[node name="Camera7" type="Camera3D" parent="Cameras" unique_id=530864689]
+[node name="HUD" parent="Cameras/SpringArm6/Camera6" unique_id=1280227651 instance=ExtResource("3_idagx")]
+
+[node name="SpringArm7" type="SpringArm3D" parent="Cameras" unique_id=1874520916]
 transform = Transform3D(-4.371139e-08, 0.309017, -0.95105654, 0, 0.95105654, 0.309017, 1, 1.3507562e-08, -4.1572e-08, -2.5, 1, 0)
+shape = SubResource("SphereShape3D_7r1ti")
 
-[node name="HUD" parent="Cameras/Camera7" unique_id=1600424132 instance=ExtResource("3_idagx")]
+[node name="Camera7" type="Camera3D" parent="Cameras/SpringArm7" unique_id=530864689]
+transform = Transform3D(1, 0, 0, 0, 1, -5.6153636e-16, 0, -5.6153636e-16, 1, 0, 0, 0)
 
-[node name="Camera8" type="Camera3D" parent="Cameras" unique_id=1862488618]
+[node name="HUD" parent="Cameras/SpringArm7/Camera7" unique_id=1600424132 instance=ExtResource("3_idagx")]
+
+[node name="SpringArm8" type="SpringArm3D" parent="Cameras" unique_id=1236477238]
 transform = Transform3D(0.7071068, 0.21850802, -0.6724985, 0, 0.95105654, 0.309017, 0.7071068, -0.21850802, 0.6724985, -1.8000001, 1, 1.8000001)
+shape = SubResource("SphereShape3D_mp6gn")
 
-[node name="HUD" parent="Cameras/Camera8" unique_id=1163737124 instance=ExtResource("3_idagx")]
+[node name="Camera8" type="Camera3D" parent="Cameras/SpringArm8" unique_id=1862488618]
+
+[node name="HUD" parent="Cameras/SpringArm8/Camera8" unique_id=1163737124 instance=ExtResource("3_idagx")]
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1504833873]
 transparent_bg = true

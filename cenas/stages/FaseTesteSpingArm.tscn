@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://d2qcb2dvuj2aq"]
+
+[ext_resource type="PackedScene" uid="uid://dawu66n17p2am" path="res://cenas/player/player_exploration.tscn" id="1_dcfgp"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_t2hhj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t2hhj"]
+size = Vector3(1.987854, 0.042419434, 1.982544)
+
+[sub_resource type="Environment" id="Environment_dcfgp"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_t2hhj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f1q28"]
+
+[node name="FaseTesteSpingArm" type="Node3D" unique_id=1644938480]
+
+[node name="Chao" type="StaticBody3D" parent="." unique_id=1537150102]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Chao" unique_id=1736932154]
+mesh = SubResource("PlaneMesh_t2hhj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chao" unique_id=373002097]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0016174316, -0.007659912, 0.0025024414)
+shape = SubResource("BoxShape3D_t2hhj")
+
+[node name="Player" parent="." unique_id=1230296654 instance=ExtResource("1_dcfgp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027112484, 1.5412524, 0.124955416)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1864272101]
+environment = SubResource("Environment_dcfgp")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=508975269]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 11, 0)
+
+[node name="Parede" type="StaticBody3D" parent="." unique_id=1596975800]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 8.493546, 1.0164795, -2.516571)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Parede" unique_id=761450737]
+mesh = SubResource("BoxMesh_t2hhj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Parede" unique_id=97262822]
+shape = SubResource("BoxShape3D_f1q28")
