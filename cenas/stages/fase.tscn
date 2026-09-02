@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://dawu66n17p2am" path="res://cenas/player/player_exploration.tscn" id="2_k8w4s"]
 [ext_resource type="PackedScene" uid="uid://l2hm8rn2frxa" path="res://cenas/npc/daydream.tscn" id="3_anrue"]
 [ext_resource type="PackedScene" uid="uid://b08skoj6sw6u1" path="res://cenas/npc/overseer.tscn" id="4_mhhvk"]
-[ext_resource type="Shader" uid="uid://p4lrvbn5t8tk" path="res://assets/VFX/_Shaders/SG_Hologram.tres" id="5_04dng"]
-[ext_resource type="Texture2D" uid="uid://cuna81r7dle6p" path="res://assets/VFX/_Textures/T_HologramTexture.png" id="6_3uapd"]
+[ext_resource type="Shader" uid="uid://p4lrvbn5t8tk" path="res://global/cenas/VFX/_Shaders/SG_Hologram.tres" id="5_04dng"]
+[ext_resource type="Texture2D" uid="uid://cuna81r7dle6p" path="res://global/cenas/VFX/_Textures/T_HologramTexture.png" id="6_3uapd"]
 
 [sub_resource type="Environment" id="Environment_rxvj5"]
 
