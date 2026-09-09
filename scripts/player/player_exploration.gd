@@ -26,14 +26,14 @@ func _ready():
 	trocar_camera(camera_atual)
 
 func _process(_delta: float) -> void:
+	manage_battles()
+
 	if Global.stop_player:
 		SPEED = 0.0
 	else:
 		SPEED = 5.0
 
 func _physics_process(delta: float) -> void:
-	manage_battles()
-
 	if Input.is_action_pressed("move_left"):
 		$SubViewport/Player2dModel/AnimatedSprite2D.frame = 2
 	elif Input.is_action_pressed("move_backward"):
@@ -76,7 +76,6 @@ func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("move_left","move_right","move_forward","move_backward")
 
 	var camera = cameras[camera_atual]
-
 	var forward = camera.global_transform.basis.z
 	var right = camera.global_transform.basis.x
 
@@ -129,6 +128,7 @@ func _physics_process(delta: float) -> void:
 
 func manage_battles():
 	if Global.trigger_battle:
+		_physics_process(false)
 		await get_tree().process_frame
 		get_tree().change_scene_to_file("res://cenas/stages/combat_" +str(Global.npc_battle) +".tscn")
 

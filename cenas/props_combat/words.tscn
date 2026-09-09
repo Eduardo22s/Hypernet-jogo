@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bge5mdsxxc1ec"]
+
+[ext_resource type="Texture2D" uid="uid://bpcj4fhbv4mdl" path="res://assets/template2.png" id="1_gyt3g"]
+[ext_resource type="Script" uid="uid://b4aggfwiahm4w" path="res://scripts/props_combat/words.gd" id="1_n2pg2"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_isfe7"]
+radius = 1.0
+
+[node name="Words" type="Node3D" unique_id=1656796278]
+script = ExtResource("1_n2pg2")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=833795134]
+billboard = 1
+texture = ExtResource("1_gyt3g")
+
+[node name="Hitzone" type="Area3D" parent="." unique_id=824677423]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitzone" unique_id=1246952377]
+shape = SubResource("SphereShape3D_isfe7")
+
+[connection signal="area_entered" from="Hitzone" to="." method="_on_hitzone_area_entered"]

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://daq0ito1wky86"]
+
+[ext_resource type="Script" uid="uid://mm1txersslaq" path="res://scripts/props_combat/heart.gd" id="1_4ibar"]
+[ext_resource type="Texture2D" uid="uid://d1bmdxql1i4ls" path="res://assets/template.png" id="1_u1iue"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_isfe7"]
+radius = 2.0
+
+[node name="Heart" type="Node3D" unique_id=617124099]
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=951684308]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+billboard = 1
+texture = ExtResource("1_u1iue")
+
+[node name="Hitzone" type="Area3D" parent="." unique_id=1051437134]
+script = ExtResource("1_4ibar")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitzone" unique_id=995389954]
+shape = SubResource("SphereShape3D_isfe7")
+
+[connection signal="area_entered" from="Hitzone" to="Hitzone" method="_on_area_entered"]
