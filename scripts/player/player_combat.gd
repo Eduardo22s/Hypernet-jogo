@@ -48,14 +48,64 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	handle_attack()
 
-	if Input.is_action_pressed("move_left"):
-		$SubViewport/Player2dModel/AnimatedSprite2D.frame = 2
-	elif Input.is_action_pressed("move_backward"):
-		$SubViewport/Player2dModel/AnimatedSprite2D.frame = 0
-	elif Input.is_action_pressed("move_forward"):
-		$SubViewport/Player2dModel/AnimatedSprite2D.frame = 4
-	elif Input.is_action_pressed("move_right"):
-		$SubViewport/Player2dModel/AnimatedSprite2D.frame = 6
+	var moving_sprite = $SubViewport/Player2dModel/AnimatedMoving
+	var idle_sprite = $SubViewport/Player2dModel/AnimatedIdle
+
+	var move_right := Input.is_action_pressed("move_right")
+	var move_left := Input.is_action_pressed("move_left")
+	var move_up := Input.is_action_pressed("move_forward")
+	var move_down := Input.is_action_pressed("move_backward")
+
+	if move_right and move_up:
+		idle_sprite.visible = false
+		moving_sprite.visible = true
+		moving_sprite.flip_h = true
+		moving_sprite.play("diagonal_up")
+
+	elif move_left and move_up:
+		idle_sprite.visible = false
+		moving_sprite.visible = true
+		moving_sprite.flip_h = false
+		moving_sprite.play("diagonal_up")
+
+	elif move_right and move_down:
+		idle_sprite.visible = false
+		moving_sprite.visible = true
+		moving_sprite.flip_h = true
+		moving_sprite.play("diagonal_down")
+
+	elif move_left and move_down:
+		idle_sprite.visible = false
+		moving_sprite.visible = true
+		moving_sprite.flip_h = false
+		moving_sprite.play("diagonal_down")
+
+	elif move_left:
+		idle_sprite.visible = false
+		moving_sprite.visible = true
+		moving_sprite.flip_h = false
+		moving_sprite.play("sides")
+
+	elif move_right:
+		idle_sprite.visible = false
+		moving_sprite.visible = true
+		moving_sprite.flip_h = true
+		moving_sprite.play("sides")
+
+	elif move_up:
+		idle_sprite.visible = false
+		moving_sprite.visible = true
+		moving_sprite.play("up")
+
+	elif move_down:
+		idle_sprite.visible = false
+		moving_sprite.visible = true
+		moving_sprite.play("down")
+
+	else:
+		idle_sprite.visible = true
+		moving_sprite.visible = false
+		$AudioStreamPlayer3D.stop()
 
 	#gravidade
 	if not is_on_floor():

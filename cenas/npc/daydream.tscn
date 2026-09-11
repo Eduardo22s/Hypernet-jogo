@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://l2hm8rn2frxa"]
 
-[ext_resource type="PackedScene" uid="uid://c0t1e2kin21by" path="res://assets/props3D/NPC/Day_Dream2.glb" id="1_3jps7"]
 [ext_resource type="Script" uid="uid://cyu3ftx7gto5r" path="res://scripts/npc/npc.gd" id="1_epcot"]
+[ext_resource type="PackedScene" uid="uid://f01jeo4p56r8" path="res://assets/props3D/NPC/Day_Dream.glb" id="2_epcot"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_isfe7"]
 radius = 5.0
@@ -13,34 +13,10 @@ radius = 10.0
 
 [sub_resource type="Animation" id="Animation_3jps7"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Day_Dream2:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_epcot"]
 resource_name = "damage"
 length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Day_Dream2:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.5235988), Vector3(0, 0, 0), Vector3(0, 0, 0.5235988), Vector3(0, 0, 0)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jlea0"]
 _data = {
@@ -52,7 +28,8 @@ _data = {
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 script = ExtResource("1_epcot")
 
-[node name="Day_Dream2" parent="." unique_id=744138469 instance=ExtResource("1_3jps7")]
+[node name="Day_Dream" parent="." unique_id=71882613 instance=ExtResource("2_epcot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.730803, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=415985220]
 

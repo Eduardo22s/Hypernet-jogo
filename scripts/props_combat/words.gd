@@ -18,7 +18,7 @@ func _on_hitzone_area_entered(area: Area3D) -> void:
 	if area is Border:
 		thrown = false
 	
-	if area is Heart:
+	if area is HeartHitzone:
 		thrown = false
 		Global.emit_signal("taking_damage")
 		global_transform.origin = heart.global_position

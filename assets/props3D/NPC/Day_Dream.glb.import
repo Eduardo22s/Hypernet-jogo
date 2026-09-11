@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c0t1e2kin21by"
-path="res://.godot/imported/Day_Dream2.glb-ee0b4afe0960ded7d113edfb0543e7be.scn"
+uid="uid://f01jeo4p56r8"
+path="res://.godot/imported/Day_Dream.glb-d8c8df4ee7aa86de331c6e455d73f529.scn"
 
 [deps]
 
-source_file="res://assets/props3D/NPC/Day_Dream2.glb"
-dest_files=["res://.godot/imported/Day_Dream2.glb-ee0b4afe0960ded7d113edfb0543e7be.scn"]
+source_file="res://assets/props3D/NPC/Day_Dream.glb"
+dest_files=["res://.godot/imported/Day_Dream.glb-d8c8df4ee7aa86de331c6e455d73f529.scn"]
 
 [params]
 

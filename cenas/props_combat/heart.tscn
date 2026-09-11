@@ -1,22 +1,106 @@
 [gd_scene format=3 uid="uid://daq0ito1wky86"]
 
-[ext_resource type="Script" uid="uid://mm1txersslaq" path="res://scripts/props_combat/heart.gd" id="1_4ibar"]
-[ext_resource type="Texture2D" uid="uid://d1bmdxql1i4ls" path="res://assets/template.png" id="1_u1iue"]
+[ext_resource type="Script" uid="uid://dnmv3vjqhgdv" path="res://scripts/props_combat/heart.gd" id="1_4ibar"]
+[ext_resource type="Script" uid="uid://mm1txersslaq" path="res://scripts/props_combat/heart_hitzone.gd" id="2_whua0"]
+[ext_resource type="Texture2D" uid="uid://cqem5txesffut" path="res://assets/heart/Hearts/BigHeartJuice1.png" id="3_ixlyy"]
+[ext_resource type="Texture2D" uid="uid://4o87vl4nn2lt" path="res://assets/heart/Hearts/BigHeartJuice2.png" id="4_2o4bb"]
+[ext_resource type="Texture2D" uid="uid://cxieu46o8fomg" path="res://assets/heart/Hearts/BigHeartJuice3.png" id="5_y32x4"]
+[ext_resource type="Texture2D" uid="uid://sd7y2tssd15e" path="res://assets/heart/Hearts/BigHeartJuice4.png" id="6_ier1p"]
+[ext_resource type="Texture2D" uid="uid://djbabf3mvndjm" path="res://assets/heart/Hearts/BigHeartJuice5.png" id="7_ctgda"]
+[ext_resource type="Texture2D" uid="uid://bjncjggi7325r" path="res://assets/heart/Hearts/BigHeartJuice6.png" id="8_0lyk1"]
+[ext_resource type="Texture2D" uid="uid://u3ncdbjmob4" path="res://assets/heart/Hearts/BigHeart1.png" id="9_2o5yu"]
+[ext_resource type="Texture2D" uid="uid://3lv3ayalt5yg" path="res://assets/heart/Hearts/BigHeart2.png" id="10_wdxvd"]
+[ext_resource type="Texture2D" uid="uid://5ky01y1b7w4i" path="res://assets/heart/Hearts/BigHeart3.png" id="11_uaceh"]
+[ext_resource type="Texture2D" uid="uid://dma5vxiwp4fvy" path="res://assets/heart/Hearts/BigHeart4.png" id="12_qoktw"]
+[ext_resource type="Texture2D" uid="uid://ce0rf88jq5spr" path="res://assets/heart/Hearts/BigHeart5.png" id="13_3c7r8"]
+[ext_resource type="Texture2D" uid="uid://bmsyexcf5x415" path="res://assets/heart/Hearts/BigHeart6.png" id="14_y271w"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_isfe7"]
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_isfe7"]
 radius = 2.0
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_isfe7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ixlyy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2o4bb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_y32x4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ier1p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ctgda")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0lyk1")
+}],
+"loop": 1,
+"name": &"hit",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_2o5yu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_wdxvd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_uaceh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_qoktw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_3c7r8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_y271w")
+}],
+"loop": 1,
+"name": &"normal",
+"speed": 12.0
+}]
+
 [node name="Heart" type="Node3D" unique_id=617124099]
+script = ExtResource("1_4ibar")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=951684308]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 billboard = 1
-texture = ExtResource("1_u1iue")
+texture_filter = 0
+texture = SubResource("ViewportTexture_isfe7")
 
 [node name="Hitzone" type="Area3D" parent="." unique_id=1051437134]
-script = ExtResource("1_4ibar")
+script = ExtResource("2_whua0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitzone" unique_id=995389954]
 shape = SubResource("SphereShape3D_isfe7")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1968977839]
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(150, 90)
+
+[node name="Heart2dModel" type="Node2D" parent="SubViewport" unique_id=304108389]
+texture_filter = 1
+
+[node name="ReferenceRect" type="ReferenceRect" parent="SubViewport/Heart2dModel" unique_id=1925409131]
+offset_right = 150.0
+offset_bottom = 90.0
+
+[node name="AnimatedHeart" type="AnimatedSprite2D" parent="SubViewport/Heart2dModel" unique_id=1037071131]
+position = Vector2(75, 46)
+sprite_frames = SubResource("SpriteFrames_isfe7")
+animation = &"hit"
+autoplay = "normal"
 
 [connection signal="area_entered" from="Hitzone" to="Hitzone" method="_on_area_entered"]
