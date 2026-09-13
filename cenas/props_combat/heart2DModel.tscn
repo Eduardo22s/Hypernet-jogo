@@ -179,7 +179,6 @@ animation = &"hit"
 autoplay = "normal"
 
 [node name="AnimatedJuice" type="AnimatedSprite2D" parent="." unique_id=1248431355]
-visible = false
 position = Vector2(74, 47)
 sprite_frames = SubResource("SpriteFrames_vaj5l")
 animation = &"hit_end"

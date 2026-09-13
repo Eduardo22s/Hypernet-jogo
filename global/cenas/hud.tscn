@@ -2,14 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cnvfl5hujjfih" path="res://global/script/hud.gd" id="1_taf06"]
 [ext_resource type="Shader" uid="uid://fsl3lmqgpnp5" path="res://global/cenas/VFX/_Shaders/CRTFilter.gdshader" id="2_hcsof"]
-[ext_resource type="Shader" uid="uid://b4kjau4ari8aq" path="res://global/cenas/VFX/_Shaders/Dithering.gdshader" id="3_jt6de"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7rux2"]
-shader = ExtResource("3_jt6de")
-shader_parameter/levels = 0
-shader_parameter/threshold = 0.0
-shader_parameter/colors = 0
-shader_parameter/pixelate = 0
 
 [sub_resource type="Animation" id="Animation_jfthx"]
 length = 0.001
