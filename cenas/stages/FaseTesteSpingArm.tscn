@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d2qcb2dvuj2aq"]
 
 [ext_resource type="PackedScene" uid="uid://dawu66n17p2am" path="res://cenas/player/player_exploration.tscn" id="1_dcfgp"]
+[ext_resource type="PackedScene" uid="uid://jm0q7jskty1d" path="res://cenas/stages/porta.tscn" id="2_c2w8a"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_t2hhj"]
 
@@ -35,10 +36,29 @@ environment = SubResource("Environment_dcfgp")
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 11, 0)
 
 [node name="Parede" type="StaticBody3D" parent="." unique_id=1596975800]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 8.493546, 1.0164795, -2.516571)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 6.606056, 1.0164795, -7.471695)
+metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Parede" unique_id=761450737]
 mesh = SubResource("BoxMesh_t2hhj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Parede" unique_id=97262822]
 shape = SubResource("BoxShape3D_f1q28")
+
+[node name="Parede2" type="StaticBody3D" parent="." unique_id=692277249]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.5349655, 1.0164795, -7.471695)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Parede2" unique_id=958806688]
+mesh = SubResource("BoxMesh_t2hhj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Parede2" unique_id=83533339]
+shape = SubResource("BoxShape3D_f1q28")
+
+[node name="Porta" parent="." unique_id=132387269 instance=ExtResource("2_c2w8a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.080658, 0.44926453, -3)
+
+[node name="Porta2" parent="." unique_id=1160651383 instance=ExtResource("2_c2w8a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5574646, 0.44926453, 2.6851807)
+tipo_resultado = 1
+pontos_necessarios = 2

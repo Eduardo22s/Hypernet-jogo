@@ -8,7 +8,7 @@ var trigger_dialogue = false
 var trigger_battle = false
 var npc_battle = ""
 
-var good_results = 0
+var good_results = 1
 var neutral_results = 0
 var bad_results = 0
 

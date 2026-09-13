@@ -1,4 +1,5 @@
 extends CharacterBody3D
+
 class_name PlayerExploration
 
 const JUMP_VELOCITY = 5.2
