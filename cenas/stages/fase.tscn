@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dc36dn14npc1o" path="res://assets/props3D/Stages/Separado_Transparent.png" id="5_k8nhf"]
 [ext_resource type="Texture2D" uid="uid://cuna81r7dle6p" path="res://global/cenas/VFX/_Textures/T_HologramTexture.png" id="6_3uapd"]
 [ext_resource type="PackedScene" uid="uid://brvt7tj6k8enl" path="res://cenas/npc/mrchuffles.tscn" id="11_45ham"]
+[ext_resource type="PackedScene" uid="uid://bctvfsduyb8j4" path="res://assets/props3D/NPC/K.AFK.glb" id="12_2gaxo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0kb6o"]
 resource_name = "Material.003"
@@ -249,3 +250,6 @@ mesh = SubResource("CylinderMesh_cqcrm")
 
 [node name="PlayerExploration" parent="." unique_id=1230296654 instance=ExtResource("2_k8w4s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.955675, 1.5696621, 0.6652765)
+
+[node name="K_AFK" parent="." unique_id=683731453 instance=ExtResource("12_2gaxo")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.20000076, 1.4, -5.3)
