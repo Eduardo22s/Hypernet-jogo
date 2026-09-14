@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cnvfl5hujjfih" path="res://global/script/hud.gd" id="1_taf06"]
 [ext_resource type="Shader" uid="uid://fsl3lmqgpnp5" path="res://global/cenas/VFX/_Shaders/CRTFilter.gdshader" id="2_hcsof"]
+[ext_resource type="Texture2D" uid="uid://cv7apoy862vu0" path="res://assets/props2D/YouTV_TimerUI.png" id="2_jt6de"]
+[ext_resource type="FontFile" uid="uid://bcgyc0ombka2d" path="res://assets/fonts/Rayman 1.ttf" id="3_7rux2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7rux2"]
 
@@ -66,6 +68,10 @@ _data = {
 &"call_textbox": SubResource("Animation_taf06")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_isfe7"]
+font = ExtResource("3_7rux2")
+font_size = 21
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jt6de"]
 shader = ExtResource("2_hcsof")
 
@@ -117,6 +123,18 @@ grow_vertical = 0
 text = "LET'S DANCE"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=618407219]
+position = Vector2(941, 98)
+texture = ExtResource("2_jt6de")
+
+[node name="Label" type="Label" parent="Sprite2D" unique_id=1340714983]
+offset_left = -29.0
+offset_top = 22.0
+offset_right = 31.0
+offset_bottom = 45.0
+text = "15:00"
+label_settings = SubResource("LabelSettings_isfe7")
 
 [node name="CRT" type="ColorRect" parent="." unique_id=1258240392]
 material = SubResource("ShaderMaterial_jt6de")

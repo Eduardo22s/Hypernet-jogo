@@ -105,7 +105,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		idle_sprite.visible = true
 		moving_sprite.visible = false
-		$AudioStreamPlayer3D.stop()
+		$AudioStreamPlayer.stop()
 
 	#gravidade
 	if not is_on_floor():
@@ -174,6 +174,7 @@ func _physics_process(delta: float) -> void:
 			# aceleração
 			velocity.x = move_toward(velocity.x,target_velocity.x,aceleracaoAtual * delta)
 			velocity.z = move_toward(velocity.z,target_velocity.z,aceleracaoAtual * delta)
+			$AudioStreamPlayer.play()
 
 	# desaceleração
 	else:

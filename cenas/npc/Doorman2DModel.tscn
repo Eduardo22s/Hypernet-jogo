@@ -1,0 +1,216 @@
+[gd_scene format=3 uid="uid://cmixnetdamg4"]
+
+[ext_resource type="Texture2D" uid="uid://dd7nmtg72evxy" path="res://assets/props2D/NPC/Porteiro/BatendoAmão/PorteiroBateMão1.png" id="1_nuvsy"]
+[ext_resource type="Texture2D" uid="uid://btymqbwwcj345" path="res://assets/props2D/NPC/Porteiro/BatendoAmão/PorteiroBateMão2.png" id="2_bsryo"]
+[ext_resource type="Texture2D" uid="uid://by2yrrsq07g6s" path="res://assets/props2D/NPC/Porteiro/BatendoAmão/PorteiroBateMão3.png" id="3_4wpjm"]
+[ext_resource type="Texture2D" uid="uid://cr7xw1dg7rcte" path="res://assets/props2D/NPC/Porteiro/BatendoAmão/PorteiroBateMão4.png" id="4_1kcsa"]
+[ext_resource type="Texture2D" uid="uid://p3jjqqn1cg4g" path="res://assets/props2D/NPC/Porteiro/BatendoAmão/PorteiroBateMão5.png" id="5_a1ftd"]
+[ext_resource type="Texture2D" uid="uid://cododkc12c8dp" path="res://assets/props2D/NPC/Porteiro/BatendoAmão/PorteiroBateMão6.png" id="6_hfwra"]
+[ext_resource type="Texture2D" uid="uid://cm1ly2mxbjvx7" path="res://assets/props2D/NPC/Porteiro/BatendoAmão/PorteiroBateMão7.png" id="7_tj3ep"]
+[ext_resource type="Texture2D" uid="uid://dxo2tujsaoel4" path="res://assets/props2D/NPC/Porteiro/BatendoAmão/PorteiroBateMão8.png" id="8_ntaoq"]
+[ext_resource type="Texture2D" uid="uid://d3xtmqfmxh5ax" path="res://assets/props2D/NPC/Porteiro/BatendoAmão/PorteiroBateMão9.png" id="9_8nixd"]
+[ext_resource type="Texture2D" uid="uid://xd4y30h44gs4" path="res://assets/props2D/NPC/Porteiro/BatendoAmão/PorteiroBateMão10.png" id="10_axl5l"]
+[ext_resource type="Texture2D" uid="uid://2q3baiexukix" path="res://assets/props2D/NPC/Porteiro/ExtendendoAmão/PorteiroPidão1.png" id="11_ddn6f"]
+[ext_resource type="Texture2D" uid="uid://nsrho6ra5jij" path="res://assets/props2D/NPC/Porteiro/ExtendendoAmão/PorteiroPidão2.png" id="12_htqxq"]
+[ext_resource type="Texture2D" uid="uid://b6v1rjiq8tot7" path="res://assets/props2D/NPC/Porteiro/ExtendendoAmão/PorteiroPidão3.png" id="13_ds5ru"]
+[ext_resource type="Texture2D" uid="uid://c5ny31t05itx4" path="res://assets/props2D/NPC/Porteiro/ExtendendoAmão/PorteiroPidão4.png" id="14_gaolt"]
+[ext_resource type="Texture2D" uid="uid://bx7borh5y6vn0" path="res://assets/props2D/NPC/Porteiro/ExtendendoAmão/PorteiroPidão5.png" id="15_sdu2x"]
+[ext_resource type="Texture2D" uid="uid://b7j33q278susb" path="res://assets/props2D/NPC/Porteiro/ExtendendoAmão/PorteiroPidão6.png" id="16_bjxoe"]
+[ext_resource type="Texture2D" uid="uid://cqd3fhv2hjty7" path="res://assets/props2D/NPC/Porteiro/ExtendendoAmão/PorteiroPidão7.png" id="17_rf7qx"]
+[ext_resource type="Texture2D" uid="uid://gpppqxdrrkse" path="res://assets/props2D/NPC/Porteiro/ExtendendoAmão/PorteiroPidão8.png" id="18_wckpg"]
+[ext_resource type="Texture2D" uid="uid://1po6k0sfi0xi" path="res://assets/props2D/NPC/Porteiro/ExtendendoAmão/PorteiroPidão9.png" id="19_2ru5x"]
+[ext_resource type="Texture2D" uid="uid://d4mi1wrgtx6ro" path="res://assets/props2D/NPC/Porteiro/ExtendendoAmão/PorteiroPidão10.png" id="20_wcmkl"]
+[ext_resource type="Texture2D" uid="uid://c0kyhagfotsf8" path="res://assets/props2D/NPC/Porteiro/Idle/PorteiroIdle1.png" id="21_rw6g3"]
+[ext_resource type="Texture2D" uid="uid://ka8ebx2be5fj" path="res://assets/props2D/NPC/Porteiro/Idle/PorteiroIdle2.png" id="22_tnoam"]
+[ext_resource type="Texture2D" uid="uid://bwagm7di523yb" path="res://assets/props2D/NPC/Porteiro/Idle/PorteiroIdle3.png" id="23_jxk6w"]
+[ext_resource type="Texture2D" uid="uid://bcomv0acjxltb" path="res://assets/props2D/NPC/Porteiro/Idle/PorteiroIdle4.png" id="24_ehj4u"]
+[ext_resource type="Texture2D" uid="uid://m6vla6ofbaby" path="res://assets/props2D/NPC/Porteiro/Idle/PorteiroIdle5.png" id="25_vye6i"]
+[ext_resource type="Texture2D" uid="uid://c6jhsakbvshg5" path="res://assets/props2D/NPC/Porteiro/Idle/PorteiroIdle6.png" id="26_6xec5"]
+[ext_resource type="Texture2D" uid="uid://coftvxm5iemqt" path="res://assets/props2D/NPC/Porteiro/Idle/PorteiroIdle7.png" id="27_ef3pq"]
+[ext_resource type="Texture2D" uid="uid://00cb388svu3f" path="res://assets/props2D/NPC/Porteiro/Idle/PorteiroIdle8.png" id="28_xrvb7"]
+[ext_resource type="Texture2D" uid="uid://c47j743vp1qfn" path="res://assets/props2D/NPC/Porteiro/Idle/PorteiroIdle9.png" id="29_yxkbc"]
+[ext_resource type="Texture2D" uid="uid://nx40j7kkrvd4" path="res://assets/props2D/NPC/Porteiro/Idle/PorteiroIdle10.png" id="30_6t6rx"]
+[ext_resource type="Texture2D" uid="uid://h0t3ilm7f1ij" path="res://assets/props2D/NPC/Porteiro/DeixarPassar/PorteiroDeixaPassar1.png" id="31_8nixd"]
+[ext_resource type="Texture2D" uid="uid://dw533f460ji4d" path="res://assets/props2D/NPC/Porteiro/DeixarPassar/PorteiroDeixaPassar2.png" id="32_axl5l"]
+[ext_resource type="Texture2D" uid="uid://nso3l8sy4jft" path="res://assets/props2D/NPC/Porteiro/DeixarPassar/PorteiroDeixaPassar3.png" id="33_ddn6f"]
+[ext_resource type="Texture2D" uid="uid://dqojbm6fdp2cw" path="res://assets/props2D/NPC/Porteiro/DeixarPassar/PorteiroDeixaPassar4.png" id="34_htqxq"]
+[ext_resource type="Texture2D" uid="uid://dh2yud1cr7yty" path="res://assets/props2D/NPC/Porteiro/DeixarPassar/PorteiroDeixaPassar5.png" id="35_ds5ru"]
+[ext_resource type="Texture2D" uid="uid://flvpa3v367kv" path="res://assets/props2D/NPC/Porteiro/DeixarPassar/PorteiroDeixaPassar6.png" id="36_gaolt"]
+[ext_resource type="Texture2D" uid="uid://cglqul3d21nyb" path="res://assets/props2D/NPC/Porteiro/DeixarPassar/PorteiroDeixaPassar7.png" id="37_sdu2x"]
+[ext_resource type="Texture2D" uid="uid://c7u04wdoucjuv" path="res://assets/props2D/NPC/Porteiro/DeixarPassar/PorteiroDeixaPassar8.png" id="38_bjxoe"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_isfe7"]
+animations = [{
+"frames": [{
+"duration": 1.5,
+"texture": ExtResource("1_nuvsy")
+}, {
+"duration": 1.5,
+"texture": ExtResource("2_bsryo")
+}, {
+"duration": 1.5,
+"texture": ExtResource("3_4wpjm")
+}, {
+"duration": 1.5,
+"texture": ExtResource("4_1kcsa")
+}, {
+"duration": 1.5,
+"texture": ExtResource("5_a1ftd")
+}, {
+"duration": 1.5,
+"texture": ExtResource("6_hfwra")
+}, {
+"duration": 1.5,
+"texture": ExtResource("7_tj3ep")
+}, {
+"duration": 1.5,
+"texture": ExtResource("8_ntaoq")
+}, {
+"duration": 1.5,
+"texture": ExtResource("9_8nixd")
+}, {
+"duration": 1.5,
+"texture": ExtResource("10_axl5l")
+}, {
+"duration": 1.5,
+"texture": ExtResource("1_nuvsy")
+}, {
+"duration": 1.5,
+"texture": ExtResource("2_bsryo")
+}, {
+"duration": 1.5,
+"texture": ExtResource("3_4wpjm")
+}, {
+"duration": 1.5,
+"texture": ExtResource("4_1kcsa")
+}, {
+"duration": 1.5,
+"texture": ExtResource("5_a1ftd")
+}, {
+"duration": 1.5,
+"texture": ExtResource("6_hfwra")
+}, {
+"duration": 1.5,
+"texture": ExtResource("7_tj3ep")
+}, {
+"duration": 1.5,
+"texture": ExtResource("8_ntaoq")
+}, {
+"duration": 1.5,
+"texture": ExtResource("9_8nixd")
+}, {
+"duration": 1.5,
+"texture": ExtResource("10_axl5l")
+}, {
+"duration": 1.5,
+"texture": ExtResource("11_ddn6f")
+}, {
+"duration": 1.5,
+"texture": ExtResource("12_htqxq")
+}, {
+"duration": 1.5,
+"texture": ExtResource("13_ds5ru")
+}, {
+"duration": 1.5,
+"texture": ExtResource("14_gaolt")
+}, {
+"duration": 1.5,
+"texture": ExtResource("15_sdu2x")
+}, {
+"duration": 1.5,
+"texture": ExtResource("16_bjxoe")
+}, {
+"duration": 1.5,
+"texture": ExtResource("17_rf7qx")
+}, {
+"duration": 1.5,
+"texture": ExtResource("18_wckpg")
+}, {
+"duration": 1.5,
+"texture": ExtResource("19_2ru5x")
+}, {
+"duration": 1.5,
+"texture": ExtResource("20_wcmkl")
+}],
+"loop": 1,
+"name": &"hitting",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.5,
+"texture": ExtResource("21_rw6g3")
+}, {
+"duration": 1.5,
+"texture": ExtResource("22_tnoam")
+}, {
+"duration": 1.5,
+"texture": ExtResource("23_jxk6w")
+}, {
+"duration": 1.5,
+"texture": ExtResource("24_ehj4u")
+}, {
+"duration": 1.5,
+"texture": ExtResource("25_vye6i")
+}, {
+"duration": 1.5,
+"texture": ExtResource("26_6xec5")
+}, {
+"duration": 1.5,
+"texture": ExtResource("27_ef3pq")
+}, {
+"duration": 1.5,
+"texture": ExtResource("28_xrvb7")
+}, {
+"duration": 1.5,
+"texture": ExtResource("29_yxkbc")
+}, {
+"duration": 1.5,
+"texture": ExtResource("30_6t6rx")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.5,
+"texture": ExtResource("31_8nixd")
+}, {
+"duration": 1.5,
+"texture": ExtResource("32_axl5l")
+}, {
+"duration": 1.5,
+"texture": ExtResource("33_ddn6f")
+}, {
+"duration": 1.5,
+"texture": ExtResource("34_htqxq")
+}, {
+"duration": 1.5,
+"texture": ExtResource("35_ds5ru")
+}, {
+"duration": 1.5,
+"texture": ExtResource("36_gaolt")
+}, {
+"duration": 1.5,
+"texture": ExtResource("37_sdu2x")
+}, {
+"duration": 1.5,
+"texture": ExtResource("38_bjxoe")
+}],
+"loop": 1,
+"name": &"reward",
+"speed": 12.0
+}]
+
+[node name="Doorman2dModel" type="Node2D" unique_id=167474498]
+
+[node name="ReferenceRect" type="ReferenceRect" parent="." unique_id=1894391185]
+offset_right = 239.0
+offset_bottom = 220.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=869366597]
+texture_filter = 1
+position = Vector2(120, 106)
+sprite_frames = SubResource("SpriteFrames_isfe7")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.7045851

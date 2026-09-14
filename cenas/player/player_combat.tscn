@@ -56,15 +56,13 @@
 [ext_resource type="Texture2D" uid="uid://c7mqmlneqyiqa" path="res://assets/player/walking/Atrás/Protag_MovBack7.png" id="54_y5gna"]
 [ext_resource type="Texture2D" uid="uid://dfhtukyo0v8hy" path="res://assets/player/walking/Atrás/Protag_MovBack8.png" id="55_e4nde"]
 
-[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_ui4bd"]
-shuffle = true
-fade_time = 0.0
-stream_count = 5
-stream_0 = ExtResource("2_l441l")
-stream_1 = ExtResource("3_30d14")
-stream_2 = ExtResource("4_nfaxx")
-stream_3 = ExtResource("5_g5s6v")
-stream_4 = ExtResource("6_kdjp4")
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_eg6rn"]
+streams_count = 5
+stream_0/stream = ExtResource("2_l441l")
+stream_1/stream = ExtResource("3_30d14")
+stream_2/stream = ExtResource("4_nfaxx")
+stream_3/stream = ExtResource("5_g5s6v")
+stream_4/stream = ExtResource("6_kdjp4")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_unwft"]
 height = 1.6572266
@@ -294,9 +292,8 @@ animations = [{
 [node name="PlayerCombat" type="CharacterBody3D" unique_id=1230296654]
 script = ExtResource("1_pu85u")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1353242015]
-stream = SubResource("AudioStreamPlaylist_ui4bd")
-volume_db = 80.0
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1643786188]
+stream = SubResource("AudioStreamRandomizer_eg6rn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=280077884]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17138672, 0)

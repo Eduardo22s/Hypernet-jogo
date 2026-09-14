@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://brvt7tj6k8enl"]
+
+[ext_resource type="PackedScene" uid="uid://dypx55egijpbt" path="res://cenas/npc/mrchuffles2DModel.tscn" id="1_3lb22"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_isfe7"]
+radius = 0.7
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_qkaql"]
+viewport_path = NodePath("SubViewport")
+
+[node name="MrChuffles" type="Node3D" unique_id=628604850]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=618466774]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1638230822]
+shape = SubResource("SphereShape3D_isfe7")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1407887834]
+billboard = 1
+texture_filter = 0
+texture = SubResource("ViewportTexture_qkaql")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=267339696]
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(181, 100)
+
+[node name="MrChuffles2dModel" parent="SubViewport" unique_id=2047700836 instance=ExtResource("1_3lb22")]

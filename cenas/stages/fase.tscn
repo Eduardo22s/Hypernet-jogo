@@ -10,6 +10,7 @@
 [ext_resource type="Shader" uid="uid://p4lrvbn5t8tk" path="res://global/cenas/VFX/_Shaders/SG_Hologram.tres" id="5_04dng"]
 [ext_resource type="Texture2D" uid="uid://dc36dn14npc1o" path="res://assets/props3D/Stages/Separado_Transparent.png" id="5_k8nhf"]
 [ext_resource type="Texture2D" uid="uid://cuna81r7dle6p" path="res://global/cenas/VFX/_Textures/T_HologramTexture.png" id="6_3uapd"]
+[ext_resource type="PackedScene" uid="uid://brvt7tj6k8enl" path="res://cenas/npc/mrchuffles.tscn" id="11_45ham"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0kb6o"]
 resource_name = "Material.003"
@@ -231,6 +232,9 @@ environment = SubResource("Environment_rxvj5")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=1783349070]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 11, 0)
+
+[node name="MrChuffles" parent="." unique_id=628604850 instance=ExtResource("11_45ham")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8999999, 1.3000001, 2.6999998)
 
 [node name="DayDream" parent="." unique_id=1162736262 instance=ExtResource("3_anrue")]
 transform = Transform3D(-8.742278e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -8.742278e-09, 10, 1.6272734, 0.21273041)

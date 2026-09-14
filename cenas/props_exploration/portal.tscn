@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://cyib7kw63j8tr"]
+
+[ext_resource type="Script" uid="uid://cj74iju06mulf" path="res://scripts/props_exploration/portal.gd" id="1_oasxr"]
+[ext_resource type="PackedScene" uid="uid://cdg5l44kifi51" path="res://cenas/props_exploration/Portal2DModel.tscn" id="1_ulvoi"]
+[ext_resource type="PackedScene" uid="uid://bj7tqt1ba5cjv" path="res://global/cenas/VFX/_Shaders/Portal/PortalEffect.tscn" id="2_3d1cc"]
+
+[sub_resource type="Animation" id="Animation_oasxr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PortalEffect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ulvoi"]
+resource_name = "fade"
+length = 3.0000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.46666667, 0.6, 0.9, 1.2, 1.5, 1.9, 2.1, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1), Vector3(1, 1, 1), Vector3(0.9, 0.9, 0.9), Vector3(1, 1, 1), Vector3(0.9, 0.9, 0.9), Vector3(1, 1, 1), Vector3(0.9, 0.9, 0.9), Vector3(1, 1, 1), Vector3(0.1, 0.1, 0.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PortalEffect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oasxr"]
+_data = {
+&"RESET": SubResource("Animation_oasxr"),
+&"fade": SubResource("Animation_ulvoi")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3d1cc"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Portal" type="Node3D" unique_id=1963125698]
+script = ExtResource("1_oasxr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=390165075]
+libraries/ = SubResource("AnimationLibrary_oasxr")
+
+[node name="PortalEffect" parent="." unique_id=1780792895 instance=ExtResource("2_3d1cc")]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 0, 0)
+visible = false
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=926075910]
+visible = false
+billboard = 1
+texture_filter = 0
+texture = SubResource("ViewportTexture_3d1cc")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1841956426]
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(250, 250)
+
+[node name="Portal2dModel" parent="SubViewport" unique_id=1082520989 instance=ExtResource("1_ulvoi")]

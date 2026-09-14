@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://dkrmv67rjnnjq"]
+
+[ext_resource type="Texture2D" uid="uid://ixj7cefb64b3" path="res://assets/props2D/Baloes.png" id="1_jrwg8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slbug"]
+atlas = ExtResource("1_jrwg8")
+region = Rect2(4, 110, 92, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64pw8"]
+atlas = ExtResource("1_jrwg8")
+region = Rect2(96, 110, 92, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ax6fg"]
+atlas = ExtResource("1_jrwg8")
+region = Rect2(188, 110, 92, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2s8y4"]
+atlas = ExtResource("1_jrwg8")
+region = Rect2(280, 110, 92, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_on8ln"]
+atlas = ExtResource("1_jrwg8")
+region = Rect2(372, 110, 92, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dyqa3"]
+atlas = ExtResource("1_jrwg8")
+region = Rect2(464, 110, 92, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_isfe7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slbug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64pw8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ax6fg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2s8y4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_on8ln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dyqa3")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Ballon2dModel" type="Node2D" unique_id=1576242265]
+
+[node name="ReferenceRect" type="ReferenceRect" parent="." unique_id=1897862390]
+offset_right = 100.0
+offset_bottom = 100.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=488673120]
+texture_filter = 1
+position = Vector2(51, 50)
+sprite_frames = SubResource("SpriteFrames_isfe7")
+autoplay = "default"
+frame_progress = 0.11137658

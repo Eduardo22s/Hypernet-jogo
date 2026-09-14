@@ -127,7 +127,7 @@ input_name = "model_matrix"
 linked_parent_graph_frame = 6
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_cg0is"]
-size = Vector2(778.4, 233)
+size = Vector2(763, 233.00006)
 title = "WorldPosition Node"
 attached_nodes = PackedInt32Array(2, 4, 5, 3)
 

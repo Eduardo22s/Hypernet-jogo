@@ -1,0 +1,148 @@
+[gd_scene format=3 uid="uid://cbtr7b0tb7y2j"]
+
+[ext_resource type="Shader" uid="uid://cgbatipdxe45k" path="res://global/cenas/VFX/_Shaders/SoapBubble.gdshader" id="1_d6coq"]
+[ext_resource type="Script" uid="uid://dwn7sk6f3wrqx" path="res://global/cenas/VFX/_Shaders/BubbleScript/ScriptBubbleDrip.gd" id="2_ds3ik"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_57qmd"]
+render_priority = 0
+shader = ExtResource("1_d6coq")
+shader_parameter/fuwafuwa_speed = 5.0
+shader_parameter/fuwafuwa_size = 0.05
+shader_parameter/outline_color = Color(0.6756836, 0.7605645, 0.89092606, 1)
+shader_parameter/outline_ratio = 0.5
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_scale = 0.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_yf5fn"]
+material = SubResource("ShaderMaterial_57qmd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ni0r3"]
+emission_shape_scale = Vector3(0.5, 0.2, 0.5)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.5
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.75
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 0.099999994
+initial_velocity_max = 0.5
+gravity = Vector3(0, 0, 0)
+scale_min = 0.03
+scale_max = 0.12
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ni0r3"]
+render_priority = 0
+shader = ExtResource("1_d6coq")
+shader_parameter/fuwafuwa_speed = 1.5
+shader_parameter/fuwafuwa_size = 0.05
+shader_parameter/outline_color = Color(0.45, 0.7, 1, 1)
+shader_parameter/outline_ratio = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_scale = 0.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_0deq5"]
+material = SubResource("ShaderMaterial_ni0r3")
+
+[sub_resource type="Curve" id="Curve_0deq5"]
+_data = [Vector2(0, 0.50000006), 0.0, 0.0, 0, 0, Vector2(0.40336135, 0.9000001), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_0deq5"]
+curve = SubResource("Curve_0deq5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0deq5"]
+particle_flag_align_y = true
+emission_shape_scale = Vector3(0.5, 0.5, 0.5)
+emission_shape = 2
+emission_sphere_radius = 1.0
+direction = Vector3(0, 10, 0)
+spread = 40.0
+initial_velocity_min = 2.3
+initial_velocity_max = 2.8
+gravity = Vector3(0, -4.5, 0)
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_0deq5")
+
+[sub_resource type="Shader" id="Shader_0deq5"]
+code = "shader_type spatial;
+
+uniform float fuwafuwa_speed = 1.5;
+uniform float fuwafuwa_size = 0.05;
+
+uniform vec4 outline_color : source_color = vec4( 0.45, 0.70, 1.0, 1.0 );
+uniform float outline_ratio = 1.0;
+uniform float noise_speed = 0.2;
+uniform float noise_scale = 0.5;
+
+
+vec3 hsv2rgb( float h, float s, float v )
+{
+	return (
+		(
+			clamp(
+				abs( fract( h + vec3( 0.0, 2.0, 1.0 ) / 3.0 ) * 6.0 - 3.0 ) - 1.0
+			,	0.0
+			,	1.0
+			) - 1.0
+		) * s + 1.0
+	) * v;
+}
+
+float random( vec2 pos )
+{ 
+	return fract(sin(dot(pos, vec2(12.9898,78.233))) * 43758.5453);
+}
+
+void vertex( )
+{
+	vec3 v = clamp( cos( VERTEX * 10.0 + vec3( TIME * fuwafuwa_speed ) ) + vec3( 1.0 ), 0.0, 1.0 );
+	VERTEX *= 1.0 + dot( v, v ) * fuwafuwa_size * 0.5;
+}
+
+void fragment( )
+{
+	float outline_alpha = clamp( ( 1.0 - dot( NORMAL, VIEW ) ) * outline_ratio, 0.0, 1.0 );
+	vec3 color = hsv2rgb( outline_alpha - 1.5 + noise_speed * TIME, 1.0, 1.0 ) * noise_scale;
+
+	ALBEDO = mix( color, outline_color.rgb, max( outline_alpha - 0.3, 0.0 ) );
+	ALPHA = outline_color.a * outline_alpha;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0deq5"]
+render_priority = 0
+shader = SubResource("Shader_0deq5")
+shader_parameter/fuwafuwa_speed = 1.5
+shader_parameter/fuwafuwa_size = 0.05
+shader_parameter/outline_color = Color(0.9320419, 2.1244202, 2.454227, 1)
+shader_parameter/outline_ratio = 0.5
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_scale = 0.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_0f1v1"]
+material = SubResource("ShaderMaterial_0deq5")
+radius = 0.006
+height = 0.2
+
+[node name="Bubble" type="MeshInstance3D" unique_id=2007721419]
+mesh = SubResource("SphereMesh_yf5fn")
+script = ExtResource("2_ds3ik")
+
+[node name="LittleBubbles" type="GPUParticles3D" parent="." unique_id=2041844563]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0046577454, 0.2706049, 0)
+amount = 5
+lifetime = 1.5
+randomness = 0.65
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_ni0r3")
+draw_pass_1 = SubResource("SphereMesh_0deq5")
+
+[node name="WaterDrips" type="GPUParticles3D" parent="." unique_id=426161167]
+emitting = false
+amount = 12
+lifetime = 2.5
+one_shot = true
+explosiveness = 0.8
+randomness = 0.35
+process_material = SubResource("ParticleProcessMaterial_0deq5")
+draw_pass_1 = SubResource("SphereMesh_0f1v1")

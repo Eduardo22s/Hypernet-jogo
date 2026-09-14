@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cipdocnxnsl4f"]
+
+[ext_resource type="AudioStream" uid="uid://7u3u1xsthkpj" path="res://assets/musics/HNMainThemeRemaster.wav" id="1_cdbcn"]
+
+[node name="Music" type="Node3D" unique_id=606236]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1831063130]
+stream = ExtResource("1_cdbcn")
+volume_db = -20.0
+autoplay = true

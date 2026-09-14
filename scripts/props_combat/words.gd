@@ -9,6 +9,8 @@ class_name Words
 var grabbed = false
 var thrown = false
 var ricocheted = false
+var in_heart = false
+
 var throw_velocity = Vector3.ZERO
 var throw_height: float = 0.0
 
@@ -26,10 +28,16 @@ func _on_hitzone_area_entered(area: Area3D) -> void:
 	
 	if area is HeartHitzone:
 		thrown = false
+		in_heart = true
 		Global.emit_signal("taking_damage")
-		global_transform.origin = heart.global_position
+		$AudioStreamPlayer.play()
+		$Bubble.Destroy()
+
 
 func _process(delta: float) -> void:
+	if in_heart:
+		global_transform.origin = heart.global_position
+	
 	if target && grabbed:
 		var target_position = target.global_position
 		global_transform.origin = global_transform.origin.lerp(target_position, SPEED * delta)
