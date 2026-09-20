@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c7fh4boeurlhb" path="res://scenes/player/player_combat.tscn" id="3_v543d"]
 [ext_resource type="Script" uid="uid://0jkrd14yi7tt" path="res://scripts/stages/exitzone.gd" id="3_x0qcf"]
 [ext_resource type="PackedScene" uid="uid://l2hm8rn2frxa" path="res://scenes/NPC/daydream.tscn" id="4_1q77j"]
-[ext_resource type="PackedScene" uid="uid://bge5mdsxxc1ec" path="res://scenes/props_combat/words.tscn" id="4_ihv4e"]
+[ext_resource type="PackedScene" uid="uid://bge5mdsxxc1ec" path="res://scenes/props_combat/words_good.tscn" id="4_ihv4e"]
 [ext_resource type="PackedScene" uid="uid://dscbufc0mvnpb" path="res://global/cenas/hud.tscn" id="4_isskg"]
 [ext_resource type="PackedScene" uid="uid://daq0ito1wky86" path="res://scenes/props_combat/heart.tscn" id="6_ihv4e"]
 [ext_resource type="PackedScene" uid="uid://bwa7n6dsl04hi" path="res://scenes/props_combat/spawner.tscn" id="8_c24w0"]
@@ -78,6 +78,5 @@ transform = Transform3D(0.07071068, 0, 0.07071068, 0, 0.1, 0, -0.07071068, 0, 0.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6094773, 0)
 
 [node name="Spawner" parent="." unique_id=1851613728 instance=ExtResource("8_c24w0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7, 0, 2.2)
 
 [connection signal="body_entered" from="Environment/Exitzone" to="Environment/Exitzone" method="_on_body_entered"]

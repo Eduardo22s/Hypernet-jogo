@@ -31,7 +31,6 @@ func _on_hitzone_area_entered(area: Area3D) -> void:
 		in_heart = true
 		Global.emit_signal("taking_damage")
 		$AudioStreamPlayer.play()
-		$Bubble.Destroy()
 
 
 func _process(delta: float) -> void:
