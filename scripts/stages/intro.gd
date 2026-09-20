@@ -6,4 +6,4 @@ func _process(_delta: float) -> void:
 	
 	if $AnimatedSprite2D.frame == 9:
 		await get_tree().process_frame
-		get_tree().change_scene_to_file("res://cenas/stages/fase.tscn")
+		get_tree().change_scene_to_file("res://scenes/stages/fase.tscn")

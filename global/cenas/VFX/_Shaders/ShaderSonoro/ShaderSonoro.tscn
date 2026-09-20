@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cbr2opmg85b5v"]
+
+[ext_resource type="Script" uid="uid://b7du4s02lwnmc" path="res://ShaderSonoro/S_AudioAnalyzer.gd" id="1_jg3kn"]
+
+[node name="ShaderSonoro" type="Node3D" unique_id=1744114280]
+script = ExtResource("1_jg3kn")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1957817515]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 8.199999, 10.899999)
+current = true

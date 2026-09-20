@@ -18,6 +18,7 @@ const freiar = 20.0
 @onready var orbit_attack = $OrbitalPivot/Attack as Node3D
 @onready var attack_collision = $OrbitalPivot/Attack/Area3D/CollisionShape3D
 
+var dashing = false
 var SPEED = 5.0
 var bufferTimer = 0.0
 var coyoteTimer = 0.0
@@ -33,6 +34,8 @@ func _ready():
 func _process(delta: float) -> void:
 	if Global.stop_player:
 		SPEED = 0.0
+	elif dashing:
+		SPEED = 500.0
 	else:
 		SPEED = 5.0
 
@@ -197,6 +200,23 @@ func get_facing_direction() -> Vector3:
 
 func handle_attack():
 	if cooldown:
+		if Input.is_action_just_pressed("attack"):
+			dash()
+			$OrbitalPivot/AnimationAttack.play("attack")
+			attack_collision.disabled = false
+			await get_tree().create_timer(0.5).timeout
+			$OrbitalPivot/Attack/Area3D/CollisionShape3D.position.z = 0
+			attack_collision.disabled = true
+			cooldown_time = 3.0
+
+func dash():
+	dashing = true
+	await get_tree().create_timer(0.5).timeout
+	dashing = false
+
+"""
+OLD COMBAT SYSTEM
+func handle_attack()
 		if Input.is_action_pressed("attack"):
 			$OrbitalPivot/Attack/Area3D/CollisionShape3D.position.z += 0.1
 			if $OrbitalPivot/Attack/Area3D/CollisionShape3D.position.z >= 10.0:
@@ -209,3 +229,4 @@ func handle_attack():
 			$OrbitalPivot/Attack/Area3D/CollisionShape3D.position.z = 0
 			attack_collision.disabled = true
 			cooldown_time = 3.0
+"""

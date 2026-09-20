@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bge5mdsxxc1ec"]
+
+[ext_resource type="Texture2D" uid="uid://bpcj4fhbv4mdl" path="res://assets/template2.png" id="1_gyt3g"]
+[ext_resource type="Script" uid="uid://b4aggfwiahm4w" path="res://scripts/props_combat/words_good.gd" id="1_n2pg2"]
+[ext_resource type="PackedScene" uid="uid://cbtr7b0tb7y2j" path="res://global/cenas/VFX/_Shaders/Bubble.tscn" id="3_3invh"]
+[ext_resource type="AudioStream" uid="uid://b6vfkfcyevfkp" path="res://assets/SFX/combat/Explosao_Hyper_1_sfx.mp3" id="4_yyyhk"]
+[ext_resource type="AudioStream" uid="uid://bb8p0pn6qif5u" path="res://assets/SFX/combat/Explosao_Hyper_2_sfx.mp3" id="5_2y713"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8ksj1"]
+streams_count = 2
+stream_0/stream = ExtResource("4_yyyhk")
+stream_1/stream = ExtResource("5_2y713")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_isfe7"]
+radius = 1.0
+
+[node name="Words" type="Node3D" unique_id=1656796278]
+script = ExtResource("1_n2pg2")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=857652437]
+stream = SubResource("AudioStreamRandomizer_8ksj1")
+volume_db = -15.0
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=833795134]
+billboard = 1
+texture = ExtResource("1_gyt3g")
+
+[node name="Bubble" parent="." unique_id=2007721419 instance=ExtResource("3_3invh")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="Hitzone" type="Area3D" parent="." unique_id=824677423]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitzone" unique_id=1246952377]
+shape = SubResource("SphereShape3D_isfe7")
+
+[connection signal="area_entered" from="Hitzone" to="." method="_on_hitzone_area_entered"]

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b08skoj6sw6u1"]
+
+[ext_resource type="PackedScene" uid="uid://b0vr71qh7oymu" path="res://scenes/NPC/overseer2DModel.tscn" id="1_4tg04"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_2btrb"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Overseer" type="Node3D" unique_id=28029168]
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1368585303]
+billboard = 1
+texture_filter = 0
+texture = SubResource("ViewportTexture_2btrb")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=688263593]
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(280, 300)
+
+[node name="Overseer2dModel" parent="SubViewport" unique_id=968144334 instance=ExtResource("1_4tg04")]

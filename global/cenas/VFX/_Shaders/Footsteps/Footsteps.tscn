@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://q011uuyg7lng"]
+
+[ext_resource type="Texture2D" uid="uid://bjprtd1aqxk6c" path="res://Footsteps/T_Shock3.png" id="1_mlosb"]
+
+[sub_resource type="Gradient" id="Gradient_mlosb"]
+offsets = PackedFloat32Array(0, 0.2, 0.5, 0.6, 0.8, 1)
+colors = PackedColorArray(0.42084673, 0.88298786, 0, 0, 0, 0.79838145, 0.31679213, 1, 0, 0.51115745, 0.09798441, 1, 0.14781046, 0.44128296, 0, 1, 0, 0.5837601, 0.22256814, 1, 0.49333945, 1.0279732, 0, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ik4v0"]
+gradient = SubResource("Gradient_mlosb")
+
+[sub_resource type="Curve" id="Curve_mlosb"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.33639145, 0.1889764), 1.3732285, 1.3732285, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_mlosb"]
+curve = SubResource("Curve_mlosb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mlosb"]
+use_rotation_3d = true
+rotation_3d_min = Vector3(0, 0, 0)
+rotation_3d_max = Vector3(0, 360, 0)
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_mlosb")
+color_ramp = SubResource("GradientTexture1D_ik4v0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yf5fn"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_mlosb")
+
+[sub_resource type="QuadMesh" id="QuadMesh_g4v7s"]
+material = SubResource("StandardMaterial3D_yf5fn")
+size = Vector2(1.5, 1.5)
+orientation = 1
+
+[node name="VFX_Footstep" type="Node3D" unique_id=464254289]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=242030755]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20443869, 0)
+emitting = false
+amount = 1
+lifetime = 0.25
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_mlosb")
+draw_pass_1 = SubResource("QuadMesh_g4v7s")

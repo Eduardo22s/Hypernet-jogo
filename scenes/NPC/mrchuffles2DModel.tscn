@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://dypx55egijpbt"]
+
+[ext_resource type="Texture2D" uid="uid://d10quuaf0agm3" path="res://assets/props2D/NPC/chuffles/ChufflesSpinning1.png" id="1_j2vph"]
+[ext_resource type="Texture2D" uid="uid://dyk88mlas8yld" path="res://assets/props2D/NPC/chuffles/ChufflesSpinning2.png" id="2_36tn2"]
+[ext_resource type="Texture2D" uid="uid://c3c461srlf8ov" path="res://assets/props2D/NPC/chuffles/ChufflesSpinning3.png" id="3_h4nnt"]
+[ext_resource type="Texture2D" uid="uid://cebh3xnm7siak" path="res://assets/props2D/NPC/chuffles/ChufflesSpinning4.png" id="4_v7u26"]
+[ext_resource type="Texture2D" uid="uid://w5l6d6kkdnf5" path="res://assets/props2D/NPC/chuffles/ChufflesSpinning5.png" id="5_qfvil"]
+[ext_resource type="Texture2D" uid="uid://bfrx6qndb1od8" path="res://assets/props2D/NPC/chuffles/ChufflesSpinning6.png" id="6_5e271"]
+[ext_resource type="Texture2D" uid="uid://8xkgoh48f6y4" path="res://assets/props2D/NPC/chuffles/ChufflesSpinning7.png" id="7_wkw03"]
+[ext_resource type="Texture2D" uid="uid://dyh46ma0644y6" path="res://assets/props2D/NPC/chuffles/ChufflesSpinning8.png" id="8_0vgq1"]
+[ext_resource type="Texture2D" uid="uid://ca0arte2m48wy" path="res://assets/props2D/NPC/chuffles/ChufflesSpinning9.png" id="9_afocc"]
+[ext_resource type="Texture2D" uid="uid://crpo023vakjnr" path="res://assets/props2D/NPC/chuffles/ChufflesSpinning10.png" id="10_erx2x"]
+[ext_resource type="Texture2D" uid="uid://c624qwvcxd556" path="res://assets/props2D/NPC/chuffles/ChufflesSpinning11.png" id="11_y2ksv"]
+[ext_resource type="Texture2D" uid="uid://c0icukyi3htwk" path="res://assets/props2D/NPC/chuffles/ChufflesSpinning12.png" id="12_wi2k7"]
+[ext_resource type="Texture2D" uid="uid://ci7pdtkfd4mtq" path="res://assets/props2D/NPC/chuffles/ChufflesRunning1.png" id="13_qfvil"]
+[ext_resource type="Texture2D" uid="uid://st38us3pjyfn" path="res://assets/props2D/NPC/chuffles/ChufflesRunning2.png" id="14_5e271"]
+[ext_resource type="Texture2D" uid="uid://b7l0xs51iwsxb" path="res://assets/props2D/NPC/chuffles/ChufflesRunning3.png" id="15_wkw03"]
+[ext_resource type="Texture2D" uid="uid://y5jfikxdcfos" path="res://assets/props2D/NPC/chuffles/ChufflesRunning4.png" id="16_0vgq1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_isfe7"]
+animations = [{
+"frames": [{
+"duration": 1.5,
+"texture": ExtResource("1_j2vph")
+}, {
+"duration": 1.5,
+"texture": ExtResource("2_36tn2")
+}, {
+"duration": 1.5,
+"texture": ExtResource("3_h4nnt")
+}, {
+"duration": 1.5,
+"texture": ExtResource("4_v7u26")
+}, {
+"duration": 1.5,
+"texture": ExtResource("5_qfvil")
+}, {
+"duration": 1.5,
+"texture": ExtResource("6_5e271")
+}, {
+"duration": 1.5,
+"texture": ExtResource("7_wkw03")
+}, {
+"duration": 1.5,
+"texture": ExtResource("8_0vgq1")
+}, {
+"duration": 1.5,
+"texture": ExtResource("9_afocc")
+}, {
+"duration": 1.5,
+"texture": ExtResource("10_erx2x")
+}, {
+"duration": 1.5,
+"texture": ExtResource("11_y2ksv")
+}, {
+"duration": 1.5,
+"texture": ExtResource("12_wi2k7")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.5,
+"texture": ExtResource("13_qfvil")
+}, {
+"duration": 1.5,
+"texture": ExtResource("14_5e271")
+}, {
+"duration": 1.5,
+"texture": ExtResource("15_wkw03")
+}, {
+"duration": 1.5,
+"texture": ExtResource("16_0vgq1")
+}],
+"loop": 1,
+"name": &"running",
+"speed": 12.0
+}]
+
+[node name="MrChuffles2dModel" type="Node2D" unique_id=2047700836]
+
+[node name="ReferenceRect" type="ReferenceRect" parent="." unique_id=1470477080]
+offset_right = 181.0
+offset_bottom = 100.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=827047772]
+texture_filter = 1
+position = Vector2(91, 41)
+sprite_frames = SubResource("SpriteFrames_isfe7")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.29103908

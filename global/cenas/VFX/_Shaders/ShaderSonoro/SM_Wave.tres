@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dcgyurh4e6lni"]
+
+[ext_resource type="Shader" uid="uid://dddbde37oc3l6" path="res://ShaderSonoro/S_Wave.gdshader" id="1_5c40c"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_5c40c")
+shader_parameter/WaveStartTime = 0.0
+shader_parameter/ExpansionSpeed = 1.0
+shader_parameter/MaxExpansion = 2.0
+shader_parameter/FadeSpeed = 1.0
+shader_parameter/ExpansionOffset = 0.2
+shader_parameter/LineColor = Color(3.0469735, 0.01111314, 3.051072, 1)

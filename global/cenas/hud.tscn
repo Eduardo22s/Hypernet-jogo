@@ -125,7 +125,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=618407219]
-position = Vector2(941, 98)
+position = Vector2(971, 98)
 texture = ExtResource("2_jt6de")
 
 [node name="Label" type="Label" parent="Sprite2D" unique_id=1340714983]

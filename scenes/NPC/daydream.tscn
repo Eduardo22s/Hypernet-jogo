@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://l2hm8rn2frxa"]
+
+[ext_resource type="Script" uid="uid://cyu3ftx7gto5r" path="res://scripts/NPC/npc.gd" id="1_epcot"]
+[ext_resource type="AudioStream" uid="uid://dso1t2et56da6" path="res://assets/SFX/NPC/DayDream/DDvoice_line_1_sfx.mp3" id="2_eg6rn"]
+[ext_resource type="PackedScene" uid="uid://f01jeo4p56r8" path="res://assets/props3D/NPC/Day_Dream.glb" id="2_epcot"]
+[ext_resource type="AudioStream" uid="uid://debvxkkppci7w" path="res://assets/SFX/NPC/DayDream/DDvoice_line_2_sfx.mp3" id="3_dhsii"]
+[ext_resource type="PackedScene" uid="uid://cyib7kw63j8tr" path="res://scenes/props_exploration/portal.tscn" id="3_jlea0"]
+[ext_resource type="AudioStream" uid="uid://c2excawiy52om" path="res://assets/SFX/NPC/DayDream/DDvoice_line_3_sfx.mp3" id="4_j0qg6"]
+[ext_resource type="AudioStream" uid="uid://cuf8mjbfwc54k" path="res://assets/SFX/NPC/DayDream/DDvoice_line_4_sfx.mp3" id="5_sr1cr"]
+[ext_resource type="AudioStream" uid="uid://dobcxe3ru23in" path="res://assets/SFX/NPC/DayDream/DDvoice_line_5_sfx.mp3" id="6_3fkfg"]
+[ext_resource type="AudioStream" uid="uid://cmh1ntekg226i" path="res://assets/SFX/NPC/DayDream/DDvoice_line_6_sfx.mp3" id="7_e5u15"]
+[ext_resource type="AudioStream" uid="uid://br3qbrxjgk5mr" path="res://assets/SFX/NPC/DayDream/DDvoice_line_7_sfx.mp3" id="8_rrik7"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jlea0"]
+streams_count = 7
+stream_0/stream = ExtResource("2_eg6rn")
+stream_1/stream = ExtResource("3_dhsii")
+stream_2/stream = ExtResource("4_j0qg6")
+stream_3/stream = ExtResource("5_sr1cr")
+stream_4/stream = ExtResource("6_3fkfg")
+stream_5/stream = ExtResource("7_e5u15")
+stream_6/stream = ExtResource("8_rrik7")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_isfe7"]
+radius = 5.0
+height = 20.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_isfe7"]
+height = 18.0
+radius = 10.0
+
+[sub_resource type="Animation" id="Animation_3jps7"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_epcot"]
+resource_name = "damage"
+length = 0.5
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jlea0"]
+_data = {
+&"RESET": SubResource("Animation_3jps7"),
+&"damage": SubResource("Animation_epcot")
+}
+
+[node name="DayDream" type="Node3D" unique_id=1162736262]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+script = ExtResource("1_epcot")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1752923096]
+stream = SubResource("AudioStreamRandomizer_jlea0")
+
+[node name="Portal" parent="." unique_id=1963125698 instance=ExtResource("3_jlea0")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 8, -2)
+
+[node name="Day_Dream" parent="." unique_id=71882613 instance=ExtResource("2_epcot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.730803, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=415985220]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=656672726]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+shape = SubResource("CapsuleShape3D_isfe7")
+
+[node name="InterectZone" type="Area3D" parent="." unique_id=353497713]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InterectZone" unique_id=1953322057]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.9999988, 0)
+shape = SubResource("CylinderShape3D_isfe7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=957095769]
+libraries/ = SubResource("AnimationLibrary_jlea0")
+
+[connection signal="body_entered" from="InterectZone" to="." method="_on_interect_zone_body_entered"]
+[connection signal="body_exited" from="InterectZone" to="." method="_on_interect_zone_body_exited"]

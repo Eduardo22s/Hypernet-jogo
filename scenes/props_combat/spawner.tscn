@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bwa7n6dsl04hi"]
+
+[ext_resource type="Script" uid="uid://cvrv4qybs6hwh" path="res://scripts/props_combat/spawner.gd" id="1_3vlhg"]
+
+[node name="Spawner" type="Node3D" unique_id=1851613728]
+script = ExtResource("1_3vlhg")
+
+[node name="Timer" type="Timer" parent="." unique_id=1955718877]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

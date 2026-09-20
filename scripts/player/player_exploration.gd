@@ -1,5 +1,4 @@
 extends CharacterBody3D
-
 class_name PlayerExploration
 
 const JUMP_VELOCITY = 5.2
@@ -25,6 +24,7 @@ var camera_atual := 0
 
 func _ready():
 	trocar_camera(camera_atual)
+	global_position = Global.player_return_pos
 
 func _process(_delta: float) -> void:
 	manage_battles()
@@ -180,7 +180,7 @@ func manage_battles():
 	if Global.trigger_battle:
 		_physics_process(false)
 		await get_tree().process_frame
-		get_tree().change_scene_to_file("res://cenas/stages/combat_" +str(Global.npc_battle) +".tscn")
+		get_tree().change_scene_to_file("res://scenes/stages/combat_" +str(Global.npc_battle) +".tscn")
 
 
 func _input(event):

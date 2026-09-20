@@ -27,7 +27,7 @@ func _ready() -> void:
 	$SubViewport/Heart2dModel/AnimatedJuice.play("hit_init")
 
 	await get_tree().create_timer(start_delay).timeout
-	$SubViewport/Heart2dModel/AnimatedJuice.visible = false
+	$SubViewport/Heart2dModel/AnimatedJuice.play("hit_end")
 	_start_moving()
 
 func _process(delta: float) -> void:
