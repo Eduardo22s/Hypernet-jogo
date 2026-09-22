@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://dobcxe3ru23in" path="res://assets/SFX/NPC/DayDream/DDvoice_line_5_sfx.mp3" id="6_3fkfg"]
 [ext_resource type="AudioStream" uid="uid://cmh1ntekg226i" path="res://assets/SFX/NPC/DayDream/DDvoice_line_6_sfx.mp3" id="7_e5u15"]
 [ext_resource type="AudioStream" uid="uid://br3qbrxjgk5mr" path="res://assets/SFX/NPC/DayDream/DDvoice_line_7_sfx.mp3" id="8_rrik7"]
+[ext_resource type="PackedScene" uid="uid://cbr2opmg85b5v" path="res://global/cenas/VFX/_Shaders/ShaderSonoro/ShaderSonoro.tscn" id="11_kjfjv"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jlea0"]
 streams_count = 7
@@ -69,6 +70,9 @@ shape = SubResource("CylinderShape3D_isfe7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=957095769]
 libraries/ = SubResource("AnimationLibrary_jlea0")
+
+[node name="ShaderSonoro" parent="." unique_id=1744114280 instance=ExtResource("11_kjfjv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 0)
 
 [connection signal="body_entered" from="InterectZone" to="." method="_on_interect_zone_body_entered"]
 [connection signal="body_exited" from="InterectZone" to="." method="_on_interect_zone_body_exited"]

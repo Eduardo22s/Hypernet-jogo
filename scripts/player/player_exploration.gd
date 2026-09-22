@@ -143,6 +143,9 @@ func _physics_process(delta: float) -> void:
 		var velocidade_atual = Vector3(velocity.x,0,velocity.z)
 		var aceleracaoAtual = aceleracao
 		var freioAtual = freiar
+
+		$VFX_Footstep.emitting = true
+
 		
 		if not is_on_floor():
 			freioAtual = freiarAereo
@@ -168,10 +171,13 @@ func _physics_process(delta: float) -> void:
 			velocity.z = move_toward(velocity.z,target_velocity.z,aceleracaoAtual * delta)
 			$AudioStreamPlayer.play()
 
+
 	# desaceleração
 	else:
 		velocity.x = move_toward(velocity.x,0,desaceleracao * delta)
 		velocity.z = move_toward(velocity.z,0,desaceleracao * delta)
+		$VFX_Footstep.emitting = false
+
 
 	move_and_slide()
 

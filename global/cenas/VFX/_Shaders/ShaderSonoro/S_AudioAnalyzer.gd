@@ -250,7 +250,7 @@ func CreateMesh(
 
 
 	var WaveMaterial = preload(
-		"res://ShaderSonoro/SM_Wave.tres"
+		"res://global/cenas/VFX/_Shaders/ShaderSonoro/SM_Wave.tres"
 	).duplicate()
 
 

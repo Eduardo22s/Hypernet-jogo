@@ -55,6 +55,7 @@
 [ext_resource type="Texture2D" uid="uid://cvsrhu5hu3pdh" path="res://assets/player/walking/Atrás/Protag_MovBack6.png" id="53_ulauy"]
 [ext_resource type="Texture2D" uid="uid://c7mqmlneqyiqa" path="res://assets/player/walking/Atrás/Protag_MovBack7.png" id="54_y5gna"]
 [ext_resource type="Texture2D" uid="uid://dfhtukyo0v8hy" path="res://assets/player/walking/Atrás/Protag_MovBack8.png" id="55_e4nde"]
+[ext_resource type="PackedScene" uid="uid://q011uuyg7lng" path="res://global/cenas/VFX/_Shaders/Footsteps/Footsteps.tscn" id="56_yj1tf"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_eg6rn"]
 streams_count = 5
@@ -294,6 +295,9 @@ script = ExtResource("1_pu85u")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1643786188]
 stream = SubResource("AudioStreamRandomizer_eg6rn")
+
+[node name="VFX_Footstep" parent="." unique_id=242030755 instance=ExtResource("56_yj1tf")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.4, 0.2)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=280077884]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17138672, 0)
