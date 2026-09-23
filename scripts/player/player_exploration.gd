@@ -1,6 +1,6 @@
 extends CharacterBody3D
 class_name PlayerExploration
-
+#olá
 const JUMP_VELOCITY = 5.2
 
 const velQueda = 1.7
