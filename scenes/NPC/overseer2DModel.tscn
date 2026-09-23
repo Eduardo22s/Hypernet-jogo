@@ -216,14 +216,14 @@ offset_right = 280.0
 offset_bottom = 300.0
 
 [node name="Mouth" type="AnimatedSprite2D" parent="." unique_id=690814938]
-position = Vector2(119, 153)
+position = Vector2(121, 153)
 sprite_frames = SubResource("SpriteFrames_mam6g")
 animation = &"idle"
 autoplay = "talking"
 frame_progress = 0.72724223
 
 [node name="Eyes" type="AnimatedSprite2D" parent="." unique_id=43698582]
-position = Vector2(119, 151)
+position = Vector2(121, 151)
 sprite_frames = SubResource("SpriteFrames_isfe7")
 animation = &"searching"
 autoplay = "searching"

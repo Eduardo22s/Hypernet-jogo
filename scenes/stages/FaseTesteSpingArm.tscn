@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://jm0q7jskty1d" path="res://scenes/stages/porta.tscn" id="2_c2w8a"]
 [ext_resource type="PackedScene" uid="uid://bidf0omwq42s7" path="res://scenes/NPC/doorman.tscn" id="3_rssfm"]
 [ext_resource type="PackedScene" uid="uid://mxgx53vk4pmh" path="res://scenes/props_exploration/ballon.tscn" id="4_qe0g3"]
+[ext_resource type="ArrayMesh" uid="uid://bvfljem37kqia" path="res://assets/props3D/Stages/statueVoxel.obj" id="5_tkedx"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_t2hhj"]
 
@@ -82,3 +83,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.299999, 1.2000002, 0.699999
 
 [node name="Ballon5" parent="." unique_id=2034482191 instance=ExtResource("4_qe0g3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9000006, 1.2000002, 0.5999999)
+
+[node name="StatueVoxel" type="MeshInstance3D" parent="." unique_id=966490141]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 9.1, 0.1, 8.400001)
+mesh = ExtResource("5_tkedx")
