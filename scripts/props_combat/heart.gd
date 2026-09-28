@@ -36,6 +36,14 @@ func _process(delta: float) -> void:
 		global_transform.origin.y = height
 		_contain_inside_border()
 
+	if Global.words_in_storage >= 3:
+		Global.trigger_battle = false
+		$Hitzone.monitorable = false
+		
+		await get_tree().create_timer(2.5).timeout
+		await get_tree().process_frame
+		get_tree().change_scene_to_file("res://scenes/stages/fase.tscn")
+
 
 func _start_moving() -> void:
 	var direction = start_direction

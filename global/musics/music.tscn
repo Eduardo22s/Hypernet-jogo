@@ -1,10 +1,21 @@
 [gd_scene format=3 uid="uid://cipdocnxnsl4f"]
 
+[ext_resource type="Script" uid="uid://b62b2ogvnbimh" path="res://global/script/music.gd" id="1_6m5sv"]
 [ext_resource type="AudioStream" uid="uid://7u3u1xsthkpj" path="res://assets/musics/HNMainThemeRemaster.wav" id="1_cdbcn"]
+[ext_resource type="AudioStream" uid="uid://dhjuryo7pm75g" path="res://assets/musics/Eddie's Remembrances.wav" id="2_dbycs"]
+[ext_resource type="AudioStream" uid="uid://b3mi07p8m4gmd" path="res://assets/musics/Stars and Comets.wav" id="3_6m5sv"]
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_isfe7"]
+shuffle = true
+stream_count = 3
+stream_0 = ExtResource("2_dbycs")
+stream_1 = ExtResource("1_cdbcn")
+stream_2 = ExtResource("3_6m5sv")
 
 [node name="Music" type="Node3D" unique_id=606236]
+script = ExtResource("1_6m5sv")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1831063130]
-stream = ExtResource("1_cdbcn")
-volume_db = -20.0
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=637605549]
+stream = SubResource("AudioStreamPlaylist_isfe7")
+volume_db = -40.0
 autoplay = true

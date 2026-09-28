@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://nhrcwm2hj8n"]
+
+[ext_resource type="Script" uid="uid://cx0loh1ql8tr4" path="res://scripts/props_combat/words_bad.gd" id="1_av1a8"]
+[ext_resource type="AudioStream" uid="uid://b6vfkfcyevfkp" path="res://assets/SFX/combat/Explosao_Hyper_1_sfx.mp3" id="2_5e26u"]
+[ext_resource type="AudioStream" uid="uid://bb8p0pn6qif5u" path="res://assets/SFX/combat/Explosao_Hyper_2_sfx.mp3" id="3_oqnxm"]
+[ext_resource type="Texture2D" uid="uid://bpcj4fhbv4mdl" path="res://assets/template2.png" id="4_2y5ot"]
+[ext_resource type="PackedScene" uid="uid://cbtr7b0tb7y2j" path="res://global/cenas/VFX/_Shaders/Bubble.tscn" id="5_4dbnf"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8ksj1"]
+streams_count = 2
+stream_0/stream = ExtResource("2_5e26u")
+stream_1/stream = ExtResource("3_oqnxm")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_isfe7"]
+radius = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_av1a8"]
+radius = 1.0
+
+[node name="WordsBad" type="Node3D" unique_id=1656796278]
+script = ExtResource("1_av1a8")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=857652437]
+stream = SubResource("AudioStreamRandomizer_8ksj1")
+volume_db = -15.0
+
+[node name="Timer" type="Timer" parent="." unique_id=1921873440]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=833795134]
+modulate = Color(1, 1, 1, 0.49019608)
+billboard = 1
+texture = ExtResource("4_2y5ot")
+
+[node name="Bubble" parent="." unique_id=2007721419 instance=ExtResource("5_4dbnf")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="Hitzone" type="Area3D" parent="." unique_id=824677423]
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitzone" unique_id=1246952377]
+shape = SubResource("SphereShape3D_isfe7")
+
+[node name="ActivationZone" type="Area3D" parent="." unique_id=1559478455]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ActivationZone" unique_id=1409318386]
+shape = SubResource("SphereShape3D_av1a8")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Hitzone" to="." method="_on_hitzone_area_entered"]
+[connection signal="area_entered" from="ActivationZone" to="." method="_on_activation_zone_area_entered"]

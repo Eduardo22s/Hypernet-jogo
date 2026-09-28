@@ -14,14 +14,20 @@ stream_1/stream = ExtResource("5_2y713")
 [sub_resource type="SphereShape3D" id="SphereShape3D_isfe7"]
 radius = 1.0
 
-[node name="Words" type="Node3D" unique_id=1656796278]
+[node name="WordsGood" type="Node3D" unique_id=1656796278]
 script = ExtResource("1_n2pg2")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=857652437]
 stream = SubResource("AudioStreamRandomizer_8ksj1")
 volume_db = -15.0
 
+[node name="Timer" type="Timer" parent="." unique_id=2010025933]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=833795134]
+modulate = Color(0, 18.892, 0, 0.49)
 billboard = 1
 texture = ExtResource("1_gyt3g")
 
@@ -29,8 +35,16 @@ texture = ExtResource("1_gyt3g")
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 
 [node name="Hitzone" type="Area3D" parent="." unique_id=824677423]
+monitoring = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitzone" unique_id=1246952377]
 shape = SubResource("SphereShape3D_isfe7")
 
+[node name="ActivationZone" type="Area3D" parent="." unique_id=2142434635]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ActivationZone" unique_id=896974163]
+shape = SubResource("SphereShape3D_isfe7")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Hitzone" to="." method="_on_hitzone_area_entered"]
+[connection signal="area_entered" from="ActivationZone" to="." method="_on_activation_zone_area_entered"]

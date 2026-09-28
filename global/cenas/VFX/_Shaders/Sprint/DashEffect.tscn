@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://c221x5588v6xe"]
+
+[ext_resource type="Shader" uid="uid://btfsonut53j5x" path="res://global/cenas/VFX/_Shaders/Sprint/VS_Sprint.tres" id="1_gvk6n"]
+[ext_resource type="Texture2D" uid="uid://j15tf0pgnig3" path="res://global/cenas/VFX/_Shaders/Sprint/VoronoiTexture.png" id="2_d30xd"]
+[ext_resource type="Texture2D" uid="uid://ch7nmdgky4a6p" path="res://global/cenas/VFX/_Shaders/Sprint/FlareTexture.png" id="3_uevm2"]
+[ext_resource type="Texture2D" uid="uid://cy737kkrjb7yv" path="res://global/cenas/VFX/_Shaders/Sprint/Flame02.png" id="4_t4guv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7w26f"]
+render_priority = 0
+shader = ExtResource("1_gvk6n")
+shader_parameter/MainTexSpeed = Vector2(0.8, 0.6)
+shader_parameter/MainTex = ExtResource("2_d30xd")
+shader_parameter/MainTexPower = 3.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1tub2"]
+use_rotation_3d = true
+rotation_3d_min = Vector3(0, 0, 0)
+rotation_3d_max = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+color = Color(4.683052, 1.8805335, 5.9130006, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_oi42c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t4guv"]
+transparency = 1
+blend_mode = 4
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_uevm2")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d30xd"]
+gravity = Vector3(0, 0, 0)
+color = Color(0.21, 0, 0.20649995, 0.69411767)
+
+[sub_resource type="QuadMesh" id="QuadMesh_uevm2"]
+size = Vector2(1.15, 1.15)
+
+[sub_resource type="Gradient" id="Gradient_t4guv"]
+offsets = PackedFloat32Array(0, 0.5, 0.6, 0.8, 0.9, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0.60784316, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.60784316, 1, 1, 1, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_x4rbv"]
+gradient = SubResource("Gradient_t4guv")
+
+[sub_resource type="Curve" id="Curve_t4guv"]
+_data = [Vector2(0, 1), 0.0, -0.94382584, 0, 0, Vector2(0.99999, 0), -1.4465569, -1.4465569, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_t4guv"]
+curve = SubResource("Curve_t4guv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g4v7s"]
+emission_shape_offset = Vector3(0, 0.2, 0)
+emission_shape_scale = Vector3(0.5, 0.5, 0.5)
+emission_shape = 2
+emission_sphere_radius = 1.0
+angle_min = -14.9999895
+angle_max = 15.0000105
+direction = Vector3(0, 0, 0)
+spread = 60.0
+initial_velocity_min = 0.19999999
+initial_velocity_max = 0.39999998
+gravity = Vector3(0, 1, 0)
+scale_curve = SubResource("CurveTexture_t4guv")
+color = Color(1.353256, 1.353256, 1.353256, 1)
+color_ramp = SubResource("GradientTexture1D_x4rbv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_57qmd"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.9499998, 0, 1, 0.27450982)
+albedo_texture = ExtResource("4_t4guv")
+emission_enabled = true
+emission = Color(0.62666667, 0, 0.8, 1)
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_yf5fn"]
+material = SubResource("StandardMaterial3D_57qmd")
+size = Vector2(0.4, 0.4)
+
+[node name="VFX_Sprint" type="Node3D" unique_id=1033056611]
+
+[node name="Sphere" type="GPUParticles3D" parent="." unique_id=1505108179]
+material_override = SubResource("ShaderMaterial_7w26f")
+amount = 1
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_1tub2")
+draw_pass_1 = SubResource("SphereMesh_oi42c")
+
+[node name="Flare" type="GPUParticles3D" parent="Sphere" unique_id=346875340]
+sorting_offset = -1.0
+material_override = SubResource("StandardMaterial3D_t4guv")
+amount = 1
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_d30xd")
+draw_pass_1 = SubResource("QuadMesh_uevm2")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Sphere" unique_id=1695405616]
+sorting_offset = -2.0
+amount = 100
+lifetime = 0.4
+preprocess = 1.0
+speed_scale = 1.5
+process_material = SubResource("ParticleProcessMaterial_g4v7s")
+draw_pass_1 = SubResource("QuadMesh_yf5fn")

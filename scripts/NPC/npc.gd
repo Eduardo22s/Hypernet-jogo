@@ -4,7 +4,6 @@ var player_in_zone = false
 
 @onready var player_exploration: PlayerExploration = $"../PlayerExploration"
 
-
 func _ready() -> void:
 	Global.taking_damage.connect(_take_damage)
 
@@ -12,8 +11,10 @@ func _process(_delta: float) -> void:
 	if player_in_zone && Input.is_action_just_pressed("interagir"):
 			Global.player_return_pos = player_exploration.global_position
 			Global.npc_battle = "test"
+			Global.words_in_storage = 0
 			Global.invert_bools(["trigger_dialogue", "stop_player"])
 			$AudioStreamPlayer.play()
+			
 			await get_tree().create_timer(1.5).timeout
 			$Portal.warp()
 

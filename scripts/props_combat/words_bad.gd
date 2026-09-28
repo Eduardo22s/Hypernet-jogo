@@ -1,11 +1,10 @@
 extends Node3D
-class_name WordsGood
+class_name WordsBad
 
 @onready var border: Border = $"../Environment/Border"
 
 @onready var target: PlayerCombat = $"../PlayerCombat"
 @onready var heart: Node3D = $"../Heart"
-@onready var sprite_3d: Sprite3D = $Sprite3D
 
 var grabbed = false
 var thrown = false
@@ -25,7 +24,6 @@ func _on_activation_zone_area_entered(area: Area3D) -> void:
 	if area is Grab:
 		grabbed = true
 		$Hitzone.monitoring = true
-		sprite_3d.modulate = Color(0.0, 18.892, 0.0, 1)
 
 func _on_hitzone_area_entered(area: Area3D) -> void:
 	if area is Border:

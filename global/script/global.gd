@@ -8,11 +8,13 @@ var trigger_dialogue = false
 var trigger_battle = false
 var npc_battle = ""
 
+var words_in_storage = 0
 var good_results = 1
 var neutral_results = 0
 var bad_results = 0
 
 var player_return_pos = Vector3(4.7, 2.0, 1.0)
+
 
 func invert_bools(var_names: Array):
 	for var_name in var_names:

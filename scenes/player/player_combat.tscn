@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://duwbgkspxqxtr" path="res://assets/player/idle/ProtagRotacao3.png" id="7_3lb28"]
 [ext_resource type="Texture2D" uid="uid://6loq5aj34fxn" path="res://assets/player/idle/ProtagRotacao4.png" id="8_l441l"]
 [ext_resource type="Texture2D" uid="uid://ceennm55jy7t3" path="res://assets/player/idle/ProtagRotacao5.png" id="9_30d14"]
+[ext_resource type="PackedScene" uid="uid://c221x5588v6xe" path="res://global/cenas/VFX/_Shaders/Sprint/DashEffect.tscn" id="9_ixmm3"]
 [ext_resource type="Texture2D" uid="uid://cymoswu8rv8ho" path="res://assets/player/idle/ProtagRotacao6.png" id="10_nfaxx"]
 [ext_resource type="Texture2D" uid="uid://8vyvlpgytp4u" path="res://assets/player/idle/ProtagRotacao7.png" id="11_g5s6v"]
 [ext_resource type="Texture2D" uid="uid://cjraf7hwovl2x" path="res://assets/player/idle/ProtagRotacao8.png" id="12_kdjp4"]
@@ -76,14 +77,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Sprite3D:modulate")
+tracks/0/path = NodePath("VFX_Sprint:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VFX_Sprint:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector3(0.1, 0.1, 0.1)]
 }
 
 [sub_resource type="Animation" id="Animation_h2iks"]
@@ -91,14 +104,26 @@ resource_name = "attack"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Sprite3D:modulate")
+tracks/0/path = NodePath("VFX_Sprint:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VFX_Sprint:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(0, 1, 0, 1), Color(1, 1, 1, 1)]
+"values": [Vector3(0.1, 0.1, 0.1), Vector3(1.5, 1.5, 1.5), Vector3(1.5, 1.5, 1.5), Vector3(0.1, 0.1, 0.1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k218s"]
@@ -324,6 +349,10 @@ script = ExtResource("3_h2iks")
 shape = SubResource("SphereShape3D_l441l")
 disabled = true
 debug_color = Color(0.9372793, 1.3284087e-05, 0.6265227, 1)
+
+[node name="VFX_Sprint" parent="OrbitalPivot" unique_id=1033056611 instance=ExtResource("9_ixmm3")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+visible = false
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1945331619]
 transparent_bg = true

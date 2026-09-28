@@ -27,14 +27,9 @@ var orbit_speed := 100.0
 var cooldown = false
 var cooldown_time = 0
 
-func _ready():
-	Global.invert_bools(["stop_player"])
-	Global.trigger_battle = false
 
 func _process(delta: float) -> void:
-	if Global.stop_player:
-		SPEED = 0.0
-	elif dashing:
+	if dashing:
 		SPEED = 500.0
 	else:
 		SPEED = 5.0
