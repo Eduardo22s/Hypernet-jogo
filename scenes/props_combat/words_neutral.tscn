@@ -3,19 +3,81 @@
 [ext_resource type="Script" uid="uid://dcrw1u4sfacjf" path="res://scripts/props_combat/words_neutral.gd" id="1_dr68q"]
 [ext_resource type="AudioStream" uid="uid://b6vfkfcyevfkp" path="res://assets/SFX/combat/Explosao_Hyper_1_sfx.mp3" id="2_54nq1"]
 [ext_resource type="AudioStream" uid="uid://bb8p0pn6qif5u" path="res://assets/SFX/combat/Explosao_Hyper_2_sfx.mp3" id="3_b7whg"]
-[ext_resource type="Texture2D" uid="uid://bpcj4fhbv4mdl" path="res://assets/template2.png" id="4_sel6h"]
+[ext_resource type="Texture2D" uid="uid://c7imtq2dykv6q" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 1/Neutro/DayDream_Neutro1_Wave1.png" id="5_ujtmr"]
 [ext_resource type="PackedScene" uid="uid://cbtr7b0tb7y2j" path="res://global/cenas/VFX/_Shaders/Bubble.tscn" id="5_xxsxm"]
+[ext_resource type="Texture2D" uid="uid://bbn6bquosu1hq" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 1/Neutro/DayDream_Neutro2_Wave1.png" id="6_tpb4a"]
+[ext_resource type="Texture2D" uid="uid://brklg1mcjiftj" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 1/Neutro/DayDream_Neutro3_Wave1.png" id="7_1xmaa"]
+[ext_resource type="Texture2D" uid="uid://bxcod6tds3yty" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 2/Neutro/DayDream_Neutro1_Wave2.png" id="8_6mt6n"]
+[ext_resource type="Texture2D" uid="uid://bjroccns38vma" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 2/Neutro/DayDream_Neutro2_Wave2.png" id="9_8vmnd"]
+[ext_resource type="Texture2D" uid="uid://dlrdxrpgcf8w0" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 2/Neutro/DayDream_Neutro3_Wave2.png" id="10_m4l40"]
+[ext_resource type="Texture2D" uid="uid://bmqnbayg1svw6" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 3/Neutro/DayDream_Neutro1_Wave3.png" id="11_6th2l"]
+[ext_resource type="Texture2D" uid="uid://wk2ulwgys3pc" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 3/Neutro/DayDream_Neutro2_Wave3.png" id="12_cf3i7"]
+[ext_resource type="Texture2D" uid="uid://unitu8uoecm2" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 3/Neutro/DayDream_Neutro3_Wave3.png" id="13_e004l"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8ksj1"]
 streams_count = 2
 stream_0/stream = ExtResource("2_54nq1")
 stream_1/stream = ExtResource("3_b7whg")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_5g4sf"]
+viewport_path = NodePath("SubViewport")
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_isfe7"]
 radius = 1.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dr68q"]
 radius = 1.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_isfe7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ujtmr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tpb4a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_1xmaa")
+}],
+"loop": 0,
+"name": &"DD1",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_24uet"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_6mt6n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8vmnd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_m4l40")
+}],
+"loop": 0,
+"name": &"DD2",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dgerp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_6th2l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_cf3i7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_e004l")
+}],
+"loop": 0,
+"name": &"DD3",
+"speed": 5.0
+}]
 
 [node name="WordsNeutral" type="Node3D" unique_id=1656796278]
 script = ExtResource("1_dr68q")
@@ -30,9 +92,9 @@ one_shot = true
 autostart = true
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=833795134]
-modulate = Color(18.892, 4.806, 0, 0.49)
+modulate = Color(1, 1, 1, 0.5882353)
 billboard = 1
-texture = ExtResource("4_sel6h")
+texture = SubResource("ViewportTexture_5g4sf")
 
 [node name="Bubble" parent="." unique_id=2007721419 instance=ExtResource("5_xxsxm")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
@@ -47,6 +109,35 @@ shape = SubResource("SphereShape3D_isfe7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ActivationZone" unique_id=2106431132]
 shape = SubResource("SphereShape3D_dr68q")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1049681095]
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(225, 125)
+
+[node name="WordsNeutral2DModel" type="Node2D" parent="SubViewport" unique_id=304108389]
+texture_filter = 1
+
+[node name="ReferenceRect" type="ReferenceRect" parent="SubViewport/WordsNeutral2DModel" unique_id=1925409131]
+offset_right = 225.0
+offset_bottom = 125.0
+
+[node name="AnimatedWord1" type="AnimatedSprite2D" parent="SubViewport/WordsNeutral2DModel" unique_id=1037071131]
+position = Vector2(112, 62)
+sprite_frames = SubResource("SpriteFrames_isfe7")
+animation = &"DD1"
+
+[node name="AnimatedWord2" type="AnimatedSprite2D" parent="SubViewport/WordsNeutral2DModel" unique_id=1282013031]
+visible = false
+position = Vector2(112, 62)
+sprite_frames = SubResource("SpriteFrames_24uet")
+animation = &"DD2"
+
+[node name="AnimatedWord3" type="AnimatedSprite2D" parent="SubViewport/WordsNeutral2DModel" unique_id=941250040]
+visible = false
+position = Vector2(112, 62)
+sprite_frames = SubResource("SpriteFrames_dgerp")
+animation = &"DD3"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Hitzone" to="." method="_on_hitzone_area_entered"]

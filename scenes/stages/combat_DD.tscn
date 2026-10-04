@@ -11,6 +11,43 @@
 [ext_resource type="PackedScene" uid="uid://bwa7n6dsl04hi" path="res://scenes/props_combat/spawner.tscn" id="8_c24w0"]
 [ext_resource type="PackedScene" uid="uid://l2hm8rn2frxa" path="res://scenes/NPC/daydream.tscn" id="10_be52t"]
 
+[sub_resource type="Animation" id="Animation_3khib"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Portrait/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(156, 524.5)]
+}
+
+[sub_resource type="Animation" id="Animation_640r5"]
+resource_name = "init"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Portrait/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(156, 852), Vector2(156, 524.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3khib"]
+_data = {
+&"RESET": SubResource("Animation_3khib"),
+&"init": SubResource("Animation_640r5")
+}
+
 [sub_resource type="Animation" id="Animation_bh6jr"]
 length = 0.001
 tracks/0/type = "value"
@@ -117,6 +154,10 @@ sky_custom_fov = 90.0
 viewport_path = NodePath("Portrait/SubViewport")
 
 [node name="CombatTest" type="Node3D" unique_id=1897027482]
+
+[node name="AnimationHUD" type="AnimationPlayer" parent="." unique_id=644307242]
+libraries/ = SubResource("AnimationLibrary_3khib")
+autoplay = &"init"
 
 [node name="Environment" type="Node" parent="." unique_id=1448162015]
 

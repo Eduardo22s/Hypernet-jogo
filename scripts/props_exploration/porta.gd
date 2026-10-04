@@ -24,6 +24,16 @@ func _ready():
 
 
 func _process(_delta):
+	$SubViewport/Door2dModel/Label.text = str(pontos_necessarios)
+	
+	match tipo_resultado:
+		TipoResultado.GOOD:
+			$SubViewport/Door2dModel/AnimatedSprite2D.frame = 1
+		TipoResultado.NEUTRAL:
+			$SubViewport/Door2dModel/AnimatedSprite2D.frame = 2
+		TipoResultado.BAD:
+			$SubViewport/Door2dModel/AnimatedSprite2D.frame = 0
+	
 	if jogador_perto and not aberta:
 		if Input.is_action_just_pressed("interagir"):
 			tentar_abrir()

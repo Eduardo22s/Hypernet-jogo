@@ -11,7 +11,7 @@ var npc_battle = ""
 
 var word_kind = ""
 var words_in_storage = 0
-var good_results = 1
+var good_results = 0
 var neutral_results = 0
 var bad_results = 0
 

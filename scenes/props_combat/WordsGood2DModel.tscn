@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://fjrk0e5yp4gh"]
+
+[ext_resource type="Texture2D" uid="uid://c8an83eibf671" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 1/Bom/DayDream_Bom1_Wave1.png" id="1_ggami"]
+[ext_resource type="Texture2D" uid="uid://c3ibu0pvufgtk" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 1/Bom/DayDream_Bom2_Wave1.png" id="2_m7mu5"]
+[ext_resource type="Texture2D" uid="uid://b1jumo0wv640v" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 1/Bom/DayDream_Bom3_Wave1.png" id="3_ic5lm"]
+[ext_resource type="Texture2D" uid="uid://b62flejsoeqki" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 2/Bom/DayDream_Bom1_Wave2.png" id="4_b3egj"]
+[ext_resource type="Texture2D" uid="uid://bwbnndwu76bya" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 2/Bom/DayDream_Bom2_Wave2.png" id="5_m0guy"]
+[ext_resource type="Texture2D" uid="uid://b0dfijp3sqcyx" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 2/Bom/DayDream_Bom3_Wave2.png" id="6_2au51"]
+[ext_resource type="Texture2D" uid="uid://dfwuhea5le3fl" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 3/Bom/DayDream_Bom1_Wave3.png" id="7_8hi36"]
+[ext_resource type="Texture2D" uid="uid://dr3aupmsan4g5" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 3/Bom/DayDream_Bom2_Wave3.png" id="8_sueta"]
+[ext_resource type="Texture2D" uid="uid://dme1jffjdhwsw" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 3/Bom/DayDream_Bom3_Wave3.png" id="9_uilvc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_isfe7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ggami")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_m7mu5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ic5lm")
+}],
+"loop": 0,
+"name": &"DD1",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ggami"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_b3egj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_m0guy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2au51")
+}],
+"loop": 0,
+"name": &"DD2",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m7mu5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_8hi36")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_sueta")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_uilvc")
+}],
+"loop": 0,
+"name": &"DD3",
+"speed": 5.0
+}]
+
+[node name="WordsGood2DModel" type="Node2D" unique_id=304108389]
+texture_filter = 1
+
+[node name="ReferenceRect" type="ReferenceRect" parent="." unique_id=1925409131]
+offset_right = 225.0
+offset_bottom = 125.0
+
+[node name="AnimatedWord1" type="AnimatedSprite2D" parent="." unique_id=1037071131]
+position = Vector2(112, 62)
+sprite_frames = SubResource("SpriteFrames_isfe7")
+animation = &"DD1"
+
+[node name="AnimatedWord2" type="AnimatedSprite2D" parent="." unique_id=1371777178]
+position = Vector2(112, 62)
+sprite_frames = SubResource("SpriteFrames_ggami")
+animation = &"DD2"
+
+[node name="AnimatedWord3" type="AnimatedSprite2D" parent="." unique_id=1290348734]
+position = Vector2(112, 62)
+sprite_frames = SubResource("SpriteFrames_m7mu5")
+animation = &"DD3"

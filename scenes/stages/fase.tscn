@@ -22,6 +22,8 @@
 [ext_resource type="Texture2D" uid="uid://ccv8ccwmw1oua" path="res://assets/props3D/decorations/Saturno/saturnVoxel.png" id="13_anygb"]
 [ext_resource type="Texture2D" uid="uid://do565wevahkv7" path="res://assets/props3D/decorations/Flores_TrimSheet_Logos.png" id="14_xmcby"]
 [ext_resource type="Texture2D" uid="uid://cxcev4ctlxkdk" path="res://assets/props3D/decorations/Grama_TrimSheet_Logos.png" id="15_gguiu"]
+[ext_resource type="PackedScene" uid="uid://jm0q7jskty1d" path="res://scenes/props_exploration/porta.tscn" id="16_c6ljj"]
+[ext_resource type="PackedScene" uid="uid://bidf0omwq42s7" path="res://scenes/NPC/doorman.tscn" id="17_mxquo"]
 
 [sub_resource type="Animation" id="Animation_vsfck"]
 length = 0.001
@@ -878,6 +880,31 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
+[node name="Doors" type="Node" parent="Environment" unique_id=664787573]
+
+[node name="Porta" parent="Environment/Doors" unique_id=132387269 instance=ExtResource("16_c6ljj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.7, 2.5, -15.9)
+tipo_resultado = 1
+
+[node name="Doorman" parent="Environment/Doors" unique_id=597951725 node_paths=PackedStringArray("door_kind") instance=ExtResource("17_mxquo")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8.4, 2.6000001, -14.1)
+door_kind = NodePath("../Porta")
+
+[node name="Porta2" parent="Environment/Doors" unique_id=908976608 instance=ExtResource("16_c6ljj")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -17.800001, 2.2, -6.8)
+
+[node name="Doorman2" parent="Environment/Doors" unique_id=982564390 node_paths=PackedStringArray("door_kind") instance=ExtResource("17_mxquo")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -17.000002, 2.6000001, -8.6)
+door_kind = NodePath("../Porta2")
+
+[node name="Porta3" parent="Environment/Doors" unique_id=1071743409 instance=ExtResource("16_c6ljj")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.1, 2.2, 11.7)
+tipo_resultado = 2
+
+[node name="Doorman3" parent="Environment/Doors" unique_id=1949776378 node_paths=PackedStringArray("door_kind") instance=ExtResource("17_mxquo")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2.2000012, 2.6000001, 10.2)
+door_kind = NodePath("../Porta3")
+
 [node name="Portrait" type="Node3D" parent="." unique_id=2136759838]
 
 [node name="Sprite2D" type="Sprite2D" parent="Portrait" unique_id=936741388]
@@ -895,7 +922,7 @@ transform = Transform3D(1, 0, 0, 0, 0.86602545, 0.5, 0, -0.5, 0.86602545, -3.000
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.3, 1.3000001, 2.6000001)
 
 [node name="K_AFK" parent="." unique_id=683731453 instance=ExtResource("10_5m544")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.40000033, 3.3, 0.099999905)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.40000033, 23.2, 0.099999905)
 
 [node name="Overseer" parent="." unique_id=28029168 instance=ExtResource("11_vsfck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9778986, 6.6882634, -0.77269894)

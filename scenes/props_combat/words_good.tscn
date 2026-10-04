@@ -1,18 +1,80 @@
 [gd_scene format=3 uid="uid://bge5mdsxxc1ec"]
 
-[ext_resource type="Texture2D" uid="uid://bpcj4fhbv4mdl" path="res://assets/template2.png" id="1_gyt3g"]
 [ext_resource type="Script" uid="uid://b4aggfwiahm4w" path="res://scripts/props_combat/words_good.gd" id="1_n2pg2"]
 [ext_resource type="PackedScene" uid="uid://cbtr7b0tb7y2j" path="res://global/cenas/VFX/_Shaders/Bubble.tscn" id="3_3invh"]
 [ext_resource type="AudioStream" uid="uid://b6vfkfcyevfkp" path="res://assets/SFX/combat/Explosao_Hyper_1_sfx.mp3" id="4_yyyhk"]
 [ext_resource type="AudioStream" uid="uid://bb8p0pn6qif5u" path="res://assets/SFX/combat/Explosao_Hyper_2_sfx.mp3" id="5_2y713"]
+[ext_resource type="Texture2D" uid="uid://c8an83eibf671" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 1/Bom/DayDream_Bom1_Wave1.png" id="5_r6k2l"]
+[ext_resource type="Texture2D" uid="uid://c3ibu0pvufgtk" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 1/Bom/DayDream_Bom2_Wave1.png" id="6_b42rv"]
+[ext_resource type="Texture2D" uid="uid://b1jumo0wv640v" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 1/Bom/DayDream_Bom3_Wave1.png" id="7_acev1"]
+[ext_resource type="Texture2D" uid="uid://b62flejsoeqki" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 2/Bom/DayDream_Bom1_Wave2.png" id="8_jqcob"]
+[ext_resource type="Texture2D" uid="uid://bwbnndwu76bya" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 2/Bom/DayDream_Bom2_Wave2.png" id="9_wfj73"]
+[ext_resource type="Texture2D" uid="uid://b0dfijp3sqcyx" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 2/Bom/DayDream_Bom3_Wave2.png" id="10_1ra4d"]
+[ext_resource type="Texture2D" uid="uid://dfwuhea5le3fl" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 3/Bom/DayDream_Bom1_Wave3.png" id="11_tattl"]
+[ext_resource type="Texture2D" uid="uid://dr3aupmsan4g5" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 3/Bom/DayDream_Bom2_Wave3.png" id="12_yuiir"]
+[ext_resource type="Texture2D" uid="uid://dme1jffjdhwsw" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 3/Bom/DayDream_Bom3_Wave3.png" id="13_fopgx"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8ksj1"]
 streams_count = 2
 stream_0/stream = ExtResource("4_yyyhk")
 stream_1/stream = ExtResource("5_2y713")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_5g4sf"]
+viewport_path = NodePath("SubViewport")
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_isfe7"]
 radius = 1.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_isfe7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_r6k2l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_b42rv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_acev1")
+}],
+"loop": 0,
+"name": &"DD1",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ggami"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_jqcob")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_wfj73")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_1ra4d")
+}],
+"loop": 0,
+"name": &"DD2",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m7mu5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_tattl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_yuiir")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_fopgx")
+}],
+"loop": 0,
+"name": &"DD3",
+"speed": 5.0
+}]
 
 [node name="WordsGood" type="Node3D" unique_id=1656796278]
 script = ExtResource("1_n2pg2")
@@ -27,9 +89,9 @@ one_shot = true
 autostart = true
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=833795134]
-modulate = Color(0, 18.892, 0, 0.49)
+modulate = Color(1, 1, 1, 0.5882353)
 billboard = 1
-texture = ExtResource("1_gyt3g")
+texture = SubResource("ViewportTexture_5g4sf")
 
 [node name="Bubble" parent="." unique_id=2007721419 instance=ExtResource("3_3invh")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
@@ -44,6 +106,35 @@ shape = SubResource("SphereShape3D_isfe7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ActivationZone" unique_id=896974163]
 shape = SubResource("SphereShape3D_isfe7")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1126550377]
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(225, 125)
+
+[node name="WordsGood2DModel" type="Node2D" parent="SubViewport" unique_id=304108389]
+texture_filter = 1
+
+[node name="ReferenceRect" type="ReferenceRect" parent="SubViewport/WordsGood2DModel" unique_id=1925409131]
+offset_right = 225.0
+offset_bottom = 125.0
+
+[node name="AnimatedWord1" type="AnimatedSprite2D" parent="SubViewport/WordsGood2DModel" unique_id=1037071131]
+position = Vector2(112, 62)
+sprite_frames = SubResource("SpriteFrames_isfe7")
+animation = &"DD1"
+
+[node name="AnimatedWord2" type="AnimatedSprite2D" parent="SubViewport/WordsGood2DModel" unique_id=1371777178]
+visible = false
+position = Vector2(112, 62)
+sprite_frames = SubResource("SpriteFrames_ggami")
+animation = &"DD2"
+
+[node name="AnimatedWord3" type="AnimatedSprite2D" parent="SubViewport/WordsGood2DModel" unique_id=1290348734]
+visible = false
+position = Vector2(112, 62)
+sprite_frames = SubResource("SpriteFrames_m7mu5")
+animation = &"DD3"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Hitzone" to="." method="_on_hitzone_area_entered"]

@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://bn02l367ea82j"]
+
+[ext_resource type="Texture2D" uid="uid://bryrwadkv2ijw" path="res://assets/props2D/door/DoorHate.png" id="1_ifjah"]
+[ext_resource type="Texture2D" uid="uid://bekptfdjfnsh8" path="res://assets/props2D/door/DoorLove.png" id="2_regty"]
+[ext_resource type="Texture2D" uid="uid://djjg60r6cutnh" path="res://assets/props2D/door/DoorNeutral.png" id="3_8vvcf"]
+[ext_resource type="FontFile" uid="uid://bcgyc0ombka2d" path="res://assets/fonts/Rayman 1.ttf" id="4_regty"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_isfe7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ifjah")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_regty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8vvcf")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_isfe7"]
+font = ExtResource("4_regty")
+font_size = 32
+outline_size = 4
+outline_color = Color(0.36078432, 0, 1, 1)
+
+[node name="Door2dModel" type="Node2D" unique_id=1082520989]
+
+[node name="ReferenceRect" type="ReferenceRect" parent="." unique_id=43886001]
+offset_right = 400.0
+offset_bottom = 250.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1629360404]
+texture_filter = 1
+position = Vector2(198, 130)
+sprite_frames = SubResource("SpriteFrames_isfe7")
+frame_progress = 0.8070821
+
+[node name="Label" type="Label" parent="." unique_id=719336599]
+offset_left = 148.0
+offset_top = 139.0
+offset_right = 188.0
+offset_bottom = 173.0
+label_settings = SubResource("LabelSettings_isfe7")
+horizontal_alignment = 1
+vertical_alignment = 1

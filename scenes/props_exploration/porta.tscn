@@ -1,0 +1,172 @@
+[gd_scene format=3 uid="uid://jm0q7jskty1d"]
+
+[ext_resource type="Script" uid="uid://bsbd2lamkhcfs" path="res://scripts/props_exploration/porta.gd" id="1_454sr"]
+[ext_resource type="Texture2D" uid="uid://bryrwadkv2ijw" path="res://assets/props2D/door/DoorHate.png" id="2_wn0bn"]
+[ext_resource type="Texture2D" uid="uid://bekptfdjfnsh8" path="res://assets/props2D/door/DoorLove.png" id="3_j57bq"]
+[ext_resource type="Texture2D" uid="uid://djjg60r6cutnh" path="res://assets/props2D/door/DoorNeutral.png" id="4_6lkwo"]
+[ext_resource type="FontFile" uid="uid://bcgyc0ombka2d" path="res://assets/fonts/Rayman 1.ttf" id="5_j57bq"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_kt8ga"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t2hhj"]
+size = Vector3(3.8, 2.5, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f1q28"]
+size = Vector3(3, 1.7608643, 3)
+
+[sub_resource type="Animation" id="Animation_xnc1h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Corpo/CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_0ylbd"]
+resource_name = "abrindo"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.1, 0.1, 0.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Corpo/CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fhdt1"]
+_data = {
+&"RESET": SubResource("Animation_xnc1h"),
+&"abrindo": SubResource("Animation_0ylbd")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_isfe7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wn0bn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_j57bq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6lkwo")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_isfe7"]
+font = ExtResource("5_j57bq")
+font_size = 32
+outline_size = 4
+outline_color = Color(0.36078432, 0, 1, 1)
+
+[node name="Porta" type="Node3D" unique_id=132387269]
+script = ExtResource("1_454sr")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=71226914]
+texture_filter = 0
+texture = SubResource("ViewportTexture_kt8ga")
+
+[node name="Corpo" type="StaticBody3D" parent="." unique_id=93228919]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Corpo" unique_id=624299164]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38360596, 0.049548328)
+shape = SubResource("BoxShape3D_t2hhj")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=2014126140]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=251225036]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.38043213, 0.33779716)
+shape = SubResource("BoxShape3D_f1q28")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1890459523]
+libraries/ = SubResource("AnimationLibrary_fhdt1")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1236920182]
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(400, 250)
+
+[node name="Door2dModel" type="Node2D" parent="SubViewport" unique_id=1082520989]
+
+[node name="ReferenceRect" type="ReferenceRect" parent="SubViewport/Door2dModel" unique_id=43886001]
+offset_right = 400.0
+offset_bottom = 250.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SubViewport/Door2dModel" unique_id=1629360404]
+texture_filter = 1
+position = Vector2(198, 130)
+sprite_frames = SubResource("SpriteFrames_isfe7")
+frame_progress = 0.8070821
+
+[node name="Label" type="Label" parent="SubViewport/Door2dModel" unique_id=719336599]
+offset_left = 148.0
+offset_top = 139.0
+offset_right = 188.0
+offset_bottom = 173.0
+label_settings = SubResource("LabelSettings_isfe7")
+horizontal_alignment = 1
+vertical_alignment = 1

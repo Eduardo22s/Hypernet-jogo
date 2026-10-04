@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://td5g1t16u43e"]
+
+[ext_resource type="Texture2D" uid="uid://c7imtq2dykv6q" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 1/Neutro/DayDream_Neutro1_Wave1.png" id="1_24uet"]
+[ext_resource type="Texture2D" uid="uid://bbn6bquosu1hq" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 1/Neutro/DayDream_Neutro2_Wave1.png" id="2_dgerp"]
+[ext_resource type="Texture2D" uid="uid://brklg1mcjiftj" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 1/Neutro/DayDream_Neutro3_Wave1.png" id="3_7pwds"]
+[ext_resource type="Texture2D" uid="uid://bxcod6tds3yty" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 2/Neutro/DayDream_Neutro1_Wave2.png" id="4_p777a"]
+[ext_resource type="Texture2D" uid="uid://bjroccns38vma" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 2/Neutro/DayDream_Neutro2_Wave2.png" id="5_ot0q8"]
+[ext_resource type="Texture2D" uid="uid://dlrdxrpgcf8w0" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 2/Neutro/DayDream_Neutro3_Wave2.png" id="6_khw66"]
+[ext_resource type="Texture2D" uid="uid://bmqnbayg1svw6" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 3/Neutro/DayDream_Neutro1_Wave3.png" id="7_811p4"]
+[ext_resource type="Texture2D" uid="uid://wk2ulwgys3pc" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 3/Neutro/DayDream_Neutro2_Wave3.png" id="8_20231"]
+[ext_resource type="Texture2D" uid="uid://unitu8uoecm2" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 3/Neutro/DayDream_Neutro3_Wave3.png" id="9_s1vfw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_isfe7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_24uet")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_dgerp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7pwds")
+}],
+"loop": 0,
+"name": &"DD1",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_24uet"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_p777a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ot0q8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_khw66")
+}],
+"loop": 0,
+"name": &"DD2",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dgerp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_811p4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_20231")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_s1vfw")
+}],
+"loop": 0,
+"name": &"DD3",
+"speed": 5.0
+}]
+
+[node name="WordsNeutral2DModel" type="Node2D" unique_id=304108389]
+texture_filter = 1
+
+[node name="ReferenceRect" type="ReferenceRect" parent="." unique_id=1925409131]
+offset_right = 225.0
+offset_bottom = 125.0
+
+[node name="AnimatedWord1" type="AnimatedSprite2D" parent="." unique_id=1037071131]
+position = Vector2(112, 62)
+sprite_frames = SubResource("SpriteFrames_isfe7")
+animation = &"DD1"
+
+[node name="AnimatedWord2" type="AnimatedSprite2D" parent="." unique_id=1282013031]
+position = Vector2(112, 62)
+sprite_frames = SubResource("SpriteFrames_24uet")
+animation = &"DD2"
+
+[node name="AnimatedWord3" type="AnimatedSprite2D" parent="." unique_id=941250040]
+position = Vector2(112, 62)
+sprite_frames = SubResource("SpriteFrames_dgerp")
+animation = &"DD3"

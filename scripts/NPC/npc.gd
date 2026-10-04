@@ -27,7 +27,7 @@ func _process(_delta: float) -> void:
 
 func to_battle():
 	Global.player_return_pos = player_exploration.global_position
-	Global.npc_battle = "test"
+	Global.npc_battle = "DD"
 	Global.words_in_storage = 0
 	Global.invert_bools(["trigger_dialogue", "stop_player"])
 	$AudioStreamPlayer.play()

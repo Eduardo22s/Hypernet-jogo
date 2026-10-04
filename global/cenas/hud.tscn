@@ -11,7 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://c4k7otnnq1i6n" path="res://assets/props2D/HUD/BattleUI/HatePoints.png" id="6_vj4h4"]
 [ext_resource type="Texture2D" uid="uid://boatjwtdnjxlf" path="res://assets/props2D/HUD/BattleUI/LovePoints.png" id="7_lg5qw"]
 [ext_resource type="Texture2D" uid="uid://dpbaq7714trjq" path="res://assets/props2D/HUD/BattleUI/NeutralPoints.png" id="8_c38d7"]
+[ext_resource type="Texture2D" uid="uid://c4sw5xpopb11m" path="res://assets/props2D/HUD/WaveLabels/INTRODUCTION.png" id="10_0cion"]
 [ext_resource type="Texture2D" uid="uid://b15i4gdjmsvs" path="res://assets/props2D/HUD/PauseAnimation/PAUSE_Animation1.png" id="11_46f7o"]
+[ext_resource type="Texture2D" uid="uid://dw1kut0j1jpc8" path="res://assets/props2D/HUD/WaveLabels/MIDFASE.png" id="11_cqh78"]
+[ext_resource type="Texture2D" uid="uid://b4xmgqdc4lncg" path="res://assets/props2D/HUD/WaveLabels/FAREWELL.png" id="12_0cion"]
 [ext_resource type="Texture2D" uid="uid://8lgmffpgysnt" path="res://assets/props2D/HUD/PauseAnimation/PAUSE_Animation2.png" id="12_ne16y"]
 [ext_resource type="Texture2D" uid="uid://dumagm11clnq1" path="res://assets/props2D/HUD/PauseAnimation/PAUSE_Animation3.png" id="13_47ly8"]
 [ext_resource type="Texture2D" uid="uid://bbx4jkrysixpt" path="res://assets/props2D/HUD/PauseAnimation/PAUSE_Animation4.png" id="14_vw453"]
@@ -331,7 +334,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.1, 0.1)]
+"values": [Vector2(1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -355,12 +358,12 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(375.5, 294.5)]
+"values": [Vector2(574, 322)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Letters/Mid-fase:visible")
+tracks/4/path = NodePath("Letters/MidFase:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -372,7 +375,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Letters/Mid-fase:scale")
+tracks/5/path = NodePath("Letters/MidFase:scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -384,7 +387,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Letters/Mid-fase:rotation")
+tracks/6/path = NodePath("Letters/MidFase:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -396,14 +399,14 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Letters/Mid-fase:position")
+tracks/7/path = NodePath("Letters/MidFase:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(433.5, 285.5)]
+"values": [Vector2(576, 324)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -451,7 +454,7 @@ tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(433.5, 294.5)]
+"values": [Vector2(577, 326)]
 }
 
 [sub_resource type="Animation" id="Animation_5jqjx"]
@@ -500,10 +503,10 @@ tracks/3/path = NodePath("Letters/Farewell:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.36666667, 0.631583, 0.8790952, 1.1522121, 1.433864, 1.6643064),
+"times": PackedFloat32Array(0, 0.37923813, 0.6441544, 0.89166665, 1.1522121, 1.433864, 1.6643064),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(444, 294.5), Vector2(444, 315), Vector2(444, 294.5), Vector2(444, 315), Vector2(444, 294.5), Vector2(444, 315), Vector2(444, 294.5)]
+"values": [Vector2(596, 286), Vector2(596, 350), Vector2(596, 286), Vector2(596, 350), Vector2(596, 286), Vector2(596, 350), Vector2(596, 286)]
 }
 
 [sub_resource type="Animation" id="Animation_d8snf"]
@@ -540,10 +543,10 @@ tracks/2/path = NodePath("Letters/Introduction:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.26666668, 0.5, 0.75, 1, 1.3, 1.5448178, 1.7581904),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.26666668, 0.5, 0.75, 1, 1.3, 1.5448178, 1.7581904),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.0, -0.08726646259971647, 0.08726646259971647, -0.08726646259971647, 0.08726646259971647, -0.08726646259971647, 0.0]
+"values": [0.0, 0.0, -0.08726646259971647, 0.08726646259971647, -0.08726646259971647, 0.08726646259971647, -0.08726646259971647, 0.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -555,7 +558,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.36666667, 0.631583, 0.8790952, 1.1522121, 1.433864, 1.6643064),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(375.5, 294.5), Vector2(375.5, 315), Vector2(375.5, 294.5), Vector2(375.5, 315), Vector2(375.5, 294.5), Vector2(375.5, 315), Vector2(375.5, 294.5)]
+"values": [Vector2(596.00006, 286.00003), Vector2(596, 400), Vector2(596, 315), Vector2(596, 400), Vector2(596, 315), Vector2(596, 400), Vector2(596, 315)]
 }
 
 [sub_resource type="Animation" id="Animation_lt37l"]
@@ -564,7 +567,7 @@ length = 2.5000000000000004
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Letters/Mid-fase:visible")
+tracks/0/path = NodePath("Letters/MidFase:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -576,7 +579,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Letters/Mid-fase:scale")
+tracks/1/path = NodePath("Letters/MidFase:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -588,7 +591,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Letters/Mid-fase:rotation")
+tracks/2/path = NodePath("Letters/MidFase:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -600,14 +603,14 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Letters/Mid-fase:position")
+tracks/3/path = NodePath("Letters/MidFase:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.36666667, 0.631583, 0.8790952, 1.1522121, 1.433864, 1.6643064),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(444, 294.5), Vector2(444, 315), Vector2(444, 294.5), Vector2(444, 315), Vector2(444, 315), Vector2(444, 315), Vector2(444, 294.5)]
+"values": [Vector2(596, 294.5), Vector2(596, 350), Vector2(596, 294.5), Vector2(596, 350), Vector2(596, 294.5), Vector2(596, 350), Vector2(596, 294.5)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lt37l"]
@@ -617,31 +620,6 @@ _data = {
 &"intro": SubResource("Animation_d8snf"),
 &"midfase": SubResource("Animation_lt37l")
 }
-
-[sub_resource type="LabelSettings" id="LabelSettings_vaj5l"]
-font = ExtResource("3_7rux2")
-font_size = 56
-font_color = Color(0.2509804, 0, 1, 0.78431374)
-outline_size = 5
-outline_color = Color(1, 1, 1, 0.78431374)
-shadow_color = Color(0, 0, 0, 1)
-shadow_offset = Vector2(5, 10)
-
-[sub_resource type="LabelSettings" id="LabelSettings_7rux2"]
-font = ExtResource("3_7rux2")
-font_size = 56
-font_color = Color(0.2509804, 0, 1, 1)
-outline_size = 5
-shadow_color = Color(0, 0, 0, 1)
-shadow_offset = Vector2(5, 10)
-
-[sub_resource type="LabelSettings" id="LabelSettings_d8snf"]
-font = ExtResource("3_7rux2")
-font_size = 56
-font_color = Color(0.2509804, 0, 1, 1)
-outline_size = 5
-shadow_color = Color(0, 0, 0, 1)
-shadow_offset = Vector2(5, 10)
 
 [sub_resource type="LabelSettings" id="LabelSettings_isfe7"]
 font = ExtResource("3_7rux2")
@@ -890,63 +868,20 @@ animation = &"null"
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_lt37l")
 
-[node name="Introduction" type="Label" parent="Combat/Letters" unique_id=1851804821]
+[node name="Introduction" type="Sprite2D" parent="Combat/Letters" unique_id=1833517969]
 visible = false
-z_index = -1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -200.5
-offset_top = -29.5
-offset_right = 200.5
-offset_bottom = 29.5
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.1, 0.1)
-pivot_offset = Vector2(208.5, 33.5)
-size_flags_horizontal = 4
-text = "INTRODUCTION!"
-label_settings = SubResource("LabelSettings_vaj5l")
+position = Vector2(574, 322)
+texture = ExtResource("10_0cion")
 
-[node name="Mid-fase" type="Label" parent="Combat/Letters" unique_id=95456384]
+[node name="MidFase" type="Sprite2D" parent="Combat/Letters" unique_id=1354040447]
 visible = false
-z_index = -1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -142.5
-offset_top = -38.5
-offset_right = 142.49994
-offset_bottom = 38.5
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(140, 40)
-size_flags_horizontal = 4
-text = "MID-FASE!"
-label_settings = SubResource("LabelSettings_7rux2")
+position = Vector2(576, 324)
+texture = ExtResource("11_cqh78")
 
-[node name="Farewell" type="Label" parent="Combat/Letters" unique_id=588433254]
+[node name="Farewell" type="Sprite2D" parent="Combat/Letters" unique_id=728186036]
 visible = false
-z_index = -1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -142.5
-offset_top = -29.5
-offset_right = 142.49994
-offset_bottom = 29.5
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(145, 35)
-size_flags_horizontal = 4
-text = "FAREWELL!"
-label_settings = SubResource("LabelSettings_d8snf")
+position = Vector2(577, 326)
+texture = ExtResource("12_0cion")
 
 [node name="TimerSprite" type="Sprite2D" parent="." unique_id=618407219]
 position = Vector2(973, 102)
@@ -1017,6 +952,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 

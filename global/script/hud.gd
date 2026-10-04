@@ -36,8 +36,6 @@ func _process(_delta: float) -> void:
 
 		await get_tree().create_timer(3.5).timeout
 		Global.trigger_battle = true
-		Global.npc_battle = "test"
-
 
 func open_menu() -> void:
 	game_paused = true

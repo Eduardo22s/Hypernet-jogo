@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://d2qcb2dvuj2aq"]
 
 [ext_resource type="PackedScene" uid="uid://dawu66n17p2am" path="res://scenes/player/player_exploration.tscn" id="1_dcfgp"]
-[ext_resource type="PackedScene" uid="uid://jm0q7jskty1d" path="res://scenes/stages/porta.tscn" id="2_c2w8a"]
+[ext_resource type="PackedScene" uid="uid://jm0q7jskty1d" path="res://scenes/props_exploration/porta.tscn" id="2_c2w8a"]
 [ext_resource type="PackedScene" uid="uid://bidf0omwq42s7" path="res://scenes/NPC/doorman.tscn" id="3_rssfm"]
 [ext_resource type="PackedScene" uid="uid://mxgx53vk4pmh" path="res://scenes/props_exploration/ballon.tscn" id="4_qe0g3"]
-[ext_resource type="ArrayMesh" uid="uid://bvfljem37kqia" path="res://assets/props3D/Stages/statueVoxel.obj" id="5_tkedx"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_t2hhj"]
 
@@ -59,15 +58,16 @@ mesh = SubResource("BoxMesh_t2hhj")
 shape = SubResource("BoxShape3D_f1q28")
 
 [node name="Porta" parent="." unique_id=132387269 instance=ExtResource("2_c2w8a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.080658, 0.44926453, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.080658, 1.0492646, -2.4)
 
 [node name="Porta2" parent="." unique_id=1160651383 instance=ExtResource("2_c2w8a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5574646, 0.44926453, 2.6851807)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5574646, 1.0492646, 2.6851807)
 tipo_resultado = 1
 pontos_necessarios = 2
 
-[node name="Doorman" parent="." unique_id=597951725 instance=ExtResource("3_rssfm")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1, 2.3000002, -2)
+[node name="Doorman" parent="." unique_id=597951725 node_paths=PackedStringArray("door_kind") instance=ExtResource("3_rssfm")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.7, 2.3000002, -1.6)
+door_kind = NodePath("../Porta")
 
 [node name="Ballon" parent="." unique_id=2133639587 instance=ExtResource("4_qe0g3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2000003, 1.3000001, 3.8)
@@ -83,7 +83,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.299999, 1.2000002, 0.699999
 
 [node name="Ballon5" parent="." unique_id=2034482191 instance=ExtResource("4_qe0g3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9000006, 1.2000002, 0.5999999)
-
-[node name="StatueVoxel" type="MeshInstance3D" parent="." unique_id=966490141]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 9.1, 0.1, 8.400001)
-mesh = ExtResource("5_tkedx")

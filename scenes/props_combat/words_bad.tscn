@@ -3,19 +3,81 @@
 [ext_resource type="Script" uid="uid://cx0loh1ql8tr4" path="res://scripts/props_combat/words_bad.gd" id="1_av1a8"]
 [ext_resource type="AudioStream" uid="uid://b6vfkfcyevfkp" path="res://assets/SFX/combat/Explosao_Hyper_1_sfx.mp3" id="2_5e26u"]
 [ext_resource type="AudioStream" uid="uid://bb8p0pn6qif5u" path="res://assets/SFX/combat/Explosao_Hyper_2_sfx.mp3" id="3_oqnxm"]
-[ext_resource type="Texture2D" uid="uid://bpcj4fhbv4mdl" path="res://assets/template2.png" id="4_2y5ot"]
 [ext_resource type="PackedScene" uid="uid://cbtr7b0tb7y2j" path="res://global/cenas/VFX/_Shaders/Bubble.tscn" id="5_4dbnf"]
+[ext_resource type="Texture2D" uid="uid://d06usjmmkw1da" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 1/Ruim/DayDream_Ruim1_Wave1.png" id="5_vfqsm"]
+[ext_resource type="Texture2D" uid="uid://b3uugju4lsnmi" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 1/Ruim/DayDream_Ruim2_Wave1.png" id="6_60f14"]
+[ext_resource type="Texture2D" uid="uid://dbaivm4o5p5ve" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 1/Ruim/DayDream_Ruim3_Wave1.png" id="7_pcj3b"]
+[ext_resource type="Texture2D" uid="uid://dsnp1e4xbqclu" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 2/Ruim/DayDream_Ruim1_Wave2.png" id="8_8kiay"]
+[ext_resource type="Texture2D" uid="uid://cwstulxjl00i8" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 2/Ruim/DayDream_Ruim2_Wave2.png" id="9_caucx"]
+[ext_resource type="Texture2D" uid="uid://sqqwvkwmb3je" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 2/Ruim/DayDream_Ruim3_Wave2.png" id="10_j3bnv"]
+[ext_resource type="Texture2D" uid="uid://d3v5c7xoptam1" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 3/Ruim/DayDream_Ruim1_Wave3.png" id="11_51e0d"]
+[ext_resource type="Texture2D" uid="uid://dp3tjjxu8ft8c" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 3/Ruim/DayDream_Ruim2_Wave3.png" id="12_2uk7b"]
+[ext_resource type="Texture2D" uid="uid://dt7debwiptke1" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 3/Ruim/DayDream_Ruim3_Wave3.png" id="13_npm54"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8ksj1"]
 streams_count = 2
 stream_0/stream = ExtResource("2_5e26u")
 stream_1/stream = ExtResource("3_oqnxm")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_isfe7"]
+viewport_path = NodePath("SubViewport")
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_isfe7"]
 radius = 1.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_av1a8"]
 radius = 1.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_isfe7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_vfqsm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_60f14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pcj3b")
+}],
+"loop": 0,
+"name": &"DD1",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_48cul"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_8kiay")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_caucx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_j3bnv")
+}],
+"loop": 0,
+"name": &"DD2",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ybq6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_51e0d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_2uk7b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_npm54")
+}],
+"loop": 0,
+"name": &"DD3",
+"speed": 5.0
+}]
 
 [node name="WordsBad" type="Node3D" unique_id=1656796278]
 script = ExtResource("1_av1a8")
@@ -30,12 +92,13 @@ one_shot = true
 autostart = true
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=833795134]
-modulate = Color(1, 1, 1, 0.49019608)
+modulate = Color(1, 1, 1, 0.5882353)
 billboard = 1
-texture = ExtResource("4_2y5ot")
+texture_filter = 0
+texture = SubResource("ViewportTexture_isfe7")
 
 [node name="Bubble" parent="." unique_id=2007721419 instance=ExtResource("5_4dbnf")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="Hitzone" type="Area3D" parent="." unique_id=824677423]
 monitoring = false
@@ -47,6 +110,35 @@ shape = SubResource("SphereShape3D_isfe7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ActivationZone" unique_id=1409318386]
 shape = SubResource("SphereShape3D_av1a8")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1597626291]
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(225, 125)
+
+[node name="WordsBad2DModel" type="Node2D" parent="SubViewport" unique_id=304108389]
+texture_filter = 1
+
+[node name="ReferenceRect" type="ReferenceRect" parent="SubViewport/WordsBad2DModel" unique_id=1925409131]
+offset_right = 225.0
+offset_bottom = 125.0
+
+[node name="AnimatedWord1" type="AnimatedSprite2D" parent="SubViewport/WordsBad2DModel" unique_id=1037071131]
+position = Vector2(112, 62)
+sprite_frames = SubResource("SpriteFrames_isfe7")
+animation = &"DD1"
+
+[node name="AnimatedWord2" type="AnimatedSprite2D" parent="SubViewport/WordsBad2DModel" unique_id=355421083]
+visible = false
+position = Vector2(112, 62)
+sprite_frames = SubResource("SpriteFrames_48cul")
+animation = &"DD2"
+
+[node name="AnimatedWord3" type="AnimatedSprite2D" parent="SubViewport/WordsBad2DModel" unique_id=2006991321]
+visible = false
+position = Vector2(112, 62)
+sprite_frames = SubResource("SpriteFrames_8ybq6")
+animation = &"DD3"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Hitzone" to="." method="_on_hitzone_area_entered"]
