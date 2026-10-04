@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://daq0ito1wky86"]
 
 [ext_resource type="Script" uid="uid://dnmv3vjqhgdv" path="res://scripts/props_combat/heart.gd" id="1_4ibar"]
+[ext_resource type="PackedScene" uid="uid://5yfl8qi5bdfv" path="res://scenes/props_combat/small_hearts2DModel.tscn" id="2_lc52h"]
 [ext_resource type="Script" uid="uid://mm1txersslaq" path="res://scripts/props_combat/heart_hitzone.gd" id="2_whua0"]
 [ext_resource type="Texture2D" uid="uid://cqem5txesffut" path="res://assets/props2D/heart/Hearts/BigHeartJuice1.png" id="3_5xr4i"]
 [ext_resource type="Texture2D" uid="uid://u3ncdbjmob4" path="res://assets/props2D/heart/Hearts/BigHeart1.png" id="3_s5xnc"]
@@ -32,9 +33,74 @@
 [ext_resource type="Texture2D" uid="uid://bkdoswsa7bxn1" path="res://assets/props2D/heart/Juices/Juice_Sparkles4.png" id="30_wxvl3"]
 [ext_resource type="Texture2D" uid="uid://baqqcq4wt02tu" path="res://assets/props2D/heart/Juices/Juice_Sparkles5.png" id="31_a8y6m"]
 [ext_resource type="Texture2D" uid="uid://cnwae8fikjhoj" path="res://assets/props2D/heart/Juices/Juice_Sparkles6.png" id="32_stdht"]
+[ext_resource type="Texture2D" uid="uid://bcuys8qo27165" path="res://assets/props2D/explosion/CascoBombaExplosion6.png" id="34_5c6kv"]
+[ext_resource type="Texture2D" uid="uid://cfpbhcorhhim5" path="res://assets/props2D/explosion/CascoBombaExplosion7.png" id="35_gxhyo"]
+[ext_resource type="Texture2D" uid="uid://cv3dw7aoo0uj2" path="res://assets/props2D/explosion/CascoBombaExplosion8.png" id="36_2fk5g"]
+[ext_resource type="Texture2D" uid="uid://04iqfg3nddd7" path="res://assets/props2D/explosion/CascoBombaExplosion9.png" id="37_8vs1g"]
+[ext_resource type="Texture2D" uid="uid://dq7gvcgw6ftll" path="res://assets/props2D/explosion/CascoBombaExplosion10.png" id="38_vi7uq"]
+[ext_resource type="Texture2D" uid="uid://dxw0n7eseickl" path="res://assets/props2D/explosion/CascoBombaExplosion11.png" id="39_5ybce"]
+[ext_resource type="Texture2D" uid="uid://cuoo3ftibpfvb" path="res://assets/props2D/explosion/CascoBombaExplosion12.png" id="40_lg84o"]
+[ext_resource type="Texture2D" uid="uid://cq7d8t0ompg3i" path="res://assets/props2D/explosion/CascoBombaExplosion13.png" id="41_ixnna"]
+[ext_resource type="Texture2D" uid="uid://dulyec617uumw" path="res://assets/props2D/explosion/CascoBombaExplosion14.png" id="42_01d0b"]
+[ext_resource type="Texture2D" uid="uid://hkqi8r58ccnq" path="res://assets/props2D/teleport/Teleport1.png" id="43_861w7"]
+[ext_resource type="Texture2D" uid="uid://dqry2bthdi53p" path="res://assets/props2D/teleport/Teleport2.png" id="44_7m7p7"]
+[ext_resource type="Texture2D" uid="uid://cduhaxw8unfun" path="res://assets/props2D/teleport/Teleport3.png" id="45_cubhb"]
+[ext_resource type="Texture2D" uid="uid://uv6os38o3uy1" path="res://assets/props2D/teleport/Teleport4.png" id="46_aflgw"]
+[ext_resource type="Texture2D" uid="uid://oqsicmk3fa7q" path="res://assets/props2D/teleport/Teleport5.png" id="47_bxuyi"]
+[ext_resource type="Texture2D" uid="uid://clwvfag6tx4jj" path="res://assets/props2D/teleport/Teleport6.png" id="48_0sun1"]
+[ext_resource type="Texture2D" uid="uid://bs2nxtgncf3xk" path="res://assets/props2D/teleport/Teleport7.png" id="49_pqogw"]
+[ext_resource type="Texture2D" uid="uid://dmpdprghkss8y" path="res://assets/props2D/teleport/Teleport8.png" id="50_dg5fq"]
+[ext_resource type="Texture2D" uid="uid://bvtctujorx1jh" path="res://assets/props2D/teleport/Teleport9.png" id="51_bdbj2"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vaj5l"]
+viewport_path = NodePath("OrbitalHearts/SubViewport")
+
+[sub_resource type="Animation" id="Animation_lc52h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_y6d1m"]
+resource_name = "rotate"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.5235988), Vector3(0, 3.1415927, 0.5235988), Vector3(0, 6.2831855, -0.5235988)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u1buw"]
+_data = {
+&"RESET": SubResource("Animation_lc52h"),
+&"rotate": SubResource("Animation_y6d1m")
+}
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_isfe7"]
 viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ukoy2"]
+viewport_path = NodePath("ExplosionViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_s7uux"]
+viewport_path = NodePath("TeleportViewport")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_isfe7"]
 radius = 2.0
@@ -62,7 +128,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"hit",
-"speed": 12.0
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -155,14 +221,168 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_7m7p7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("27_gkgvb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_6icib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_02upi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_wxvl3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_a8y6m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_stdht")
+}],
+"loop": 1,
+"name": &"hit_init",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_861w7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_5c6kv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_gxhyo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_2fk5g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_8vs1g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_vi7uq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_5ybce")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_lg84o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_ixnna")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_01d0b")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": 0,
+"name": &"Default",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dg8ni"]
+animations = [{
+"frames": [{
+"duration": 1.5,
+"texture": null
+}, {
+"duration": 1.5,
+"texture": ExtResource("43_861w7")
+}, {
+"duration": 1.5,
+"texture": ExtResource("44_7m7p7")
+}, {
+"duration": 1.5,
+"texture": ExtResource("45_cubhb")
+}, {
+"duration": 1.5,
+"texture": ExtResource("46_aflgw")
+}, {
+"duration": 1.5,
+"texture": ExtResource("47_bxuyi")
+}, {
+"duration": 1.5,
+"texture": ExtResource("48_0sun1")
+}, {
+"duration": 1.5,
+"texture": ExtResource("49_pqogw")
+}, {
+"duration": 1.5,
+"texture": ExtResource("50_dg5fq")
+}, {
+"duration": 1.5,
+"texture": ExtResource("51_bdbj2")
+}, {
+"duration": 1.5,
+"texture": null
+}],
+"loop": 0,
+"name": &"Default",
+"speed": 12.0
+}]
+
 [node name="Heart" type="Node3D" unique_id=617124099]
 script = ExtResource("1_4ibar")
+
+[node name="OrbitalHearts" type="Node3D" parent="." unique_id=1797639657]
+
+[node name="Heart1" type="Sprite3D" parent="OrbitalHearts" unique_id=1946834311]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 2)
+visible = false
+billboard = 1
+texture_filter = 0
+texture = SubResource("ViewportTexture_vaj5l")
+
+[node name="Heart2" type="Sprite3D" parent="OrbitalHearts" unique_id=306463281]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.7, 0, -1)
+visible = false
+billboard = 1
+texture_filter = 0
+texture = SubResource("ViewportTexture_vaj5l")
+
+[node name="Heart3" type="Sprite3D" parent="OrbitalHearts" unique_id=1643920897]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.8, 0, -1)
+visible = false
+billboard = 1
+texture_filter = 0
+texture = SubResource("ViewportTexture_vaj5l")
+
+[node name="AnimationOrbital" type="AnimationPlayer" parent="OrbitalHearts" unique_id=1436073625]
+libraries/ = SubResource("AnimationLibrary_u1buw")
+autoplay = &"rotate"
+
+[node name="SubViewport" type="SubViewport" parent="OrbitalHearts" unique_id=1308927624]
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(50, 50)
+
+[node name="SmallHearts2DModel" parent="OrbitalHearts/SubViewport" unique_id=304108389 instance=ExtResource("2_lc52h")]
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=951684308]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 billboard = 1
 texture_filter = 0
 texture = SubResource("ViewportTexture_isfe7")
+
+[node name="Explosion" type="Sprite3D" parent="." unique_id=433874593]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0.1)
+billboard = 1
+texture_filter = 0
+texture = SubResource("ViewportTexture_ukoy2")
+
+[node name="Teleport" type="Sprite3D" parent="." unique_id=1276296062]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0.1)
+billboard = 1
+texture_filter = 0
+texture = SubResource("ViewportTexture_s7uux")
 
 [node name="Hitzone" type="Area3D" parent="." unique_id=1051437134]
 script = ExtResource("2_whua0")
@@ -175,7 +395,7 @@ transparent_bg = true
 canvas_item_default_texture_filter = 0
 size = Vector2i(150, 90)
 
-[node name="Heart2dModel" type="Node2D" parent="SubViewport" unique_id=304108389]
+[node name="Heart2dModel" type="Node2D" parent="SubViewport" unique_id=1112160692]
 texture_filter = 1
 
 [node name="ReferenceRect" type="ReferenceRect" parent="SubViewport/Heart2dModel" unique_id=1925409131]
@@ -187,11 +407,52 @@ position = Vector2(75, 46)
 sprite_frames = SubResource("SpriteFrames_isfe7")
 animation = &"hit"
 autoplay = "normal"
-frame_progress = 0.085374646
 
 [node name="AnimatedJuice" type="AnimatedSprite2D" parent="SubViewport/Heart2dModel" unique_id=1248431355]
 position = Vector2(74, 47)
 sprite_frames = SubResource("SpriteFrames_vaj5l")
 animation = &"hit_end"
+
+[node name="AnimatedJuice2" type="AnimatedSprite2D" parent="SubViewport/Heart2dModel" unique_id=2037277228]
+position = Vector2(74, 47)
+sprite_frames = SubResource("SpriteFrames_7m7p7")
+animation = &"hit_init"
+
+[node name="ExplosionViewport" type="SubViewport" parent="." unique_id=1511450415]
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(150, 150)
+
+[node name="Explosion2DModel" type="Node2D" parent="ExplosionViewport" unique_id=1681887942]
+texture_filter = 1
+
+[node name="ReferenceRect" type="ReferenceRect" parent="ExplosionViewport/Explosion2DModel" unique_id=1286598000]
+offset_right = 150.0
+offset_bottom = 150.0
+
+[node name="AnimatedExplosion" type="AnimatedSprite2D" parent="ExplosionViewport/Explosion2DModel" unique_id=1950887713]
+position = Vector2(76, 63)
+sprite_frames = SubResource("SpriteFrames_861w7")
+animation = &"Default"
+
+[node name="TeleportViewport" type="SubViewport" parent="." unique_id=505357385]
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(150, 150)
+
+[node name="Teleport2DModel" type="Node2D" parent="TeleportViewport" unique_id=1209613642]
+texture_filter = 1
+
+[node name="ReferenceRect" type="ReferenceRect" parent="TeleportViewport/Teleport2DModel" unique_id=1151558746]
+offset_right = 150.0
+offset_bottom = 150.0
+
+[node name="AnimatedExplosion" type="AnimatedSprite2D" parent="TeleportViewport/Teleport2DModel" unique_id=1348253783]
+position = Vector2(76, 73)
+sprite_frames = SubResource("SpriteFrames_dg8ni")
+animation = &"Default"
+autoplay = "Default"
+frame = 10
+frame_progress = 1.0
 
 [connection signal="area_entered" from="Hitzone" to="." method="_on_hitzone_area_entered"]

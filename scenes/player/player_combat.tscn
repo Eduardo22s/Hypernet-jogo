@@ -58,13 +58,14 @@
 [ext_resource type="Texture2D" uid="uid://dfhtukyo0v8hy" path="res://assets/player/walking/Atrás/Protag_MovBack8.png" id="55_e4nde"]
 [ext_resource type="PackedScene" uid="uid://q011uuyg7lng" path="res://global/cenas/VFX/_Shaders/Footsteps/Footsteps.tscn" id="56_yj1tf"]
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_eg6rn"]
-streams_count = 5
-stream_0/stream = ExtResource("2_l441l")
-stream_1/stream = ExtResource("3_30d14")
-stream_2/stream = ExtResource("4_nfaxx")
-stream_3/stream = ExtResource("5_g5s6v")
-stream_4/stream = ExtResource("6_kdjp4")
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_ixmm3"]
+shuffle = true
+stream_count = 5
+stream_0 = ExtResource("2_l441l")
+stream_1 = ExtResource("3_30d14")
+stream_2 = ExtResource("4_nfaxx")
+stream_3 = ExtResource("5_g5s6v")
+stream_4 = ExtResource("6_kdjp4")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_unwft"]
 height = 1.6572266
@@ -318,8 +319,9 @@ animations = [{
 [node name="PlayerCombat" type="CharacterBody3D" unique_id=1230296654]
 script = ExtResource("1_pu85u")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1643786188]
-stream = SubResource("AudioStreamRandomizer_eg6rn")
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=822496498]
+stream = SubResource("AudioStreamPlaylist_ixmm3")
+pitch_scale = 2.0
 
 [node name="VFX_Footstep" parent="." unique_id=242030755 instance=ExtResource("56_yj1tf")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.4, 0.2)

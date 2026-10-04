@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://b5wgqv245hewb"]
+
+[ext_resource type="Texture2D" uid="uid://c6oc6gj1s3w7w" path="res://assets/props2D/stages/main_menu/Menu_Half_Off.png" id="1_0f6co"]
+[ext_resource type="Script" uid="uid://bmgeres5rftjk" path="res://scripts/stages/main_menu.gd" id="1_4wiys"]
+[ext_resource type="Texture2D" uid="uid://dcivjhd21m08u" path="res://assets/props2D/stages/main_menu/Menu.png" id="1_gbcjx"]
+[ext_resource type="Texture2D" uid="uid://c1s3gkih4i2u2" path="res://assets/props2D/stages/main_menu/Menu_Half_On.png" id="2_gbcjx"]
+[ext_resource type="Texture2D" uid="uid://b7h5mdj3bihq" path="res://assets/props2D/stages/main_menu/Menu_Choice1.png" id="4_8svwo"]
+[ext_resource type="Texture2D" uid="uid://c3ao5v612j03s" path="res://assets/props2D/stages/main_menu/Menu_Choice2.png" id="5_4wiys"]
+[ext_resource type="Texture2D" uid="uid://dgp0aagkvywih" path="res://assets/props2D/stages/main_menu/Menu_Choice3.png" id="6_i27me"]
+[ext_resource type="Texture2D" uid="uid://uu726wg6qpmb" path="res://assets/props2D/stages/main_menu/Menu_Choice4.png" id="7_763r6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_isfe7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0f6co")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_0f6co")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_0f6co")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_0f6co")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_gbcjx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_gbcjx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_gbcjx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_gbcjx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_gbcjx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_gbcjx")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vaj5l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gbcjx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8svwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4wiys")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_i27me")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_763r6")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MainMenu" type="Node2D" unique_id=1773018827]
+script = ExtResource("1_4wiys")
+
+[node name="AnimatedIntro" type="AnimatedSprite2D" parent="." unique_id=509189927]
+position = Vector2(576, 324)
+sprite_frames = SubResource("SpriteFrames_isfe7")
+autoplay = "default"
+frame = 9
+frame_progress = 1.0
+
+[node name="AnimatedMenu" type="AnimatedSprite2D" parent="." unique_id=1454965303]
+position = Vector2(576, 324)
+sprite_frames = SubResource("SpriteFrames_vaj5l")
+
+[node name="ButtonPlay" type="Button" parent="." unique_id=1294048554]
+offset_left = 209.0
+offset_top = 69.0
+offset_right = 449.0
+offset_bottom = 154.0
+flat = true
+
+[node name="ButtonOptions" type="Button" parent="." unique_id=610314322]
+offset_left = 192.0
+offset_top = 202.0
+offset_right = 436.0
+offset_bottom = 295.0
+flat = true
+
+[node name="ButtonCredits" type="Button" parent="." unique_id=467625095]
+offset_left = 190.0
+offset_top = 349.0
+offset_right = 438.0
+offset_bottom = 441.0
+flat = true
+
+[node name="ButtonExit" type="Button" parent="." unique_id=1190688057]
+offset_left = 203.0
+offset_top = 485.0
+offset_right = 450.0
+offset_bottom = 574.0
+flat = true
+
+[connection signal="pressed" from="ButtonPlay" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="ButtonOptions" to="." method="_on_button_options_pressed"]
+[connection signal="pressed" from="ButtonCredits" to="." method="_on_button_credits_pressed"]
+[connection signal="pressed" from="ButtonExit" to="." method="_on_button_exit_pressed"]

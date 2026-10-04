@@ -13,6 +13,7 @@ const coyote = 0.20
 const buffer = 0.15
 const freiar = 20.0
 
+var dashing = false
 var SPEED = 5.0
 var bufferTimer = 0.0
 var coyoteTimer = 0.0
@@ -21,21 +22,41 @@ var coyoteTimer = 0.0
 
 var camera_atual := 0
 
+var cooldown = false
+var cooldown_time = 0
+
 
 func _ready():
 	trocar_camera(camera_atual)
+	Global.timer_on = true
 	global_position = Global.player_return_pos
 	Global.stop_player = false
+	Global.words_in_storage = 0
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	manage_battles()
+
+	if Global.end_game:
+		await get_tree().create_timer(2.0).timeout
+		get_tree().change_scene_to_file("res://scenes/stages/main_menu.tscn")
 
 	if Global.stop_player:
 		SPEED = 0.0
+	elif dashing:
+		SPEED = 500.0
 	else:
 		SPEED = 5.0
 
+	if cooldown_time <= 1:
+		cooldown = true
+	else:
+		cooldown = false
+
+	if cooldown_time >= 0:
+		cooldown_time -= cooldown_time * delta
+
 func _physics_process(delta: float) -> void:
+	handle_attack()
 	var moving_sprite = $SubViewport/Player2dModel/AnimatedMoving
 	var idle_sprite = $SubViewport/Player2dModel/AnimatedIdle
 
@@ -181,6 +202,21 @@ func _physics_process(delta: float) -> void:
 
 
 	move_and_slide()
+
+
+func handle_attack():
+	if cooldown:
+		if Input.is_action_just_pressed("attack"):
+			dash()
+			$OrbitalPivot/AnimationAttack.play("attack")
+			await get_tree().create_timer(0.5).timeout
+			$OrbitalPivot/Attack/Area3D/CollisionShape3D.position.z = 0
+			cooldown_time = 3.0
+
+func dash():
+	dashing = true
+	await get_tree().create_timer(0.5).timeout
+	dashing = false
 
 
 func manage_battles():

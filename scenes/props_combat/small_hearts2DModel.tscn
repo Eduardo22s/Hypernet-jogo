@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://5yfl8qi5bdfv"]
+
+[ext_resource type="Texture2D" uid="uid://7pwkryckyrda" path="res://assets/props2D/heart/Hearts/SmallHeart1.png" id="1_pfydo"]
+[ext_resource type="Texture2D" uid="uid://kbqqqt54t01l" path="res://assets/props2D/heart/Hearts/SmallHeart2.png" id="2_ar6am"]
+[ext_resource type="Texture2D" uid="uid://bo5w61l7jfhd2" path="res://assets/props2D/heart/Hearts/SmallHeart3.png" id="3_pxcjt"]
+[ext_resource type="Texture2D" uid="uid://cmpcj8sgpp75m" path="res://assets/props2D/heart/Hearts/SmallHeart4.png" id="4_ityaa"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_isfe7"]
+animations = [{
+"frames": [{
+"duration": 1.5,
+"texture": ExtResource("1_pfydo")
+}, {
+"duration": 1.5,
+"texture": ExtResource("2_ar6am")
+}, {
+"duration": 1.5,
+"texture": ExtResource("3_pxcjt")
+}, {
+"duration": 1.5,
+"texture": ExtResource("4_ityaa")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 24.0
+}]
+
+[node name="SmallHearts2DModel" type="Node2D" unique_id=304108389]
+texture_filter = 1
+
+[node name="ReferenceRect" type="ReferenceRect" parent="." unique_id=1925409131]
+offset_right = 50.0
+offset_bottom = 50.0
+
+[node name="AnimatedHeart" type="AnimatedSprite2D" parent="." unique_id=1037071131]
+position = Vector2(25, 25)
+sprite_frames = SubResource("SpriteFrames_isfe7")
+autoplay = "default"
+frame_progress = 0.58849293

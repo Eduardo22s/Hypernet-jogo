@@ -8,7 +8,9 @@
 [ext_resource type="AudioStream" uid="uid://b2a2labg0tde4" path="res://assets/SFX/player/hypernetpassosgrama4sfx.mp3" id="5_dpwul"]
 [ext_resource type="AudioStream" uid="uid://w7la3nl8m27h" path="res://assets/SFX/player/hypernetpassosgrama5sfx.mp3" id="6_dk6du"]
 [ext_resource type="Texture2D" uid="uid://ogvxg55im8u" path="res://assets/player/idle/ProtagRotacao1.png" id="8_8ksj1"]
+[ext_resource type="Script" uid="uid://bguf3ys1es0a" path="res://scripts/player/grab.gd" id="8_b7sm8"]
 [ext_resource type="Texture2D" uid="uid://21gc83yk0hjs" path="res://assets/player/idle/ProtagRotacao2.png" id="9_5wnqv"]
+[ext_resource type="PackedScene" uid="uid://c221x5588v6xe" path="res://global/cenas/VFX/_Shaders/Sprint/DashEffect.tscn" id="9_w3q4g"]
 [ext_resource type="Texture2D" uid="uid://duwbgkspxqxtr" path="res://assets/player/idle/ProtagRotacao3.png" id="10_cgdem"]
 [ext_resource type="Texture2D" uid="uid://6loq5aj34fxn" path="res://assets/player/idle/ProtagRotacao4.png" id="11_25c80"]
 [ext_resource type="Texture2D" uid="uid://ceennm55jy7t3" path="res://assets/player/idle/ProtagRotacao5.png" id="12_xgqk3"]
@@ -57,18 +59,82 @@
 [ext_resource type="Texture2D" uid="uid://dfhtukyo0v8hy" path="res://assets/player/walking/Atrás/Protag_MovBack8.png" id="55_jxd4u"]
 [ext_resource type="PackedScene" uid="uid://q011uuyg7lng" path="res://global/cenas/VFX/_Shaders/Footsteps/Footsteps.tscn" id="56_k8ywf"]
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8ksj1"]
-streams_count = 5
-stream_0/stream = ExtResource("2_w0700")
-stream_1/stream = ExtResource("3_nius7")
-stream_2/stream = ExtResource("4_omgaf")
-stream_3/stream = ExtResource("5_dpwul")
-stream_4/stream = ExtResource("6_dk6du")
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_7w6fn"]
+shuffle = true
+stream_count = 5
+stream_0 = ExtResource("2_w0700")
+stream_1 = ExtResource("3_nius7")
+stream_2 = ExtResource("4_omgaf")
+stream_3 = ExtResource("5_dpwul")
+stream_4 = ExtResource("6_dk6du")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_unwft"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_8ksj1"]
 viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Animation" id="Animation_k218s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VFX_Sprint:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VFX_Sprint:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1)]
+}
+
+[sub_resource type="Animation" id="Animation_h2iks"]
+resource_name = "attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VFX_Sprint:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VFX_Sprint:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1), Vector3(1.5, 1.5, 1.5), Vector3(1.5, 1.5, 1.5), Vector3(0.1, 0.1, 0.1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rm4cf"]
+_data = {
+&"RESET": SubResource("Animation_k218s"),
+&"attack": SubResource("Animation_h2iks")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1yv7b"]
+radius = 1.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mhgj0"]
 
@@ -269,8 +335,11 @@ animations = [{
 [node name="PlayerExploration" type="CharacterBody3D" unique_id=1230296654]
 script = ExtResource("1_w152q")
 
+[node name="HUD" parent="." unique_id=768712725 instance=ExtResource("3_idagx")]
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1482443339]
-stream = SubResource("AudioStreamRandomizer_8ksj1")
+stream = SubResource("AudioStreamPlaylist_7w6fn")
+pitch_scale = 2.0
 
 [node name="VFX_Footstep" parent="." unique_id=464254289 instance=ExtResource("56_k8ywf")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.4, 0.2)
@@ -284,6 +353,26 @@ billboard = 1
 texture_filter = 0
 texture = SubResource("ViewportTexture_8ksj1")
 
+[node name="OrbitalPivot" type="Node3D" parent="." unique_id=328456640]
+
+[node name="AnimationAttack" type="AnimationPlayer" parent="OrbitalPivot" unique_id=1276944132]
+libraries/ = SubResource("AnimationLibrary_rm4cf")
+
+[node name="Attack" type="Node3D" parent="OrbitalPivot" unique_id=1824541613]
+
+[node name="Area3D" type="Area3D" parent="OrbitalPivot/Attack" unique_id=244853592]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+script = ExtResource("8_b7sm8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OrbitalPivot/Attack/Area3D" unique_id=760698410]
+shape = SubResource("SphereShape3D_1yv7b")
+disabled = true
+debug_color = Color(0.9372793, 1.3284087e-05, 0.6265227, 1)
+
+[node name="VFX_Sprint" parent="OrbitalPivot" unique_id=1033056611 instance=ExtResource("9_w3q4g")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+visible = false
+
 [node name="Cameras" type="Node3D" parent="." unique_id=15005866]
 
 [node name="SpringArm1" type="SpringArm3D" parent="Cameras" unique_id=1750265599]
@@ -292,16 +381,12 @@ shape = SubResource("SphereShape3D_mhgj0")
 
 [node name="Camera1" type="Camera3D" parent="Cameras/SpringArm1" unique_id=648094692]
 
-[node name="HUD" parent="Cameras/SpringArm1/Camera1" unique_id=1747082955 instance=ExtResource("3_idagx")]
-
 [node name="SpringArm2" type="SpringArm3D" parent="Cameras" unique_id=1144160767]
 transform = Transform3D(0.7071068, -0.21850799, 0.6724985, -1.4901161e-08, 0.95105654, 0.309017, -0.70710677, -0.21850802, 0.6724986, 1.8000001, 1, 1.8000002)
 shape = SubResource("SphereShape3D_ref4y")
 
 [node name="Camera2" type="Camera3D" parent="Cameras/SpringArm2" unique_id=419808414]
 transform = Transform3D(1, 0, 0, 0, 1, -1.4901161e-08, 0, 1.4901161e-08, 1, 0, 0, 0)
-
-[node name="HUD" parent="Cameras/SpringArm2/Camera2" unique_id=1958523873 instance=ExtResource("3_idagx")]
 
 [node name="SpringArm3" type="SpringArm3D" parent="Cameras" unique_id=627102556]
 transform = Transform3D(-4.371139e-08, -0.309017, 0.95105654, 0, 0.95105654, 0.309017, -1, 1.3507562e-08, -4.1572e-08, 2.5, 1, 0)
@@ -310,15 +395,11 @@ shape = SubResource("SphereShape3D_b6r26")
 [node name="Camera3" type="Camera3D" parent="Cameras/SpringArm3" unique_id=1238088220]
 transform = Transform3D(1, 0, 0, 0, 1, -5.6153636e-16, 0, -5.6153636e-16, 1, 0, 0, 0)
 
-[node name="HUD" parent="Cameras/SpringArm3/Camera3" unique_id=1568815544 instance=ExtResource("3_idagx")]
-
 [node name="SpringArm4" type="SpringArm3D" parent="Cameras" unique_id=1618556382]
 transform = Transform3D(-0.7071068, -0.21850802, 0.6724985, 0, 0.95105654, 0.309017, -0.7071068, 0.21850802, -0.6724985, 1.8000001, 1, -1.8000001)
 shape = SubResource("SphereShape3D_yumig")
 
 [node name="Camera4" type="Camera3D" parent="Cameras/SpringArm4" unique_id=203852609]
-
-[node name="HUD" parent="Cameras/SpringArm4/Camera4" unique_id=2091094629 instance=ExtResource("3_idagx")]
 
 [node name="SpringArm5" type="SpringArm3D" parent="Cameras" unique_id=464277034]
 transform = Transform3D(-1, -2.7015124e-08, 8.3144e-08, 0, 0.95105654, 0.309017, -8.742278e-08, 0.309017, -0.95105654, 0, 1, -2.5)
@@ -326,15 +407,11 @@ shape = SubResource("SphereShape3D_pddbp")
 
 [node name="Camera5" type="Camera3D" parent="Cameras/SpringArm5" unique_id=1386965702]
 
-[node name="HUD" parent="Cameras/SpringArm5/Camera5" unique_id=578589751 instance=ExtResource("3_idagx")]
-
 [node name="SpringArm6" type="SpringArm3D" parent="Cameras" unique_id=1316862995]
 transform = Transform3D(-0.7071068, 0.21850802, -0.6724985, 0, 0.95105654, 0.309017, 0.7071068, 0.21850802, -0.6724985, -1.8, 1, -1.8)
 shape = SubResource("SphereShape3D_hgm3x")
 
 [node name="Camera6" type="Camera3D" parent="Cameras/SpringArm6" unique_id=494567624]
-
-[node name="HUD" parent="Cameras/SpringArm6/Camera6" unique_id=1280227651 instance=ExtResource("3_idagx")]
 
 [node name="SpringArm7" type="SpringArm3D" parent="Cameras" unique_id=1874520916]
 transform = Transform3D(-4.371139e-08, 0.309017, -0.95105654, 0, 0.95105654, 0.309017, 1, 1.3507562e-08, -4.1572e-08, -2.5, 1, 0)
@@ -343,15 +420,11 @@ shape = SubResource("SphereShape3D_7r1ti")
 [node name="Camera7" type="Camera3D" parent="Cameras/SpringArm7" unique_id=530864689]
 transform = Transform3D(1, 0, 0, 0, 1, -5.6153636e-16, 0, -5.6153636e-16, 1, 0, 0, 0)
 
-[node name="HUD" parent="Cameras/SpringArm7/Camera7" unique_id=1600424132 instance=ExtResource("3_idagx")]
-
 [node name="SpringArm8" type="SpringArm3D" parent="Cameras" unique_id=1236477238]
 transform = Transform3D(0.7071068, 0.21850802, -0.6724985, 0, 0.95105654, 0.309017, 0.7071068, -0.21850802, 0.6724985, -1.8000001, 1, 1.8000001)
 shape = SubResource("SphereShape3D_mp6gn")
 
 [node name="Camera8" type="Camera3D" parent="Cameras/SpringArm8" unique_id=1862488618]
-
-[node name="HUD" parent="Cameras/SpringArm8/Camera8" unique_id=1163737124 instance=ExtResource("3_idagx")]
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1504833873]
 transparent_bg = true

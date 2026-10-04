@@ -2,7 +2,6 @@ extends Node3D
 
 @onready var border: Border = $"../Environment/Border"
 
-@export var start_delay: float = 1.75
 @export var start_direction: Vector3 = Vector3.RIGHT
 @export var bounce_random_angle_deg: float = 35.0
 
@@ -22,13 +21,16 @@ func _on_hitzone_area_entered(area: Area3D) -> void:
 
 
 func _ready() -> void:
-	Global.taking_damage.connect(_take_damage)
-	height = global_transform.origin.y
-	$SubViewport/Heart2dModel/AnimatedJuice.play("hit_init")
+	$TeleportViewport/Teleport2DModel/AnimatedExplosion.play("Default")
+	if $TeleportViewport/Teleport2DModel/AnimatedExplosion.frame == 0:
+		Global.taking_damage.connect(_take_damage)
+		height = global_transform.origin.y
+		$SubViewport/Heart2dModel/AnimatedJuice.play("hit_init")
 
-	await get_tree().create_timer(start_delay).timeout
-	$SubViewport/Heart2dModel/AnimatedJuice.play("hit_end")
-	_start_moving()
+		await get_tree().create_timer(2.0).timeout
+		$SubViewport/Heart2dModel/AnimatedJuice.play("hit_end")
+		$SubViewport/Heart2dModel/AnimatedJuice2.play("hit_init")
+		_start_moving()
 
 func _process(delta: float) -> void:
 	if moving:
@@ -42,7 +44,28 @@ func _process(delta: float) -> void:
 		
 		await get_tree().create_timer(2.5).timeout
 		await get_tree().process_frame
-		get_tree().change_scene_to_file("res://scenes/stages/fase.tscn")
+		get_tree().change_scene_to_file.call_deferred("res://scenes/stages/fase.tscn")
+	
+	match Global.words_in_storage:
+		1:
+			$OrbitalHearts/Heart1.visible = true
+			$ExplosionViewport/Explosion2DModel/AnimatedExplosion.play("Default")
+			
+			await get_tree().create_timer(1.0).timeout
+			$ExplosionViewport/Explosion2DModel/AnimatedExplosion.stop()
+		2:
+			$OrbitalHearts/Heart2.visible = true
+			$ExplosionViewport/Explosion2DModel/AnimatedExplosion.play("Default")
+			
+			await get_tree().create_timer(1.0).timeout
+			$ExplosionViewport/Explosion2DModel/AnimatedExplosion.stop()
+		3:
+			$OrbitalHearts/Heart3.visible = true
+			$ExplosionViewport/Explosion2DModel/AnimatedExplosion.play("Default")
+			$TeleportViewport/Teleport2DModel/AnimatedExplosion.play_backwards("Default")
+			
+			await get_tree().create_timer(1.0).timeout
+			$ExplosionViewport/Explosion2DModel/AnimatedExplosion.stop()
 
 
 func _start_moving() -> void:

@@ -28,6 +28,9 @@ var cooldown = false
 var cooldown_time = 0
 
 
+func _ready() -> void:
+	Global.timer_on = false
+
 func _process(delta: float) -> void:
 	if dashing:
 		SPEED = 500.0

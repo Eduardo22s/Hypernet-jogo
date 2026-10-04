@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://b7mor1lpuurev"]
+
+[ext_resource type="Texture2D" uid="uid://bcuys8qo27165" path="res://assets/props2D/explosion/CascoBombaExplosion6.png" id="1_ukoy2"]
+[ext_resource type="Texture2D" uid="uid://cfpbhcorhhim5" path="res://assets/props2D/explosion/CascoBombaExplosion7.png" id="2_ndexh"]
+[ext_resource type="Texture2D" uid="uid://cv3dw7aoo0uj2" path="res://assets/props2D/explosion/CascoBombaExplosion8.png" id="3_i6ahh"]
+[ext_resource type="Texture2D" uid="uid://04iqfg3nddd7" path="res://assets/props2D/explosion/CascoBombaExplosion9.png" id="4_dxetq"]
+[ext_resource type="Texture2D" uid="uid://dq7gvcgw6ftll" path="res://assets/props2D/explosion/CascoBombaExplosion10.png" id="5_xhi65"]
+[ext_resource type="Texture2D" uid="uid://dxw0n7eseickl" path="res://assets/props2D/explosion/CascoBombaExplosion11.png" id="6_ttkvh"]
+[ext_resource type="Texture2D" uid="uid://cuoo3ftibpfvb" path="res://assets/props2D/explosion/CascoBombaExplosion12.png" id="7_puxdr"]
+[ext_resource type="Texture2D" uid="uid://cq7d8t0ompg3i" path="res://assets/props2D/explosion/CascoBombaExplosion13.png" id="8_qyvqd"]
+[ext_resource type="Texture2D" uid="uid://dulyec617uumw" path="res://assets/props2D/explosion/CascoBombaExplosion14.png" id="9_3gr1h"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_isfe7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_ukoy2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ndexh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_i6ahh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dxetq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xhi65")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ttkvh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_puxdr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qyvqd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3gr1h")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": 0,
+"name": &"Default",
+"speed": 12.0
+}]
+
+[node name="Explosion2DModel" type="Node2D" unique_id=304108389]
+texture_filter = 1
+
+[node name="ReferenceRect" type="ReferenceRect" parent="." unique_id=1925409131]
+offset_right = 150.0
+offset_bottom = 150.0
+
+[node name="AnimatedExplosion" type="AnimatedSprite2D" parent="." unique_id=1037071131]
+position = Vector2(76, 63)
+sprite_frames = SubResource("SpriteFrames_isfe7")
+animation = &"Default"
+autoplay = "Default"

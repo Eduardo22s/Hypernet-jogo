@@ -35,8 +35,11 @@ func _on_hitzone_area_entered(area: Area3D) -> void:
 		thrown = false
 		in_heart = true
 		Global.emit_signal("taking_damage")
+		Global.word_kind = "Bad"
 		Global.words_in_storage += 1
 		$AudioStreamPlayer.play()
+		$Sprite3D.visible = false
+		$Bubble.visible = false
 
 
 func _process(delta: float) -> void:

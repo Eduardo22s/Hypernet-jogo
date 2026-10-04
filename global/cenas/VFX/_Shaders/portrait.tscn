@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://boelvsu4gae3x"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_isfe7"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Portrait" type="Node3D" unique_id=2136759838]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=936741388]
+position = Vector2(366, 347)
+texture = SubResource("ViewportTexture_isfe7")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1173024571]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=1283679546]

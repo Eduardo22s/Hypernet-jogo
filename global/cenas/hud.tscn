@@ -3,9 +3,142 @@
 [ext_resource type="Script" uid="uid://cnvfl5hujjfih" path="res://global/script/hud.gd" id="1_taf06"]
 [ext_resource type="Shader" uid="uid://fsl3lmqgpnp5" path="res://global/cenas/VFX/_Shaders/CRTFilter.gdshader" id="2_hcsof"]
 [ext_resource type="Texture2D" uid="uid://cv7apoy862vu0" path="res://assets/props2D/YouTV_TimerUI.png" id="2_jt6de"]
+[ext_resource type="Texture2D" uid="uid://cq36vtmcevr3x" path="res://assets/props2D/HUD/BattleUI/Battle_Player.png" id="3_5jqjx"]
 [ext_resource type="FontFile" uid="uid://bcgyc0ombka2d" path="res://assets/fonts/Rayman 1.ttf" id="3_7rux2"]
+[ext_resource type="Texture2D" uid="uid://cwi3kjyrisq0k" path="res://assets/props2D/HUD/BattleUI/Battle_Enemy.png" id="3_d8snf"]
+[ext_resource type="Texture2D" uid="uid://3d20hkt7ftbq" path="res://assets/props2D/HUD/BattleUI/Battle_Number.png" id="4_qkiwq"]
+[ext_resource type="Texture2D" uid="uid://chnvsfka6u12h" path="res://assets/props2D/HUD/BattleUI/Battle_WaveBar.png" id="5_qkiwq"]
+[ext_resource type="Texture2D" uid="uid://c4k7otnnq1i6n" path="res://assets/props2D/HUD/BattleUI/HatePoints.png" id="6_vj4h4"]
+[ext_resource type="Texture2D" uid="uid://boatjwtdnjxlf" path="res://assets/props2D/HUD/BattleUI/LovePoints.png" id="7_lg5qw"]
+[ext_resource type="Texture2D" uid="uid://dpbaq7714trjq" path="res://assets/props2D/HUD/BattleUI/NeutralPoints.png" id="8_c38d7"]
+[ext_resource type="Texture2D" uid="uid://b15i4gdjmsvs" path="res://assets/props2D/HUD/PauseAnimation/PAUSE_Animation1.png" id="11_46f7o"]
+[ext_resource type="Texture2D" uid="uid://8lgmffpgysnt" path="res://assets/props2D/HUD/PauseAnimation/PAUSE_Animation2.png" id="12_ne16y"]
+[ext_resource type="Texture2D" uid="uid://dumagm11clnq1" path="res://assets/props2D/HUD/PauseAnimation/PAUSE_Animation3.png" id="13_47ly8"]
+[ext_resource type="Texture2D" uid="uid://bbx4jkrysixpt" path="res://assets/props2D/HUD/PauseAnimation/PAUSE_Animation4.png" id="14_vw453"]
+[ext_resource type="Texture2D" uid="uid://c7kei2mwpl1sv" path="res://assets/props2D/HUD/PauseAnimation/PAUSE_Animation5.png" id="15_0cion"]
+[ext_resource type="Texture2D" uid="uid://clkovhrght8kg" path="res://assets/props2D/HUD/PauseAnimation/PAUSE_Animation6.png" id="16_cqh78"]
+[ext_resource type="Texture2D" uid="uid://b22dpd7270yvg" path="res://assets/props2D/HUD/PauseAnimation/PAUSE_Animation7.png" id="17_nyale"]
+[ext_resource type="Texture2D" uid="uid://dwk8c0y26122g" path="res://assets/props2D/HUD/PauseAnimation/PAUSE_Animation8.png" id="18_vaytx"]
+[ext_resource type="Texture2D" uid="uid://bwogys80so5t1" path="res://assets/props2D/HUD/PauseAnimation/PAUSE_Animation9.png" id="19_kb6nt"]
+[ext_resource type="Texture2D" uid="uid://co4hir4q7qc7i" path="res://assets/props2D/HUD/PauseAnimation/PAUSE_Animation10.png" id="20_kko5u"]
+[ext_resource type="Texture2D" uid="uid://baccppc37ddkb" path="res://assets/props2D/HUD/PauseAnimation/PAUSE_Animation11.png" id="21_oar23"]
+[ext_resource type="Texture2D" uid="uid://duf21bvj8xx70" path="res://assets/props2D/HUD/PauseAnimation/PAUSE_Animation12.png" id="22_jcyv6"]
+[ext_resource type="Texture2D" uid="uid://c5fg5t0bx3kqv" path="res://assets/props2D/HUD/PauseAnimation/PAUSE_Animation13.png" id="23_1403l"]
+[ext_resource type="Texture2D" uid="uid://c7bjcyy015xvn" path="res://assets/props2D/HUD/PauseAnimation/PAUSE_Animation14.png" id="24_5lpf8"]
+[ext_resource type="Texture2D" uid="uid://cqf3xmu58ojns" path="res://assets/props2D/HUD/PauseAnimation/PAUSE_Animation15.png" id="25_elkys"]
+[ext_resource type="Texture2D" uid="uid://fty55qrjimtk" path="res://assets/props2D/HUD/PauseAnimation/PAUSE_Animation16.png" id="26_6676t"]
+[ext_resource type="Texture2D" uid="uid://34g5kc0lta8c" path="res://assets/props2D/HUD/PauseAnimation/PAUSE_Object_Example.png" id="27_ne16y"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7rux2"]
+
+[sub_resource type="Animation" id="Animation_ne16y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat/LiveReaction:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(162, 813)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Combat/Answers:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1056, 869)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Combat/AnswersNumbers:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(965, 908)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TimerSprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(973, 102)]
+}
+
+[sub_resource type="Animation" id="Animation_47ly8"]
+resource_name = "init"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat/LiveReaction:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(162, 813), Vector2(162, 484)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Combat/Answers:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1056, 869), Vector2(1056, 540)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Combat/AnswersNumbers:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(965, 908), Vector2(965, 579)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TimerSprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(973, -104), Vector2(973, 102)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vw453"]
+_data = {
+&"RESET": SubResource("Animation_ne16y"),
+&"init": SubResource("Animation_47ly8")
+}
 
 [sub_resource type="Animation" id="Animation_jfthx"]
 length = 0.001
@@ -68,13 +201,118 @@ _data = {
 &"call_textbox": SubResource("Animation_taf06")
 }
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_isfe7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_vj4h4")
+}],
+"loop": 0,
+"name": &"Bad",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_lg5qw")
+}],
+"loop": 1,
+"name": &"Good",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_c38d7")
+}],
+"loop": 1,
+"name": &"Neutral",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": 1,
+"name": &"null",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1s5ca"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_vj4h4")
+}],
+"loop": 0,
+"name": &"Bad",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_lg5qw")
+}],
+"loop": 1,
+"name": &"Good",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_c38d7")
+}],
+"loop": 1,
+"name": &"Neutral",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": 1,
+"name": &"null",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hfamr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_vj4h4")
+}],
+"loop": 0,
+"name": &"Bad",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_lg5qw")
+}],
+"loop": 1,
+"name": &"Good",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_c38d7")
+}],
+"loop": 1,
+"name": &"Neutral",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": 1,
+"name": &"null",
+"speed": 5.0
+}]
+
 [sub_resource type="Animation" id="Animation_7rux2"]
 length = 0.1
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Introduction:visible")
+tracks/0/path = NodePath("Letters/Introduction:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -86,7 +324,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Introduction:scale")
+tracks/1/path = NodePath("Letters/Introduction:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -98,7 +336,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Introduction:rotation")
+tracks/2/path = NodePath("Letters/Introduction:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -110,7 +348,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Introduction:position")
+tracks/3/path = NodePath("Letters/Introduction:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -122,7 +360,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Mid-fase:visible")
+tracks/4/path = NodePath("Letters/Mid-fase:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -134,7 +372,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Mid-fase:scale")
+tracks/5/path = NodePath("Letters/Mid-fase:scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -146,7 +384,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Mid-fase:rotation")
+tracks/6/path = NodePath("Letters/Mid-fase:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -158,7 +396,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Mid-fase:position")
+tracks/7/path = NodePath("Letters/Mid-fase:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -170,7 +408,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Farewell:visible")
+tracks/8/path = NodePath("Letters/Farewell:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -182,7 +420,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Farewell:scale")
+tracks/9/path = NodePath("Letters/Farewell:scale")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -194,7 +432,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Farewell:rotation")
+tracks/10/path = NodePath("Letters/Farewell:rotation")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -206,7 +444,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Farewell:position")
+tracks/11/path = NodePath("Letters/Farewell:position")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -222,7 +460,7 @@ length = 2.5000000000000004
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Farewell:visible")
+tracks/0/path = NodePath("Letters/Farewell:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -234,7 +472,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Farewell:scale")
+tracks/1/path = NodePath("Letters/Farewell:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -246,7 +484,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Farewell:rotation")
+tracks/2/path = NodePath("Letters/Farewell:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -258,7 +496,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Farewell:position")
+tracks/3/path = NodePath("Letters/Farewell:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -274,7 +512,7 @@ length = 2.5000000000000004
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Introduction:visible")
+tracks/0/path = NodePath("Letters/Introduction:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -286,7 +524,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Introduction:scale")
+tracks/1/path = NodePath("Letters/Introduction:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -298,7 +536,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Introduction:rotation")
+tracks/2/path = NodePath("Letters/Introduction:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -310,7 +548,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Introduction:position")
+tracks/3/path = NodePath("Letters/Introduction:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -326,7 +564,7 @@ length = 2.5000000000000004
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Mid-fase:visible")
+tracks/0/path = NodePath("Letters/Mid-fase:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -338,7 +576,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Mid-fase:scale")
+tracks/1/path = NodePath("Letters/Mid-fase:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -350,7 +588,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Mid-fase:rotation")
+tracks/2/path = NodePath("Letters/Mid-fase:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -362,7 +600,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Mid-fase:position")
+tracks/3/path = NodePath("Letters/Mid-fase:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -407,12 +645,140 @@ shadow_offset = Vector2(5, 10)
 
 [sub_resource type="LabelSettings" id="LabelSettings_isfe7"]
 font = ExtResource("3_7rux2")
+font_size = 32
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vj4h4"]
+animations = [{
+"frames": [{
+"duration": 1.5,
+"texture": ExtResource("26_6676t")
+}, {
+"duration": 1.5,
+"texture": ExtResource("25_elkys")
+}, {
+"duration": 1.5,
+"texture": ExtResource("24_5lpf8")
+}, {
+"duration": 1.5,
+"texture": ExtResource("23_1403l")
+}, {
+"duration": 1.5,
+"texture": ExtResource("22_jcyv6")
+}, {
+"duration": 1.5,
+"texture": ExtResource("21_oar23")
+}, {
+"duration": 1.5,
+"texture": ExtResource("20_kko5u")
+}, {
+"duration": 1.5,
+"texture": ExtResource("19_kb6nt")
+}, {
+"duration": 1.5,
+"texture": ExtResource("18_vaytx")
+}, {
+"duration": 1.5,
+"texture": ExtResource("17_nyale")
+}, {
+"duration": 1.5,
+"texture": ExtResource("16_cqh78")
+}, {
+"duration": 1.5,
+"texture": ExtResource("15_0cion")
+}, {
+"duration": 1.5,
+"texture": ExtResource("14_vw453")
+}, {
+"duration": 1.5,
+"texture": ExtResource("13_47ly8")
+}, {
+"duration": 1.5,
+"texture": ExtResource("12_ne16y")
+}, {
+"duration": 1.5,
+"texture": ExtResource("11_46f7o")
+}, {
+"duration": 1.5,
+"texture": null
+}],
+"loop": 0,
+"name": &"close",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.5,
+"texture": ExtResource("11_46f7o")
+}, {
+"duration": 1.5,
+"texture": ExtResource("12_ne16y")
+}, {
+"duration": 1.5,
+"texture": ExtResource("13_47ly8")
+}, {
+"duration": 1.5,
+"texture": ExtResource("14_vw453")
+}, {
+"duration": 1.5,
+"texture": ExtResource("15_0cion")
+}, {
+"duration": 1.5,
+"texture": ExtResource("16_cqh78")
+}, {
+"duration": 1.5,
+"texture": ExtResource("17_nyale")
+}, {
+"duration": 1.5,
+"texture": ExtResource("18_vaytx")
+}, {
+"duration": 1.5,
+"texture": ExtResource("19_kb6nt")
+}, {
+"duration": 1.5,
+"texture": ExtResource("20_kko5u")
+}, {
+"duration": 1.5,
+"texture": ExtResource("21_oar23")
+}, {
+"duration": 1.5,
+"texture": ExtResource("22_jcyv6")
+}, {
+"duration": 1.5,
+"texture": ExtResource("23_1403l")
+}, {
+"duration": 1.5,
+"texture": ExtResource("24_5lpf8")
+}, {
+"duration": 1.5,
+"texture": ExtResource("25_elkys")
+}, {
+"duration": 1.5,
+"texture": ExtResource("26_6676t")
+}],
+"loop": 0,
+"name": &"open",
+"speed": 24.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_osyi8"]
+font = ExtResource("3_7rux2")
 font_size = 21
+font_color = Color(0, 0.41960785, 1, 1)
+outline_size = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_8ema7"]
+font = ExtResource("3_7rux2")
+font_size = 21
+font_color = Color(0, 0.41960785, 1, 1)
+outline_size = 4
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jt6de"]
 shader = ExtResource("2_hcsof")
 
 [node name="HUD" type="Control" unique_id=1747082955]
+process_mode = 3
 material = SubResource("ShaderMaterial_7rux2")
 layout_mode = 3
 anchors_preset = 15
@@ -421,6 +787,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_taf06")
+
+[node name="AnimationHUD" type="AnimationPlayer" parent="." unique_id=158340334]
+libraries/ = SubResource("AnimationLibrary_vw453")
+autoplay = &"init"
 
 [node name="Dialogues" type="Node" parent="." unique_id=1231853471]
 
@@ -463,10 +833,64 @@ vertical_alignment = 1
 
 [node name="Combat" type="Node" parent="." unique_id=1495784869]
 
-[node name="InStageLabels" type="AnimationPlayer" parent="Combat" unique_id=1170034549]
+[node name="LiveReaction" type="Sprite2D" parent="Combat" unique_id=515610725]
+z_index = -1
+position = Vector2(162, 813)
+texture = ExtResource("3_d8snf")
+
+[node name="Answers" type="Sprite2D" parent="Combat" unique_id=2073208911]
+z_index = -1
+position = Vector2(1056, 869)
+texture = ExtResource("3_5jqjx")
+
+[node name="AnswersNumbers" type="Sprite2D" parent="Combat" unique_id=1014258062]
+z_index = -1
+position = Vector2(965, 908)
+texture = ExtResource("4_qkiwq")
+
+[node name="WaveBar" type="Sprite2D" parent="Combat" unique_id=709175805]
+visible = false
+z_index = -1
+position = Vector2(141, 625)
+texture = ExtResource("5_qkiwq")
+
+[node name="WaveBar2" type="Sprite2D" parent="Combat" unique_id=1002730400]
+visible = false
+z_index = -1
+position = Vector2(203, 625)
+texture = ExtResource("5_qkiwq")
+
+[node name="WaveBar3" type="Sprite2D" parent="Combat" unique_id=1455674511]
+visible = false
+z_index = -1
+position = Vector2(265, 625)
+texture = ExtResource("5_qkiwq")
+
+[node name="Answer1" type="AnimatedSprite2D" parent="Combat" unique_id=1279403927]
+position = Vector2(1081, 538)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_isfe7")
+animation = &"null"
+
+[node name="Answer2" type="AnimatedSprite2D" parent="Combat" unique_id=1026940292]
+position = Vector2(1052, 581)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_1s5ca")
+animation = &"null"
+
+[node name="Answer3" type="AnimatedSprite2D" parent="Combat" unique_id=769839553]
+position = Vector2(1018, 623)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_hfamr")
+animation = &"null"
+
+[node name="Letters" type="Node" parent="Combat" unique_id=141360508]
+
+[node name="InStageLabels" type="AnimationPlayer" parent="Combat/Letters" unique_id=1170034549]
+root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_lt37l")
 
-[node name="Introduction" type="Label" parent="Combat" unique_id=1851804821]
+[node name="Introduction" type="Label" parent="Combat/Letters" unique_id=1851804821]
 visible = false
 z_index = -1
 anchors_preset = 8
@@ -486,7 +910,7 @@ size_flags_horizontal = 4
 text = "INTRODUCTION!"
 label_settings = SubResource("LabelSettings_vaj5l")
 
-[node name="Mid-fase" type="Label" parent="Combat" unique_id=95456384]
+[node name="Mid-fase" type="Label" parent="Combat/Letters" unique_id=95456384]
 visible = false
 z_index = -1
 anchors_preset = 8
@@ -505,7 +929,7 @@ size_flags_horizontal = 4
 text = "MID-FASE!"
 label_settings = SubResource("LabelSettings_7rux2")
 
-[node name="Farewell" type="Label" parent="Combat" unique_id=588433254]
+[node name="Farewell" type="Label" parent="Combat/Letters" unique_id=588433254]
 visible = false
 z_index = -1
 anchors_preset = 8
@@ -524,17 +948,68 @@ size_flags_horizontal = 4
 text = "FAREWELL!"
 label_settings = SubResource("LabelSettings_d8snf")
 
-[node name="Timer" type="Sprite2D" parent="." unique_id=618407219]
-position = Vector2(971, 98)
+[node name="TimerSprite" type="Sprite2D" parent="." unique_id=618407219]
+position = Vector2(973, 102)
 texture = ExtResource("2_jt6de")
 
-[node name="Label" type="Label" parent="Timer" unique_id=1340714983]
-offset_left = -29.0
-offset_top = 22.0
-offset_right = 31.0
-offset_bottom = 45.0
-text = "15:00"
+[node name="Label" type="Label" parent="TimerSprite" unique_id=1340714983]
+offset_left = -42.04348
+offset_top = 17.0
+offset_right = 44.04348
+offset_bottom = 50.0
+text = "5:59"
 label_settings = SubResource("LabelSettings_isfe7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimatedPause" type="AnimatedSprite2D" parent="." unique_id=1201201726]
+position = Vector2(596, 286)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_vj4h4")
+animation = &"open"
+
+[node name="ButtonMainMenu" type="Button" parent="." unique_id=1666116020]
+visible = false
+top_level = true
+layout_mode = 0
+offset_left = 509.0
+offset_top = 255.0
+offset_right = 673.0
+offset_bottom = 363.0
+disabled = true
+icon = ExtResource("27_ne16y")
+flat = true
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="ButtonMainMenu" unique_id=438188068]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 37.0
+offset_right = 136.0
+offset_bottom = 60.0
+text = "MAIN MENU"
+label_settings = SubResource("LabelSettings_osyi8")
+
+[node name="ButtonQuit" type="Button" parent="." unique_id=413043163]
+visible = false
+top_level = true
+layout_mode = 0
+offset_left = 509.0
+offset_top = 371.0
+offset_right = 673.0
+offset_bottom = 479.0
+disabled = true
+icon = ExtResource("27_ne16y")
+flat = true
+
+[node name="Label" type="Label" parent="ButtonQuit" unique_id=2036608473]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 39.0
+offset_right = 106.0
+offset_bottom = 62.0
+text = "QUIT"
+label_settings = SubResource("LabelSettings_8ema7")
 
 [node name="CRT" type="ColorRect" parent="." unique_id=1258240392]
 material = SubResource("ShaderMaterial_jt6de")
@@ -544,3 +1019,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Timer" type="Timer" parent="." unique_id=2141350885]
+autostart = true
+
+[connection signal="pressed" from="ButtonMainMenu" to="." method="_on_button_main_menu_pressed"]
+[connection signal="pressed" from="ButtonQuit" to="." method="_on_button_quit_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
