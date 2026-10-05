@@ -7,9 +7,11 @@
 [sub_resource type="ViewportTexture" id="ViewportTexture_qe0g3"]
 viewport_path = NodePath("SubViewport")
 
-[node name="Ballon" type="RigidBody3D" unique_id=2133639587]
-mass = 0.001
+[node name="Ballon" type="RigidBody3D" unique_id=2133639587 groups=["balloon"]]
+mass = 0.2
 gravity_scale = 0.0
+linear_damp = 2.0
+angular_damp = 2.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1843224957]
 shape = SubResource("SphereShape3D_isfe7")

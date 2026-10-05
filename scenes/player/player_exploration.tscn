@@ -332,6 +332,12 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_t2hhj"]
+radius = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_f1q28"]
+radius = 1.2
+
 [node name="PlayerExploration" type="CharacterBody3D" unique_id=1230296654]
 script = ExtResource("1_w152q")
 
@@ -449,3 +455,16 @@ position = Vector2(59, 54.5)
 sprite_frames = SubResource("SpriteFrames_vaj5l")
 animation = &"sides"
 frame_progress = 0.27068716
+
+[node name="Wall" type="Area3D" parent="." unique_id=323823749]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall" unique_id=1823282561]
+shape = SubResource("SphereShape3D_t2hhj")
+debug_color = Color(0.9769204, 0, 0.4117807, 0.41960785)
+
+[node name="BalloonDetector" type="Area3D" parent="." unique_id=903827379]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BalloonDetector" unique_id=1821799848]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.09394503)
+shape = SubResource("SphereShape3D_f1q28")
+debug_color = Color(0, 0.6515895, 0.013452545, 0.41960785)
