@@ -11,6 +11,9 @@
 [ext_resource type="AudioStream" uid="uid://cmh1ntekg226i" path="res://assets/SFX/NPC/DayDream/DDvoice_line_6_sfx.mp3" id="7_e5u15"]
 [ext_resource type="AudioStream" uid="uid://br3qbrxjgk5mr" path="res://assets/SFX/NPC/DayDream/DDvoice_line_7_sfx.mp3" id="8_rrik7"]
 [ext_resource type="PackedScene" uid="uid://cbr2opmg85b5v" path="res://global/cenas/VFX/_Shaders/ShaderSonoro/ShaderSonoro.tscn" id="11_kjfjv"]
+[ext_resource type="Script" uid="uid://cmfvypa83cyfp" path="res://global/script/StateMachine.gd" id="12_fms46"]
+[ext_resource type="Script" uid="uid://d2aows6xcu81m" path="res://scenes/NPC/patrolState.gd" id="13_u5xit"]
+[ext_resource type="Script" uid="uid://ccs63arfh2m5k" path="res://scenes/NPC/lookPlayerState.gd" id="14_u5xit"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jlea0"]
 streams_count = 7
@@ -43,6 +46,9 @@ _data = {
 &"damage": SubResource("Animation_epcot")
 }
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_t2hhj"]
+radius = 20.0
+
 [node name="DayDream" type="Node3D" unique_id=1162736262]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 script = ExtResource("1_epcot")
@@ -73,6 +79,22 @@ libraries/ = SubResource("AnimationLibrary_jlea0")
 
 [node name="ShaderSonoro" parent="." unique_id=1744114280 instance=ExtResource("11_kjfjv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 0)
+
+[node name="StateMachine" type="Node3D" parent="." unique_id=1978398015 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("12_fms46")
+initial_state = NodePath("PatrolState")
+
+[node name="PatrolState" type="Node" parent="StateMachine" unique_id=1417443573]
+script = ExtResource("13_u5xit")
+
+[node name="LookPlayerState" type="Node" parent="StateMachine" unique_id=1451902501]
+script = ExtResource("14_u5xit")
+
+[node name="LookPlayerZone" type="Area3D" parent="." unique_id=1732778444]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LookPlayerZone" unique_id=835416825]
+shape = SubResource("SphereShape3D_t2hhj")
+debug_color = Color(0.9641816, 5.7756904e-07, 0.49716252, 0.41960785)
 
 [connection signal="body_entered" from="InterectZone" to="." method="_on_interect_zone_body_entered"]
 [connection signal="body_exited" from="InterectZone" to="." method="_on_interect_zone_body_exited"]

@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://jm0q7jskty1d" path="res://scenes/props_exploration/porta.tscn" id="2_c2w8a"]
 [ext_resource type="PackedScene" uid="uid://bidf0omwq42s7" path="res://scenes/NPC/doorman.tscn" id="3_rssfm"]
 [ext_resource type="PackedScene" uid="uid://mxgx53vk4pmh" path="res://scenes/props_exploration/ballon.tscn" id="4_qe0g3"]
+[ext_resource type="PackedScene" uid="uid://l2hm8rn2frxa" path="res://scenes/NPC/daydream.tscn" id="5_tkedx"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_t2hhj"]
 
@@ -83,3 +84,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.299999, 1.2000002, 0.699999
 
 [node name="Ballon5" parent="." unique_id=2034482191 instance=ExtResource("4_qe0g3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9000006, 1.2000002, 0.5999999)
+
+[node name="DayDream" parent="." unique_id=1162736262 node_paths=PackedStringArray("patrol_center") instance=ExtResource("5_tkedx")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 10.207904, 0.87099516, 5.646718)
+patrol_center = NodePath("../PatrolCenter")
+
+[node name="PointA" type="Marker3D" parent="." unique_id=1333794444]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.884508, 0, 4.2141495)
+
+[node name="PointB" type="Marker3D" parent="." unique_id=910258605]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.877982, 0, 5.1530056)
+
+[node name="PatrolCenter" type="Node3D" parent="." unique_id=1746022771]

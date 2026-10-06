@@ -13,6 +13,10 @@ func _ready() -> void:
 			child.state_machine = self
 			child.npc = get_parent()
 
+	call_deferred("_start_state")
+
+
+func _start_state() -> void:
 	current_state = initial_state
 
 	if current_state:
