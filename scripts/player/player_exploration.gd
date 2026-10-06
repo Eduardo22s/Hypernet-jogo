@@ -10,7 +10,7 @@ const freiarAereo = 8.0
 const aceleracao = 20.0
 const desaceleracao = 8.0
 const coyote = 0.20
-const buffer = 0.15
+const buffer = 0.30
 const freiar = 20.0
 
 var dashing = false
@@ -21,17 +21,20 @@ const dash_forca = 14.0
 const dash_chao_duracao = 0.20
 const dash_chao_forca = 20.0
 
-const WALL_KICK_FORCE = 8.0
-const WALL_KICK_VERTICAL = 5.5
+
+const WALL_JUMP_FORCE = 8.0
+const WALL_JUMP_VERTICAL = 7.0
 const WALL_KICK_DASH_FORCE = 14.0
 const WALL_KICK_DASH_VERTICAL = 8.0
 
 var na_parede := false
 var normal_parede := Vector3.ZERO
-var wall_kick_usado := false
+var wall_jump_usado := false
 var ultima_parede_normal := Vector3.ZERO
 
 @onready var wall_area: Area3D = $Wall
+
+var parede_atual: Node3D = null
 
 var SPEED = 5.0
 var bufferTimer = 0.0
@@ -153,7 +156,7 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		coyoteTimer = coyote
 		dash_aereo_disponivel = true
-		wall_kick_usado = false
+		wall_jump_usado = false
 	else:
 		coyoteTimer -= delta
 
@@ -165,8 +168,8 @@ func _physics_process(delta: float) -> void:
 	detectar_parede_area()
 
 	if bufferTimer > 0.0:
-		if na_parede and not wall_kick_usado:
-			wall_kick()
+		if na_parede and not wall_jump_usado:
+			wall_jump()
 
 			bufferTimer = 0.0
 			coyoteTimer = 0.0
@@ -253,8 +256,7 @@ func detectar_parede_area():
 		if corpo == self:
 			continue
 
-		var posicao_parede = corpo.global_position
-		var direcao = global_position - posicao_parede
+		var direcao = global_position - corpo.global_position
 
 		if direcao.length_squared() < 0.001:
 			continue
@@ -266,7 +268,13 @@ func detectar_parede_area():
 
 		na_parede = true
 		normal_parede = direcao
-		break
+
+		# Entrou em uma nova parede
+		if corpo != parede_atual:
+			parede_atual = corpo
+			wall_jump_usado = false
+
+		return
 
 
 func handle_attack():
@@ -363,25 +371,36 @@ func dash_aereo():
 		dashing = false
 
 
-func wall_kick():
+func wall_jump():
 	if not na_parede:
 		return
 
-	if wall_kick_usado:
+	if wall_jump_usado:
 		return
 
-	wall_kick_usado = true
+	wall_jump_usado = true
 
 	ultima_parede_normal = normal_parede
 
 	dashing = false
 
-	velocity.x = normal_parede.x * WALL_KICK_FORCE
-	velocity.z = normal_parede.z * WALL_KICK_FORCE
-	velocity.y = WALL_KICK_VERTICAL
+	var direcao = normal_parede
+	direcao.y = 0.0
+	direcao = direcao.normalized()
 
-	virar_para_direcao(normal_parede)
+	# Zera a velocidade horizontal anterior
+	velocity.x = 0.0
+	velocity.z = 0.0
 
+	# Empurra diretamente para longe da parede
+	velocity.x = direcao.x * WALL_JUMP_FORCE
+	velocity.z = direcao.z * WALL_JUMP_FORCE
+
+	# Sobe
+	velocity.y = WALL_JUMP_VERTICAL
+
+	#virar_para_direcao(normal_parede)
+	
 
 func check_dash_wall_collision():
 	if not dashing:
@@ -401,7 +420,7 @@ func wall_kick_dash():
 	if not dashing:
 		return
 
-	wall_kick_usado = true
+	wall_jump_usado = true
 
 	ultima_parede_normal = normal_parede
 
@@ -413,19 +432,19 @@ func wall_kick_dash():
 	velocity.z = normal_parede.z * WALL_KICK_DASH_FORCE
 	velocity.y = WALL_KICK_DASH_VERTICAL
 
-	virar_para_direcao(normal_parede)
+#	virar_para_direcao(normal_parede)
 
 
-func virar_para_direcao(direcao: Vector3):
-	if direcao.length() <= 0.01:
-		return
+#func virar_para_direcao(direcao: Vector3):
+	#if direcao.length() <= 0.01:
+	#	return
 
-	var direcao_horizontal = Vector3(direcao.x,0,direcao.z).normalized()
+#	var direcao_horizontal = Vector3(direcao.x,0,direcao.z).normalized()
 
-	if direcao_horizontal.length() <= 0.01:
-		return
+	#if direcao_horizontal.length() <= 0.01:
+		#return
 
-	look_at(global_position + direcao_horizontal,Vector3.UP)
+	#look_at(global_position + direcao_horizontal,Vector3.UP)
 
 
 func manage_battles():

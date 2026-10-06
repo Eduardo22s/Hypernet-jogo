@@ -58,6 +58,16 @@ mesh = SubResource("BoxMesh_t2hhj")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Parede2" unique_id=83533339]
 shape = SubResource("BoxShape3D_f1q28")
 
+[node name="Parede3" type="StaticBody3D" parent="." unique_id=1106230972]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 18.977684, 1.0164795, -7.471695)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Parede3" unique_id=1546978438]
+mesh = SubResource("BoxMesh_t2hhj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Parede3" unique_id=2059754412]
+shape = SubResource("BoxShape3D_f1q28")
+
 [node name="Porta" parent="." unique_id=132387269 instance=ExtResource("2_c2w8a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.080658, 1.0492646, -2.4)
 
