@@ -332,8 +332,8 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_t2hhj"]
-radius = 0.79717124
+[sub_resource type="BoxShape3D" id="BoxShape3D_tkedx"]
+size = Vector3(1.5, 1.5, 1.5)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_f1q28"]
 radius = 1.2
@@ -459,7 +459,7 @@ frame_progress = 0.27068716
 [node name="Wall" type="Area3D" parent="." unique_id=323823749]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall" unique_id=1823282561]
-shape = SubResource("SphereShape3D_t2hhj")
+shape = SubResource("BoxShape3D_tkedx")
 debug_color = Color(0.9769204, 0, 0.4117807, 0.41960785)
 
 [node name="BalloonDetector" type="Area3D" parent="." unique_id=903827379]
