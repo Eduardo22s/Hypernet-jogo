@@ -1,4 +1,3 @@
-
 extends CharacterBody3D
 class_name PlayerExploration
 
@@ -40,9 +39,10 @@ var SPEED = 5.0
 var bufferTimer = 0.0
 var coyoteTimer = 0.0
 
-@onready var cameras = [$Cameras/SpringArm1/Camera1,$Cameras/SpringArm2/Camera2,$Cameras/SpringArm3/Camera3,$Cameras/SpringArm4/Camera4,$Cameras/SpringArm5/Camera5,$Cameras/SpringArm6/Camera6,$Cameras/SpringArm7/Camera7,$Cameras/SpringArm8/Camera8]
+const SENSIBILIDADE_MOUSE = 0.003
+var camera_pitch := 0.0
+@onready var player_camera: Camera3D = $Cameras/SpringArm1/Camera1
 
-var camera_atual := 0
 var cooldown = false
 var cooldown_time = 0.0
 
@@ -53,7 +53,7 @@ const BALAO_FORCA_DASH = 2.0
 
 
 func _ready():
-	trocar_camera(camera_atual)
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 	Global.timer_on = true
 	global_position = Global.player_return_pos
@@ -184,19 +184,20 @@ func _physics_process(delta: float) -> void:
 			velocity.y *= 0.4
 
 	var input_dir := Input.get_vector("move_left","move_right","move_forward","move_backward")
+	
+	var forward = player_camera.global_transform.basis.z
+	var right = player_camera.global_transform.basis.x
 
-	var camera = cameras[camera_atual]
-
-	var forward = camera.global_transform.basis.z
-	var right = camera.global_transform.basis.x
-
-	forward.y = 0
-	right.y = 0
+# Ignora completamente a inclinação vertical da câmera
+	forward.y = 0.0
+	right.y = 0.0
 
 	forward = forward.normalized()
 	right = right.normalized()
 
 	var direction = (right * input_dir.x +forward * input_dir.y).normalized()
+	if direction.length_squared() > 0.001:
+		direction = direction.normalized()
 
 	if dashing:
 		$VFX_Footstep.emitting = false
@@ -242,6 +243,18 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	empurrar_baloes()
+
+
+func get_camera_direction() -> Vector3:
+	var forward = -$Cameras.global_transform.basis.z
+
+	forward.y = 0.0
+
+	if forward.length_squared() <= 0.001:
+		return Vector3.ZERO
+
+	return forward.normalized()
+
 
 func detectar_parede_area():
 	na_parede = false
@@ -302,24 +315,23 @@ func dash():
 
 	dashing = true
 
-	var camera = cameras[camera_atual]
+	var forward = player_camera.global_transform.basis.z
+	var right = player_camera.global_transform.basis.x
 
-	var forward = camera.global_transform.basis.z
-	var right = camera.global_transform.basis.x
-
-	forward.y = 0
-	right.y = 0
+	forward.y = 0.0
+	right.y = 0.0
 
 	forward = forward.normalized()
 	right = right.normalized()
 
 	var input_dir := Input.get_vector("move_left","move_right","move_forward","move_backward")
-
-	var direction = (right * input_dir.x +forward * input_dir.y).normalized()
-
-	if direction == Vector3.ZERO:
-		direction = -global_transform.basis.z
-		direction.y = 0
+	var direction: Vector3
+	# Sem W/A/S/D → dash para onde a câmera está olhando
+	if input_dir.length_squared() <= 0.001:
+		direction = -forward
+	else:
+		# Com W/A/S/D → mantém a direção dos controles
+		direction = right * input_dir.x + forward * input_dir.y
 		direction = direction.normalized()
 
 	velocity.x = direction.x * dash_chao_forca
@@ -334,36 +346,34 @@ func dash():
 func dash_aereo():
 	if not dash_aereo_disponivel:
 		return
-
 	if dashing:
 		return
 
 	dash_aereo_disponivel = false
 	dashing = true
 
-	var camera = cameras[camera_atual]
+	var forward = player_camera.global_transform.basis.z
+	var right = player_camera.global_transform.basis.x
 
-	var forward = camera.global_transform.basis.z
-	var right = camera.global_transform.basis.x
-
-	forward.y = 0
-	right.y = 0
+	forward.y = 0.0
+	right.y = 0.0
 
 	forward = forward.normalized()
 	right = right.normalized()
 
 	var input_dir := Input.get_vector("move_left","move_right","move_forward","move_backward")
 
-	var direction = (right * input_dir.x +forward * input_dir.y).normalized()
+	var direction: Vector3
 
-	if direction == Vector3.ZERO:
-		direction = -global_transform.basis.z
-		direction.y = 0
+	if input_dir.length_squared() <= 0.001:
+		direction = -forward
+	else:
+		direction = right * input_dir.x + forward * input_dir.y
 		direction = direction.normalized()
 
 	velocity.x = direction.x * dash_forca
 	velocity.z = direction.z * dash_forca
-	velocity.y = 0
+	velocity.y = 0.0
 
 	await get_tree().create_timer(dash_duracao).timeout
 
@@ -457,31 +467,21 @@ func manage_battles():
 
 
 func _input(event):
-	if event.is_action_pressed("trocar_camera_horario"):
-		camera_atual += 1
-		$SubViewport/Player2dModel/AnimatedIdle.frame += 1
+	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		# Rotação horizontal
+		$Cameras.rotate_y(-event.relative.x * SENSIBILIDADE_MOUSE)
 
-		if camera_atual >= cameras.size():
-			$SubViewport/Player2dModel/AnimatedIdle.frame = 0
-			camera_atual = 0
+		# Rotação vertical
+		camera_pitch -= event.relative.y * SENSIBILIDADE_MOUSE
+		camera_pitch = clamp(camera_pitch, deg_to_rad(-70.0), deg_to_rad(70.0))
 
-		trocar_camera(camera_atual)
+		$Cameras/SpringArm1.rotation.x = camera_pitch
 
-	if event.is_action_pressed("trocar_camera_antihorario"):
-		camera_atual -= 1
-		$SubViewport/Player2dModel/AnimatedIdle.frame -= 1
-
-		if camera_atual < 0:
-			$SubViewport/Player2dModel/AnimatedIdle.frame = 7
-			camera_atual = cameras.size() - 1
-
-		trocar_camera(camera_atual)
-
-
-func trocar_camera(indice):
-	for camera in cameras:
-		camera.current = false
-	cameras[indice].current = true
+	if event.is_action_pressed("ui_cancel"):
+		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func empurrar_baloes():
