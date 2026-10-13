@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://bqqkx7xulyqor"]
+
+[ext_resource type="Shader" uid="uid://drww2onrt5dqh" path="res://global/cenas/VFX/_Shaders/Mirror/Mirror.gdshader" id="1_bb14f"]
+[ext_resource type="Texture2D" uid="uid://lk5i1i501met" path="res://global/cenas/VFX/_Shaders/Mirror/TexturaVidro_Alpha.png" id="2_kmejb"]
+[ext_resource type="Script" uid="uid://bbthtewr5voxi" path="res://scripts/props_combat/mirror_zone.gd" id="3_8woki"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8woki"]
+viewport_path = NodePath("CameraViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yugnk"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_bb14f")
+shader_parameter/ScreenTexture = SubResource("ViewportTexture_8woki")
+shader_parameter/GlassTexture = ExtResource("2_kmejb")
+shader_parameter/MirrorColor = Color(1, 1, 1, 1)
+shader_parameter/GlassStrength = 0.750000035625
+shader_parameter/DistortionStrength = 0.015
+shader_parameter/DistortionScale = 1.0
+shader_parameter/WaveStrength = 0.0050000002375
+shader_parameter/WaveFrequency = 15.0
+shader_parameter/WaveSpeed = 2.0
+shader_parameter/RingStrength = 0.250000011875
+shader_parameter/RingFrequency = 4.000000142499999
+shader_parameter/RingWidth = 0.04000000155074
+shader_parameter/RingColor = Color(0.2784314, 0.2784314, 0.2784314, 1)
+shader_parameter/RingCenter = Vector2(0.5, 0.5)
+shader_parameter/RingProgress = 1.0
+shader_parameter/RingRadius = 0.8
+shader_parameter/RingDuration = 10.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_brpoa"]
+size = Vector2(1, 2)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1s0rw"]
+points = PackedVector3Array(0.5119047, 0.863323, 0.012989421, -0.5134921, -0.863323, -0.013989422, -0.5134921, -0.863323, 0.012989421, -0.5134921, 0.863323, -0.013989422, 0.5119047, -0.863323, -0.013989422, 0.5119047, -0.863323, 0.012989421, -0.5134921, 0.863323, 0.012989421, 0.5119047, 0.863323, -0.013989422)
+
+[node name="MirrorTeleport" type="Node3D" unique_id=424845213]
+
+[node name="CameraViewport" type="SubViewport" parent="." unique_id=111914238]
+render_target_update_mode = 4
+
+[node name="CaptureCamera" type="Camera3D" parent="CameraViewport" unique_id=1141114819]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="MirrorMesh" type="MeshInstance3D" parent="." unique_id=1542044326]
+material_override = SubResource("ShaderMaterial_yugnk")
+mesh = SubResource("QuadMesh_brpoa")
+
+[node name="MirrorZone" type="Area3D" parent="." unique_id=833840637]
+script = ExtResource("3_8woki")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MirrorZone" unique_id=1361863535]
+shape = SubResource("ConvexPolygonShape3D_1s0rw")

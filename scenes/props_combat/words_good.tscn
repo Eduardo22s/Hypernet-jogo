@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://b4aggfwiahm4w" path="res://scripts/props_combat/words_good.gd" id="1_n2pg2"]
 [ext_resource type="PackedScene" uid="uid://cbtr7b0tb7y2j" path="res://global/cenas/VFX/_Shaders/Bubble.tscn" id="3_3invh"]
+[ext_resource type="Shader" uid="uid://conmejl7vtvgv" path="res://global/cenas/VFX/_Shaders/Flash/S_ScreenFlash.gdshader" id="4_acev1"]
 [ext_resource type="AudioStream" uid="uid://b6vfkfcyevfkp" path="res://assets/SFX/combat/Explosao_Hyper_1_sfx.mp3" id="4_yyyhk"]
 [ext_resource type="AudioStream" uid="uid://bb8p0pn6qif5u" path="res://assets/SFX/combat/Explosao_Hyper_2_sfx.mp3" id="5_2y713"]
+[ext_resource type="Script" uid="uid://buvfavh76bi0" path="res://global/cenas/VFX/_Shaders/Flash/S_ScreenFlash.gd" id="5_jqcob"]
 [ext_resource type="Texture2D" uid="uid://c8an83eibf671" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 1/Bom/DayDream_Bom1_Wave1.png" id="5_r6k2l"]
 [ext_resource type="Texture2D" uid="uid://c3ibu0pvufgtk" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 1/Bom/DayDream_Bom2_Wave1.png" id="6_b42rv"]
 [ext_resource type="Texture2D" uid="uid://b1jumo0wv640v" path="res://assets/props2D/Frases/DayDream/Selecionadas/Wave 1/Bom/DayDream_Bom3_Wave1.png" id="7_acev1"]
@@ -18,6 +20,15 @@
 streams_count = 2
 stream_0/stream = ExtResource("4_yyyhk")
 stream_1/stream = ExtResource("5_2y713")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vos2s"]
+shader = ExtResource("4_acev1")
+shader_parameter/FlashColor = Color(1, 1, 1, 1)
+shader_parameter/Progress = 0.0
+shader_parameter/Softness = 0.04
+shader_parameter/MaxRadius = 1.2
+shader_parameter/PixelSize = 7.0000002375
+shader_parameter/Fragmentation = 0.70000003325
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_5g4sf"]
 viewport_path = NodePath("SubViewport")
@@ -83,10 +94,21 @@ script = ExtResource("1_n2pg2")
 stream = SubResource("AudioStreamRandomizer_8ksj1")
 volume_db = -15.0
 
-[node name="Timer" type="Timer" parent="." unique_id=2010025933]
-wait_time = 15.0
-one_shot = true
-autostart = true
+[node name="Flash" type="Node3D" parent="." unique_id=761872685]
+
+[node name="S_ScreenFlashLayer" type="CanvasLayer" parent="Flash" unique_id=1773077474]
+
+[node name="ScreenFlash" type="ColorRect" parent="Flash/S_ScreenFlashLayer" unique_id=1179942920]
+material = SubResource("ShaderMaterial_vos2s")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("5_jqcob")
+FlashColor = Color(1, 0.408, 1, 0.784)
+TotalDuration = 0.5
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=833795134]
 modulate = Color(1, 1, 1, 0.5882353)
@@ -136,6 +158,5 @@ position = Vector2(112, 62)
 sprite_frames = SubResource("SpriteFrames_m7mu5")
 animation = &"DD3"
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Hitzone" to="." method="_on_hitzone_area_entered"]
 [connection signal="area_entered" from="ActivationZone" to="." method="_on_activation_zone_area_entered"]

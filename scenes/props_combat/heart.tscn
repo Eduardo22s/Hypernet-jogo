@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://5yfl8qi5bdfv" path="res://scenes/props_combat/small_hearts2DModel.tscn" id="2_lc52h"]
 [ext_resource type="Script" uid="uid://mm1txersslaq" path="res://scripts/props_combat/heart_hitzone.gd" id="2_whua0"]
 [ext_resource type="Texture2D" uid="uid://cqem5txesffut" path="res://assets/props2D/heart/Hearts/BigHeartJuice1.png" id="3_5xr4i"]
+[ext_resource type="Script" uid="uid://c682cxv2wwxfd" path="res://scripts/props_combat/border.gd" id="3_7m7p7"]
 [ext_resource type="Texture2D" uid="uid://u3ncdbjmob4" path="res://assets/props2D/heart/Hearts/BigHeart1.png" id="3_s5xnc"]
 [ext_resource type="Texture2D" uid="uid://3lv3ayalt5yg" path="res://assets/props2D/heart/Hearts/BigHeart2.png" id="4_5o2ws"]
 [ext_resource type="Texture2D" uid="uid://4o87vl4nn2lt" path="res://assets/props2D/heart/Hearts/BigHeartJuice2.png" id="4_6ugq8"]
@@ -91,6 +92,59 @@ tracks/0/keys = {
 _data = {
 &"RESET": SubResource("Animation_lc52h"),
 &"rotate": SubResource("Animation_y6d1m")
+}
+
+[sub_resource type="SphereMesh" id="SphereMesh_isfe7"]
+height = 0.5
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7m7p7"]
+points = PackedVector3Array(0.16606906, 0.08665959, 0.43768975, -0.0916807, -0.0192073, -0.48925117, -0.09142764, 0.02652039, -0.48790067, -0.48925373, -0.01920742, 0.091663234, 0.20743635, -0.22605498, 0.044375632, 0.26573327, 0.20292006, -0.11809082, -0.23636395, 0.21791169, 0.059056275, 0.4709667, -0.03427448, -0.15178755, -0.23585442, -0.21012288, 0.13263637, -0.15192807, -0.034229297, 0.47092292, -0.10390292, -0.18185836, -0.32652798, 0.26800767, -0.12288777, 0.342382, -0.42529356, -0.019055739, -0.2581328, 0.43629372, 0.07132766, 0.19557741, 0.2716349, -0.0491339, -0.40741986, -0.103987865, 0.17455223, -0.34168732, -0.14810185, 0.1740015, 0.32574177, 0.16309695, 0.21859898, 0.17783001, 0.23860759, 0.11547138, -0.372693, -0.37184206, 0.13009067, -0.20815352, -0.419226, 0.08598841, 0.20952505, -0.014803226, -0.18202275, 0.34171075, 0.26540276, -0.18062682, -0.22111027, 0.43350798, -0.10843839, 0.11959406, -0.3717907, -0.15243883, -0.1337812, -0.3725001, -0.108016536, 0.2532318, -0.059241727, -0.24090017, -0.11846026, 0.044236798, 0.2326184, -0.17719012, 0.41989017, 0.10113715, -0.17989086, 0.19676535, -0.034132358, 0.45403606, -0.2412951, 0.056442354, 0.42230186, 0.11933994, -0.1232156, -0.41788858)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cubhb"]
+points = PackedVector3Array(0.16606906, 0.08665959, 0.43768975, -0.0916807, -0.0192073, -0.48925117, -0.09142764, 0.02652039, -0.48790067, -0.48925373, -0.01920742, 0.091663234, 0.20743635, -0.22605498, 0.044375632, 0.26573327, 0.20292006, -0.11809082, -0.23636395, 0.21791169, 0.059056275, 0.4709667, -0.03427448, -0.15178755, -0.23585442, -0.21012288, 0.13263637, -0.15192807, -0.034229297, 0.47092292, -0.10390292, -0.18185836, -0.32652798, 0.26800767, -0.12288777, 0.342382, -0.42529356, -0.019055739, -0.2581328, 0.43629372, 0.07132766, 0.19557741, 0.2716349, -0.0491339, -0.40741986, -0.103987865, 0.17455223, -0.34168732, -0.14810185, 0.1740015, 0.32574177, 0.16309695, 0.21859898, 0.17783001, 0.23860759, 0.11547138, -0.372693, -0.37184206, 0.13009067, -0.20815352, -0.419226, 0.08598841, 0.20952505, -0.014803226, -0.18202275, 0.34171075, 0.26540276, -0.18062682, -0.22111027, 0.43350798, -0.10843839, 0.11959406, -0.3717907, -0.15243883, -0.1337812, -0.3725001, -0.108016536, 0.2532318, -0.059241727, -0.24090017, -0.11846026, 0.044236798, 0.2326184, -0.17719012, 0.41989017, 0.10113715, -0.17989086, 0.19676535, -0.034132358, 0.45403606, -0.2412951, 0.056442354, 0.42230186, 0.11933994, -0.1232156, -0.41788858)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_aflgw"]
+points = PackedVector3Array(0.16606906, 0.08665959, 0.43768975, -0.0916807, -0.0192073, -0.48925117, -0.09142764, 0.02652039, -0.48790067, -0.48925373, -0.01920742, 0.091663234, 0.20743635, -0.22605498, 0.044375632, 0.26573327, 0.20292006, -0.11809082, -0.23636395, 0.21791169, 0.059056275, 0.4709667, -0.03427448, -0.15178755, -0.23585442, -0.21012288, 0.13263637, -0.15192807, -0.034229297, 0.47092292, -0.10390292, -0.18185836, -0.32652798, 0.26800767, -0.12288777, 0.342382, -0.42529356, -0.019055739, -0.2581328, 0.43629372, 0.07132766, 0.19557741, 0.2716349, -0.0491339, -0.40741986, -0.103987865, 0.17455223, -0.34168732, -0.14810185, 0.1740015, 0.32574177, 0.16309695, 0.21859898, 0.17783001, 0.23860759, 0.11547138, -0.372693, -0.37184206, 0.13009067, -0.20815352, -0.419226, 0.08598841, 0.20952505, -0.014803226, -0.18202275, 0.34171075, 0.26540276, -0.18062682, -0.22111027, 0.43350798, -0.10843839, 0.11959406, -0.3717907, -0.15243883, -0.1337812, -0.3725001, -0.108016536, 0.2532318, -0.059241727, -0.24090017, -0.11846026, 0.044236798, 0.2326184, -0.17719012, 0.41989017, 0.10113715, -0.17989086, 0.19676535, -0.034132358, 0.45403606, -0.2412951, 0.056442354, 0.42230186, 0.11933994, -0.1232156, -0.41788858)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bxuyi"]
+points = PackedVector3Array(0.16606906, 0.08665959, 0.43768975, -0.0916807, -0.0192073, -0.48925117, -0.09142764, 0.02652039, -0.48790067, -0.48925373, -0.01920742, 0.091663234, 0.20743635, -0.22605498, 0.044375632, 0.26573327, 0.20292006, -0.11809082, -0.23636395, 0.21791169, 0.059056275, 0.4709667, -0.03427448, -0.15178755, -0.23585442, -0.21012288, 0.13263637, -0.15192807, -0.034229297, 0.47092292, -0.10390292, -0.18185836, -0.32652798, 0.26800767, -0.12288777, 0.342382, -0.42529356, -0.019055739, -0.2581328, 0.43629372, 0.07132766, 0.19557741, 0.2716349, -0.0491339, -0.40741986, -0.103987865, 0.17455223, -0.34168732, -0.14810185, 0.1740015, 0.32574177, 0.16309695, 0.21859898, 0.17783001, 0.23860759, 0.11547138, -0.372693, -0.37184206, 0.13009067, -0.20815352, -0.419226, 0.08598841, 0.20952505, -0.014803226, -0.18202275, 0.34171075, 0.26540276, -0.18062682, -0.22111027, 0.43350798, -0.10843839, 0.11959406, -0.3717907, -0.15243883, -0.1337812, -0.3725001, -0.108016536, 0.2532318, -0.059241727, -0.24090017, -0.11846026, 0.044236798, 0.2326184, -0.17719012, 0.41989017, 0.10113715, -0.17989086, 0.19676535, -0.034132358, 0.45403606, -0.2412951, 0.056442354, 0.42230186, 0.11933994, -0.1232156, -0.41788858)
+
+[sub_resource type="Animation" id="Animation_7m7p7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cubhb"]
+resource_name = "rotate"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -6.2831855, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aflgw"]
+_data = {
+&"RESET": SubResource("Animation_7m7p7"),
+&"rotate": SubResource("Animation_cubhb")
 }
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_isfe7"]
@@ -365,6 +419,53 @@ canvas_item_default_texture_filter = 0
 size = Vector2i(50, 50)
 
 [node name="SmallHearts2DModel" parent="OrbitalHearts/SubViewport" unique_id=304108389 instance=ExtResource("2_lc52h")]
+
+[node name="OrbitalBumper" type="Node3D" parent="." unique_id=1506607075]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="OrbitalBumper" unique_id=1489698666]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+mesh = SubResource("SphereMesh_isfe7")
+
+[node name="Area3D" type="Area3D" parent="OrbitalBumper/MeshInstance3D" unique_id=164330989]
+script = ExtResource("3_7m7p7")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="OrbitalBumper/MeshInstance3D/Area3D" unique_id=565132052]
+shape = SubResource("ConvexPolygonShape3D_7m7p7")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="OrbitalBumper" unique_id=382747062]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+mesh = SubResource("SphereMesh_isfe7")
+
+[node name="Area3D" type="Area3D" parent="OrbitalBumper/MeshInstance3D2" unique_id=35279255]
+script = ExtResource("3_7m7p7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OrbitalBumper/MeshInstance3D2/Area3D" unique_id=1153831568]
+shape = SubResource("ConvexPolygonShape3D_cubhb")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="OrbitalBumper" unique_id=343605150]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+mesh = SubResource("SphereMesh_isfe7")
+
+[node name="Area3D" type="Area3D" parent="OrbitalBumper/MeshInstance3D3" unique_id=385507115]
+script = ExtResource("3_7m7p7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OrbitalBumper/MeshInstance3D3/Area3D" unique_id=17310299]
+shape = SubResource("ConvexPolygonShape3D_aflgw")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="OrbitalBumper" unique_id=660630919]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+mesh = SubResource("SphereMesh_isfe7")
+
+[node name="Area3D" type="Area3D" parent="OrbitalBumper/MeshInstance3D4" unique_id=2042409524]
+script = ExtResource("3_7m7p7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OrbitalBumper/MeshInstance3D4/Area3D" unique_id=825600165]
+shape = SubResource("ConvexPolygonShape3D_bxuyi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="OrbitalBumper" unique_id=233652168]
+libraries/ = SubResource("AnimationLibrary_aflgw")
+autoplay = &"rotate"
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=951684308]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)

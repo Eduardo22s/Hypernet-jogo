@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dpw1jv17tya2l"]
+
+[ext_resource type="Shader" uid="uid://conmejl7vtvgv" path="res://Flash/S_ScreenFlash.gdshader" id="1_r3rsl"]
+[ext_resource type="Script" uid="uid://buvfavh76bi0" path="res://Flash/S_ScreenFlash.gd" id="2_3jjv5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vos2s"]
+shader = ExtResource("1_r3rsl")
+shader_parameter/FlashColor = Color(1, 1, 1, 1)
+shader_parameter/Progress = 0.0
+shader_parameter/Softness = 0.04
+shader_parameter/MaxRadius = 1.2
+shader_parameter/PixelSize = 7.0000002375
+shader_parameter/Fragmentation = 0.70000003325
+
+[node name="Flash" type="Node3D" unique_id=761872685]
+
+[node name="S_ScreenFlashLayer" type="CanvasLayer" parent="." unique_id=1773077474]
+
+[node name="ScreenFlash" type="ColorRect" parent="S_ScreenFlashLayer" unique_id=1179942920]
+material = SubResource("ShaderMaterial_vos2s")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_3jjv5")

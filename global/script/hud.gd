@@ -4,6 +4,7 @@ var break_animation = false
 var last_stage_label = -1
 var game_paused = false
 
+var call_once = false
 
 func _on_button_main_menu_pressed() -> void:
 	get_tree().paused = false
@@ -37,6 +38,7 @@ func _process(_delta: float) -> void:
 		await get_tree().create_timer(3.5).timeout
 		Global.trigger_battle = true
 
+
 func open_menu() -> void:
 	game_paused = true
 	get_tree().paused = true
@@ -51,6 +53,7 @@ func close_menu() -> void:
 	_set_buttons(false)
 	$AnimatedPause.play("close")
 	get_tree().paused = false
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func InCombatLabels():

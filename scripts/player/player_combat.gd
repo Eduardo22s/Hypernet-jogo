@@ -1,8 +1,12 @@
 extends CharacterBody3D
 class_name PlayerCombat
 
-const JUMP_VELOCITY = 5.2
+@onready var myself = $"." as Node3D
+@onready var pivot = $Cameras/AttackPivot
+@onready var attack_pivot = $Cameras/AttackPivot/Attack as Node3D
+@onready var attack_collision = $Cameras/AttackPivot/Attack/Area3D/CollisionShape3D
 
+const JUMP_VELOCITY = 5.2
 const velQueda = 1.7
 const controleAereo = 5.0
 const freiarAereo = 8.0
@@ -13,11 +17,6 @@ const coyote = 0.20
 const buffer = 0.15
 const freiar = 20.0
 
-@onready var myself = $"." as Node3D
-@onready var pivot = $OrbitalPivot
-@onready var orbit_attack = $OrbitalPivot/Attack as Node3D
-@onready var attack_collision = $OrbitalPivot/Attack/Area3D/CollisionShape3D
-
 var dashing = false
 var SPEED = 5.0
 var bufferTimer = 0.0
@@ -27,8 +26,13 @@ var orbit_speed := 100.0
 var cooldown = false
 var cooldown_time = 0
 
+const SENSIBILIDADE_MOUSE = 0.003
+var camera_pitch := 0.0
+@onready var player_camera: Camera3D = $Cameras/SpringArm1/Camera1
+
 
 func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Global.timer_on = false
 
 func _process(delta: float) -> void:
@@ -45,6 +49,22 @@ func _process(delta: float) -> void:
 	if cooldown_time >= 0:
 		cooldown_time -= cooldown_time * delta
 
+func _input(event):
+	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		# Rotação horizontal
+		$Cameras.rotate_y(-event.relative.x * SENSIBILIDADE_MOUSE)
+
+		# Rotação vertical
+		camera_pitch -= event.relative.y * SENSIBILIDADE_MOUSE
+		camera_pitch = clamp(camera_pitch, deg_to_rad(-70.0), deg_to_rad(70.0))
+
+		$Cameras/SpringArm1.rotation.x = camera_pitch
+
+	if event.is_action_pressed("ui_cancel"):
+		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta: float) -> void:
 	handle_attack()
@@ -139,8 +159,8 @@ func _physics_process(delta: float) -> void:
 		velocity.y *= 0.4
 
 	var input_dir := Input.get_vector("move_left","move_right","move_forward","move_backward")
-	var forward = myself.global_transform.basis.z
-	var right = myself.global_transform.basis.x
+	var forward = player_camera.global_transform.basis.z
+	var right = player_camera.global_transform.basis.x
 
 	forward.y = 0
 	right.y = 0
@@ -186,27 +206,28 @@ func _physics_process(delta: float) -> void:
 		$VFX_Footstep.emitting = false
 
 	move_and_slide()
-	
-	
-	var horizontal_movement = Vector2(velocity.x, velocity.z).length()
-	
-	if horizontal_movement > 0.1:
-		var target_pos = orbit_attack.global_transform.origin + Vector3(-velocity.x, 0, -velocity.z)
-		pivot.rotate_y(orbit_speed * delta)
-		
-		orbit_attack.look_at(target_pos, Vector3.UP)
+
 
 func get_facing_direction() -> Vector3:
-	return orbit_attack.global_transform.basis.z
+	return -attack_pivot.global_transform.basis.z
+
+func get_camera_direction() -> Vector3:
+	var forward = -$Cameras.global_transform.basis.z
+
+	forward.y = 0.0
+
+	if forward.length_squared() <= 0.001:
+		return Vector3.ZERO
+
+	return forward.normalized()
 
 func handle_attack():
 	if cooldown:
 		if Input.is_action_just_pressed("attack"):
-			dash()
-			$OrbitalPivot/AnimationAttack.play("attack")
+			$Cameras/AttackPivot/AnimationAttack.play("attack")
 			attack_collision.disabled = false
 			await get_tree().create_timer(0.5).timeout
-			$OrbitalPivot/Attack/Area3D/CollisionShape3D.position.z = 0
+			$Cameras/AttackPivot/Attack/Area3D/CollisionShape3D.position.z = 0
 			attack_collision.disabled = true
 			cooldown_time = 3.0
 
@@ -214,20 +235,3 @@ func dash():
 	dashing = true
 	await get_tree().create_timer(0.5).timeout
 	dashing = false
-
-"""
-OLD COMBAT SYSTEM
-func handle_attack()
-		if Input.is_action_pressed("attack"):
-			$OrbitalPivot/Attack/Area3D/CollisionShape3D.position.z += 0.1
-			if $OrbitalPivot/Attack/Area3D/CollisionShape3D.position.z >= 10.0:
-				$OrbitalPivot/Attack/Area3D/CollisionShape3D.position.z = 10.0
-
-		if Input.is_action_just_released("attack"):
-			$OrbitalPivot/AnimationAttack.play("attack")
-			attack_collision.disabled = false
-			await get_tree().create_timer(0.5).timeout
-			$OrbitalPivot/Attack/Area3D/CollisionShape3D.position.z = 0
-			attack_collision.disabled = true
-			cooldown_time = 3.0
-"""

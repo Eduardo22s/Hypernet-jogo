@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://dljwn0furdlpb"]
+
+[ext_resource type="Shader" uid="uid://drww2onrt5dqh" path="res://Mirror/Mirror.gdshader" id="1_mn78a"]
+[ext_resource type="Texture2D" uid="uid://lk5i1i501met" path="res://Mirror/TexturaVidro_Alpha.png" id="2_leg5h"]
+[ext_resource type="Script" uid="uid://dx6yiglfttcwc" path="res://Mirror/S_MirrorRipple.gd" id="3_6rta1"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6rta1"]
+viewport_path = NodePath("CameraViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_57qmd"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_mn78a")
+shader_parameter/ScreenTexture = SubResource("ViewportTexture_6rta1")
+shader_parameter/GlassTexture = ExtResource("2_leg5h")
+shader_parameter/MirrorColor = Color(1, 1, 1, 1)
+shader_parameter/GlassStrength = 1.0
+shader_parameter/DistortionStrength = 0.10000000149012
+shader_parameter/DistortionScale = 1.80000008224012
+shader_parameter/WaveStrength = 0.010000000475
+shader_parameter/WaveFrequency = 31.118001430605
+shader_parameter/WaveSpeed = 2.0
+shader_parameter/RingStrength = 0.250000011875
+shader_parameter/RingFrequency = 4.000000142499999
+shader_parameter/RingWidth = 0.04000000155074
+shader_parameter/RingColor = Color(0.2784314, 0.2784314, 0.2784314, 1)
+shader_parameter/RingCenter = Vector2(0.5, 0.5)
+shader_parameter/RingProgress = 1.0
+shader_parameter/RingRadius = 0.8
+shader_parameter/RingDuration = 10.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_yf5fn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
+size = Vector3(1, 1, 0.02)
+
+[node name="Mirror" type="Node3D" unique_id=1833608210]
+
+[node name="CameraViewport" type="SubViewport" parent="." unique_id=1003770821]
+render_target_update_mode = 4
+
+[node name="CaptureCamera" type="Camera3D" parent="CameraViewport" unique_id=1469524429]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="MirrorMesh" type="MeshInstance3D" parent="." unique_id=94687583]
+material_override = SubResource("ShaderMaterial_57qmd")
+mesh = SubResource("QuadMesh_yf5fn")
+
+[node name="MirrorCollider" type="Area3D" parent="MirrorMesh" unique_id=818434922 node_paths=PackedStringArray("MirrorMesh")]
+process_mode = 3
+script = ExtResource("3_6rta1")
+MirrorMesh = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MirrorMesh/MirrorCollider" unique_id=1663100464]
+shape = SubResource("BoxShape3D_g4v7s")
+
+[connection signal="body_entered" from="MirrorMesh/MirrorCollider" to="MirrorMesh/MirrorCollider" method="_on_body_entered"]

@@ -14,6 +14,7 @@ var words_in_storage = 0
 var good_results = 0
 var neutral_results = 0
 var bad_results = 0
+var word_selected = false
 
 var player_return_pos = Vector3(1.8, 1.6, 7.0)
 

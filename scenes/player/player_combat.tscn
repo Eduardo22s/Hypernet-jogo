@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c324wvuiu3kvv" path="res://scripts/player/player_combat.gd" id="1_pu85u"]
 [ext_resource type="AudioStream" uid="uid://vclec3auu6ab" path="res://assets/SFX/player/hypernetpassosgrama1sfx.mp3" id="2_l441l"]
+[ext_resource type="PackedScene" uid="uid://dscbufc0mvnpb" path="res://global/cenas/hud.tscn" id="2_m80cp"]
 [ext_resource type="AudioStream" uid="uid://6x3cyxxci611" path="res://assets/SFX/player/hypernetpassosgrama2sfx.mp3" id="3_30d14"]
 [ext_resource type="Script" uid="uid://bguf3ys1es0a" path="res://scripts/player/grab.gd" id="3_h2iks"]
 [ext_resource type="AudioStream" uid="uid://dlyvbtpeuxoi3" path="res://assets/SFX/player/hypernetpassosgrama3sfx.mp3" id="4_nfaxx"]
@@ -133,8 +134,10 @@ _data = {
 &"attack": SubResource("Animation_h2iks")
 }
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_l441l"]
-radius = 1.0
+[sub_resource type="BoxShape3D" id="BoxShape3D_m80cp"]
+size = Vector3(0.84472656, 1.3649902, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ixmm3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_isfe7"]
 animations = [{
@@ -319,6 +322,8 @@ animations = [{
 [node name="PlayerCombat" type="CharacterBody3D" unique_id=1230296654]
 script = ExtResource("1_pu85u")
 
+[node name="HUD" parent="." unique_id=1747082955 instance=ExtResource("2_m80cp")]
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=822496498]
 stream = SubResource("AudioStreamPlaylist_ixmm3")
 pitch_scale = 2.0
@@ -331,30 +336,43 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17138672, 0)
 shape = SubResource("CapsuleShape3D_unwft")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=272167747]
+visible = false
 pixel_size = 0.015
 billboard = 1
 texture_filter = 0
 texture = SubResource("ViewportTexture_ui4bd")
 
-[node name="OrbitalPivot" type="Node3D" parent="." unique_id=1658452017]
+[node name="Cameras" type="Node3D" parent="." unique_id=1258315390]
 
-[node name="AnimationAttack" type="AnimationPlayer" parent="OrbitalPivot" unique_id=560922238]
+[node name="AttackPivot" type="Node3D" parent="Cameras" unique_id=1658452017]
+
+[node name="AnimationAttack" type="AnimationPlayer" parent="Cameras/AttackPivot" unique_id=560922238]
 libraries/ = SubResource("AnimationLibrary_k218s")
 
-[node name="Attack" type="Node3D" parent="OrbitalPivot" unique_id=2024327669]
+[node name="Attack" type="Node3D" parent="Cameras/AttackPivot" unique_id=2024327669]
 
-[node name="Area3D" type="Area3D" parent="OrbitalPivot/Attack" unique_id=483657412]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+[node name="Area3D" type="Area3D" parent="Cameras/AttackPivot/Attack" unique_id=483657412]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.82599425)
 script = ExtResource("3_h2iks")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="OrbitalPivot/Attack/Area3D" unique_id=1237099303]
-shape = SubResource("SphereShape3D_l441l")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/AttackPivot/Attack/Area3D" unique_id=1237099303]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18249512, 0)
+shape = SubResource("BoxShape3D_m80cp")
 disabled = true
 debug_color = Color(0.9372793, 1.3284087e-05, 0.6265227, 1)
 
-[node name="VFX_Sprint" parent="OrbitalPivot" unique_id=1033056611 instance=ExtResource("9_ixmm3")]
+[node name="VFX_Sprint" parent="Cameras/AttackPivot" unique_id=1033056611 instance=ExtResource("9_ixmm3")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 visible = false
+
+[node name="SpringArm1" type="SpringArm3D" parent="Cameras" unique_id=1348308859]
+transform = Transform3D(1, 0, 0, 0, 0.95105654, 0.309017, 0, -0.309017, 0.95105654, 0, 0.60725594, 0.053212643)
+shape = SubResource("SphereShape3D_ixmm3")
+spring_length = 0.0
+margin = 0.1
+
+[node name="Camera1" type="Camera3D" parent="Cameras/SpringArm1" unique_id=519578640]
+transform = Transform3D(1, 0, 0, 0, 0.95250964, -0.3045086, 0, 0.3045086, 0.95250964, 0, -0.14392683, -2.5918984)
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1945331619]
 transparent_bg = true

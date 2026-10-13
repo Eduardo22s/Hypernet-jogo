@@ -10,6 +10,7 @@ class_name WordsNeutral
 @onready var animated_word_2: AnimatedSprite2D = $SubViewport/WordsNeutral2DModel/AnimatedWord2
 @onready var animated_word_3: AnimatedSprite2D = $SubViewport/WordsNeutral2DModel/AnimatedWord3
 
+var inactive = true
 var grabbed = false
 var thrown = false
 var ricocheted = false
@@ -22,11 +23,10 @@ const SPEED = 5.0
 const THROW_SPEED = 12.0
 
 
-func _on_timer_timeout() -> void:
-	self.queue_free()
-
 func _on_activation_zone_area_entered(area: Area3D) -> void:
 	if area is Grab:
+		Global.word_selected = true
+		self.inactive = false
 		grabbed = true
 		$Hitzone.monitoring = true
 		$Sprite3D.modulate = Color(1.0, 1.0, 1.0, 1)
@@ -45,8 +45,20 @@ func _on_hitzone_area_entered(area: Area3D) -> void:
 		Global.words_in_storage += 1
 		Global.neutral_results += 1
 		$AudioStreamPlayer.play()
-		$Sprite3D.visible = false
-		$Bubble.visible = false
+		$Hitzone.queue_free()
+		$Flash/S_ScreenFlashLayer/ScreenFlash.PlayFlash()
+
+	if area is MirrorZone:
+		var random_mirror = randi_range(1, 4)
+		match random_mirror:
+			1:
+				global_transform.origin = $"../MirrorTeleport".global_position
+			2:
+				global_transform.origin = $"../MirrorTeleport2".global_position
+			3:
+				global_transform.origin = $"../MirrorTeleport3".global_position
+			4:
+				global_transform.origin = $"../MirrorTeleport4".global_position
 
 
 func _ready() -> void:
@@ -55,6 +67,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if in_heart:
 		global_transform.origin = heart.global_position
+	
+	if inactive and Global.word_selected:
+		queue_free()
 	
 	if target && grabbed:
 		throw()

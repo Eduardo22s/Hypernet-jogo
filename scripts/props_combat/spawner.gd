@@ -7,18 +7,45 @@ extends Node3D
 @onready var spawner: Node3D = $"."
 
 var random_pos = Vector3(randf_range(-8, 8), 0, randf_range(-8, 8))
-var random_word = randi_range(1, 10)
+var wave_breaker_1 = true
+var wave_breaker_2 = true
+var wave_breaker_3 = true
+
 
 func _process(_delta: float) -> void:
 	if Global.words_in_storage >= 3:
 		queue_free()
 
-func _on_timer_timeout() -> void:
-	spawn(spawner.global_position)
-	random_pos = Vector3(randf_range(-8, 8), 0, randf_range(-8, 8))
-	random_word = randi_range(1, 10)
+	match Global.words_in_storage:
+		0:
+			await get_tree().create_timer(1.5).timeout
+			if wave_breaker_1:
+				spawn(spawner.global_position, "good")
+				spawn(spawner.global_position, "neutral")
+				spawn(spawner.global_position, "bad")
+				random_pos = Vector3(randf_range(-8, 8), 0, randf_range(-8, 8))
+				wave_breaker_1 = false
+		1:
+			await get_tree().create_timer(1.5).timeout
+			if wave_breaker_2:
+				Global.word_selected = false
+				spawn(spawner.global_position, "good")
+				spawn(spawner.global_position, "neutral")
+				spawn(spawner.global_position, "bad")
+				random_pos = Vector3(randf_range(-8, 8), 0, randf_range(-8, 8))
+				wave_breaker_2 = false
+		2:
+			await get_tree().create_timer(1.5).timeout
+			if wave_breaker_3:
+				Global.word_selected = false
+				spawn(spawner.global_position, "good")
+				spawn(spawner.global_position, "neutral")
+				spawn(spawner.global_position, "bad")
+				random_pos = Vector3(randf_range(-8, 8), 0, randf_range(-8, 8))
+				wave_breaker_3 = false
 
-func spawn(pos):
+
+func spawn(pos, type):
 	var wg = words_good.instantiate()
 	var wn = words_neutral.instantiate()
 	var wb = words_bad.instantiate()
@@ -29,9 +56,12 @@ func spawn(pos):
 	wn.position = pos
 	wb.position = pos
 	
-	if random_word < 4:
+	if type == "good":
 		get_parent().add_child(wg)
-	elif random_word < 8:
+		random_pos = Vector3(randf_range(-8, 8), 0, randf_range(-8, 8))
+	elif type == "neutral":
 		get_parent().add_child(wn)
+		random_pos = Vector3(randf_range(-8, 8), 0, randf_range(-8, 8))
 	else:
 		get_parent().add_child(wb)
+		random_pos = Vector3(randf_range(-8, 8), 0, randf_range(-8, 8))

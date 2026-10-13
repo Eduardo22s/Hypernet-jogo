@@ -3,9 +3,11 @@
 [ext_resource type="Script" uid="uid://cnvfl5hujjfih" path="res://global/script/hud.gd" id="1_taf06"]
 [ext_resource type="Shader" uid="uid://fsl3lmqgpnp5" path="res://global/cenas/VFX/_Shaders/CRTFilter.gdshader" id="2_hcsof"]
 [ext_resource type="Texture2D" uid="uid://cv7apoy862vu0" path="res://assets/props2D/YouTV_TimerUI.png" id="2_jt6de"]
+[ext_resource type="Shader" uid="uid://conmejl7vtvgv" path="res://global/cenas/VFX/_Shaders/Flash/S_ScreenFlash.gdshader" id="2_nyale"]
 [ext_resource type="Texture2D" uid="uid://cq36vtmcevr3x" path="res://assets/props2D/HUD/BattleUI/Battle_Player.png" id="3_5jqjx"]
 [ext_resource type="FontFile" uid="uid://bcgyc0ombka2d" path="res://assets/fonts/Rayman 1.ttf" id="3_7rux2"]
 [ext_resource type="Texture2D" uid="uid://cwi3kjyrisq0k" path="res://assets/props2D/HUD/BattleUI/Battle_Enemy.png" id="3_d8snf"]
+[ext_resource type="Script" uid="uid://buvfavh76bi0" path="res://global/cenas/VFX/_Shaders/Flash/S_ScreenFlash.gd" id="3_vaytx"]
 [ext_resource type="Texture2D" uid="uid://3d20hkt7ftbq" path="res://assets/props2D/HUD/BattleUI/Battle_Number.png" id="4_qkiwq"]
 [ext_resource type="Texture2D" uid="uid://chnvsfka6u12h" path="res://assets/props2D/HUD/BattleUI/Battle_WaveBar.png" id="5_qkiwq"]
 [ext_resource type="Texture2D" uid="uid://c4k7otnnq1i6n" path="res://assets/props2D/HUD/BattleUI/HatePoints.png" id="6_vj4h4"]
@@ -142,6 +144,15 @@ _data = {
 &"RESET": SubResource("Animation_ne16y"),
 &"init": SubResource("Animation_47ly8")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vos2s"]
+shader = ExtResource("2_nyale")
+shader_parameter/FlashColor = Color(1, 1, 1, 1)
+shader_parameter/Progress = 0.0
+shader_parameter/Softness = 0.04
+shader_parameter/MaxRadius = 1.2
+shader_parameter/PixelSize = 7.0000002375
+shader_parameter/Fragmentation = 0.70000003325
 
 [sub_resource type="Animation" id="Animation_jfthx"]
 length = 0.001
@@ -769,6 +780,21 @@ script = ExtResource("1_taf06")
 [node name="AnimationHUD" type="AnimationPlayer" parent="." unique_id=158340334]
 libraries/ = SubResource("AnimationLibrary_vw453")
 autoplay = &"init"
+
+[node name="Flash" type="Node3D" parent="." unique_id=761872685]
+
+[node name="S_ScreenFlashLayer" type="CanvasLayer" parent="Flash" unique_id=1773077474]
+
+[node name="ScreenFlash" type="ColorRect" parent="Flash/S_ScreenFlashLayer" unique_id=1179942920]
+material = SubResource("ShaderMaterial_vos2s")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_vaytx")
+TotalDuration = 2.0
 
 [node name="Dialogues" type="Node" parent="." unique_id=1231853471]
 
