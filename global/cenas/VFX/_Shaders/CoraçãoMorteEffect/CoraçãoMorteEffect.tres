@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dnwtmmv14jw65"]
+
+[ext_resource type="Shader" uid="uid://cfreto3aieibd" path="res://CoraçãoMorteEffect/CoraçãoMorteEffect.gdshader" id="1_v12gh"]
+
+[resource]
+shader = ExtResource("1_v12gh")
+shader_parameter/FlashAmount = 0.0
+shader_parameter/MeltProgress = 0.0
+shader_parameter/FlashColor = Color(1, 1, 1, 1)
+shader_parameter/FlashColorMix = 0.7
+shader_parameter/StripCount = 64.0
+shader_parameter/BlockSize = 0.01200000022074
+shader_parameter/GlitchStrength = 0.035
+shader_parameter/MeltVariation = 0.8
+shader_parameter/MeltDistance = 700.0
+shader_parameter/DissolveStrength = 0.400000019

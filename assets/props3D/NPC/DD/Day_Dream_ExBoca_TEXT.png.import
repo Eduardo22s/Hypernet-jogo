@@ -2,24 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2pmy03svb2nv"
-path.s3tc="res://.godot/imported/Day_Dream_Calsas_TEXT.png-ff0f1928d21ea9d4a4fdad831c9f4568.s3tc.ctex"
+uid="uid://qsd7j4bkf71v"
+path="res://.godot/imported/Day_Dream_ExBoca_TEXT.png-661d9c748cdf7a86642186ce77b0964d.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
-"md5": "782c6419163496a0eb6d446cd2421516"
+"md5": "7f76f80215cc9aa773b1db1da6687da9"
 }
 
 [deps]
 
-source_file="res://assets/props3D/NPC/Day_Dream_Calsas_TEXT.png"
-dest_files=["res://.godot/imported/Day_Dream_Calsas_TEXT.png-ff0f1928d21ea9d4a4fdad831c9f4568.s3tc.ctex"]
+source_file="res://assets/props3D/NPC/DD/Day_Dream_ExBoca_TEXT.png"
+dest_files=["res://.godot/imported/Day_Dream_ExBoca_TEXT.png-661d9c748cdf7a86642186ce77b0964d.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -27,7 +26,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

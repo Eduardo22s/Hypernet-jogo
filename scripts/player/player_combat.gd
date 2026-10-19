@@ -34,6 +34,7 @@ var camera_pitch := 0.0
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Global.timer_on = false
+	Global.trigger_dialogue = false
 
 func _process(delta: float) -> void:
 	if dashing:

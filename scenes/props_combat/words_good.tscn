@@ -30,7 +30,7 @@ shader_parameter/MaxRadius = 1.2
 shader_parameter/PixelSize = 7.0000002375
 shader_parameter/Fragmentation = 0.70000003325
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_5g4sf"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_pcj3b"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_isfe7"]
@@ -39,52 +39,52 @@ radius = 1.0
 [sub_resource type="SpriteFrames" id="SpriteFrames_isfe7"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 1.5,
 "texture": ExtResource("5_r6k2l")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": ExtResource("6_b42rv")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": ExtResource("7_acev1")
 }],
-"loop": 0,
+"loop": 1,
 "name": &"DD1",
-"speed": 12.0
+"speed": 2.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ggami"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 1.5,
 "texture": ExtResource("8_jqcob")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": ExtResource("9_wfj73")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": ExtResource("10_1ra4d")
 }],
-"loop": 0,
+"loop": 1,
 "name": &"DD2",
-"speed": 5.0
+"speed": 2.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m7mu5"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 1.5,
 "texture": ExtResource("11_tattl")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": ExtResource("12_yuiir")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": ExtResource("13_fopgx")
 }],
-"loop": 0,
+"loop": 1,
 "name": &"DD3",
-"speed": 5.0
+"speed": 2.0
 }]
 
 [node name="WordsGood" type="Node3D" unique_id=1656796278]
@@ -113,7 +113,7 @@ TotalDuration = 0.5
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=833795134]
 modulate = Color(1, 1, 1, 0.5882353)
 billboard = 1
-texture = SubResource("ViewportTexture_5g4sf")
+texture = SubResource("ViewportTexture_pcj3b")
 
 [node name="Bubble" parent="." unique_id=2007721419 instance=ExtResource("3_3invh")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
@@ -145,18 +145,21 @@ offset_bottom = 125.0
 position = Vector2(112, 62)
 sprite_frames = SubResource("SpriteFrames_isfe7")
 animation = &"DD1"
+autoplay = "DD1"
 
 [node name="AnimatedWord2" type="AnimatedSprite2D" parent="SubViewport/WordsGood2DModel" unique_id=1371777178]
 visible = false
 position = Vector2(112, 62)
 sprite_frames = SubResource("SpriteFrames_ggami")
 animation = &"DD2"
+autoplay = "DD2"
 
 [node name="AnimatedWord3" type="AnimatedSprite2D" parent="SubViewport/WordsGood2DModel" unique_id=1290348734]
 visible = false
 position = Vector2(112, 62)
 sprite_frames = SubResource("SpriteFrames_m7mu5")
 animation = &"DD3"
+autoplay = "DD3"
 
 [connection signal="area_entered" from="Hitzone" to="." method="_on_hitzone_area_entered"]
 [connection signal="area_entered" from="ActivationZone" to="." method="_on_activation_zone_area_entered"]

@@ -10,7 +10,7 @@ var model: Node3D
 
 
 func enter() -> void:
-	model = npc.get_node("Day_Dream")
+	model = npc.get_node("Model")
 
 	# Começa indo para o PointB
 	target_point = npc.point_b

@@ -8,7 +8,7 @@ var model: Node3D
 
 
 func enter() -> void:
-	model = npc.get_node("Day_Dream")
+	model = npc.get_node("Model")
 
 
 func update(delta: float) -> void:

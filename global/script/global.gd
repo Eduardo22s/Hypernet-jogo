@@ -7,7 +7,11 @@ var end_game = false
 
 var trigger_dialogue = false
 var trigger_battle = false
+var exit_dialogue = false
 var npc_battle = ""
+
+var DD_concluded = false
+var show_DD_profile = false
 
 var word_kind = ""
 var words_in_storage = 0

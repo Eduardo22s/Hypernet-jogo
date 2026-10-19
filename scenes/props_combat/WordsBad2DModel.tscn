@@ -22,7 +22,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_6f3ma")
 }],
-"loop": 0,
+"loop": 1,
 "name": &"DD1",
 "speed": 12.0
 }]
@@ -72,6 +72,7 @@ offset_bottom = 125.0
 position = Vector2(112, 62)
 sprite_frames = SubResource("SpriteFrames_isfe7")
 animation = &"DD1"
+frame_progress = 0.7209449
 
 [node name="AnimatedWord2" type="AnimatedSprite2D" parent="." unique_id=355421083]
 position = Vector2(112, 62)

@@ -1,0 +1,83 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://cs7kmdxnf8hte"
+path="res://.godot/imported/Day_Dream.glb-e560cee6c4ea727c2a64cd929dfa5ef2.scn"
+
+[deps]
+
+source_file="res://assets/props3D/NPC/DD/Day_Dream.glb"
+dest_files=["res://.godot/imported/Day_Dream.glb-e560cee6c4ea727c2a64cd929dfa5ef2.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+mesh_library/use_node_names_as_mesh_names=false
+array_mesh/deduplicate_surfaces=true
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"materials": {
+"Acess_MAT": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/props3D/NPC/DD/DD_MAT/Acess_MAT.tres",
+"use_external/path": "uid://jqlukutashhg"
+},
+"Calsas_MAT": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/props3D/NPC/DD/DD_MAT/Calsas_MAT.tres",
+"use_external/path": "uid://leabdnf1r1t5"
+},
+"ExBoca_MAT": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/props3D/NPC/DD/DD_MAT/ExBoca_MAT.tres",
+"use_external/path": "uid://s1b3xowcra0l"
+},
+"ExOlho_MAT": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/props3D/NPC/DD/DD_MAT/ExOlho_MAT.tres",
+"use_external/path": "uid://dt1mxspx4y6q6"
+},
+"Head_MAT": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/props3D/NPC/DD/DD_MAT/Head_MAT.tres",
+"use_external/path": "uid://dpj1ruqu5x7q2"
+},
+"Outline": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/props3D/NPC/DD/DD_MAT/Outline.tres",
+"use_external/path": "uid://cbb5r6ukalpwm"
+},
+"ddskin_MAT": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/props3D/NPC/DD/DD_MAT/ddskin_MAT.tres",
+"use_external/path": "uid://dd1bf3y61wv4c"
+}
+}
+}
+gltf/naming_version=2
+gltf/embedded_image_handling=1
+gltf/texture_map_mode=1

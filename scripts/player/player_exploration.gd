@@ -86,8 +86,6 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	handle_attack()
-
 	var moving_sprite = $SubViewport/Player2dModel/AnimatedMoving
 	var idle_sprite = $SubViewport/Player2dModel/AnimatedIdle
 

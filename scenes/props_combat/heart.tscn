@@ -147,7 +147,7 @@ _data = {
 &"rotate": SubResource("Animation_cubhb")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_isfe7"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_wdlwq"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ukoy2"]
@@ -471,7 +471,7 @@ autoplay = &"rotate"
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 billboard = 1
 texture_filter = 0
-texture = SubResource("ViewportTexture_isfe7")
+texture = SubResource("ViewportTexture_wdlwq")
 
 [node name="Explosion" type="Sprite3D" parent="." unique_id=433874593]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0.1)

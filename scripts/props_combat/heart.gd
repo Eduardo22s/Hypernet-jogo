@@ -42,7 +42,7 @@ func _process(delta: float) -> void:
 		Global.trigger_battle = false
 		$Hitzone.monitorable = false
 		
-		await get_tree().create_timer(2.5).timeout
+		await get_tree().create_timer(9.5).timeout
 		await get_tree().process_frame
 		get_tree().change_scene_to_file.call_deferred("res://scenes/stages/fase.tscn")
 	

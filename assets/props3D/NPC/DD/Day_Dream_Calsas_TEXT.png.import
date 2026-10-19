@@ -2,24 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0xbb3qsapcon"
-path.s3tc="res://.godot/imported/Day_Dream_Acess_TEXT.png-b36b9dd9c91ff924164862af19365d28.s3tc.ctex"
+uid="uid://bvpeoxesqbcaf"
+path="res://.godot/imported/Day_Dream_Calsas_TEXT.png-eaaee22a85a83bbb46f72ccd3e921e80.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
-"md5": "f2cee9d5b9e1ab725a6e9b09780dbc87"
+"md5": "782c6419163496a0eb6d446cd2421516"
 }
 
 [deps]
 
-source_file="res://assets/props3D/NPC/Day_Dream_Acess_TEXT.png"
-dest_files=["res://.godot/imported/Day_Dream_Acess_TEXT.png-b36b9dd9c91ff924164862af19365d28.s3tc.ctex"]
+source_file="res://assets/props3D/NPC/DD/Day_Dream_Calsas_TEXT.png"
+dest_files=["res://.godot/imported/Day_Dream_Calsas_TEXT.png-eaaee22a85a83bbb46f72ccd3e921e80.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -27,7 +26,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

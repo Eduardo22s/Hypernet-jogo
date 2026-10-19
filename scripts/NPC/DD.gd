@@ -9,7 +9,7 @@ extends Node3D
 @onready var look_player_zone: Area3D = $LookPlayerZone
 
 var player_in_zone := false
-var last_dialogue := true
+var interact_once := true
 
 var point_a: Node3D
 var point_b: Node3D
@@ -43,21 +43,27 @@ func randomize_patrol_point(point: Node3D) -> void:
 
 func _on_interect_zone_body_entered(body: Node3D) -> void:
 	if body is PlayerExploration:
+		Global.show_DD_profile = true
 		player_in_zone = true
 		state_machine.transition_to(look_player_state)
 
 
 func _on_interect_zone_body_exited(body: Node3D) -> void:
 	if body is PlayerExploration:
+		Global.exit_dialogue = false
+		Global.show_DD_profile = false
 		player_in_zone = false
-		last_dialogue = true
+		interact_once = true
 		state_machine.transition_to(patrol_state)
 
 
 func _process(_delta: float) -> void:
-	if player_in_zone and last_dialogue and Input.is_action_just_pressed("interagir"):
+	if player_in_zone && interact_once && !Global.DD_concluded && Input.is_action_just_pressed("interagir"):
 		to_battle()
-		last_dialogue = false
+		interact_once = false
+	
+	if Global.words_in_storage == 3 && Global.npc_battle == "DD":
+		Global.DD_concluded = true
 
 
 func to_battle() -> void:
@@ -70,6 +76,9 @@ func to_battle() -> void:
 	await get_tree().create_timer(1.5).timeout
 	$Portal.warp()
 
+	if Global.exit_dialogue:
+		player_in_zone = false
+		interact_once = true
 
 func _take_damage() -> void:
 	$AnimationPlayer.play("damage")

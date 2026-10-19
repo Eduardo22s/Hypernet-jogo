@@ -4,6 +4,10 @@ var break_animation = false
 var last_stage_label = -1
 var game_paused = false
 
+var intro = true
+var question1 = true
+var question2 = true
+var question3 = true
 var call_once = false
 
 func _on_button_main_menu_pressed() -> void:
@@ -29,14 +33,52 @@ func _process(_delta: float) -> void:
 	InCombatLabels()
 	$TimerSprite/Label.text = str(Global.minutes, ":", roundi(Global.seconds))
 
-	if Global.trigger_dialogue:
-		$Dialogues/TestDialogue/AnimationDialogue.play("call_textbox")
+	if Global.show_DD_profile:
+		$Profiles/DD.visible = true
+	else:
+		$Profiles/DD.visible = false
 
-		await get_tree().create_timer(1.5).timeout
-		Global.trigger_dialogue = false
+	if Global.trigger_dialogue && Global.npc_battle == "DD":
+		if intro:
+			$Dialogues/AnimationDialogue.play("CallDD")
+			intro = false
 
-		await get_tree().create_timer(3.5).timeout
-		Global.trigger_battle = true
+		if Input.is_action_just_pressed("attack") && !intro:
+			$Dialogues/AnimationDialogue.play("DDDecline")
+			Global.exit_dialogue = true
+			Global.trigger_dialogue = false
+			Global.stop_player = false
+
+		elif Input.is_action_just_pressed("interagir") && !intro:
+			$Dialogues/AnimationDialogue.play("DDAccept")
+			
+			await get_tree().create_timer(5.0).timeout
+			Global.trigger_battle = true
+
+	if Global.trigger_battle == true && Global.npc_battle == "DD":
+		match Global.words_in_storage:
+			0:
+				if question1:
+					$Dialogues/AnimationDialogue.play("DDQuestion1")
+					
+					await get_tree().create_timer(6.5).timeout
+					question1 = false
+			1:
+				if question2:
+					$Dialogues/AnimationDialogue.play("DDQuestion2")
+					
+					await get_tree().create_timer(6.5).timeout
+					question2 = false
+			2:
+				if question3:
+					$Dialogues/AnimationDialogue.play("DDQuestion3")
+					
+					await get_tree().create_timer(6.5).timeout
+					question3 = false
+			3:
+				$Dialogues/AnimationDialogue.play("DDConclusion")
+	#if Global.DD_concluded: 
+	#	$Dialogues/AnimationDialogue.play("DDConclusion")
 
 
 func open_menu() -> void:

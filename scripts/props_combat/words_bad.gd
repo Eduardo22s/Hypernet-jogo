@@ -6,15 +6,13 @@ class_name WordsBad
 @onready var target: PlayerCombat = $"../PlayerCombat"
 @onready var heart: Node3D = $"../Heart"
 
-@onready var animated_word_1: AnimatedSprite2D = $SubViewport/WordsBad2DModel/AnimatedWord1
-@onready var animated_word_2: AnimatedSprite2D = $SubViewport/WordsBad2DModel/AnimatedWord2
-@onready var animated_word_3: AnimatedSprite2D = $SubViewport/WordsBad2DModel/AnimatedWord3
-
 var inactive = true
 var grabbed = false
 var thrown = false
 var ricocheted = false
 var in_heart = false
+
+var one_shot = false
 
 var throw_velocity = Vector3.ZERO
 var throw_height: float = 0.0
@@ -28,13 +26,18 @@ func _on_activation_zone_area_entered(area: Area3D) -> void:
 		Global.word_selected = true
 		self.inactive = false
 		grabbed = true
-		$Hitzone.monitoring = true
 		$Sprite3D.modulate = Color(1.0, 1.0, 1.0, 1)
+
+		if !one_shot:
+			$Hitzone.monitoring = true
+			one_shot = true
+
 
 func _on_hitzone_area_entered(area: Area3D) -> void:
 	if area is Border:
 		var normal = area.global_transform.basis.z.normalized()
 		throw_velocity = throw_velocity.bounce(normal)
+		throw_velocity *= 0.5
 		global_transform.origin += normal * 0.1
 	
 	if area is HeartHitzone:
@@ -44,8 +47,9 @@ func _on_hitzone_area_entered(area: Area3D) -> void:
 		Global.word_kind = "Bad"
 		Global.words_in_storage += 1
 		Global.bad_results += 1
-		$AudioStreamPlayer.play()
+		$".".visible = false
 		$Hitzone.queue_free()
+		$AudioStreamPlayer.play()
 		$Flash/S_ScreenFlashLayer/ScreenFlash.PlayFlash()
 
 	if area is MirrorZone:
@@ -83,17 +87,18 @@ func _process(delta: float) -> void:
 		global_transform.origin.y = throw_height
 		_contain_inside_border()
 
-
 func change_sprite():
 	if Global.npc_battle == "DD":
 		if Global.words_in_storage == 0:
-			self.animated_word_1.frame = randi_range(0, 2)
+			$SubViewport/WordsBad2DModel/AnimatedWord1.play("DD1")
 		elif Global.words_in_storage == 1:
-			self.animated_word_1.frame = randi_range(0, 2)
-			animated_word_1.visible = false
+			$SubViewport/WordsBad2DModel/AnimatedWord2.play("DD2")
+			$SubViewport/WordsBad2DModel/AnimatedWord2.visible = true
+			$SubViewport/WordsBad2DModel/AnimatedWord1.visible = false
 		elif Global.words_in_storage == 2:
-			self.animated_word_1.frame = randi_range(0, 2)
-			animated_word_2.visible = false
+			$SubViewport/WordsBad2DModel/AnimatedWord3.play("DD3")
+			$SubViewport/WordsBad2DModel/AnimatedWord3.visible = true
+			$SubViewport/WordsBad2DModel/AnimatedWord2.visible = false
 
 func throw() -> void:
 	grabbed = false

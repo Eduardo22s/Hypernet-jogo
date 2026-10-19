@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://b4xmgqdc4lncg" path="res://assets/props2D/HUD/WaveLabels/FAREWELL.png" id="12_0cion"]
 [ext_resource type="Texture2D" uid="uid://8lgmffpgysnt" path="res://assets/props2D/HUD/PauseAnimation/PAUSE_Animation2.png" id="12_ne16y"]
 [ext_resource type="Texture2D" uid="uid://dumagm11clnq1" path="res://assets/props2D/HUD/PauseAnimation/PAUSE_Animation3.png" id="13_47ly8"]
+[ext_resource type="Texture2D" uid="uid://cbvqnfr8ypw2x" path="res://assets/props2D/profiles/BIO_Profile_DayDream.png" id="14_vaytx"]
 [ext_resource type="Texture2D" uid="uid://bbx4jkrysixpt" path="res://assets/props2D/HUD/PauseAnimation/PAUSE_Animation4.png" id="14_vw453"]
 [ext_resource type="Texture2D" uid="uid://c7kei2mwpl1sv" path="res://assets/props2D/HUD/PauseAnimation/PAUSE_Animation5.png" id="15_0cion"]
 [ext_resource type="Texture2D" uid="uid://clkovhrght8kg" path="res://assets/props2D/HUD/PauseAnimation/PAUSE_Animation6.png" id="16_cqh78"]
@@ -154,40 +155,13 @@ shader_parameter/MaxRadius = 1.2
 shader_parameter/PixelSize = 7.0000002375
 shader_parameter/Fragmentation = 0.70000003325
 
-[sub_resource type="Animation" id="Animation_jfthx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TestDialogue/ColorRect:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.0009999999),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(320, 798)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TestDialogue/Label:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="Animation" id="Animation_taf06"]
-resource_name = "call_textbox"
-length = 1.5
+resource_name = "CallDD"
+length = 7.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TestDialogue/ColorRect:position")
+tracks/0/path = NodePath("ColorRect:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -199,20 +173,464 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("TestDialogue/Label:visible")
+tracks/1/path = NodePath("DDDialogue/Intro:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1.5),
+"times": PackedFloat32Array(1.5, 6.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DDDialogue/Call:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(6.0333333),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_nyale"]
+resource_name = "DDAccept"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(320, 410)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DDDialogue/CallAccept:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DDDialogue/Call:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_kb6nt"]
+resource_name = "DDBadEnding"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 1, 6, 6.25, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(320, 798), Vector2(320, 380), Vector2(320, 410), Vector2(320, 410), Vector2(320, 380), Vector2(320, 798)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DDDialogue/BadEnding:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5, 5.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_elkys"]
+resource_name = "DDConclusion"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 1, 5, 5.25, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(320, 798), Vector2(320, 380), Vector2(320, 410), Vector2(320, 410), Vector2(320, 380), Vector2(320, 798)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DDCombatDialogue/Conclusion:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5, 4.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_vaytx"]
+resource_name = "DDDecline"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.9666667, 3.2166667, 3.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(320, 410), Vector2(320, 410), Vector2(320, 380), Vector2(320, 798)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DDDialogue/CallDecline:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.9804945),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DDDialogue/Call:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_oar23"]
+resource_name = "DDGoodEnding"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 1, 6, 6.25, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(320, 798), Vector2(320, 380), Vector2(320, 410), Vector2(320, 410), Vector2(320, 380), Vector2(320, 798)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DDDialogue/GoodEnding:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5, 5.4987736),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_kko5u"]
+resource_name = "DDNeutralEnding"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 1, 5, 5.25, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(320, 798), Vector2(320, 380), Vector2(320, 410), Vector2(320, 410), Vector2(320, 380), Vector2(320, 798)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DDDialogue/NeutralEnding:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5, 4.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_jcyv6"]
+resource_name = "DDQuestion1"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 1, 6, 6.25, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(320, 798), Vector2(320, 380), Vector2(320, 410), Vector2(320, 410), Vector2(320, 380), Vector2(320, 798)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DDCombatDialogue/Question1:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5, 5.5333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_1403l"]
+resource_name = "DDQuestion2"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 1, 6, 6.25, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(320, 798), Vector2(320, 380), Vector2(320, 410), Vector2(320, 410), Vector2(320, 380), Vector2(320, 798)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DDCombatDialogue/Question2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5, 5.5333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_5lpf8"]
+resource_name = "DDQuestion3"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 1, 6, 6.25, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(320, 798), Vector2(320, 380), Vector2(320, 410), Vector2(320, 410), Vector2(320, 380), Vector2(320, 798)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DDCombatDialogue/Question3:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5, 5.5666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_jfthx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0009999999),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(320, 798)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DDDialogue/Intro:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DDDialogue/Call:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DDDialogue/CallAccept:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DDDialogue/CallDecline:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DDDialogue/BadEnding:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("DDDialogue/NeutralEnding:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("DDDialogue/GoodEnding:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("DDCombatDialogue/Question1:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("DDCombatDialogue/Question2:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("DDCombatDialogue/Question3:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("DDCombatDialogue/Conclusion:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hcsof"]
 _data = {
-&"RESET": SubResource("Animation_jfthx"),
-&"call_textbox": SubResource("Animation_taf06")
+&"CallDD": SubResource("Animation_taf06"),
+&"DDAccept": SubResource("Animation_nyale"),
+&"DDBadEnding": SubResource("Animation_kb6nt"),
+&"DDConclusion": SubResource("Animation_elkys"),
+&"DDDecline": SubResource("Animation_vaytx"),
+&"DDGoodEnding": SubResource("Animation_oar23"),
+&"DDNeutralEnding": SubResource("Animation_kko5u"),
+&"DDQuestion1": SubResource("Animation_jcyv6"),
+&"DDQuestion2": SubResource("Animation_1403l"),
+&"DDQuestion3": SubResource("Animation_5lpf8"),
+&"RESET": SubResource("Animation_jfthx")
 }
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_isfe7"]
@@ -752,16 +1170,16 @@ animations = [{
 }]
 
 [sub_resource type="LabelSettings" id="LabelSettings_osyi8"]
-font = ExtResource("3_7rux2")
 font_size = 21
-font_color = Color(0, 0.41960785, 1, 1)
+font_color = Color(1, 0.41960785, 1, 1)
 outline_size = 4
+outline_color = Color(0, 0, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_8ema7"]
-font = ExtResource("3_7rux2")
 font_size = 21
-font_color = Color(0, 0.41960785, 1, 1)
+font_color = Color(1, 0.41960785, 1, 1)
 outline_size = 4
+outline_color = Color(0, 0, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jt6de"]
 shader = ExtResource("2_hcsof")
@@ -798,13 +1216,10 @@ TotalDuration = 2.0
 
 [node name="Dialogues" type="Node" parent="." unique_id=1231853471]
 
-[node name="TestDialogue" type="Node" parent="Dialogues" unique_id=1304335187]
-
-[node name="AnimationDialogue" type="AnimationPlayer" parent="Dialogues/TestDialogue" unique_id=1937590044]
-root_node = NodePath("../..")
+[node name="AnimationDialogue" type="AnimationPlayer" parent="Dialogues" unique_id=1937590044]
 libraries/ = SubResource("AnimationLibrary_hcsof")
 
-[node name="ColorRect" type="ColorRect" parent="Dialogues/TestDialogue" unique_id=692198754]
+[node name="ColorRect" type="ColorRect" parent="Dialogues" unique_id=692198754]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -812,28 +1227,138 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -256.0
 offset_top = 150.0
-offset_right = 256.0
-offset_bottom = 293.9995
+offset_right = 341.3335
+offset_bottom = 317.99915
 grow_horizontal = 2
 grow_vertical = 0
 color = Color(0, 0, 0, 0.6862745)
 
-[node name="Label" type="Label" parent="Dialogues/TestDialogue" unique_id=1258971252]
+[node name="DDDialogue" type="Node" parent="Dialogues" unique_id=1304335187]
+
+[node name="Intro" type="Label" parent="Dialogues/DDDialogue" unique_id=1258971252]
 visible = false
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -114.0
-offset_top = -179.0
-offset_right = 115.0
-offset_bottom = -156.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "LET'S DANCE"
+offset_left = 320.0
+offset_top = 410.0
+offset_right = 918.0
+offset_bottom = 578.0
+text = "Fala ADM, veio me banir de novo ou vamo trocar uma ideia mais suave agora? Se tiver disposto podemos colocar nossas diferenças de lado, com o servidor acabando não vale muito a pena ficar remoendo treta passada."
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Call" type="Label" parent="Dialogues/DDDialogue" unique_id=1765831772]
+visible = false
+offset_left = 320.0
+offset_top = 410.0
+offset_right = 918.0
+offset_bottom = 577.0
+text = "Se tiver afim de conversar só aceitar a call irmão tô disposto ae. Eae, como que vai ser?
+
+RECUSAR?                                              ACEITAR?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="CallAccept" type="Label" parent="Dialogues/DDDialogue" unique_id=1547895662]
+visible = false
+offset_left = 320.0
+offset_top = 410.0
+offset_right = 918.0
+offset_bottom = 578.0
+text = "Bora dançar então!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CallDecline" type="Label" parent="Dialogues/DDDialogue" unique_id=890667725]
+visible = false
+offset_left = 320.0
+offset_top = 410.0
+offset_right = 916.0
+offset_bottom = 579.0
+text = "Pss deixar pra depois o que você podia resolver agora não vai mudar o resultado..."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="BadEnding" type="Label" parent="Dialogues/DDDialogue" unique_id=363468292]
+visible = false
+offset_left = 320.0
+offset_top = 410.0
+offset_right = 916.0
+offset_bottom = 578.0
+text = " É mano.. Como um conversador você é um ótimo administrador… não sei o que esperava sair disso, mas enfim
+espero nunca mais te encontrar, então fi, flw ..i."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="NeutralEnding" type="Label" parent="Dialogues/DDDialogue" unique_id=1019947892]
+visible = false
+offset_left = 320.0
+offset_top = 410.0
+offset_right = 917.0
+offset_bottom = 578.0
+text = "É… achei que algo poderia mudar na nossa relação, mas fica na mesmice então, vai na fé."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="GoodEnding" type="Label" parent="Dialogues/DDDialogue" unique_id=96167284]
+visible = false
+offset_left = 320.0
+offset_top = 410.0
+offset_right = 918.0
+offset_bottom = 580.0
+text = "Po cara, você é um cara maneiro até, vlw pela sua mensagem. Sei que nosso santo não bateu inicialmente, mas agradeço por ter tirado um pouco do seu tempo. Espero que algum dia você escute minhas músicas lá fora, tmj mano!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="DDCombatDialogue" type="Node" parent="Dialogues" unique_id=1454845725]
+
+[node name="Question1" type="Label" parent="Dialogues/DDCombatDialogue" unique_id=490618271]
+visible = false
+offset_left = 320.0
+offset_top = 410.0
+offset_right = 917.0
+offset_bottom = 579.0
+text = "Depois do meu banimento eu vi que você revogou e me permitiu entrar de novo no server, qual foi o motivo exato? Porque a galera que ia nos meus shows criticava a falta de compromisso dos ADMS e né não deve ter sido muito maneiro ouvir uma galera reclamando de vocês, já que o server vai acabar pode ser sincero ae."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Question2" type="Label" parent="Dialogues/DDCombatDialogue" unique_id=1127926647]
+visible = false
+offset_left = 320.0
+offset_top = 410.0
+offset_right = 919.0
+offset_bottom = 580.0
+text = "Agora que a gente colocou os pingos nos is, olhando pra trás eu acho que os shows podiam ser até melhores, colocar uns efeitos de luzes mais intensos, melhorar o som do server ou outras coisas do tipo, deve dar um trabalho pros devs mas seria maneiro, queria ter feito mais."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Question3" type="Label" parent="Dialogues/DDCombatDialogue" unique_id=1514869601]
+visible = false
+offset_left = 320.0
+offset_top = 410.0
+offset_right = 918.0
+offset_bottom = 578.0
+text = "Pra ser sincero, eu to meio bolado com o fim do server, não entendi muito bem o motivo do server acabar mas né, o que eu posso fazer… só fico pensando em como conseguir construir uma carreira fora do HyperNet… seila, eu fui aceito por uma galera muito legal aqui dentro, vai ser difícil recomeçar."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Conclusion" type="Label" parent="Dialogues/DDCombatDialogue" unique_id=1469806324]
+visible = false
+offset_left = 320.0
+offset_top = 410.0
+offset_right = 918.0
+offset_bottom = 578.0
+text = "Enfim… vou sentir falta do servidor e acho que as respostas que eu queria eu encontrei…"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Combat" type="Node" parent="." unique_id=1495784869]
 
@@ -909,6 +1434,15 @@ visible = false
 position = Vector2(577, 326)
 texture = ExtResource("12_0cion")
 
+[node name="Profiles" type="Node" parent="." unique_id=1395716286]
+
+[node name="DD" type="Sprite2D" parent="Profiles" unique_id=332059609]
+visible = false
+z_index = -1
+position = Vector2(795, 286)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_vaytx")
+
 [node name="TimerSprite" type="Sprite2D" parent="." unique_id=618407219]
 position = Vector2(973, 102)
 texture = ExtResource("2_jt6de")
@@ -944,12 +1478,15 @@ icon_alignment = 1
 
 [node name="Label" type="Label" parent="ButtonMainMenu" unique_id=438188068]
 layout_mode = 0
-offset_left = 28.0
-offset_top = 37.0
-offset_right = 136.0
-offset_bottom = 60.0
-text = "MAIN MENU"
+offset_left = 23.0
+offset_top = 32.0
+offset_right = 148.0
+offset_bottom = 62.0
+pivot_offset = Vector2(62, 16)
+text = "MENU"
 label_settings = SubResource("LabelSettings_osyi8")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ButtonQuit" type="Button" parent="." unique_id=413043163]
 visible = false
@@ -965,12 +1502,15 @@ flat = true
 
 [node name="Label" type="Label" parent="ButtonQuit" unique_id=2036608473]
 layout_mode = 0
-offset_left = 55.0
-offset_top = 39.0
-offset_right = 106.0
+offset_left = 57.0
+offset_top = 32.0
+offset_right = 108.0
 offset_bottom = 62.0
+pivot_offset = Vector2(27, 17)
 text = "QUIT"
 label_settings = SubResource("LabelSettings_8ema7")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CRT" type="ColorRect" parent="." unique_id=1258240392]
 material = SubResource("ShaderMaterial_jt6de")

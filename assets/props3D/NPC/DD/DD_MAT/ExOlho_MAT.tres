@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dt1mxspx4y6q6"]
+
+[ext_resource type="Texture2D" uid="uid://ca3f83cxocsub" path="res://Day_Dream_ExOlho_TEXT.png" id="1_02ygo"]
+
+[resource]
+resource_name = "ExOlho_MAT"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("1_02ygo")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_operator = 1
+emission_texture = ExtResource("1_02ygo")
+texture_filter = 0
+metadata/_gltf_primary_texture_coord = 0

@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b34yhjxkw2a6"
-path.s3tc="res://.godot/imported/Day_Dream_Head_TEXT.png-d4d044b72c9b7c1987e27362cf779c8f.s3tc.ctex"
+uid="uid://8pfwe6njjr0y"
+path.s3tc="res://.godot/imported/K_UPbody_TEXT.png-02164cf243ec2be509156cf75c2c2e6e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "6f902514d36a285611e43759d13bbb7c"
+"md5": "ffc12fd2a37aca41cab1d157e94dc5dd"
 }
 
 [deps]
 
-source_file="res://assets/props3D/NPC/Day_Dream_Head_TEXT.png"
-dest_files=["res://.godot/imported/Day_Dream_Head_TEXT.png-d4d044b72c9b7c1987e27362cf779c8f.s3tc.ctex"]
+source_file="res://assets/props3D/NPC/KAFKA/K_UPbody_TEXT.png"
+dest_files=["res://.godot/imported/K_UPbody_TEXT.png-02164cf243ec2be509156cf75c2c2e6e.s3tc.ctex"]
 
 [params]
 
