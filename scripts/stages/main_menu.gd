@@ -1,5 +1,9 @@
 extends Node2D
 
+func _ready() -> void:
+	Global.reset_timer()
+
+
 func _on_button_play_pressed() -> void:
 	$AnimatedMenu.frame = 1
 	

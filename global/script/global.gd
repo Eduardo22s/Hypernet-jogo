@@ -30,15 +30,21 @@ var seconds = 59
 func _process(delta: float) -> void:
 	if timer_on:
 		seconds -= 1 * delta
-		if minutes != 0 and seconds == 0:
+		if minutes != 0 and seconds <= 0:
 			minutes -= 1
 			seconds += 59
-		elif minutes == 0 and seconds == 0:
+		elif minutes <= 0 and seconds <= 0:
 			Global.end_game = true
 			minutes = 0
 			seconds = 0
 	else:
 		return
+
+
+func reset_timer():
+	timer_on = false
+	minutes = 5
+	seconds = 59
 
 func invert_bools(var_names: Array):
 	for var_name in var_names:
