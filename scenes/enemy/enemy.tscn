@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://be8epqxs51604"]
+
+[ext_resource type="Script" uid="uid://csofcaaqwushb" path="res://scripts/Enemy/enemy.gd" id="1_4a83h"]
+[ext_resource type="Texture2D" uid="uid://ogvxg55im8u" path="res://assets/player/idle/ProtagRotacao1.png" id="2_a3pup"]
+[ext_resource type="Texture2D" uid="uid://coaiur5powa1g" path="res://assets/player/walking/Frente/Protag_MovFront1.png" id="3_hvxgb"]
+[ext_resource type="Texture2D" uid="uid://cvowlfcc3xec7" path="res://assets/player/walking/Frente/Protag_MovFront2.png" id="4_peoo5"]
+[ext_resource type="Texture2D" uid="uid://67wjvn2r0131" path="res://assets/player/walking/Frente/Protag_MovFront3.png" id="5_2f3il"]
+[ext_resource type="Texture2D" uid="uid://053jhdkmcbke" path="res://assets/player/walking/Frente/Protag_MovFront4.png" id="6_dtxhd"]
+[ext_resource type="Texture2D" uid="uid://cwvvdqalcscug" path="res://assets/player/walking/Frente/Protag_MovFront5.png" id="7_so3kp"]
+[ext_resource type="Texture2D" uid="uid://omfs14j4lf7m" path="res://assets/player/walking/Frente/Protag_MovFront6.png" id="8_5woo5"]
+[ext_resource type="Texture2D" uid="uid://dmemiw3saterr" path="res://assets/player/walking/Frente/Protag_MovFront7.png" id="9_pb0yv"]
+[ext_resource type="Texture2D" uid="uid://cl5t0x62qv64o" path="res://assets/player/walking/Frente/Protag_MovFront8.png" id="10_prup0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t2hhj"]
+radius = 0.63
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t2hhj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_hvxgb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_peoo5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2f3il")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_dtxhd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_so3kp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5woo5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_pb0yv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_prup0")
+}],
+"loop": 1,
+"name": &"andar",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_a3pup")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Enemy" type="CharacterBody3D" unique_id=1788365876]
+script = ExtResource("1_4a83h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1593785289]
+shape = SubResource("CapsuleShape3D_t2hhj")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=821254463]
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_t2hhj")
+animation = &"idle"

@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bidf0omwq42s7" path="res://scenes/NPC/doorman.tscn" id="3_rssfm"]
 [ext_resource type="PackedScene" uid="uid://mxgx53vk4pmh" path="res://scenes/props_exploration/ballon.tscn" id="4_qe0g3"]
 [ext_resource type="PackedScene" uid="uid://l2hm8rn2frxa" path="res://scenes/NPC/daydream.tscn" id="5_tkedx"]
+[ext_resource type="PackedScene" uid="uid://be8epqxs51604" path="res://scenes/enemy/enemy.tscn" id="6_1kras"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_t2hhj"]
 
@@ -106,3 +107,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.884508, 0, 4.2141495)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.877982, 0, 5.1530056)
 
 [node name="PatrolCenter" type="Node3D" parent="." unique_id=1746022771]
+
+[node name="Enemy" parent="." unique_id=1788365876 instance=ExtResource("6_1kras")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5642185, 1.2709961, 1.3653336)

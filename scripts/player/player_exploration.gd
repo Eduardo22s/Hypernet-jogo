@@ -56,6 +56,7 @@ const BALAO_FORCA_DASH = 2.0
 
 
 func _ready():
+	add_to_group("player")
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 	Global.timer_on = true
