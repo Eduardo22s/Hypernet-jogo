@@ -31,6 +31,9 @@ var normal_parede := Vector3.ZERO
 var wall_jump_usado := false
 var ultima_parede_normal := Vector3.ZERO
 
+var recebendo_knockback := false
+var knockback_duracao := 0.25
+
 @onready var wall_area: Area3D = $Wall
 
 var parede_atual: Node3D = null
@@ -202,6 +205,11 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		empurrar_baloes()
 		check_dash_wall_collision()
+		return
+	
+	if recebendo_knockback:
+		move_and_slide()
+		empurrar_baloes()
 		return
 
 	if direction:
@@ -500,3 +508,23 @@ func empurrar_baloes():
 				balao.apply_central_impulse(direcao * BALAO_FORCA_DASH)
 			else:
 				balao.apply_central_impulse(direcao * BALAO_FORCA)
+				
+func aplicar_knockback(origem: Vector3,forca: float = 10.0,forca_vertical: float = 3.0) -> void:
+	var direcao = global_position - origem
+	direcao.y = 0.0
+
+	if direcao.length_squared() > 0.001:
+		direcao = direcao.normalized()
+	else:
+		direcao = Vector3.FORWARD
+
+	dashing = false
+	recebendo_knockback = true
+
+	velocity.x = direcao.x * forca
+	velocity.z = direcao.z * forca
+	velocity.y = forca_vertical
+
+	await get_tree().create_timer(knockback_duracao).timeout
+
+	recebendo_knockback = false

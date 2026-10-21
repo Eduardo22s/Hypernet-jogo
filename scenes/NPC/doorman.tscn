@@ -245,9 +245,8 @@ offset_bottom = 220.0
 texture_filter = 1
 position = Vector2(120, 106)
 sprite_frames = SubResource("SpriteFrames_isfe7")
-animation = &"idle"
+animation = &"hitting"
 autoplay = "idle"
-frame_progress = 0.7045851
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
