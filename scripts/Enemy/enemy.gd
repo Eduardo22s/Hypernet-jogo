@@ -61,6 +61,7 @@ func _physics_process(delta: float) -> void:
 		verificar_colisao_dash()
 
 
+
 func perseguir(delta: float, distancia: float) -> void:
 	if distancia > distancia_deteccao:
 		velocity.x = move_toward(velocity.x, 0.0, velocidade * 4.0 * delta)
@@ -68,18 +69,21 @@ func perseguir(delta: float, distancia: float) -> void:
 		return
 
 	if distancia <= distancia_dash:
-		velocity.x = 0.0
-		velocity.z = 0.0
-
-		# Guarda a direção em que o player está agora.
+		# Mira na posição atual do jogador
 		direcao_dash = player.global_position - global_position
 		direcao_dash.y = 0.0
 
 		if direcao_dash.length_squared() > 0.001:
 			direcao_dash = direcao_dash.normalized()
 
-		timer = tempo_preparacao
-		estado = "preparando"
+		# Inicia o dash imediatamente
+		timer = duracao_dash
+		acertou_player = false
+		estado = "dash"
+
+		velocity.x = direcao_dash.x * forca_dash
+		velocity.z = direcao_dash.z * forca_dash
+		sprite.play("dash")
 		return
 
 	var direcao = player.global_position - global_position
@@ -90,10 +94,9 @@ func perseguir(delta: float, distancia: float) -> void:
 
 		velocity.x = direcao.x * velocidade
 		velocity.z = direcao.z * velocidade
-		
+
 		if sprite.animation != "andar" or not sprite.is_playing():
 			sprite.play("andar")
-
 
 
 func preparar_dash(delta: float) -> void:
