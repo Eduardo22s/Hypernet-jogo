@@ -5,6 +5,9 @@ class_name PlayerCombat
 @onready var pivot = $Cameras/AttackPivot
 @onready var attack_pivot = $Cameras/AttackPivot/Attack as Node3D
 @onready var attack_collision = $Cameras/AttackPivot/Attack/Area3D/CollisionShape3D
+@export var knockback_resistencia: float = 5.0
+
+var recebendo_knockback: bool = false
 
 const JUMP_VELOCITY = 5.2
 const velQueda = 1.7
@@ -170,41 +173,47 @@ func _physics_process(delta: float) -> void:
 	right = right.normalized()
 
 	var direction = (right * input_dir.x +forward * input_dir.y).normalized()
-	if direction:
-		var target_velocity = direction * SPEED
-		var velocidade_atual = Vector3(velocity.x,0,velocity.z)
-		var aceleracaoAtual = aceleracao
-		var freioAtual = freiar
-		
-		$VFX_Footstep.emitting = true
-		
-		if not is_on_floor():
-			freioAtual = freiarAereo
-			aceleracaoAtual = controleAereo
-		
-		#freiagem
-		if velocidade_atual.length() > 0:
-			var dot = velocidade_atual.normalized().dot(direction)
+	if recebendo_knockback:
+		velocity.x = move_toward(velocity.x, 0.0, knockback_resistencia * delta)
+		velocity.z = move_toward(velocity.z, 0.0, knockback_resistencia * delta)
 
-			if dot < 0:
-				# freiando
-				velocity.x = move_toward(velocity.x,0,freioAtual * delta)
-				velocity.z = move_toward(velocity.z,0,freioAtual * delta)
-			else:
-				#normal
-				velocity.x = move_toward(velocity.x,target_velocity.x,aceleracaoAtual * delta)
-				velocity.z = move_toward(velocity.z,target_velocity.z,aceleracaoAtual * delta)
-		else:
-			# aceleração
-			velocity.x = move_toward(velocity.x,target_velocity.x,aceleracaoAtual * delta)
-			velocity.z = move_toward(velocity.z,target_velocity.z,aceleracaoAtual * delta)
-			$AudioStreamPlayer.play()
-
-	# desaceleração
-	else:
-		velocity.x = move_toward(velocity.x,0,desaceleracao * delta)
-		velocity.z = move_toward(velocity.z,0,desaceleracao * delta)
 		$VFX_Footstep.emitting = false
+
+		if Vector2(velocity.x, velocity.z).length() < 0.5:
+			velocity.x = 0.0
+			velocity.z = 0.0
+			recebendo_knockback = false
+
+	else:
+		if direction:
+			var target_velocity = direction * SPEED
+			var velocidade_atual = Vector3(velocity.x, 0, velocity.z)
+			var aceleracaoAtual = aceleracao
+			var freioAtual = freiar
+
+			$VFX_Footstep.emitting = true
+
+			if not is_on_floor():
+				freioAtual = freiarAereo
+				aceleracaoAtual = controleAereo
+
+			if velocidade_atual.length() > 0:
+				var dot = velocidade_atual.normalized().dot(direction)
+
+				if dot < 0:
+					velocity.x = move_toward(velocity.x, 0.0, freioAtual * delta)
+					velocity.z = move_toward(velocity.z, 0.0, freioAtual * delta)
+				else:
+					velocity.x = move_toward(velocity.x, target_velocity.x, aceleracaoAtual * delta)
+					velocity.z = move_toward(velocity.z, target_velocity.z, aceleracaoAtual * delta)
+			else:
+				velocity.x = move_toward(velocity.x, target_velocity.x, aceleracaoAtual * delta)
+				velocity.z = move_toward(velocity.z, target_velocity.z, aceleracaoAtual * delta)
+				$AudioStreamPlayer.play()
+		else:
+			velocity.x = move_toward(velocity.x, 0.0, desaceleracao * delta)
+			velocity.z = move_toward(velocity.z, 0.0, desaceleracao * delta)
+			$VFX_Footstep.emitting = false
 
 	move_and_slide()
 
@@ -236,3 +245,20 @@ func dash():
 	dashing = true
 	await get_tree().create_timer(0.5).timeout
 	dashing = false
+
+
+func aplicar_knockback(origem: Vector3,forca: float,forca_vertical: float) -> void:
+	var direcao_knockback = global_position - origem
+
+	direcao_knockback.y = 0.0
+
+	if direcao_knockback.length_squared() > 0.001:
+		direcao_knockback = direcao_knockback.normalized()
+	else:
+		direcao_knockback = -global_transform.basis.z
+
+	velocity.x = direcao_knockback.x * forca
+	velocity.z = direcao_knockback.z * forca
+	velocity.y = forca_vertical
+
+	recebendo_knockback = true

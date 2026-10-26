@@ -9,7 +9,7 @@ extends CharacterBody3D
 @export var tempo_preparacao: float = 0.5
 @export var cooldown_dash: float = 1.5
 
-var player: CharacterBody3D = null
+var player: PlayerCombat = null
 
 var estado: String = "perseguindo"
 var direcao_dash: Vector3 = Vector3.ZERO
@@ -26,13 +26,14 @@ var acertou_player: bool = false
 
 
 func _ready() -> void:
-	player = get_tree().get_first_node_in_group("player") as CharacterBody3D
+	player = encontrar_player_combat()
 
 
 func _physics_process(delta: float) -> void:
 	if not is_instance_valid(player):
-		player = get_tree().get_first_node_in_group("player") as CharacterBody3D
-		return
+		player = procurar_player_na_arvore(get_tree().root)
+		if player == null:
+			return
 
 	# Gravidade
 	if not is_on_floor():
@@ -155,3 +156,23 @@ func verificar_colisao_dash() -> void:
 			if player.has_method("aplicar_knockback"):
 				player.aplicar_knockback(global_position,knockback_forca,knockback_vertical)
 			return
+			
+
+func encontrar_player_combat() -> PlayerCombat:
+	for no in get_tree().get_nodes_in_group(""):
+		if no is PlayerCombat:
+			return no
+
+	return procurar_player_na_arvore(get_tree().root)
+
+
+func procurar_player_na_arvore(no: Node) -> PlayerCombat:
+	if no is PlayerCombat:
+		return no
+
+	for filho in no.get_children():
+		var encontrado := procurar_player_na_arvore(filho)
+		if encontrado != null:
+			return encontrado
+
+	return null
