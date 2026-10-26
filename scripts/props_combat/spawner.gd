@@ -6,6 +6,8 @@ extends Node3D
 
 @onready var spawner: Node3D = $"."
 
+@export var cooldown_wave = 10.0
+
 var random_pos = Vector3(randf_range(-7.5, 7.5), 0, randf_range(-7.5, 7.5))
 var wave_breaker_1 = true
 var wave_breaker_2 = true
@@ -18,7 +20,7 @@ func _process(_delta: float) -> void:
 
 	match Global.words_in_storage:
 		0:
-			await get_tree().create_timer(6.5).timeout
+			await get_tree().create_timer(cooldown_wave).timeout
 			if wave_breaker_1:
 				spawn(spawner.global_position, "good")
 				spawn(spawner.global_position, "neutral")
@@ -26,7 +28,7 @@ func _process(_delta: float) -> void:
 				random_pos = Vector3(randf_range(-7.5, 7.5), 0, randf_range(-7.5, 7.5))
 				wave_breaker_1 = false
 		1:
-			await get_tree().create_timer(6.5).timeout
+			await get_tree().create_timer(cooldown_wave).timeout
 			if wave_breaker_2:
 				Global.word_selected = false
 				spawn(spawner.global_position, "good")
@@ -35,7 +37,7 @@ func _process(_delta: float) -> void:
 				random_pos = Vector3(randf_range(-7.5, 7.5), 0, randf_range(-7.5, 7.5))
 				wave_breaker_2 = false
 		2:
-			await get_tree().create_timer(6.5).timeout
+			await get_tree().create_timer(cooldown_wave).timeout
 			if wave_breaker_3:
 				Global.word_selected = false
 				spawn(spawner.global_position, "good")

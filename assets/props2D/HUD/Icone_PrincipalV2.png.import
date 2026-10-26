@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwa2t7op8nu87"
-path="res://.godot/imported/Icone_PrincipalV1.png-3419397645c07d284bbd1edd98f5b6ff.ctex"
+uid="uid://c86b8wxex1mqb"
+path="res://.godot/imported/Icone_PrincipalV2.png-b65abadc88594d4484828d75011e2200.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/props2D/HUD/Icone_PrincipalV1.png"
-dest_files=["res://.godot/imported/Icone_PrincipalV1.png-3419397645c07d284bbd1edd98f5b6ff.ctex"]
+source_file="res://assets/props2D/HUD/Icone_PrincipalV2.png"
+dest_files=["res://.godot/imported/Icone_PrincipalV2.png-b65abadc88594d4484828d75011e2200.ctex"]
 
 [params]
 

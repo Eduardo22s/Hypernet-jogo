@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bwa7n6dsl04hi" path="res://scenes/props_combat/spawner.tscn" id="8_c24w0"]
 [ext_resource type="PackedScene" uid="uid://bqqkx7xulyqor" path="res://scenes/props_combat/mirror_teleport.tscn" id="9_0ehna"]
 [ext_resource type="PackedScene" uid="uid://l2hm8rn2frxa" path="res://scenes/NPC/daydream.tscn" id="10_be52t"]
+[ext_resource type="PackedScene" uid="uid://be8epqxs51604" path="res://scenes/enemy/enemy.tscn" id="12_eaxax"]
 
 [sub_resource type="Animation" id="Animation_3khib"]
 length = 0.001
@@ -239,6 +240,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.52947724, 4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6094773, 0)
 
 [node name="Spawner" parent="." unique_id=1851613728 instance=ExtResource("8_c24w0")]
+cooldown_wave = 20.0
 
 [node name="DayDream" parent="." unique_id=1162736262 instance=ExtResource("10_be52t")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -14.900002, 0)
@@ -254,5 +256,8 @@ transform = Transform3D(-0.7071068, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, -0.707
 
 [node name="MirrorTeleport4" parent="." unique_id=62181139 instance=ExtResource("9_0ehna")]
 transform = Transform3D(-0.70710665, 0, 0.7071069, 0, 1, 0, -0.7071069, 0, -0.70710665, -5.9999995, -7.450581e-09, 6.5999994)
+
+[node name="Enemy" parent="." unique_id=1788365876 instance=ExtResource("12_eaxax")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3232032, -0.28043932, 5.7042365)
 
 [connection signal="body_entered" from="Environment/Exitzone" to="Environment/Exitzone" method="_on_body_entered"]
