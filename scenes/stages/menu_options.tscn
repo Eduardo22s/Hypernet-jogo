@@ -1,0 +1,238 @@
+[gd_scene format=3 uid="uid://kgg6xonoh7x3"]
+
+[ext_resource type="Script" uid="uid://dxrhlp1sfyyva" path="res://scripts/stages/menu_options.gd" id="1_8v043"]
+[ext_resource type="Shader" uid="uid://fsl3lmqgpnp5" path="res://global/cenas/VFX/_Shaders/CRTFilter.gdshader" id="2_6xrnc"]
+[ext_resource type="Texture2D" uid="uid://t7l7pjj1pwwa" path="res://assets/props2D/Menu/Menu.png" id="3_jppam"]
+[ext_resource type="Texture2D" uid="uid://ddj0twxxbr88" path="res://assets/props2D/Menu/Menu_ControlsButtonOn.png" id="4_3d3xu"]
+[ext_resource type="Texture2D" uid="uid://cxnkwav2lagl7" path="res://assets/props2D/Menu/Menu_ControlsButtonOff.png" id="5_pp2j4"]
+[ext_resource type="Texture2D" uid="uid://bfeaycwfo0w14" path="res://assets/props2D/Menu/Menu_ReturnButtonOff.png" id="6_8v043"]
+[ext_resource type="Texture2D" uid="uid://dae5myo1kk4u0" path="res://assets/props2D/Menu/Menu_ReturnButtonOn.png" id="7_3d3xu"]
+[ext_resource type="Texture2D" uid="uid://dmo3fqpctvulh" path="res://assets/props2D/Menu/Menu_MuteAudioOff.png" id="8_pp2j4"]
+[ext_resource type="Texture2D" uid="uid://cspvux1qtoo62" path="res://assets/props2D/Menu/Menu_MuteAudioOn.png" id="9_kjb23"]
+[ext_resource type="Texture2D" uid="uid://bnvvmjgoixo4o" path="res://assets/props2D/Menu/Menu_MuteMusicOff.png" id="10_cuqtw"]
+[ext_resource type="Texture2D" uid="uid://dyamt62bp3avf" path="res://assets/props2D/Menu/Menu_MuteMusicOn.png" id="11_6xrnc"]
+[ext_resource type="Texture2D" uid="uid://bqud0sismxpxx" path="res://assets/props2D/Menu/Menu_CRTFilterOff.png" id="12_jppam"]
+[ext_resource type="Texture2D" uid="uid://1goeftqcon8c" path="res://assets/props2D/Menu/Menu_Half_Off.png" id="12_t1ggj"]
+[ext_resource type="Texture2D" uid="uid://7tda5de51klc" path="res://assets/props2D/Menu/Menu_Half_On.png" id="13_2webg"]
+[ext_resource type="Texture2D" uid="uid://cenrxmsu6jho4" path="res://assets/props2D/Menu/Menu_CRTFilterOn.png" id="13_vtf88"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jt6de"]
+shader = ExtResource("2_6xrnc")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cuqtw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_pp2j4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_kjb23")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6xrnc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_cuqtw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_6xrnc")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jppam"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_jppam")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_vtf88")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qlemf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_8v043")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3d3xu")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vaj5l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_3d3xu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pp2j4")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_isfe7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_t1ggj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_t1ggj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_t1ggj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_t1ggj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_t1ggj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_t1ggj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_t1ggj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_t1ggj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_2webg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_2webg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_2webg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_2webg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_2webg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_2webg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_2webg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_2webg")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MenuOptions" type="Node2D" unique_id=1773018827]
+script = ExtResource("1_8v043")
+
+[node name="CRT" type="ColorRect" parent="." unique_id=1258240392]
+material = SubResource("ShaderMaterial_jt6de")
+metadata/_edit_use_anchors_ = true
+
+[node name="Menu" type="Sprite2D" parent="." unique_id=85904213]
+position = Vector2(576, 324)
+texture = ExtResource("3_jppam")
+
+[node name="AnimatedMuteAudio" type="AnimatedSprite2D" parent="." unique_id=1834162155]
+position = Vector2(416, 136)
+sprite_frames = SubResource("SpriteFrames_cuqtw")
+
+[node name="AnimatedMuteMusic" type="AnimatedSprite2D" parent="." unique_id=1850035912]
+position = Vector2(416, 248)
+sprite_frames = SubResource("SpriteFrames_6xrnc")
+
+[node name="AnimatedCRTFilter" type="AnimatedSprite2D" parent="." unique_id=1452788616]
+position = Vector2(416, 360)
+sprite_frames = SubResource("SpriteFrames_jppam")
+
+[node name="AnimatedReturn" type="AnimatedSprite2D" parent="." unique_id=296806282]
+position = Vector2(142, 488)
+sprite_frames = SubResource("SpriteFrames_qlemf")
+
+[node name="AnimatedControls" type="AnimatedSprite2D" parent="." unique_id=1223193525]
+position = Vector2(414, 488)
+sprite_frames = SubResource("SpriteFrames_vaj5l")
+
+[node name="AnimatedIntro" type="AnimatedSprite2D" parent="." unique_id=509189927]
+position = Vector2(582, 324)
+sprite_frames = SubResource("SpriteFrames_isfe7")
+autoplay = "default"
+frame = 16
+frame_progress = 1.0
+
+[node name="ButtonMuteAudio" type="Button" parent="." unique_id=1294048554]
+offset_left = 216.0
+offset_top = 96.0
+offset_right = 616.0
+offset_bottom = 176.0
+flat = true
+
+[node name="ButtonMuteMusic" type="Button" parent="." unique_id=610314322]
+offset_left = 216.0
+offset_top = 208.0
+offset_right = 616.0
+offset_bottom = 288.0
+flat = true
+
+[node name="ButtonCRTFilter" type="Button" parent="." unique_id=467625095]
+offset_left = 216.0
+offset_top = 320.0
+offset_right = 616.0
+offset_bottom = 400.0
+flat = true
+
+[node name="ButtonReturn" type="Button" parent="." unique_id=1190688057]
+offset_left = 96.0
+offset_top = 440.0
+offset_right = 188.0
+offset_bottom = 536.0
+flat = true
+
+[node name="ButtonControls" type="Button" parent="." unique_id=917979572]
+offset_left = 216.0
+offset_top = 448.0
+offset_right = 616.0
+offset_bottom = 528.0
+flat = true
+
+[connection signal="mouse_entered" from="ButtonMuteAudio" to="." method="_on_button_mute_audio_mouse_entered"]
+[connection signal="mouse_exited" from="ButtonMuteAudio" to="." method="_on_button_mute_audio_mouse_exited"]
+[connection signal="pressed" from="ButtonMuteAudio" to="." method="_on_button_mute_audio_pressed"]
+[connection signal="mouse_entered" from="ButtonMuteMusic" to="." method="_on_button_mute_music_mouse_entered"]
+[connection signal="mouse_exited" from="ButtonMuteMusic" to="." method="_on_button_mute_music_mouse_exited"]
+[connection signal="pressed" from="ButtonMuteMusic" to="." method="_on_button_mute_music_pressed"]
+[connection signal="mouse_entered" from="ButtonCRTFilter" to="." method="_on_button_crt_filter_mouse_entered"]
+[connection signal="mouse_exited" from="ButtonCRTFilter" to="." method="_on_button_crt_filter_mouse_exited"]
+[connection signal="pressed" from="ButtonCRTFilter" to="." method="_on_button_crt_filter_pressed"]
+[connection signal="mouse_entered" from="ButtonReturn" to="." method="_on_button_return_mouse_entered"]
+[connection signal="mouse_exited" from="ButtonReturn" to="." method="_on_button_return_mouse_exited"]
+[connection signal="pressed" from="ButtonReturn" to="." method="_on_button_return_pressed"]
+[connection signal="mouse_entered" from="ButtonControls" to="." method="_on_button_controls_mouse_entered"]
+[connection signal="mouse_exited" from="ButtonControls" to="." method="_on_button_controls_mouse_exited"]
+[connection signal="pressed" from="ButtonControls" to="." method="_on_button_controls_pressed"]

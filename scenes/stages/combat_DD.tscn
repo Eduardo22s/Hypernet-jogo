@@ -179,7 +179,7 @@ libraries/ = SubResource("AnimationLibrary_be52t")
 autoplay = &"rotation"
 
 [node name="Floor" type="StaticBody3D" parent="Environment" unique_id=1189708013]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -3, 0)
 
 [node name="Cube" type="MeshInstance3D" parent="Environment/Floor" unique_id=758909022]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -1.3000002, 0)
@@ -198,7 +198,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 script = ExtResource("2_isskg")
 
 [node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Environment/Border" unique_id=1571980550]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1, 0)
 shape = SubResource("ConcavePolygonShape3D_ihv4e")
 
 [node name="Exitzone" type="Area3D" parent="Environment" unique_id=366360027]
@@ -206,7 +206,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.9, 0)
 script = ExtResource("3_x0qcf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Exitzone" unique_id=88649294]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 shape = SubResource("WorldBoundaryShape3D_isfe7")
 
 [node name="PortraitBackground" type="MeshInstance3D" parent="Environment" unique_id=1336878870]
@@ -219,6 +219,32 @@ environment = SubResource("Environment_rxvj5")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=1783349070]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 10, 0)
+
+[node name="MirrorTeleport" type="Node" parent="." unique_id=1372623424]
+
+[node name="MirrorTeleport" parent="MirrorTeleport" unique_id=424845213 instance=ExtResource("9_0ehna")]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 5.9, -7.450581e-09, -6.400001)
+
+[node name="MirrorTeleport2" parent="MirrorTeleport" unique_id=1786180450 instance=ExtResource("9_0ehna")]
+transform = Transform3D(0.7071067, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, 0.7071067, -6.0000005, -7.450581e-09, -6.400001)
+
+[node name="MirrorTeleport3" parent="MirrorTeleport" unique_id=1460543052 instance=ExtResource("9_0ehna")]
+transform = Transform3D(-0.7071068, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, -0.7071068, 6.2000003, -7.450581e-09, 6.5999994)
+
+[node name="MirrorTeleport4" parent="MirrorTeleport" unique_id=62181139 instance=ExtResource("9_0ehna")]
+transform = Transform3D(-0.70710665, 0, 0.7071069, 0, 1, 0, -0.7071069, 0, -0.70710665, -5.9999995, -7.450581e-09, 6.5999994)
+
+[node name="MirrorTeleport5" parent="MirrorTeleport" unique_id=660012227 instance=ExtResource("9_0ehna")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -0.41694164, -7.450581e-09, -11.82202)
+
+[node name="MirrorTeleport6" parent="MirrorTeleport" unique_id=1478129285 instance=ExtResource("9_0ehna")]
+transform = Transform3D(-5.9604645e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -5.9604645e-08, -12.003086, -7.450581e-09, -0.23587608)
+
+[node name="MirrorTeleport7" parent="MirrorTeleport" unique_id=972257144 instance=ExtResource("9_0ehna")]
+transform = Transform3D(-5.9604645e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -5.9604645e-08, 12.159151, -7.450581e-09, 0.3298087)
+
+[node name="MirrorTeleport8" parent="MirrorTeleport" unique_id=76339127 instance=ExtResource("9_0ehna")]
+transform = Transform3D(-1, 0, 1.4901161e-07, 0, 1, 0, -1.4901161e-07, 0, -1, 0.36087608, -7.450581e-09, 12.128084)
 
 [node name="Portrait" type="Node3D" parent="." unique_id=63191588]
 
@@ -244,18 +270,6 @@ cooldown_wave = 20.0
 
 [node name="DayDream" parent="." unique_id=1162736262 instance=ExtResource("10_be52t")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -14.900002, 0)
-
-[node name="MirrorTeleport" parent="." unique_id=424845213 instance=ExtResource("9_0ehna")]
-transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 5.9, -7.450581e-09, -6.400001)
-
-[node name="MirrorTeleport2" parent="." unique_id=1786180450 instance=ExtResource("9_0ehna")]
-transform = Transform3D(0.7071067, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, 0.7071067, -6.0000005, -7.450581e-09, -6.400001)
-
-[node name="MirrorTeleport3" parent="." unique_id=1460543052 instance=ExtResource("9_0ehna")]
-transform = Transform3D(-0.7071068, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, -0.7071068, 6.2000003, -7.450581e-09, 6.5999994)
-
-[node name="MirrorTeleport4" parent="." unique_id=62181139 instance=ExtResource("9_0ehna")]
-transform = Transform3D(-0.70710665, 0, 0.7071069, 0, 1, 0, -0.7071069, 0, -0.70710665, -5.9999995, -7.450581e-09, 6.5999994)
 
 [node name="Enemy" parent="." unique_id=1788365876 instance=ExtResource("12_eaxax")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3232032, -0.28043932, 5.7042365)

@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://dn4wcokgitaal"]
+
+[ext_resource type="Script" uid="uid://dnjfth4n0vdt5" path="res://scripts/stages/menu_credits.gd" id="1_x0601"]
+[ext_resource type="Shader" uid="uid://fsl3lmqgpnp5" path="res://global/cenas/VFX/_Shaders/CRTFilter.gdshader" id="2_aqsou"]
+[ext_resource type="Texture2D" uid="uid://t7l7pjj1pwwa" path="res://assets/props2D/Menu/Menu.png" id="3_lsqqb"]
+[ext_resource type="Texture2D" uid="uid://3jlkmfvee2h8" path="res://assets/props2D/Menu/Menu_Credits.png" id="4_x0601"]
+[ext_resource type="Texture2D" uid="uid://bfeaycwfo0w14" path="res://assets/props2D/Menu/Menu_ReturnButtonOff.png" id="5_qjoaq"]
+[ext_resource type="Texture2D" uid="uid://dae5myo1kk4u0" path="res://assets/props2D/Menu/Menu_ReturnButtonOn.png" id="6_6ph7j"]
+[ext_resource type="Texture2D" uid="uid://1goeftqcon8c" path="res://assets/props2D/Menu/Menu_Half_Off.png" id="7_gcxvn"]
+[ext_resource type="Texture2D" uid="uid://7tda5de51klc" path="res://assets/props2D/Menu/Menu_Half_On.png" id="8_2kgya"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jt6de"]
+shader = ExtResource("2_aqsou")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qlemf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_qjoaq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6ph7j")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_isfe7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_gcxvn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gcxvn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gcxvn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gcxvn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gcxvn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gcxvn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gcxvn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gcxvn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2kgya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2kgya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2kgya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2kgya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2kgya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2kgya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2kgya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2kgya")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MenuOptions" type="Node2D" unique_id=1773018827]
+script = ExtResource("1_x0601")
+
+[node name="CRT" type="ColorRect" parent="." unique_id=1258240392]
+material = SubResource("ShaderMaterial_jt6de")
+metadata/_edit_use_anchors_ = true
+
+[node name="Menu" type="Sprite2D" parent="." unique_id=85904213]
+position = Vector2(576, 324)
+texture = ExtResource("3_lsqqb")
+
+[node name="ControlScheme" type="Sprite2D" parent="." unique_id=1892290776]
+position = Vector2(416, 320)
+texture = ExtResource("4_x0601")
+
+[node name="AnimatedReturn" type="AnimatedSprite2D" parent="." unique_id=296806282]
+position = Vector2(142, 488)
+sprite_frames = SubResource("SpriteFrames_qlemf")
+
+[node name="AnimatedIntro" type="AnimatedSprite2D" parent="." unique_id=509189927]
+position = Vector2(582, 324)
+sprite_frames = SubResource("SpriteFrames_isfe7")
+autoplay = "default"
+frame = 16
+frame_progress = 1.0
+
+[node name="ButtonReturn" type="Button" parent="." unique_id=1190688057]
+offset_left = 96.0
+offset_top = 440.0
+offset_right = 188.0
+offset_bottom = 536.0
+flat = true
+
+[connection signal="mouse_entered" from="ButtonReturn" to="." method="_on_button_return_mouse_entered"]
+[connection signal="mouse_exited" from="ButtonReturn" to="." method="_on_button_return_mouse_exited"]
+[connection signal="pressed" from="ButtonReturn" to="." method="_on_button_return_pressed"]
