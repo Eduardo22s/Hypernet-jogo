@@ -28,17 +28,19 @@ var seconds = 59
 
 
 func _process(delta: float) -> void:
-	if timer_on:
-		seconds -= 1 * delta
-		if minutes != 0 and seconds <= 0:
-			minutes -= 1
-			seconds += 59
-		elif minutes <= 0 and seconds <= 0:
-			Global.end_game = true
-			minutes = 0
-			seconds = 0
-	else:
+	if not timer_on:
 		return
+
+	seconds -= delta
+
+	while seconds < 0 and minutes > 0:
+		minutes -= 1
+		seconds += 60
+
+	if minutes <= 0 and seconds <= 0:
+		Global.end_game = true
+		minutes = 0
+		seconds = 0
 
 
 func reset_timer():
@@ -49,3 +51,10 @@ func reset_timer():
 func invert_bools(var_names: Array):
 	for var_name in var_names:
 		set(var_name, not get(var_name))
+		
+
+func add_time(amount: int):
+	var total_seconds = minutes * 60 + int(ceil(seconds)) + amount
+
+	minutes = int(total_seconds / 60)
+	seconds = float(total_seconds % 60)

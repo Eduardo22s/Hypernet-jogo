@@ -16,10 +16,9 @@ var dashing = false
 var dash_aereo_disponivel = true
 
 const dash_duracao = 0.15
-const dash_forca = 14.0
+const dash_forca = 10.0
 const dash_chao_duracao = 0.20
-const dash_chao_forca = 20.0
-
+const dash_chao_forca = 15.0
 
 const WALL_JUMP_FORCE = 8.0
 const WALL_JUMP_VERTICAL = 7.0
@@ -30,9 +29,6 @@ var na_parede := false
 var normal_parede := Vector3.ZERO
 var wall_jump_usado := false
 var ultima_parede_normal := Vector3.ZERO
-
-var recebendo_knockback := false
-var knockback_duracao := 0.25
 
 @onready var wall_area: Area3D = $Wall
 
@@ -46,14 +42,10 @@ const SENSIBILIDADE_MOUSE = 0.003
 var camera_pitch := 0.0
 @onready var player_camera: Camera3D = $Cameras/SpringArm1/Camera1
 
-var cooldown = false
-var cooldown_time = 0.0
-
 const BALAO_FORCA = 0.5
 const BALAO_FORCA_DASH = 2.0
 
 @onready var balloon_detector: Area3D = $BalloonDetector
-
 
 func _ready():
 	add_to_group("player")
@@ -64,10 +56,7 @@ func _ready():
 	Global.stop_player = false
 	Global.words_in_storage = 0
 
-
 func _process(delta: float) -> void:
-	manage_battles()
-
 	if Global.end_game:
 		await get_tree().create_timer(2.0).timeout
 		get_tree().change_scene_to_file("res://scenes/stages/main_menu.tscn")
@@ -76,18 +65,6 @@ func _process(delta: float) -> void:
 		SPEED = 0.0
 	else:
 		SPEED = 5.0
-
-	if cooldown_time <= 1.0:
-		cooldown = true
-	else:
-		cooldown = false
-
-	if cooldown_time > 0.0:
-		cooldown_time -= delta
-
-		if cooldown_time < 0.0:
-			cooldown_time = 0.0
-
 
 func _physics_process(delta: float) -> void:
 	var moving_sprite = $SubViewport/Player2dModel/AnimatedMoving
@@ -201,6 +178,13 @@ func _physics_process(delta: float) -> void:
 	if direction.length_squared() > 0.001:
 		direction = direction.normalized()
 
+	# O dash agora possui um comando próprio, sem depender de ataque.
+	if Input.is_action_just_pressed("dash") and not dashing:
+		if is_on_floor():
+			dash()
+		elif dash_aereo_disponivel:
+			dash_aereo()
+
 	if dashing:
 		$VFX_Footstep.emitting = false
 		move_and_slide()
@@ -208,10 +192,6 @@ func _physics_process(delta: float) -> void:
 		check_dash_wall_collision()
 		return
 	
-	if recebendo_knockback:
-		move_and_slide()
-		empurrar_baloes()
-		return
 
 	if direction:
 		var target_velocity = direction * SPEED
@@ -251,7 +231,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	empurrar_baloes()
 
-
 func get_camera_direction() -> Vector3:
 	var forward = -$Cameras.global_transform.basis.z
 
@@ -261,7 +240,6 @@ func get_camera_direction() -> Vector3:
 		return Vector3.ZERO
 
 	return forward.normalized()
-
 
 func detectar_parede_area():
 	na_parede = false
@@ -296,26 +274,6 @@ func detectar_parede_area():
 
 		return
 
-
-func handle_attack():
-	if not cooldown:
-		return
-
-	if Input.is_action_just_pressed("attack"):
-		if is_on_floor():
-			dash()
-		elif dash_aereo_disponivel:
-			dash_aereo()
-
-		$OrbitalPivot/AnimationAttack.play("attack")
-
-		await get_tree().create_timer(0.5).timeout
-
-		$OrbitalPivot/Attack/Area3D/CollisionShape3D.position.z = 0
-
-		cooldown_time = 3.0
-
-
 func dash():
 	if dashing:
 		return
@@ -348,7 +306,6 @@ func dash():
 
 	if dashing:
 		dashing = false
-
 
 func dash_aereo():
 	if not dash_aereo_disponivel:
@@ -386,7 +343,6 @@ func dash_aereo():
 
 	if dashing:
 		dashing = false
-
 
 func wall_jump():
 	if not na_parede:
@@ -432,7 +388,6 @@ func check_dash_wall_collision():
 			wall_kick_dash()
 			return
 
-
 func wall_kick_dash():
 	if not dashing:
 		return
@@ -451,7 +406,6 @@ func wall_kick_dash():
 
 #	virar_para_direcao(normal_parede)
 
-
 #func virar_para_direcao(direcao: Vector3):
 	#if direcao.length() <= 0.01:
 	#	return
@@ -462,16 +416,6 @@ func wall_kick_dash():
 		#return
 
 	#look_at(global_position + direcao_horizontal,Vector3.UP)
-
-
-func manage_battles():
-	if Global.trigger_battle:
-		set_physics_process(false)
-
-		await get_tree().process_frame
-
-		get_tree().change_scene_to_file("res://scenes/stages/combat_" +str(Global.npc_battle) +".tscn")
-
 
 func _input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
@@ -489,7 +433,6 @@ func _input(event):
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
 
 func empurrar_baloes():
 	var baloes = balloon_detector.get_overlapping_bodies()
@@ -509,23 +452,4 @@ func empurrar_baloes():
 				balao.apply_central_impulse(direcao * BALAO_FORCA_DASH)
 			else:
 				balao.apply_central_impulse(direcao * BALAO_FORCA)
-				
-func aplicar_knockback(origem: Vector3,forca: float = 10.0,forca_vertical: float = 3.0) -> void:
-	var direcao = global_position - origem
-	direcao.y = 0.0
-
-	if direcao.length_squared() > 0.001:
-		direcao = direcao.normalized()
-	else:
-		direcao = Vector3.FORWARD
-
-	dashing = false
-	recebendo_knockback = true
-
-	velocity.x = direcao.x * forca
-	velocity.z = direcao.z * forca
-	velocity.y = forca_vertical
-
-	await get_tree().create_timer(knockback_duracao).timeout
-
-	recebendo_knockback = false
+		

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dckx00ute82p"]
+
+[ext_resource type="PackedScene" uid="uid://dawu66n17p2am" path="res://scenes/player/player_exploration.tscn" id="1_2t5yq"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_f1q28"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t2hhj"]
+size = Vector3(2, 0.1, 2)
+
+[node name="TestePlataforma" type="Node3D" unique_id=1856074095]
+
+[node name="chaos" type="Node" parent="." unique_id=1760386071]
+
+[node name="chao1" type="StaticBody3D" parent="chaos" unique_id=559644089]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="chaos/chao1" unique_id=407997540]
+mesh = SubResource("PlaneMesh_f1q28")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="chaos/chao1" unique_id=1626147447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0015563965, -0.04913503, -0.005142212)
+shape = SubResource("BoxShape3D_t2hhj")
+
+[node name="PlayerExploration" parent="." unique_id=1230296654 instance=ExtResource("1_2t5yq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2753594, 0.81281865, 0.6581844)

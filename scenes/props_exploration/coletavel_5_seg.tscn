@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://bxni1mred2s4"]
+
+[ext_resource type="Script" uid="uid://cani41tc6s31e" path="res://scripts/props_exploration/time_collectible.gd" id="1_kq25m"]
+[ext_resource type="Texture2D" uid="uid://bc4w67rr8t7o" path="res://ColetáveisZIP/Coletáveis/+5segundos_1.png" id="2_m18i0"]
+[ext_resource type="Texture2D" uid="uid://cqo25e3cds8pt" path="res://ColetáveisZIP/Coletáveis/+5segundos_2.png" id="3_oogjk"]
+[ext_resource type="Texture2D" uid="uid://cmbxove3j4xw6" path="res://ColetáveisZIP/Coletáveis/+5segundos_3.png" id="4_412l8"]
+[ext_resource type="Texture2D" uid="uid://hvh4yhem6y65" path="res://ColetáveisZIP/Coletáveis/+5segundos_4.png" id="5_kgec0"]
+[ext_resource type="Texture2D" uid="uid://cpccufj865bbe" path="res://ColetáveisZIP/Coletáveis/+5segundos_5.png" id="6_4mfbr"]
+[ext_resource type="Texture2D" uid="uid://cwv7hd8ehl1hp" path="res://ColetáveisZIP/Coletáveis/+5segundos_6.png" id="7_ahddu"]
+[ext_resource type="Texture2D" uid="uid://d4j8p7ul4bbf" path="res://ColetáveisZIP/Coletáveis/+5segundos_7.png" id="8_goysq"]
+[ext_resource type="Texture2D" uid="uid://dgdys1h87mu1j" path="res://ColetáveisZIP/Coletáveis/+5segundos_8.png" id="9_7i6ke"]
+[ext_resource type="Texture2D" uid="uid://bumgwwv6dcsw8" path="res://ColetáveisZIP/Coletáveis/+5segundos_9.png" id="10_nq5i5"]
+[ext_resource type="Texture2D" uid="uid://edn1djl13jdx" path="res://ColetáveisZIP/Coletáveis/+5segundos_10.png" id="11_68hm4"]
+[ext_resource type="Texture2D" uid="uid://dhgfwad4pn7mh" path="res://ColetáveisZIP/Coletáveis/+5segundos_11.png" id="12_ye5d7"]
+[ext_resource type="Texture2D" uid="uid://bxs1oqx2r4qgd" path="res://ColetáveisZIP/Coletáveis/+5segundos_12.png" id="13_2npru"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_t2hhj"]
+radius = 0.6
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t2hhj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_m18i0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_oogjk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_412l8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kgec0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4mfbr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ahddu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_goysq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7i6ke")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_nq5i5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_68hm4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ye5d7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_2npru")
+}],
+"loop": 1,
+"name": &"Idle",
+"speed": 15.0
+}]
+
+[node name="Coletavel5seg" type="Area3D" unique_id=427384727]
+script = ExtResource("1_kq25m")
+bonus_seconds = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=875460580]
+shape = SubResource("SphereShape3D_t2hhj")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=694742968]
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_t2hhj")
+animation = &"Idle"
+frame_progress = 0.7671099

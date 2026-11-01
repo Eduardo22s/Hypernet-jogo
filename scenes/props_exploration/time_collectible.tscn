@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://bxyfa4ecpb3nn"]
+
+[ext_resource type="Script" uid="uid://cani41tc6s31e" path="res://scripts/props_exploration/time_collectible.gd" id="1_4g2uy"]
+[ext_resource type="Texture2D" uid="uid://dv5uj4h5fckpg" path="res://ColetáveisZIP/Coletáveis/+1segundo_1.png" id="2_2142d"]
+[ext_resource type="Texture2D" uid="uid://c1gr384lwr1e8" path="res://ColetáveisZIP/Coletáveis/+1segundo_2.png" id="3_nkm81"]
+[ext_resource type="Texture2D" uid="uid://ckc3req3yxxdo" path="res://ColetáveisZIP/Coletáveis/+1segundo_3.png" id="4_7xseu"]
+[ext_resource type="Texture2D" uid="uid://c0v5g3vj0nj6r" path="res://ColetáveisZIP/Coletáveis/+1segundo_4.png" id="5_hrh3h"]
+[ext_resource type="Texture2D" uid="uid://wvkhql6kp88j" path="res://ColetáveisZIP/Coletáveis/+1segundo_5.png" id="6_46xp2"]
+[ext_resource type="Texture2D" uid="uid://dhmww6spg7jp8" path="res://ColetáveisZIP/Coletáveis/+1segundo_6.png" id="7_snx4s"]
+[ext_resource type="Texture2D" uid="uid://cs7cg3kcj7not" path="res://ColetáveisZIP/Coletáveis/+1segundo_7.png" id="8_y2ruq"]
+[ext_resource type="Texture2D" uid="uid://dsqe1vgm0obwg" path="res://ColetáveisZIP/Coletáveis/+1segundo_8.png" id="9_fkncb"]
+[ext_resource type="Texture2D" uid="uid://beainx2wm5hln" path="res://ColetáveisZIP/Coletáveis/+1segundo_9.png" id="10_84l78"]
+[ext_resource type="Texture2D" uid="uid://djj0hyp3u6152" path="res://ColetáveisZIP/Coletáveis/+1segundo_10.png" id="11_cui38"]
+[ext_resource type="Texture2D" uid="uid://cyrp5pn8gmi0l" path="res://ColetáveisZIP/Coletáveis/+1segundo_11.png" id="12_5pvn7"]
+[ext_resource type="Texture2D" uid="uid://by8jjsfipqlb0" path="res://ColetáveisZIP/Coletáveis/+1segundo_12.png" id="13_hkrxv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t2hhj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2142d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nkm81")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7xseu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hrh3h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_46xp2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_snx4s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_y2ruq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_fkncb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_84l78")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_cui38")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_5pvn7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_hkrxv")
+}],
+"loop": 1,
+"name": &"Idle",
+"speed": 15.0
+}]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_t2hhj"]
+radius = 0.6
+
+[node name="TimeCollectible1" type="Area3D" unique_id=1959701394]
+script = ExtResource("1_4g2uy")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=2147013991]
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_t2hhj")
+animation = &"Idle"
+frame_progress = 0.85684663
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=98303415]
+shape = SubResource("SphereShape3D_t2hhj")

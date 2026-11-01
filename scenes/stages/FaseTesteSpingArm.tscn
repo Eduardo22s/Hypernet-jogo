@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://d2qcb2dvuj2aq"]
 
 [ext_resource type="PackedScene" uid="uid://dawu66n17p2am" path="res://scenes/player/player_exploration.tscn" id="1_dcfgp"]
-[ext_resource type="PackedScene" uid="uid://jm0q7jskty1d" path="res://scenes/props_exploration/porta.tscn" id="2_c2w8a"]
-[ext_resource type="PackedScene" uid="uid://bidf0omwq42s7" path="res://scenes/NPC/doorman.tscn" id="3_rssfm"]
+[ext_resource type="PackedScene" uid="uid://bxyfa4ecpb3nn" path="res://scenes/props_exploration/time_collectible.tscn" id="4_0snt1"]
+[ext_resource type="PackedScene" uid="uid://bxni1mred2s4" path="res://scenes/props_exploration/coletavel_5_seg.tscn" id="4_1kras"]
 [ext_resource type="PackedScene" uid="uid://mxgx53vk4pmh" path="res://scenes/props_exploration/ballon.tscn" id="4_qe0g3"]
-[ext_resource type="PackedScene" uid="uid://l2hm8rn2frxa" path="res://scenes/NPC/daydream.tscn" id="5_tkedx"]
+[ext_resource type="PackedScene" uid="uid://brj74crssmd12" path="res://scenes/props_exploration/coletável_3_seg.tscn" id="5_tkedx"]
 [ext_resource type="PackedScene" uid="uid://be8epqxs51604" path="res://scenes/enemy/enemy.tscn" id="6_1kras"]
+[ext_resource type="PackedScene" uid="uid://bkv1mtrr7hrw6" path="res://scenes/props_exploration/coletavel_10_seg.tscn" id="7_bmbwh"]
+[ext_resource type="PackedScene" uid="uid://c61nsqodydip7" path="res://scenes/props_exploration/moving_platform.tscn" id="8_6wcsd"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_t2hhj"]
 
@@ -69,18 +71,6 @@ mesh = SubResource("BoxMesh_t2hhj")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Parede3" unique_id=2059754412]
 shape = SubResource("BoxShape3D_f1q28")
 
-[node name="Porta" parent="." unique_id=132387269 instance=ExtResource("2_c2w8a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.080658, 1.0492646, -2.4)
-
-[node name="Porta2" parent="." unique_id=1160651383 instance=ExtResource("2_c2w8a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5574646, 1.0492646, 2.6851807)
-tipo_resultado = 1
-pontos_necessarios = 2
-
-[node name="Doorman" parent="." unique_id=597951725 node_paths=PackedStringArray("door_kind") instance=ExtResource("3_rssfm")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.7, 2.3000002, -1.6)
-door_kind = NodePath("../Porta")
-
 [node name="Ballon" parent="." unique_id=2133639587 instance=ExtResource("4_qe0g3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2000003, 1.3000001, 3.8)
 
@@ -96,17 +86,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.299999, 1.2000002, 0.699999
 [node name="Ballon5" parent="." unique_id=2034482191 instance=ExtResource("4_qe0g3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9000006, 1.2000002, 0.5999999)
 
-[node name="DayDream" parent="." unique_id=1162736262 node_paths=PackedStringArray("patrol_center") instance=ExtResource("5_tkedx")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 10.207904, 0.87099516, 5.646718)
-patrol_center = NodePath("../PatrolCenter")
-
-[node name="PointA" type="Marker3D" parent="." unique_id=1333794444]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.884508, 0, 4.2141495)
-
-[node name="PointB" type="Marker3D" parent="." unique_id=910258605]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.877982, 0, 5.1530056)
-
 [node name="PatrolCenter" type="Node3D" parent="." unique_id=1746022771]
 
 [node name="Enemy" parent="." unique_id=1788365876 instance=ExtResource("6_1kras")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5642185, 1.2709961, 1.3653336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9274025, 1.2709961, 1.3653336)
+
+[node name="coletáveis" type="Node" parent="." unique_id=401269972]
+
+[node name="Coletavel5seg" parent="coletáveis" unique_id=427384727 instance=ExtResource("4_1kras")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 12.560084, 0.8999438, 0)
+
+[node name="TimeCollectible" parent="coletáveis" unique_id=1959701394 instance=ExtResource("4_0snt1")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 11, 1, 5)
+
+[node name="Coletável3seg" parent="coletáveis" unique_id=739932855 instance=ExtResource("5_tkedx")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 10.890915, 0.98636425, 6.277318)
+
+[node name="Coletavel10seg" parent="coletáveis" unique_id=1070553009 instance=ExtResource("7_bmbwh")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 12, 1, 3)
+
+[node name="plataformas" type="Node" parent="." unique_id=1136884190]
+
+[node name="MovingPlatform" parent="plataformas" unique_id=724665598 instance=ExtResource("8_6wcsd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.779655, 1.4846191, 2)
+
+[node name="MovingPlatform2" parent="plataformas" unique_id=8565859 instance=ExtResource("8_6wcsd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.779655, 5.6914063, 10.594955)
+tipo_movimento = 1
+velocidade = 1.0
