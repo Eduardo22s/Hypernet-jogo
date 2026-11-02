@@ -94,21 +94,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9274025, 1.2709961, 1.365
 [node name="coletáveis" type="Node" parent="." unique_id=401269972]
 
 [node name="Coletavel5seg" parent="coletáveis" unique_id=427384727 instance=ExtResource("4_1kras")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 12.560084, 0.8999438, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 12.560084, 0.8999438, 0)
 
 [node name="TimeCollectible" parent="coletáveis" unique_id=1959701394 instance=ExtResource("4_0snt1")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 11, 1, 5)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 11, 1, 5)
 
 [node name="Coletável3seg" parent="coletáveis" unique_id=739932855 instance=ExtResource("5_tkedx")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 10.890915, 0.98636425, 6.277318)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10.890915, 0.98636425, 6.277318)
 
 [node name="Coletavel10seg" parent="coletáveis" unique_id=1070553009 instance=ExtResource("7_bmbwh")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 12, 1, 3)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 12, 1, 3)
 
 [node name="plataformas" type="Node" parent="." unique_id=1136884190]
 
 [node name="MovingPlatform" parent="plataformas" unique_id=724665598 instance=ExtResource("8_6wcsd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.779655, 1.4846191, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.880081, 1.4846191, 18.799423)
 
 [node name="MovingPlatform2" parent="plataformas" unique_id=8565859 instance=ExtResource("8_6wcsd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.779655, 5.6914063, 10.594955)

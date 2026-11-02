@@ -13,6 +13,22 @@
 [ext_resource type="Texture2D" uid="uid://4a5o33xsixls" path="res://ColetáveisZIP/Coletáveis/+10segundos_10.png" id="10_66hs6"]
 [ext_resource type="Texture2D" uid="uid://jh6kratnaw45" path="res://ColetáveisZIP/Coletáveis/+10segundos_11.png" id="11_2quen"]
 [ext_resource type="Texture2D" uid="uid://brjx4e73p0wov" path="res://ColetáveisZIP/Coletáveis/+10segundos_12.png" id="12_c41g4"]
+[ext_resource type="PackedScene" uid="uid://cbtr7b0tb7y2j" path="res://global/cenas/VFX/_Shaders/Bubble.tscn" id="14_8257k"]
+[ext_resource type="Texture2D" uid="uid://xdma21eh5na7" path="res://ColetáveisZIP/Juice_ColetáveisZIP/Juice_Coletáveis/+Tempo_1.png" id="14_tf66l"]
+[ext_resource type="Texture2D" uid="uid://dehwv0tlot11p" path="res://ColetáveisZIP/Juice_ColetáveisZIP/Juice_Coletáveis/+Tempo_2.png" id="15_eljfj"]
+[ext_resource type="Texture2D" uid="uid://ccgljc10jj7to" path="res://ColetáveisZIP/Juice_ColetáveisZIP/Juice_Coletáveis/+Tempo_3.png" id="16_1f5am"]
+[ext_resource type="Texture2D" uid="uid://b22yaq88dyq4b" path="res://ColetáveisZIP/Juice_ColetáveisZIP/Juice_Coletáveis/+Tempo_4.png" id="17_a8kog"]
+[ext_resource type="Texture2D" uid="uid://uxcybni10hue" path="res://ColetáveisZIP/Juice_ColetáveisZIP/Juice_Coletáveis/+Tempo_5.png" id="18_ef0t2"]
+[ext_resource type="Texture2D" uid="uid://dgnrbvqifqlmi" path="res://ColetáveisZIP/Juice_ColetáveisZIP/Juice_Coletáveis/+Tempo_6.png" id="19_2tvcn"]
+[ext_resource type="Texture2D" uid="uid://dejwp0ti0r56" path="res://ColetáveisZIP/Juice_ColetáveisZIP/Juice_Coletáveis/+Tempo_7.png" id="20_68833"]
+[ext_resource type="Texture2D" uid="uid://ctcebtjnt6v2h" path="res://ColetáveisZIP/Juice_ColetáveisZIP/Juice_Coletáveis/+Tempo_8.png" id="21_jfgsx"]
+[ext_resource type="Texture2D" uid="uid://s66s5don6blg" path="res://ColetáveisZIP/Juice_ColetáveisZIP/Juice_Coletáveis/+Tempo_9.png" id="22_5kaua"]
+[ext_resource type="Texture2D" uid="uid://ds65k4td6cm6j" path="res://ColetáveisZIP/Juice_ColetáveisZIP/Juice_Coletáveis/+Tempo_10.png" id="23_w3o6c"]
+[ext_resource type="Texture2D" uid="uid://bmkbtkfsq6er4" path="res://ColetáveisZIP/Juice_ColetáveisZIP/Juice_Coletáveis/+Tempo_11.png" id="24_883bk"]
+[ext_resource type="Texture2D" uid="uid://clwvfag6tx4jj" path="res://assets/props2D/teleport/Teleport6.png" id="26_ef0t2"]
+[ext_resource type="Texture2D" uid="uid://bs2nxtgncf3xk" path="res://assets/props2D/teleport/Teleport7.png" id="27_2tvcn"]
+[ext_resource type="Texture2D" uid="uid://dmpdprghkss8y" path="res://assets/props2D/teleport/Teleport8.png" id="28_68833"]
+[ext_resource type="Texture2D" uid="uid://bvtctujorx1jh" path="res://assets/props2D/teleport/Teleport9.png" id="29_jfgsx"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_t2hhj"]
 radius = 0.6
@@ -59,6 +75,64 @@ animations = [{
 "loop": 1,
 "name": &"Idle",
 "speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_tf66l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_eljfj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_1f5am")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_a8kog")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ef0t2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_2tvcn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_68833")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_jfgsx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_5kaua")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_w3o6c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_883bk")
+}],
+"loop": 0,
+"name": &"Tempo",
+"speed": 15.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f1q28"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_ef0t2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_2tvcn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_68833")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_jfgsx")
+}],
+"loop": 0,
+"name": &"Pop",
+"speed": 15.0
 }]
 
 [node name="Coletavel10seg" type="Area3D" unique_id=1070553009]
@@ -71,5 +145,12 @@ shape = SubResource("SphereShape3D_t2hhj")
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=305853631]
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_t2hhj")
-animation = &"Idle"
-frame_progress = 0.7111742
+animation = &"Tempo"
+
+[node name="Bubble" parent="." unique_id=2007721419 instance=ExtResource("14_8257k")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="." unique_id=1551205148]
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_f1q28")
+animation = &"Pop"
