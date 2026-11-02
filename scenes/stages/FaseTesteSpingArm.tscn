@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bqqkx7xulyqor" path="res://scenes/props_combat/mirror_teleport.tscn" id="9_0p734"]
 [ext_resource type="PackedScene" uid="uid://e06q4pnu2yil" path="res://scenes/props_exploration/bumper.tscn" id="10_sql5y"]
 [ext_resource type="PackedScene" uid="uid://bdouyidvauvot" path="res://scenes/props_exploration/wind_zone.tscn" id="11_qdshp"]
+[ext_resource type="PackedScene" uid="uid://c11xoy216wbsk" path="res://scenes/props_exploration/conveyor_belt.tscn" id="12_scuaw"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_t2hhj"]
 
@@ -138,3 +139,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.0251465, 0.7709961, 7.0732
 
 [node name="WindZone" parent="." unique_id=1723056069 instance=ExtResource("11_qdshp")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -9.036591, 0.0847168, 4.7697754)
+
+[node name="ConveyorBelt" parent="." unique_id=345498068 instance=ExtResource("12_scuaw")]
+transform = Transform3D(-0.0008252103, 0, -0.99999964, 0, 1, 0, 0.99999964, 0, -0.0008252103, -11.3407345, 0.58547366, 12.073861)
+velocidade_esteira = 5.0
+
+[node name="ConveyorBelt2" parent="." unique_id=1679414724 instance=ExtResource("12_scuaw")]
+transform = Transform3D(-0.0008252103, 0, -0.99999964, 0, 1, 0, 0.99999964, 0, -0.0008252103, -8.342007, 0.58547366, 12.076335)
+velocidade_esteira = 5.0

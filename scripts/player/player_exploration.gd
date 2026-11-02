@@ -74,6 +74,9 @@ var vendaval_altura_alvo := 0.0
 const VENDA_VAL_FORCA := 4.0
 const VENDA_VAL_ALTURA := 1.0
 
+var esteira_atual: ConveyorBelt = null
+const FORCA_ESTEIRA := 12.0
+
 
 func _ready():
 	add_to_group("player")
@@ -278,7 +281,7 @@ func _physics_process(delta: float) -> void:
 
 		$VFX_Footstep.emitting = false
 		
-
+	aplicar_esteira(delta, input_dir)
 	move_and_slide()
 	finalizar_movimento_vendaval()
 	empurrar_baloes()
@@ -578,3 +581,62 @@ func finalizar_movimento_vendaval():
 	elif vendaval_flutuando:
 		global_position.y = vendaval_altura_alvo
 		velocity.y = 0.0
+
+
+func entrar_esteira(esteira: ConveyorBelt) -> void:
+	esteira_atual = esteira
+
+
+func sair_esteira(esteira: ConveyorBelt) -> void:
+	if esteira_atual == esteira:
+		esteira_atual = null
+
+
+
+func aplicar_esteira(delta: float, input_dir: Vector2) -> void:
+
+	if esteira_atual == null:
+		return
+
+	if not is_on_floor():
+		return
+
+	if dashing:
+		return
+
+	var direcao = esteira_atual.get_direcao()
+
+	# Quanto o jogador está tentando andar
+	# na direção da esteira
+	var forward = player_camera.global_transform.basis.z
+	var right = player_camera.global_transform.basis.x
+
+	forward.y = 0.0
+	right.y = 0.0
+
+	forward = forward.normalized()
+	right = right.normalized()
+
+	var direcao_jogador = (right * input_dir.x +forward * input_dir.y).normalized()
+
+	var influencia_jogador = 0.0
+
+	if direcao_jogador.length_squared() > 0.001:
+		influencia_jogador = direcao_jogador.dot(direcao)
+
+	# Velocidade desejada da esteira + movimento do jogador
+	var velocidade_alvo = (esteira_atual.velocidade_esteira +influencia_jogador * SPEED)
+
+	# Velocidade atual projetada na direção da esteira
+	var velocidade_atual = Vector3(velocity.x, 0, velocity.z)
+
+	var velocidade_direcional = velocidade_atual.dot(direcao)
+
+	# A esteira empurra o jogador até a velocidade desejada
+	var nova_velocidade = move_toward(velocidade_direcional,velocidade_alvo,FORCA_ESTEIRA * delta)
+
+	# Aplica somente a diferença na direção da esteira
+	var diferenca = nova_velocidade - velocidade_direcional
+
+	velocity.x += direcao.x * diferenca
+	velocity.z += direcao.z * diferenca
