@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c11xoy216wbsk"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_f1q28"]
+size = Vector3(3, 0.2, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t2hhj"]
+size = Vector3(3, 0.3, 3)
+
+[node name="ConveyorBelt" type="Node3D" unique_id=2017124680]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=362810665]
+mesh = SubResource("BoxMesh_f1q28")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=655145346]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=889435802]
+shape = SubResource("BoxShape3D_t2hhj")

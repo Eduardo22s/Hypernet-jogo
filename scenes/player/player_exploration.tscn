@@ -1481,6 +1481,12 @@ size = Vector3(1.5, 1.5, 1.5)
 [sub_resource type="SphereShape3D" id="SphereShape3D_f1q28"]
 radius = 1.2
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t2hhj"]
+radius = 0.6
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f1q28"]
+radius = 0.6
+
 [node name="PlayerExploration" type="CharacterBody3D" unique_id=1230296654]
 script = ExtResource("1_w152q")
 
@@ -1914,6 +1920,17 @@ debug_color = Color(0.9769204, 0, 0.4117807, 0.41960785)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.09394503)
 shape = SubResource("SphereShape3D_f1q28")
 debug_color = Color(0, 0.6515895, 0.013452545, 0.41960785)
+
+[node name="MirrorDetector" type="Area3D" parent="." unique_id=652599165]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MirrorDetector" unique_id=1368962245]
+shape = SubResource("CapsuleShape3D_t2hhj")
+
+[node name="BumperDetector" type="Area3D" parent="." unique_id=1538060129]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BumperDetector" unique_id=1514091779]
+shape = SubResource("CapsuleShape3D_f1q28")
+debug_color = Color(0.7286164, 0.4747172, 0, 0.41960785)
 
 [connection signal="pressed" from="HUD/ButtonMainMenu" to="HUD" method="_on_button_main_menu_pressed"]
 [connection signal="pressed" from="HUD/ButtonQuit" to="HUD" method="_on_button_quit_pressed"]

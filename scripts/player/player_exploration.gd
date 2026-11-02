@@ -47,8 +47,39 @@ const BALAO_FORCA_DASH = 2.0
 
 @onready var balloon_detector: Area3D = $BalloonDetector
 
+@export var mirror_teleports: Array[Node3D] = []
+
+@onready var mirror_detector: Area3D = $MirrorDetector
+
+@onready var border: Border = $"../Environment/Border"
+
+@onready var bumper_detector: Area3D = $BumperDetector
+
+const BUMPER_MIN_SPEED = 9.0
+const BUMPER_PUSH_DISTANCE = 0.15
+
+var bumper_knockback_timer := 0.0
+const BUMPER_KNOCKBACK_DURATION = 0.18
+
+var throw_velocity = Vector3.ZERO
+var throw_height: float = 0.0
+
+var mirror_teleporting = false
+
+var dentro_vendaval := false
+var vendaval_subindo := false
+var vendaval_flutuando := false
+var vendaval_altura_alvo := 0.0
+
+const VENDA_VAL_FORCA := 4.0
+const VENDA_VAL_ALTURA := 1.0
+
+
 func _ready():
 	add_to_group("player")
+	mirror_detector.area_entered.connect(_on_mirror_detector_area_entered)
+	bumper_detector.area_entered.connect(_on_bumper_area_entered)
+
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 	Global.timer_on = true
@@ -74,6 +105,12 @@ func _physics_process(delta: float) -> void:
 	var move_left := Input.is_action_pressed("move_left")
 	var move_up := Input.is_action_pressed("move_forward")
 	var move_down := Input.is_action_pressed("move_backward")
+	
+	if dentro_vendaval:
+		if vendaval_subindo:
+			velocity.y = VENDA_VAL_FORCA
+		elif vendaval_flutuando:
+			velocity.y = 0.0
 
 	if move_right and move_up:
 		idle_sprite.visible = false
@@ -126,7 +163,7 @@ func _physics_process(delta: float) -> void:
 		moving_sprite.visible = false
 		$AudioStreamPlayer.stop()
 
-	if not is_on_floor() and not dashing:
+	if not is_on_floor() and not dashing and not dentro_vendaval:
 		velocity += get_gravity() * delta
 
 		if velocity.y < 0:
@@ -146,7 +183,7 @@ func _physics_process(delta: float) -> void:
 
 	detectar_parede_area()
 
-	if bufferTimer > 0.0:
+	if bufferTimer > 0.0 and not dentro_vendaval:
 		if na_parede and not wall_jump_usado:
 			wall_jump()
 
@@ -184,10 +221,23 @@ func _physics_process(delta: float) -> void:
 			dash()
 		elif dash_aereo_disponivel:
 			dash_aereo()
+	
+	if bumper_knockback_timer > 0.0:
+		bumper_knockback_timer -= delta
+
+		$VFX_Footstep.emitting = false
+
+		
+		move_and_slide()
+		finalizar_movimento_vendaval()
+		empurrar_baloes()
+		return
 
 	if dashing:
 		$VFX_Footstep.emitting = false
+
 		move_and_slide()
+		finalizar_movimento_vendaval()
 		empurrar_baloes()
 		check_dash_wall_collision()
 		return
@@ -227,8 +277,10 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z,0,desaceleracao * delta)
 
 		$VFX_Footstep.emitting = false
+		
 
 	move_and_slide()
+	finalizar_movimento_vendaval()
 	empurrar_baloes()
 
 func get_camera_direction() -> Vector3:
@@ -404,18 +456,6 @@ func wall_kick_dash():
 	velocity.z = normal_parede.z * WALL_KICK_DASH_FORCE
 	velocity.y = WALL_KICK_DASH_VERTICAL
 
-#	virar_para_direcao(normal_parede)
-
-#func virar_para_direcao(direcao: Vector3):
-	#if direcao.length() <= 0.01:
-	#	return
-
-#	var direcao_horizontal = Vector3(direcao.x,0,direcao.z).normalized()
-
-	#if direcao_horizontal.length() <= 0.01:
-		#return
-
-	#look_at(global_position + direcao_horizontal,Vector3.UP)
 
 func _input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
@@ -452,4 +492,89 @@ func empurrar_baloes():
 				balao.apply_central_impulse(direcao * BALAO_FORCA_DASH)
 			else:
 				balao.apply_central_impulse(direcao * BALAO_FORCA)
-		
+
+
+func _on_mirror_detector_area_entered(area: Area3D) -> void:
+	if area is MirrorZone:
+		teleport_player()
+
+
+func teleport_player() -> void:
+	if mirror_teleporting:
+		return
+
+	if mirror_teleports.is_empty():
+		return
+
+	mirror_teleporting = true
+
+	var random_mirror = randi_range(0, mirror_teleports.size() - 1)
+
+	global_position = mirror_teleports[random_mirror].global_position
+
+	await get_tree().create_timer(0.25).timeout
+
+	mirror_teleporting = false
+	
+	
+func _on_bumper_area_entered(area: Area3D) -> void:
+
+	if not area.is_in_group("player_bumpers"):
+		return
+	
+	var sprite = area.get_node_or_null("AnimatedSprite3D")
+
+	if sprite:
+		sprite.stop()
+		sprite.play("Idle")
+
+	# Centro aproximado do jogador
+	var player_center = global_position + Vector3.UP * 0.1
+
+	# Direção do centro do Bumper até o jogador
+	var normal = player_center - area.global_position
+
+	if normal.length_squared() < 0.001:
+		return
+
+	normal = normal.normalized()
+
+	# Velocidade de impacto
+	var impacto = velocity.dot(normal)
+
+	# Preserva a velocidade tangencial
+	var velocidade_lateral = velocity.slide(normal)
+
+	# Calcula a força do ricochete
+	var forca_saida = maxf(-impacto, BUMPER_MIN_SPEED)
+
+	# Aplica o ricochete
+	velocity = velocidade_lateral + normal * forca_saida
+
+	# Interrompe dash
+	dashing = false
+
+	# Evita que a movimentação anule o impulso
+	bumper_knockback_timer = BUMPER_KNOCKBACK_DURATION
+
+	# Pequeno afastamento
+	global_position += normal * BUMPER_PUSH_DISTANCE
+	
+	
+func finalizar_movimento_vendaval():
+
+	if not dentro_vendaval:
+		return
+
+	# Enquanto sobe, verifica se chegou ao topo
+	if vendaval_subindo:
+		if global_position.y >= vendaval_altura_alvo:
+			global_position.y = vendaval_altura_alvo
+			velocity.y = 0.0
+			vendaval_subindo = false
+			vendaval_flutuando = true
+
+	# Quando flutua, trava a altura
+	elif vendaval_flutuando:
+		global_position.y = vendaval_altura_alvo
+		velocity.y = 0.0

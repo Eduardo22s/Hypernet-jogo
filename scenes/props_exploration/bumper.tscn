@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://e06q4pnu2yil"]
+
+[ext_resource type="Script" uid="uid://c682cxv2wwxfd" path="res://scripts/props_combat/border.gd" id="1_7n5e7"]
+[ext_resource type="Texture2D" uid="uid://cdfp532i1s0ug" path="res://assets/props2D/GlitchAnimation/GlitchAnimation1.png" id="2_gr0uw"]
+[ext_resource type="Texture2D" uid="uid://hjly54aes2d7" path="res://assets/props2D/GlitchAnimation/GlitchAnimation2.png" id="3_kyp13"]
+[ext_resource type="Texture2D" uid="uid://yx3ncqnd4uka" path="res://assets/props2D/GlitchAnimation/GlitchAnimation3.png" id="4_36w8v"]
+[ext_resource type="Texture2D" uid="uid://bp4241t61n0jl" path="res://assets/props2D/GlitchAnimation/GlitchAnimation4.png" id="5_by7vw"]
+[ext_resource type="Texture2D" uid="uid://bbiu31e0051yo" path="res://assets/props2D/GlitchAnimation/GlitchAnimation5.png" id="6_dfxbs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t2hhj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t2hhj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_gr0uw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kyp13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_36w8v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_by7vw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_dfxbs")
+}],
+"loop": 1,
+"name": &"Idle",
+"speed": 15.0
+}]
+
+[node name="Bumper" type="Area3D" unique_id=373709374 groups=["player_bumpers"]]
+script = ExtResource("1_7n5e7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1150865667]
+shape = SubResource("BoxShape3D_t2hhj")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=279007440]
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_t2hhj")
+animation = &"Idle"
+frame_progress = 0.15318856
