@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://dn80ln33ovsg6"]
+
+[ext_resource type="Script" uid="uid://dhu6usv7h7lw7" path="res://scripts/props_exploration/jump_pad.gd" id="1_ilwpc"]
+[ext_resource type="Texture2D" uid="uid://nxwbbjsc0dt8" path="res://Seta_PuloDuplo/SetaAcertada_1.png" id="2_kjnh0"]
+[ext_resource type="Texture2D" uid="uid://bxl4yfd152dwq" path="res://Seta_PuloDuplo/SetaAcertada_2.png" id="3_rksny"]
+[ext_resource type="Texture2D" uid="uid://cejltku7jjowu" path="res://Seta_PuloDuplo/SetaAcertada_3.png" id="4_c6fpx"]
+[ext_resource type="Texture2D" uid="uid://bc1rrwacgu0pu" path="res://Seta_PuloDuplo/SetaAcertada_4.png" id="5_gnqcw"]
+[ext_resource type="Texture2D" uid="uid://dqyqj5pdalsro" path="res://Seta_PuloDuplo/SetaAcertada_5.png" id="6_d3l37"]
+[ext_resource type="Texture2D" uid="uid://dj640s46ommon" path="res://Seta_PuloDuplo/SetaAcertada_6.png" id="7_5fqfu"]
+[ext_resource type="Texture2D" uid="uid://djf2falgynjku" path="res://Seta_PuloDuplo/SetaNormal_1.png" id="8_1cslc"]
+[ext_resource type="Texture2D" uid="uid://d3xu6hvffkgun" path="res://Seta_PuloDuplo/SetaNormal_2.png" id="9_gpn6b"]
+[ext_resource type="Texture2D" uid="uid://b15gty7n1of4s" path="res://Seta_PuloDuplo/SetaNormal_3.png" id="10_e8efl"]
+[ext_resource type="Texture2D" uid="uid://cugkiygc5m0ux" path="res://Seta_PuloDuplo/SetaNormal_4.png" id="11_1ucf0"]
+[ext_resource type="Texture2D" uid="uid://b3uei7bcgbiii" path="res://Seta_PuloDuplo/SetaNormal_5.png" id="12_3725l"]
+[ext_resource type="Texture2D" uid="uid://cnoce72sco2sm" path="res://Seta_PuloDuplo/SetaNormal_6.png" id="13_4gc3x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t2hhj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t2hhj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kjnh0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rksny")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_c6fpx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gnqcw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_d3l37")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5fqfu")
+}],
+"loop": 1,
+"name": &"Ativado",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_1cslc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_gpn6b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_e8efl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_1ucf0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_3725l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_4gc3x")
+}],
+"loop": 1,
+"name": &"Idle",
+"speed": 15.0
+}]
+
+[node name="JumpPad" type="Area3D" unique_id=766872244]
+script = ExtResource("1_ilwpc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=11302717]
+shape = SubResource("BoxShape3D_t2hhj")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=960857626]
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_t2hhj")
+animation = &"Idle"
+frame_progress = 0.71672016

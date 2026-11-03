@@ -77,6 +77,8 @@ const VENDA_VAL_ALTURA := 1.0
 var esteira_atual: ConveyorBelt = null
 const FORCA_ESTEIRA := 12.0
 
+var jump_pad_atual: JumpPad = null
+
 
 func _ready():
 	add_to_group("player")
@@ -180,7 +182,11 @@ func _physics_process(delta: float) -> void:
 		coyoteTimer -= delta
 
 	if Input.is_action_just_pressed("ui_accept"):
-		bufferTimer = buffer
+		if jump_pad_atual != null:
+			jump_pad_atual.ativar(self)
+			bufferTimer = 0.0
+		else:
+			bufferTimer = buffer
 	else:
 		bufferTimer -= delta
 
