@@ -1,10 +1,14 @@
 extends CharacterBody3D
 class_name PlayerExploration
 
-const JUMP_VELOCITY = 5.2
+const JUMP_VELOCITY = 8.0
 const velQueda = 1.7
 const controleAereo = 5.0
 const freiarAereo = 8.0
+
+const WALL_CHECK_DIST := 0.7   # alcance da detecção (um pouco maior que o raio do player)
+const WALL_RAY_COUNT := 8      # quantidade de raios ao redor
+const WALL_RAY_HEIGHT := 0.5   # altura do raio em relação ao pé do player
 
 const aceleracao = 20.0
 const desaceleracao = 8.0
@@ -32,7 +36,6 @@ var ultima_parede_normal := Vector3.ZERO
 
 @onready var wall_area: Area3D = $Wall
 
-var parede_atual: Node3D = null
 
 var SPEED = 5.0
 var bufferTimer = 0.0
@@ -77,28 +80,35 @@ const VENDA_VAL_ALTURA := 1.0
 var esteira_atual: ConveyorBelt = null
 const FORCA_ESTEIRA := 12.0
 
+var call_once = true
 
 func _ready():
+	$HUD/Fade/AnimationPlayer.play_backwards("fade")
 	add_to_group("player")
 	mirror_detector.area_entered.connect(_on_mirror_detector_area_entered)
 	bumper_detector.area_entered.connect(_on_bumper_area_entered)
 
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-	Global.timer_on = true
-	global_position = Global.player_return_pos
+	#global_position = Global.player_return_pos
 	Global.stop_player = false
 	Global.words_in_storage = 0
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Global.end_game:
-		await get_tree().create_timer(2.0).timeout
-		get_tree().change_scene_to_file("res://scenes/stages/main_menu.tscn")
+		if call_once:
+			$HUD/Flash/S_ScreenFlashLayer/ScreenFlash.PlayFlash()
+			$HUD/Fade/AnimationPlayer.play("fade")
+			call_once = false
+		
+		await get_tree().create_timer(4.0).timeout
+		get_tree().change_scene_to_file("res://scenes/stages/game_over_menu.tscn")
 
 	if Global.stop_player:
 		SPEED = 0.0
 	else:
 		SPEED = 5.0
+
 
 func _physics_process(delta: float) -> void:
 	var moving_sprite = $SubViewport/Player2dModel/AnimatedMoving
@@ -220,6 +230,7 @@ func _physics_process(delta: float) -> void:
 
 	# O dash agora possui um comando próprio, sem depender de ataque.
 	if Input.is_action_just_pressed("dash") and not dashing:
+		$OrbitalPivot/AnimationAttack.play("attack")
 		if is_on_floor():
 			dash()
 		elif dash_aereo_disponivel:
@@ -296,6 +307,7 @@ func get_camera_direction() -> Vector3:
 
 	return forward.normalized()
 
+
 func detectar_parede_area():
 	na_parede = false
 	normal_parede = Vector3.ZERO
@@ -303,31 +315,48 @@ func detectar_parede_area():
 	if is_on_floor():
 		return
 
-	var corpos = wall_area.get_overlapping_bodies()
+	var space := get_world_3d().direct_space_state
+	var origem := global_position + Vector3.UP * WALL_RAY_HEIGHT
 
-	for corpo in corpos:
-		if corpo == self:
+	var melhor_dist := INF
+	var melhor_normal := Vector3.ZERO
+
+	for i in WALL_RAY_COUNT:
+		var ang := TAU * i / WALL_RAY_COUNT
+		var dir := Vector3(cos(ang), 0.0, sin(ang))
+
+		var query := PhysicsRayQueryParameters3D.create(origem, origem + dir * WALL_CHECK_DIST)
+		query.exclude = [get_rid()]
+		query.collision_mask = collision_mask
+
+		var hit := space.intersect_ray(query)
+		if hit.is_empty():
 			continue
 
-		var direcao = global_position - corpo.global_position
+		var n: Vector3 = hit.normal
 
-		if direcao.length_squared() < 0.001:
+		# Ignora chão e teto
+		if abs(n.y) >= 0.5:
 			continue
 
-		direcao = direcao.normalized()
+		var dist := origem.distance_to(hit.position)
+		if dist < melhor_dist:
+			melhor_dist = dist
+			melhor_normal = n
 
-		if abs(direcao.y) >= 0.5:
-			continue
-
-		na_parede = true
-		normal_parede = direcao
-
-		# Entrou em uma nova parede
-		if corpo != parede_atual:
-			parede_atual = corpo
-			wall_jump_usado = false
-
+	if melhor_normal == Vector3.ZERO:
 		return
+
+	melhor_normal.y = 0.0
+	melhor_normal = melhor_normal.normalized()
+
+	na_parede = true
+	normal_parede = melhor_normal
+
+	# Como o GridMap é um corpo só, a "parede nova" é detectada pela normal, não pelo nó
+	if melhor_normal.dot(ultima_parede_normal) < 0.9:
+		wall_jump_usado = false
+
 
 func dash():
 	if dashing:

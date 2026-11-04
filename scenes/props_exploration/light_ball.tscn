@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dvdm56niw2ify"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_re0hu"]
+albedo_color = Color(4.416, 0, 4.416, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_g4v7s"]
+material = SubResource("StandardMaterial3D_re0hu")
+
+[node name="LightBall" type="Node3D" unique_id=1477888179]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1926356352]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+mesh = SubResource("SphereMesh_g4v7s")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1485268520]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.29999992, 0)
+light_color = Color(1.6938539, 0, 1.6938539, 1)
+light_energy = 12.5
+shadow_enabled = true
+spot_range = 50.0
+spot_angle = 75.0

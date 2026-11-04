@@ -6,7 +6,6 @@
 [ext_resource type="Shader" uid="uid://conmejl7vtvgv" path="res://global/cenas/VFX/_Shaders/Flash/S_ScreenFlash.gdshader" id="2_nyale"]
 [ext_resource type="Texture2D" uid="uid://cq36vtmcevr3x" path="res://assets/props2D/HUD/BattleUI/Battle_Player.png" id="3_5jqjx"]
 [ext_resource type="FontFile" uid="uid://bcgyc0ombka2d" path="res://assets/fonts/Rayman 1.ttf" id="3_7rux2"]
-[ext_resource type="Texture2D" uid="uid://cwi3kjyrisq0k" path="res://assets/props2D/HUD/BattleUI/Battle_Enemy.png" id="3_d8snf"]
 [ext_resource type="Script" uid="uid://buvfavh76bi0" path="res://global/cenas/VFX/_Shaders/Flash/S_ScreenFlash.gd" id="3_vaytx"]
 [ext_resource type="Texture2D" uid="uid://3d20hkt7ftbq" path="res://assets/props2D/HUD/BattleUI/Battle_Number.png" id="4_qkiwq"]
 [ext_resource type="Texture2D" uid="uid://chnvsfka6u12h" path="res://assets/props2D/HUD/BattleUI/Battle_WaveBar.png" id="5_qkiwq"]
@@ -42,34 +41,22 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Combat/LiveReaction:position")
+tracks/0/path = NodePath("Combat/Answers:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(162, 813)]
+"values": [Vector2(1056, 869)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Combat/Answers:position")
+tracks/1/path = NodePath("TimerSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1056, 869)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("TimerSprite:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -82,34 +69,22 @@ length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Combat/LiveReaction:position")
+tracks/0/path = NodePath("Combat/Answers:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(1, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(162, 813), Vector2(162, 484)]
+"values": [Vector2(1056, 869), Vector2(1056, 540)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Combat/Answers:position")
+tracks/1/path = NodePath("TimerSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1056, 869), Vector2(1056, 540)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("TimerSprite:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(1, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -1338,11 +1313,6 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Combat" type="Node" parent="." unique_id=1495784869]
-
-[node name="LiveReaction" type="Sprite2D" parent="Combat" unique_id=515610725]
-z_index = -1
-position = Vector2(162, 813)
-texture = ExtResource("3_d8snf")
 
 [node name="Answers" type="Sprite2D" parent="Combat" unique_id=2073208911]
 z_index = -1

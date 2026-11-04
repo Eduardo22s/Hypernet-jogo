@@ -20,41 +20,28 @@ var neutral_results = 0
 var bad_results = 0
 var word_selected = false
 
-var player_return_pos = Vector3(1.8, 1.6, 7.0)
+#var player_return_pos = Vector3(-0.235, 5.0, 0.525)
+
 
 var timer_on = false
-var minutes = 5
-var seconds = 59
+var seconds = 300
 
 
 func _process(delta: float) -> void:
-	if not timer_on:
+	if !timer_on:
 		return
-
-	seconds -= delta
-
-	while seconds < 0 and minutes > 0:
-		minutes -= 1
-		seconds += 60
-
-	if minutes <= 0 and seconds <= 0:
-		Global.end_game = true
-		minutes = 0
-		seconds = 0
-
+	else:
+		seconds -= delta
+		if seconds <= 0:
+			seconds = 0
+			timer_on = false
+			end_game = true
 
 func reset_timer():
 	timer_on = false
-	minutes = 5
-	seconds = 59
+	seconds = 300
+
 
 func invert_bools(var_names: Array):
 	for var_name in var_names:
 		set(var_name, not get(var_name))
-		
-
-func add_time(amount: int):
-	var total_seconds = minutes * 60 + int(ceil(seconds)) + amount
-
-	minutes = int(total_seconds / 60)
-	seconds = float(total_seconds % 60)

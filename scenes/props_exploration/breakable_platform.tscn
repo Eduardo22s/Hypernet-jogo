@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cm4qlwgwdhxl5"]
+
+[ext_resource type="Script" uid="uid://bfqa6vr2kbjfu" path="res://scripts/stages/breakable_platform.gd" id="1_1fv5j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bha02"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_t2hhj"]
+material = SubResource("StandardMaterial3D_bha02")
+size = Vector3(3, 0.3, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t2hhj"]
+size = Vector3(3, 0.3, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f1q28"]
+size = Vector3(3, 0.2, 3)
+
+[node name="BreakablePlatform" type="StaticBody3D" unique_id=917541548]
+script = ExtResource("1_1fv5j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=53449120]
+mesh = SubResource("BoxMesh_t2hhj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=876447421]
+shape = SubResource("BoxShape3D_t2hhj")
+
+[node name="DetectorTopo" type="Area3D" parent="." unique_id=1285414723]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectorTopo" unique_id=387139652]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.099999994, 0)
+shape = SubResource("BoxShape3D_f1q28")
+debug_color = Color(0.9796012, 0, 0.39057314, 0.41960785)

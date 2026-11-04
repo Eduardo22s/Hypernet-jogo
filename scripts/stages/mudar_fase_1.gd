@@ -1,0 +1,9 @@
+extends Area3D
+
+func _on_area_entered(area: Area3D) -> void:
+	if area is ChangeSceneDetector:
+		$Fade/AnimationPlayer.play("fade")
+		
+		await get_tree().create_timer(1.5).timeout
+		await get_tree().process_frame
+		get_tree().change_scene_to_file("res://scenes/stages/fase.tscn")

@@ -1,0 +1,168 @@
+[gd_scene format=3 uid="uid://cbp1s24sv7o"]
+
+[ext_resource type="Texture2D" uid="uid://ijo6jm30cxow" path="res://assets/UIs/GameOver/GameOver.png" id="1_ksmik"]
+[ext_resource type="Script" uid="uid://cp31dkhjj1hjp" path="res://scripts/stages/game_over_menu.gd" id="1_vfr1v"]
+[ext_resource type="Shader" uid="uid://conmejl7vtvgv" path="res://global/cenas/VFX/_Shaders/Flash/S_ScreenFlash.gdshader" id="2_1thhk"]
+[ext_resource type="Shader" uid="uid://fsl3lmqgpnp5" path="res://global/cenas/VFX/_Shaders/CRTFilter.gdshader" id="2_4jcs2"]
+[ext_resource type="Texture2D" uid="uid://ck6rm4dxehj4u" path="res://assets/UIs/GameOver/GameOver_BackToMenu.png" id="2_vfr1v"]
+[ext_resource type="Script" uid="uid://buvfavh76bi0" path="res://global/cenas/VFX/_Shaders/Flash/S_ScreenFlash.gd" id="3_4jcs2"]
+[ext_resource type="Texture2D" uid="uid://cf3336l0x5yvv" path="res://assets/UIs/GameOver/GameOver_BackToMenu_Selected.png" id="3_ipdyc"]
+[ext_resource type="Texture2D" uid="uid://cqa5eipu5h5jo" path="res://assets/UIs/GameOver/GameOver_KeepPlaying.png" id="4_1thhk"]
+[ext_resource type="Texture2D" uid="uid://c2fup32lsoi11" path="res://assets/UIs/GameOver/GameOver_KeepPlaying_Selected.png" id="5_4jcs2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ek6yr"]
+shader = ExtResource("2_4jcs2")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_av6ho"]
+shader = ExtResource("2_1thhk")
+shader_parameter/FlashColor = Color(1, 1, 1, 1)
+shader_parameter/Progress = 0.0
+shader_parameter/Softness = 0.04
+shader_parameter/MaxRadius = 1.2
+shader_parameter/PixelSize = 7.0000002375
+shader_parameter/Fragmentation = 0.70000003325
+
+[sub_resource type="Animation" id="Animation_ikwbd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.26666668, 0.07450981, 0.33333334, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_guvr8"]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.26666668, 0.07450981, 0.33333334, 0), Color(0.26666668, 0.07450981, 0.34901962, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ikwbd"]
+_data = {
+&"RESET": SubResource("Animation_ikwbd"),
+&"fade": SubResource("Animation_guvr8")
+}
+
+[node name="GameOverMenu" type="Control" unique_id=846988517]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vfr1v")
+
+[node name="CRT" type="ColorRect" parent="." unique_id=1777907682]
+z_index = -1
+material = SubResource("ShaderMaterial_ek6yr")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Flash" type="Node3D" parent="." unique_id=1877286434]
+
+[node name="S_ScreenFlashLayer" type="CanvasLayer" parent="Flash" unique_id=711347374]
+
+[node name="ScreenFlash" type="ColorRect" parent="Flash/S_ScreenFlashLayer" unique_id=239204591]
+z_index = -1
+material = SubResource("ShaderMaterial_av6ho")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_4jcs2")
+FlashColor = Color(0, 0, 0, 1)
+TotalDuration = 2.0
+
+[node name="Fade" type="Node" parent="." unique_id=260866560]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Fade" unique_id=1123226958]
+libraries/ = SubResource("AnimationLibrary_ikwbd")
+
+[node name="ColorRect" type="ColorRect" parent="Fade" unique_id=1956446437]
+z_index = -1
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.26666668, 0.07450981, 0.33333334, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="GameOver" type="Sprite2D" parent="." unique_id=973253807]
+z_index = -2
+position = Vector2(574, 325)
+texture = ExtResource("1_ksmik")
+
+[node name="ButtonMenu" type="Button" parent="." unique_id=48498822]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0625
+anchor_top = 0.75308645
+anchor_right = 0.20833333
+anchor_bottom = 0.83950615
+offset_right = 8.0
+offset_bottom = 8.0
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="MainMenuLabel" type="Sprite2D" parent="ButtonMenu" unique_id=1999304122]
+z_index = -2
+position = Vector2(88, 31.99997)
+texture = ExtResource("2_vfr1v")
+
+[node name="MainMenuSelected" type="Sprite2D" parent="ButtonMenu" unique_id=22352522]
+visible = false
+z_index = -2
+position = Vector2(96, 15.9999695)
+texture = ExtResource("3_ipdyc")
+
+[node name="ButtonReplay" type="Button" parent="." unique_id=1111428529]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7361111
+anchor_top = 0.75308645
+anchor_right = 0.9375
+anchor_bottom = 0.83950615
+offset_right = 8.0
+offset_bottom = 8.0
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="ReplayLabel" type="Sprite2D" parent="ButtonReplay" unique_id=426193692]
+z_index = -2
+position = Vector2(120, 31.99997)
+texture = ExtResource("4_1thhk")
+
+[node name="ReplaySelected" type="Sprite2D" parent="ButtonReplay" unique_id=1007571908]
+visible = false
+z_index = -2
+position = Vector2(120, 15.9999695)
+texture = ExtResource("5_4jcs2")
+
+[connection signal="mouse_entered" from="ButtonMenu" to="." method="_on_button_menu_mouse_entered"]
+[connection signal="mouse_exited" from="ButtonMenu" to="." method="_on_button_menu_mouse_exited"]
+[connection signal="pressed" from="ButtonMenu" to="." method="_on_button_menu_pressed"]
+[connection signal="mouse_entered" from="ButtonReplay" to="." method="_on_button_replay_mouse_entered"]
+[connection signal="mouse_exited" from="ButtonReplay" to="." method="_on_button_replay_mouse_exited"]
+[connection signal="pressed" from="ButtonReplay" to="." method="_on_button_replay_pressed"]

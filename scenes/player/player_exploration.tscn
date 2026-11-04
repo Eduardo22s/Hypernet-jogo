@@ -8,9 +8,8 @@
 [ext_resource type="Script" uid="uid://buvfavh76bi0" path="res://global/cenas/VFX/_Shaders/Flash/S_ScreenFlash.gd" id="4_fmlvb"]
 [ext_resource type="AudioStream" uid="uid://dlyvbtpeuxoi3" path="res://assets/SFX/player/hypernetpassosgrama3sfx.mp3" id="4_omgaf"]
 [ext_resource type="AudioStream" uid="uid://b2a2labg0tde4" path="res://assets/SFX/player/hypernetpassosgrama4sfx.mp3" id="5_dpwul"]
-[ext_resource type="Texture2D" uid="uid://cwi3kjyrisq0k" path="res://assets/props2D/HUD/BattleUI/Battle_Enemy.png" id="5_xofx0"]
+[ext_resource type="Texture2D" uid="uid://bwpv6he7qy4jq" path="res://assets/UIs/Icone_PrincipalV3.png" id="5_guvr8"]
 [ext_resource type="AudioStream" uid="uid://w7la3nl8m27h" path="res://assets/SFX/player/hypernetpassosgrama5sfx.mp3" id="6_dk6du"]
-[ext_resource type="Texture2D" uid="uid://c86b8wxex1mqb" path="res://assets/props2D/HUD/Icone_PrincipalV2.png" id="6_guvr8"]
 [ext_resource type="Texture2D" uid="uid://ogvxg55im8u" path="res://assets/player/idle/ProtagRotacao1.png" id="8_8ksj1"]
 [ext_resource type="Texture2D" uid="uid://chnvsfka6u12h" path="res://assets/props2D/HUD/BattleUI/Battle_WaveBar.png" id="8_a5vu4"]
 [ext_resource type="Script" uid="uid://bguf3ys1es0a" path="res://scripts/player/grab.gd" id="8_b7sm8"]
@@ -90,6 +89,7 @@
 [ext_resource type="Texture2D" uid="uid://c7mqmlneqyiqa" path="res://assets/player/walking/Atrás/Protag_MovBack7.png" id="54_7kbr8"]
 [ext_resource type="Texture2D" uid="uid://dfhtukyo0v8hy" path="res://assets/player/walking/Atrás/Protag_MovBack8.png" id="55_jxd4u"]
 [ext_resource type="PackedScene" uid="uid://q011uuyg7lng" path="res://global/cenas/VFX/_Shaders/Footsteps/Footsteps.tscn" id="56_k8ywf"]
+[ext_resource type="Script" uid="uid://cu2n27i2nbocr" path="res://scenes/player/change_scene_detector.gd" id="90_guvr8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7rux2"]
 
@@ -98,34 +98,22 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Combat/LiveReaction:position")
+tracks/0/path = NodePath("Combat/Answers:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(162, 813)]
+"values": [Vector2(156, 869)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Combat/Answers:position")
+tracks/1/path = NodePath("TimerSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1056, 869)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("TimerSprite:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -138,34 +126,22 @@ length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Combat/LiveReaction:position")
+tracks/0/path = NodePath("Combat/Answers:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(1, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(162, 813), Vector2(162, 484)]
+"values": [Vector2(156, 869), Vector2(156, 500)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Combat/Answers:position")
+tracks/1/path = NodePath("TimerSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1000, 869), Vector2(1000, 500)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("TimerSprite:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(1, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -186,6 +162,42 @@ shader_parameter/Softness = 0.04
 shader_parameter/MaxRadius = 1.2
 shader_parameter/PixelSize = 7.0000002375
 shader_parameter/Fragmentation = 0.70000003325
+
+[sub_resource type="Animation" id="Animation_ikwbd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.26666668, 0.07450981, 0.33333334, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_guvr8"]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.26666668, 0.07450981, 0.33333334, 0), Color(0.26666668, 0.07450981, 0.34901962, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ikwbd"]
+_data = {
+&"RESET": SubResource("Animation_ikwbd"),
+&"fade": SubResource("Animation_guvr8")
+}
 
 [sub_resource type="Animation" id="Animation_taf06"]
 resource_name = "CallDD"
@@ -1520,6 +1532,18 @@ mouse_filter = 2
 script = ExtResource("4_fmlvb")
 TotalDuration = 2.0
 
+[node name="Fade" type="Node" parent="HUD" unique_id=1251329765]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/Fade" unique_id=717178858]
+libraries/ = SubResource("AnimationLibrary_ikwbd")
+
+[node name="ColorRect" type="ColorRect" parent="HUD/Fade" unique_id=1690673655]
+z_index = -1
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.26666668, 0.07450981, 0.33333334, 0)
+metadata/_edit_use_anchors_ = true
+
 [node name="Dialogues" type="Node" parent="HUD" unique_id=1231853471]
 
 [node name="AnimationDialogue" type="AnimationPlayer" parent="HUD/Dialogues" unique_id=1937590044]
@@ -1668,18 +1692,12 @@ autowrap_mode = 3
 
 [node name="Combat" type="Node" parent="HUD" unique_id=1495784869]
 
-[node name="LiveReaction" type="Sprite2D" parent="HUD/Combat" unique_id=515610725]
-z_index = -1
-texture_filter = 1
-position = Vector2(162, 813)
-texture = ExtResource("5_xofx0")
-
 [node name="Answers" type="Sprite2D" parent="HUD/Combat" unique_id=2073208911]
-z_index = -1
+z_index = -2
 texture_filter = 1
-position = Vector2(1056, 869)
+position = Vector2(156, 869)
 scale = Vector2(2, 2)
-texture = ExtResource("6_guvr8")
+texture = ExtResource("5_guvr8")
 
 [node name="WaveBar" type="Sprite2D" parent="HUD/Combat" unique_id=709175805]
 visible = false
@@ -1754,6 +1772,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("15_3rgh0")
 
 [node name="TimerSprite" type="Sprite2D" parent="HUD" unique_id=618407219]
+z_index = -2
 position = Vector2(973, 102)
 texture = ExtResource("16_4gd20")
 
@@ -1931,6 +1950,20 @@ shape = SubResource("CapsuleShape3D_t2hhj")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BumperDetector" unique_id=1514091779]
 shape = SubResource("CapsuleShape3D_f1q28")
 debug_color = Color(0.7286164, 0.4747172, 0, 0.41960785)
+
+[node name="ChangeSceneDetector" type="Area3D" parent="." unique_id=1319090214]
+script = ExtResource("90_guvr8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ChangeSceneDetector" unique_id=1739709224]
+shape = SubResource("CapsuleShape3D_f1q28")
+debug_color = Color(0.7286164, 0.4747172, 0, 0.41960785)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=659857656]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2, 0)
+light_energy = 100.0
+shadow_enabled = true
+spot_range = 100.0
+spot_angle = 75.0
 
 [connection signal="pressed" from="HUD/ButtonMainMenu" to="HUD" method="_on_button_main_menu_pressed"]
 [connection signal="pressed" from="HUD/ButtonQuit" to="HUD" method="_on_button_quit_pressed"]

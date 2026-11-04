@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://be8epqxs51604" path="res://scenes/enemy/enemy.tscn" id="6_1kras"]
 [ext_resource type="PackedScene" uid="uid://bkv1mtrr7hrw6" path="res://scenes/props_exploration/coletavel_10_seg.tscn" id="7_bmbwh"]
 [ext_resource type="PackedScene" uid="uid://c61nsqodydip7" path="res://scenes/props_exploration/moving_platform.tscn" id="8_6wcsd"]
+[ext_resource type="PackedScene" uid="uid://cm4qlwgwdhxl5" path="res://scenes/props_exploration/breakable_platform.tscn" id="8_wpssf"]
 [ext_resource type="PackedScene" uid="uid://bqqkx7xulyqor" path="res://scenes/props_combat/mirror_teleport.tscn" id="9_0p734"]
 [ext_resource type="PackedScene" uid="uid://e06q4pnu2yil" path="res://scenes/props_exploration/bumper.tscn" id="10_sql5y"]
 [ext_resource type="PackedScene" uid="uid://bdouyidvauvot" path="res://scenes/props_exploration/wind_zone.tscn" id="11_qdshp"]
@@ -104,6 +105,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.880081, 1.4846191, 18.7994
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.779655, 5.6914063, 10.594955)
 tipo_movimento = 1
 velocidade = 1.0
+
+[node name="BreakablePlatform" parent="plataformas" unique_id=917541548 instance=ExtResource("8_wpssf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.756874, 2.7444878, 9.156362)
 
 [node name="MirrorTeleport" parent="." unique_id=424845213 instance=ExtResource("9_0p734")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.552368, 1.2709961, 14.1651)
