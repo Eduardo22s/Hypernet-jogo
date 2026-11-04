@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://e06q4pnu2yil" path="res://scenes/props_exploration/bumper.tscn" id="10_sql5y"]
 [ext_resource type="PackedScene" uid="uid://bdouyidvauvot" path="res://scenes/props_exploration/wind_zone.tscn" id="11_qdshp"]
 [ext_resource type="PackedScene" uid="uid://c11xoy216wbsk" path="res://scenes/props_exploration/conveyor_belt.tscn" id="12_scuaw"]
+[ext_resource type="PackedScene" uid="uid://dn80ln33ovsg6" path="res://scenes/props_exploration/jump_pad.tscn" id="13_wpssf"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_t2hhj"]
 
@@ -151,3 +152,6 @@ velocidade_esteira = 5.0
 [node name="ConveyorBelt2" parent="." unique_id=1679414724 instance=ExtResource("12_scuaw")]
 transform = Transform3D(-0.0008252103, 0, -0.99999964, 0, 1, 0, 0.99999964, 0, -0.0008252103, -8.342007, 0.58547366, 12.076335)
 velocidade_esteira = 5.0
+
+[node name="JumpPad" parent="." unique_id=766872244 instance=ExtResource("13_wpssf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.07666, 1.431427, 2.9501953)
