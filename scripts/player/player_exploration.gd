@@ -80,12 +80,10 @@ const VENDA_VAL_ALTURA := 1.0
 var esteira_atual: ConveyorBelt = null
 const FORCA_ESTEIRA := 12.0
 
-<<<<<<< HEAD
-var call_once = true
-=======
-var jump_pad_atual: JumpPad = null
 
->>>>>>> d5ff737c59de6dae2d27f5a9cd4432e01bfb07b7
+var call_once = true
+
+var jump_pad_atual: Area3D = null
 
 func _ready():
 	$HUD/Fade/AnimationPlayer.play_backwards("fade")
