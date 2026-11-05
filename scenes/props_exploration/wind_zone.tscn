@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bppxghemipy66" path="res://ColetáveisZIP/Juice/VentiladorFrame4.png" id="5_nao0b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t2hhj"]
-size = Vector3(1, 2.9747071, 1)
+size = Vector3(1, 1.784668, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t2hhj"]
 animations = [{
@@ -33,7 +33,7 @@ animations = [{
 script = ExtResource("1_kwdyt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1581156313]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27189338, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.86691296, 0)
 shape = SubResource("BoxShape3D_t2hhj")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1309117841]
