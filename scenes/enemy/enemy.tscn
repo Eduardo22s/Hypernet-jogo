@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://csofcaaqwushb" path="res://scripts/Enemy/enemy.gd" id="1_4a83h"]
 [ext_resource type="Texture2D" uid="uid://ogvxg55im8u" path="res://assets/player/idle/ProtagRotacao1.png" id="2_a3pup"]
+[ext_resource type="AudioStream" uid="uid://dwciqk8hiht8k" path="res://assets/SFX/enemies/DashPinguim_sfx.mp3" id="2_peoo5"]
+[ext_resource type="Script" uid="uid://chddutum2qtx" path="res://global/script/audio_stream_player.gd" id="3_2f3il"]
 [ext_resource type="Texture2D" uid="uid://coaiur5powa1g" path="res://assets/player/walking/Frente/Protag_MovFront1.png" id="3_hvxgb"]
 [ext_resource type="Texture2D" uid="uid://cvowlfcc3xec7" path="res://assets/player/walking/Frente/Protag_MovFront2.png" id="4_peoo5"]
 [ext_resource type="Texture2D" uid="uid://67wjvn2r0131" path="res://assets/player/walking/Frente/Protag_MovFront3.png" id="5_2f3il"]
@@ -12,7 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://cl5t0x62qv64o" path="res://assets/player/walking/Frente/Protag_MovFront8.png" id="10_prup0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t2hhj"]
-height = 1.0
+radius = 0.8
+height = 1.6
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t2hhj"]
 animations = [{
@@ -55,12 +58,21 @@ animations = [{
 }]
 
 [node name="Enemy" type="CharacterBody3D" unique_id=1788365876]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_4a83h")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1908079820]
+stream = ExtResource("2_peoo5")
+volume_db = -12.0
+script = ExtResource("3_2f3il")
+volume = -12.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1593785289]
 shape = SubResource("CapsuleShape3D_t2hhj")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=821254463]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 billboard = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_t2hhj")

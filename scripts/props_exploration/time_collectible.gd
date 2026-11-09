@@ -1,42 +1,15 @@
 extends Area3D
 
-@export_enum("1 segundo:1", "3 segundos:3", "5 segundos:5", "10 segundos:10")
-var bonus_seconds: int = 1
+@export var bonus_seconds: int
 
-var collected: bool = false
-
-func _ready() -> void:
-	body_entered.connect(_on_body_entered)
-	$AnimatedSprite3D2.visible = false
-	$AnimatedSprite3D.play("Idle")
-
-
-func _on_body_entered(body: Node3D) -> void:
-	if not body.is_in_group("player"):
-		return
-
-	if collected:
-		return
-
-	collected = true
-
-	# Impede que seja coletado novamente
-	monitoring = false
-
-	# Adiciona o tempo
-	Global.add_time(bonus_seconds)
-	$Bubble.visible = false
-
-	# Toca a animação de coleta
-	$AnimatedSprite3D2.visible = true
-	$AnimatedSprite3D.play("Tempo")
-	$AnimatedSprite3D2.play("Pop")
-	
-	# Espera a animação terminar
-	await $AnimatedSprite3D2.animation_finished
-	$AnimatedSprite3D2.visible = false
-	
-	await $AnimatedSprite3D.animation_finished
-
-	# Faz o objeto desaparecer
-	queue_free()
+func _on_area_3d_area_entered(area: Area3D) -> void:
+	if area is BumperDetector:
+		Global.seconds += bonus_seconds
+		$AnimatedSprite3D.visible = false
+		$Bubble.visible = false
+		$AnimatedSprite3D2.play("Pop")
+		$AudioStreamPlayer.play()
+		$Area3D.queue_free()
+		
+		await get_tree().create_timer(1.0).timeout
+		self.queue_free()

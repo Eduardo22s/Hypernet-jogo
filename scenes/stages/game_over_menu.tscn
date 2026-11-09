@@ -4,11 +4,23 @@
 [ext_resource type="Script" uid="uid://cp31dkhjj1hjp" path="res://scripts/stages/game_over_menu.gd" id="1_vfr1v"]
 [ext_resource type="Shader" uid="uid://conmejl7vtvgv" path="res://global/cenas/VFX/_Shaders/Flash/S_ScreenFlash.gdshader" id="2_1thhk"]
 [ext_resource type="Shader" uid="uid://fsl3lmqgpnp5" path="res://global/cenas/VFX/_Shaders/CRTFilter.gdshader" id="2_4jcs2"]
+[ext_resource type="Texture2D" uid="uid://ogvxg55im8u" path="res://assets/player/idle/ProtagRotacao1.png" id="2_k7i1t"]
+[ext_resource type="AudioStream" uid="uid://crwu5bhqcj1mi" path="res://assets/SFX/menu/GameOver_sfx (3).mp3" id="2_rsf7e"]
 [ext_resource type="Texture2D" uid="uid://ck6rm4dxehj4u" path="res://assets/UIs/GameOver/GameOver_BackToMenu.png" id="2_vfr1v"]
 [ext_resource type="Script" uid="uid://buvfavh76bi0" path="res://global/cenas/VFX/_Shaders/Flash/S_ScreenFlash.gd" id="3_4jcs2"]
 [ext_resource type="Texture2D" uid="uid://cf3336l0x5yvv" path="res://assets/UIs/GameOver/GameOver_BackToMenu_Selected.png" id="3_ipdyc"]
+[ext_resource type="AudioStream" uid="uid://do3ax8b80olkl" path="res://assets/SFX/menu/Botao_de_interacao_sfx.mp3" id="3_nrw3q"]
+[ext_resource type="Script" uid="uid://chddutum2qtx" path="res://global/script/audio_stream_player.gd" id="3_r7ban"]
+[ext_resource type="Texture2D" uid="uid://21gc83yk0hjs" path="res://assets/player/idle/ProtagRotacao2.png" id="3_rsf7e"]
 [ext_resource type="Texture2D" uid="uid://cqa5eipu5h5jo" path="res://assets/UIs/GameOver/GameOver_KeepPlaying.png" id="4_1thhk"]
+[ext_resource type="Texture2D" uid="uid://duwbgkspxqxtr" path="res://assets/player/idle/ProtagRotacao3.png" id="4_nrw3q"]
 [ext_resource type="Texture2D" uid="uid://c2fup32lsoi11" path="res://assets/UIs/GameOver/GameOver_KeepPlaying_Selected.png" id="5_4jcs2"]
+[ext_resource type="Texture2D" uid="uid://6loq5aj34fxn" path="res://assets/player/idle/ProtagRotacao4.png" id="5_r7ban"]
+[ext_resource type="Script" uid="uid://b1an37kybkb4q" path="res://global/script/crt.gd" id="6_bdxbk"]
+[ext_resource type="Texture2D" uid="uid://ceennm55jy7t3" path="res://assets/player/idle/ProtagRotacao5.png" id="6_l24ib"]
+[ext_resource type="Texture2D" uid="uid://cymoswu8rv8ho" path="res://assets/player/idle/ProtagRotacao6.png" id="7_bdxbk"]
+[ext_resource type="Texture2D" uid="uid://8vyvlpgytp4u" path="res://assets/player/idle/ProtagRotacao7.png" id="8_00gep"]
+[ext_resource type="Texture2D" uid="uid://cjraf7hwovl2x" path="res://assets/player/idle/ProtagRotacao8.png" id="9_bx5rg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ek6yr"]
 shader = ExtResource("2_4jcs2")
@@ -49,7 +61,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.26666668, 0.07450981, 0.33333334, 0), Color(0.26666668, 0.07450981, 0.34901962, 1)]
+"values": [Color(1, 0, 0, 0), Color(1, 0, 0, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ikwbd"]
@@ -57,6 +69,195 @@ _data = {
 &"RESET": SubResource("Animation_ikwbd"),
 &"fade": SubResource("Animation_guvr8")
 }
+
+[sub_resource type="Animation" id="Animation_rsf7e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(576, -64)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Effect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Background:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../ButtonMenu:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../ButtonReplay:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../AudioStreamPlayer:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_k7i1t"]
+resource_name = "death"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.5, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(576, -64), Vector2(576, 709)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Effect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5, 5.1666665, 5.3333335, 5.5, 5.6666665, 5.8333335, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Background:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(6, 7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../ButtonMenu:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(7),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../ButtonReplay:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(7),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../AudioStreamPlayer:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.0666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rsf7e"]
+_data = {
+&"RESET": SubResource("Animation_rsf7e"),
+&"death": SubResource("Animation_k7i1t")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4jcs2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_k7i1t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rsf7e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nrw3q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_r7ban")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_l24ib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_bdxbk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_00gep")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_bx5rg")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 12.0
+}]
 
 [node name="GameOverMenu" type="Control" unique_id=846988517]
 layout_mode = 3
@@ -66,6 +267,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vfr1v")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=900693325]
+stream = ExtResource("2_rsf7e")
+volume_db = -8.0
+script = ExtResource("3_r7ban")
+volume = -8.0
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=505812301]
+stream = ExtResource("3_nrw3q")
+volume_db = -8.0
+script = ExtResource("3_r7ban")
+volume = -8.0
 
 [node name="CRT" type="ColorRect" parent="." unique_id=1777907682]
 z_index = -1
@@ -79,6 +292,7 @@ offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+script = ExtResource("6_bdxbk")
 
 [node name="Flash" type="Node3D" parent="." unique_id=1877286434]
 
@@ -94,7 +308,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("3_4jcs2")
-FlashColor = Color(0, 0, 0, 1)
+FlashColor = Color(1, 0, 0, 1)
 TotalDuration = 2.0
 
 [node name="Fade" type="Node" parent="." unique_id=260866560]
@@ -109,12 +323,36 @@ offset_bottom = 648.0
 color = Color(0.26666668, 0.07450981, 0.33333334, 0)
 metadata/_edit_use_anchors_ = true
 
+[node name="DeathAnimation" type="Node" parent="." unique_id=138580013]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DeathAnimation" unique_id=763459095]
+libraries/ = SubResource("AnimationLibrary_rsf7e")
+
+[node name="Background" type="ColorRect" parent="DeathAnimation" unique_id=108105354]
+z_index = -2
+offset_right = 1150.0
+offset_bottom = 649.0
+color = Color(0, 0, 0, 1)
+
+[node name="Effect" type="ColorRect" parent="DeathAnimation" unique_id=1678788319]
+visible = false
+offset_right = 1150.0
+offset_bottom = 649.0
+color = Color(1, 0, 0, 1)
+
+[node name="Player" type="AnimatedSprite2D" parent="DeathAnimation" unique_id=1396718348]
+position = Vector2(576, -64)
+sprite_frames = SubResource("SpriteFrames_4jcs2")
+autoplay = "default"
+frame_progress = 0.10086462
+
 [node name="GameOver" type="Sprite2D" parent="." unique_id=973253807]
 z_index = -2
 position = Vector2(574, 325)
 texture = ExtResource("1_ksmik")
 
 [node name="ButtonMenu" type="Button" parent="." unique_id=48498822]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0625
@@ -138,6 +376,7 @@ position = Vector2(96, 15.9999695)
 texture = ExtResource("3_ipdyc")
 
 [node name="ButtonReplay" type="Button" parent="." unique_id=1111428529]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.7361111

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bc4w67rr8t7o"
-path.s3tc="res://.godot/imported/+5segundos_1.png-ebaefe5064dbab685f3ce5e5fd1ea7a3.s3tc.ctex"
+uid="uid://dgia4q7eau2uq"
+path.s3tc="res://.godot/imported/TerraVoadora.png-b633138c91062a0d2d2291035a7181cd.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://ColetáveisZIP/Coletáveis/+5segundos_1.png"
-dest_files=["res://.godot/imported/+5segundos_1.png-ebaefe5064dbab685f3ce5e5fd1ea7a3.s3tc.ctex"]
+source_file="res://assets/props3D/decorations/Voxels.ZIP/TerraVoadora/TerraVoadora.png"
+dest_files=["res://.godot/imported/TerraVoadora.png-b633138c91062a0d2d2291035a7181cd.s3tc.ctex"]
 
 [params]
 

@@ -1,27 +1,33 @@
 extends Area3D
 
 @export var altura_sustentacao := 5.0
+@export var forca_vento:=9.0
+@export var tamanho_area:= Vector3(3.0,8.0,3.0)
 
 func _ready():
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 	$AnimatedSprite3D.play("Idle")
+	
+	var shape_node:= $CollisionShape3D as CollisionShape3D
+	if shape_node.shape is BoxShape3D:
+		shape_node.shape = shape_node.shape.duplicate()
+		shape_node.shape.size = tamanho_area
+		shape_node.position.y= tamanho_area.y*0.5
 
 
 func _on_body_entered(body):
 
 	if body is PlayerExploration:
-
+		body.vendaval_atual=self
 		body.dentro_vendaval = true
-		body.vendaval_subindo = true
-		body.vendaval_flutuando = false
+		body.vendaval_forca=forca_vento
 		body.vendaval_altura_alvo = (body.global_position.y + altura_sustentacao)
 
 
 func _on_body_exited(body):
 
-	if body is PlayerExploration:
+	if body is PlayerExploration and body.vendaval_atual == self:
 
 		body.dentro_vendaval = false
-		body.vendaval_subindo = false
-		body.vendaval_flutuando = false
+		body.vendaval_atual = null

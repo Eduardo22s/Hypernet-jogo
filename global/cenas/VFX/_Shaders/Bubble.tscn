@@ -125,11 +125,15 @@ radius = 0.006
 height = 0.2
 
 [node name="Bubble" type="MeshInstance3D" unique_id=2007721419]
+lod_bias = 0.001
+visibility_range_end = 15.0
 mesh = SubResource("SphereMesh_yf5fn")
 script = ExtResource("2_ds3ik")
 
 [node name="LittleBubbles" type="GPUParticles3D" parent="." unique_id=2041844563]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0046577454, 0.2706049, 0)
+lod_bias = 0.001
+visibility_range_end = 15.0
 amount = 5
 lifetime = 1.5
 randomness = 0.65
@@ -138,6 +142,8 @@ process_material = SubResource("ParticleProcessMaterial_ni0r3")
 draw_pass_1 = SubResource("SphereMesh_0deq5")
 
 [node name="WaterDrips" type="GPUParticles3D" parent="." unique_id=426161167]
+lod_bias = 0.001
+visibility_range_end = 15.0
 emitting = false
 amount = 12
 lifetime = 2.5

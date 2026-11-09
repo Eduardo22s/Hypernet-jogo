@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://cani41tc6s31e" path="res://scripts/props_exploration/time_collectible.gd" id="1_e0nsx"]
 [ext_resource type="Texture2D" uid="uid://qlfutcir02ko" path="res://ColetáveisZIP/Coletáveis/+3segundos_1.png" id="1_fxohp"]
 [ext_resource type="Texture2D" uid="uid://b4gtn6s0fqn6v" path="res://ColetáveisZIP/Coletáveis/+3segundos_2.png" id="2_e0nsx"]
+[ext_resource type="AudioStream" uid="uid://df4i7hun8ir0q" path="res://assets/SFX/menu/Toque_Hyper_2_sfx.mp3" id="2_wlxg2"]
+[ext_resource type="Script" uid="uid://chddutum2qtx" path="res://global/script/audio_stream_player.gd" id="3_4eglr"]
 [ext_resource type="Texture2D" uid="uid://dupbh85dawhqy" path="res://ColetáveisZIP/Coletáveis/+3segundos_3.png" id="3_gtkds"]
 [ext_resource type="Texture2D" uid="uid://celgr6a0ucdxy" path="res://ColetáveisZIP/Coletáveis/+3segundos_4.png" id="4_x1585"]
 [ext_resource type="Texture2D" uid="uid://36kp3kxy5e0x" path="res://ColetáveisZIP/Coletáveis/+3segundos_5.png" id="5_3b8ii"]
@@ -29,11 +31,9 @@
 [ext_resource type="Texture2D" uid="uid://bs2nxtgncf3xk" path="res://assets/props2D/teleport/Teleport7.png" id="27_wold1"]
 [ext_resource type="Texture2D" uid="uid://dmpdprghkss8y" path="res://assets/props2D/teleport/Teleport8.png" id="28_wlxg2"]
 [ext_resource type="Texture2D" uid="uid://bvtctujorx1jh" path="res://assets/props2D/teleport/Teleport9.png" id="29_4eglr"]
+[ext_resource type="Script" uid="uid://cq3dssitshprb" path="res://scripts/props_exploration/collectable3.gd" id="30_wold1"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_t2hhj"]
-radius = 0.6
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_t2hhj"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_fev37"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -115,9 +115,15 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_f1q28"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_flfm4"]
+radius = 0.6
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a2hj4"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": null
+}, {
 "duration": 1.0,
 "texture": ExtResource("26_1cjbe")
 }, {
@@ -129,28 +135,63 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("29_4eglr")
+}, {
+"duration": 1.0,
+"texture": null
 }],
 "loop": 0,
 "name": &"Pop",
 "speed": 15.0
 }]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_1cjbe"]
+radius = 0.3
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wold1"]
+radius = 0.3
+
 [node name="Coletável3seg" type="Area3D" unique_id=739932855]
 script = ExtResource("1_e0nsx")
 bonus_seconds = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1431701001]
-shape = SubResource("SphereShape3D_t2hhj")
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1858393745]
+stream = ExtResource("2_wlxg2")
+volume_db = -6.0
+script = ExtResource("3_4eglr")
+volume = -6.0
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1801070581]
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1200737296]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 billboard = 1
-sprite_frames = SubResource("SpriteFrames_t2hhj")
-animation = &"Tempo"
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_fev37")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.4112328
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=683903959]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("SphereShape3D_flfm4")
 
 [node name="Bubble" parent="." unique_id=2007721419 instance=ExtResource("14_gtkds")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
-[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="." unique_id=1221606506]
+[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="." unique_id=1232900735]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 billboard = 1
-sprite_frames = SubResource("SpriteFrames_f1q28")
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_a2hj4")
 animation = &"Pop"
+frame_progress = 0.87276155
+
+[node name="Area3D" type="Area3D" parent="." unique_id=146594833]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=132028035]
+shape = SubResource("SphereShape3D_1cjbe")
+
+[node name="AreaDetector" type="Area3D" parent="." unique_id=4127914]
+script = ExtResource("30_wold1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaDetector" unique_id=180491698]
+shape = SubResource("SphereShape3D_wold1")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

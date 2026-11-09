@@ -54,7 +54,7 @@ func quebrar() -> void:
 
 	# set_deferred evita erro ao mexer na física durante o callback de colisão
 	colisao.set_deferred("disabled", true)
-	mesh.visible = false
+	$PlataformaNuvem.visible = false
 
 	if not respawn_ativo:
 		return
@@ -66,7 +66,7 @@ func quebrar() -> void:
 
 func restaurar() -> void:
 	colisao.set_deferred("disabled", false)
-	mesh.visible = true
+	$PlataformaNuvem.visible = true
 	quebrada = false
 	ativada = false
 

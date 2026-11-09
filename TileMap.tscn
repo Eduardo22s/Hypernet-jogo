@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dl3bryabhltmo" path="res://TilesHyperNet_TexturaGramaParede.png" id="1_dtg6t"]
 [ext_resource type="Texture2D" uid="uid://dwk5qaam5hfhv" path="res://TilesHyperNet_TrimSheet_Others.png" id="2_pt8ig"]
 [ext_resource type="Texture2D" uid="uid://bwyi67xivps0r" path="res://TilesHyperNet_TrimSheet_Plus.png" id="3_5ytvd"]
+[ext_resource type="Script" uid="uid://c3a0dkw8opgbw" path="res://scripts/props_exploration/ice_platform.gd" id="3_pt8ig"]
 [ext_resource type="Texture2D" uid="uid://d16w15854hxaq" path="res://TilesHyperNet_TrimSheet_Grama.png" id="4_80aa4"]
 [ext_resource type="Texture2D" uid="uid://boglnwfx67wdt" path="res://TilesHyperNet_Textura_Sofá.png" id="5_q0j0h"]
 [ext_resource type="Texture2D" uid="uid://byner8ptsjwak" path="res://TilesHyperNet_TrimSheet_Logos.png" id="6_lglbv"]
@@ -1741,6 +1742,8 @@ points = PackedVector3Array(1.2877702, 0.9544919, 0.3333, -0.68249846, -1.015873
 [node name="TileMap" type="Node3D" unique_id=783973148]
 
 [node name="ARCO" type="MeshInstance3D" parent="." unique_id=1645283528]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_6ke7a")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="ARCO" unique_id=1708656550]
@@ -1749,6 +1752,8 @@ mesh = SubResource("ArrayMesh_6ke7a")
 shape = SubResource("ConvexPolygonShape3D_dtg6t")
 
 [node name="BlocoCarpete" type="MeshInstance3D" parent="." unique_id=1395793316]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_r0gsg")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="BlocoCarpete" unique_id=1636261501]
@@ -1757,6 +1762,8 @@ mesh = SubResource("ArrayMesh_r0gsg")
 shape = SubResource("ConvexPolygonShape3D_pt8ig")
 
 [node name="BlocoChão" type="MeshInstance3D" parent="." unique_id=332855296]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_xsp6q")
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="BlocoChão" unique_id=442193727]
@@ -1765,14 +1772,19 @@ mesh = SubResource("ArrayMesh_xsp6q")
 shape = SubResource("ConvexPolygonShape3D_5ytvd")
 
 [node name="BlocoCristal" type="MeshInstance3D" parent="." unique_id=289395129]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_gbnqi")
 
 [node name="StaticBody3D4" type="StaticBody3D" parent="BlocoCristal" unique_id=42245308]
+script = ExtResource("3_pt8ig")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BlocoCristal/StaticBody3D4" unique_id=1217131659]
 shape = SubResource("ConvexPolygonShape3D_80aa4")
 
 [node name="BlocoEsteiraAtrás" type="MeshInstance3D" parent="." unique_id=410007915]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_iw0a1")
 
 [node name="StaticBody3D5" type="StaticBody3D" parent="BlocoEsteiraAtrás" unique_id=727907604]
@@ -1781,6 +1793,8 @@ mesh = SubResource("ArrayMesh_iw0a1")
 shape = SubResource("ConvexPolygonShape3D_q0j0h")
 
 [node name="BlocoEsteiraFrente" type="MeshInstance3D" parent="." unique_id=1955985790]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_4v25m")
 
 [node name="StaticBody3D6" type="StaticBody3D" parent="BlocoEsteiraFrente" unique_id=1868579524]
@@ -1789,6 +1803,8 @@ mesh = SubResource("ArrayMesh_4v25m")
 shape = SubResource("ConvexPolygonShape3D_lglbv")
 
 [node name="BlocoGrama" type="MeshInstance3D" parent="." unique_id=640217899]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_i57qq")
 
 [node name="StaticBody3D7" type="StaticBody3D" parent="BlocoGrama" unique_id=1405046102]
@@ -1797,6 +1813,8 @@ mesh = SubResource("ArrayMesh_i57qq")
 shape = SubResource("ConvexPolygonShape3D_ypy5s")
 
 [node name="BlocoSofá" type="MeshInstance3D" parent="." unique_id=1695604413]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_1umch")
 
 [node name="StaticBody3D8" type="StaticBody3D" parent="BlocoSofá" unique_id=1284295973]
@@ -1805,6 +1823,8 @@ mesh = SubResource("ArrayMesh_1umch")
 shape = SubResource("ConvexPolygonShape3D_ehbon")
 
 [node name="BlocoTerra" type="MeshInstance3D" parent="." unique_id=918216174]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_y53x8")
 
 [node name="StaticBody3D9" type="StaticBody3D" parent="BlocoTerra" unique_id=471714696]
@@ -1813,6 +1833,8 @@ mesh = SubResource("ArrayMesh_y53x8")
 shape = SubResource("ConvexPolygonShape3D_4ueca")
 
 [node name="BlocoVentilador" type="MeshInstance3D" parent="." unique_id=2110270994]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_11puw")
 
 [node name="StaticBody3D10" type="StaticBody3D" parent="BlocoVentilador" unique_id=1762746589]
@@ -1821,6 +1843,8 @@ mesh = SubResource("ArrayMesh_11puw")
 shape = SubResource("ConvexPolygonShape3D_amxu8")
 
 [node name="BlocoWireFrame" type="MeshInstance3D" parent="." unique_id=2055800646]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_hq84g")
 
 [node name="StaticBody3D11" type="StaticBody3D" parent="BlocoWireFrame" unique_id=84200283]
@@ -1829,6 +1853,8 @@ mesh = SubResource("ArrayMesh_hq84g")
 shape = SubResource("ConcavePolygonShape3D_dtg6t")
 
 [node name="Espelho" type="MeshInstance3D" parent="." unique_id=113587400]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_dkg3c")
 
 [node name="StaticBody3D12" type="StaticBody3D" parent="Espelho" unique_id=1557516083]
@@ -1837,6 +1863,8 @@ mesh = SubResource("ArrayMesh_dkg3c")
 shape = SubResource("ConvexPolygonShape3D_h7mhi")
 
 [node name="Flower_Plane" type="MeshInstance3D" parent="." unique_id=1912339709]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_cnlyb")
 
 [node name="StaticBody3D13" type="StaticBody3D" parent="Flower_Plane" unique_id=1001754320]
@@ -1845,6 +1873,8 @@ mesh = SubResource("ArrayMesh_cnlyb")
 shape = SubResource("ConvexPolygonShape3D_ay26s")
 
 [node name="GramaParede" type="MeshInstance3D" parent="." unique_id=1128951392]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_40312")
 
 [node name="StaticBody3D14" type="StaticBody3D" parent="GramaParede" unique_id=564710400]
@@ -1853,6 +1883,8 @@ mesh = SubResource("ArrayMesh_40312")
 shape = SubResource("ConvexPolygonShape3D_t0i71")
 
 [node name="Grass_Plane_014" type="MeshInstance3D" parent="." unique_id=130063019]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_kvqhj")
 
 [node name="StaticBody3D15" type="StaticBody3D" parent="Grass_Plane_014" unique_id=65805751]
@@ -1861,6 +1893,8 @@ mesh = SubResource("ArrayMesh_kvqhj")
 shape = SubResource("ConvexPolygonShape3D_fs1ky")
 
 [node name="ParedeBaixoCEN" type="MeshInstance3D" parent="." unique_id=1471794856]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_w11nj")
 
 [node name="StaticBody3D16" type="StaticBody3D" parent="ParedeBaixoCEN" unique_id=1535508090]
@@ -1869,6 +1903,8 @@ mesh = SubResource("ArrayMesh_w11nj")
 shape = SubResource("ConvexPolygonShape3D_rsy0j")
 
 [node name="ParedeBaixoDIR" type="MeshInstance3D" parent="." unique_id=212384982]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_j7tn2")
 
 [node name="StaticBody3D17" type="StaticBody3D" parent="ParedeBaixoDIR" unique_id=1900255866]
@@ -1877,6 +1913,8 @@ mesh = SubResource("ArrayMesh_j7tn2")
 shape = SubResource("ConvexPolygonShape3D_88fvy")
 
 [node name="ParedeBaixoESQ" type="MeshInstance3D" parent="." unique_id=271866160]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_ppmgq")
 
 [node name="StaticBody3D18" type="StaticBody3D" parent="ParedeBaixoESQ" unique_id=1949476735]
@@ -1885,6 +1923,8 @@ mesh = SubResource("ArrayMesh_ppmgq")
 shape = SubResource("ConvexPolygonShape3D_ff0hv")
 
 [node name="ParedeMeioCEN" type="MeshInstance3D" parent="." unique_id=743908361]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_8nf7e")
 
 [node name="StaticBody3D19" type="StaticBody3D" parent="ParedeMeioCEN" unique_id=1414889408]
@@ -1893,6 +1933,8 @@ mesh = SubResource("ArrayMesh_8nf7e")
 shape = SubResource("ConvexPolygonShape3D_du3tg")
 
 [node name="ParedeMeioDIR" type="MeshInstance3D" parent="." unique_id=67548978]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_5nj01")
 
 [node name="StaticBody3D20" type="StaticBody3D" parent="ParedeMeioDIR" unique_id=1987151116]
@@ -1901,6 +1943,8 @@ mesh = SubResource("ArrayMesh_5nj01")
 shape = SubResource("ConvexPolygonShape3D_nx3in")
 
 [node name="ParedeMeioESQ" type="MeshInstance3D" parent="." unique_id=275853316]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_l7osw")
 
 [node name="StaticBody3D21" type="StaticBody3D" parent="ParedeMeioESQ" unique_id=1764093748]
@@ -1909,6 +1953,8 @@ mesh = SubResource("ArrayMesh_l7osw")
 shape = SubResource("ConvexPolygonShape3D_uh6e2")
 
 [node name="RampaMCarpete" type="MeshInstance3D" parent="." unique_id=327903925]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_v4aeu")
 
 [node name="StaticBody3D22" type="StaticBody3D" parent="RampaMCarpete" unique_id=1490798554]
@@ -1917,6 +1963,8 @@ mesh = SubResource("ArrayMesh_v4aeu")
 shape = SubResource("ConvexPolygonShape3D_rrja3")
 
 [node name="RampaMChão" type="MeshInstance3D" parent="." unique_id=630735861]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_mbxxb")
 
 [node name="StaticBody3D23" type="StaticBody3D" parent="RampaMChão" unique_id=1375020531]
@@ -1925,14 +1973,19 @@ mesh = SubResource("ArrayMesh_mbxxb")
 shape = SubResource("ConvexPolygonShape3D_mv027")
 
 [node name="RampaMCristal" type="MeshInstance3D" parent="." unique_id=1581029213]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_qxp0p")
 
 [node name="StaticBody3D24" type="StaticBody3D" parent="RampaMCristal" unique_id=1932658848]
+script = ExtResource("3_pt8ig")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RampaMCristal/StaticBody3D24" unique_id=1257884125]
 shape = SubResource("ConvexPolygonShape3D_ek2o6")
 
 [node name="RampaMGrama" type="MeshInstance3D" parent="." unique_id=2039554231]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_horq8")
 
 [node name="StaticBody3D25" type="StaticBody3D" parent="RampaMGrama" unique_id=2000305030]
@@ -1941,6 +1994,8 @@ mesh = SubResource("ArrayMesh_horq8")
 shape = SubResource("ConvexPolygonShape3D_hrjh8")
 
 [node name="RampaMGramaAzul" type="MeshInstance3D" parent="." unique_id=912527334]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_hukgs")
 
 [node name="StaticBody3D26" type="StaticBody3D" parent="RampaMGramaAzul" unique_id=1487063531]
@@ -1949,6 +2004,8 @@ mesh = SubResource("ArrayMesh_hukgs")
 shape = SubResource("ConvexPolygonShape3D_3w5jx")
 
 [node name="RampaMSofá" type="MeshInstance3D" parent="." unique_id=1264078405]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_d00b0")
 
 [node name="StaticBody3D27" type="StaticBody3D" parent="RampaMSofá" unique_id=269110133]
@@ -1957,6 +2014,8 @@ mesh = SubResource("ArrayMesh_d00b0")
 shape = SubResource("ConvexPolygonShape3D_0pi1l")
 
 [node name="RampaPCarpete" type="MeshInstance3D" parent="." unique_id=663720094]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_6pde8")
 
 [node name="StaticBody3D28" type="StaticBody3D" parent="RampaPCarpete" unique_id=213667799]
@@ -1965,6 +2024,8 @@ mesh = SubResource("ArrayMesh_6pde8")
 shape = SubResource("ConvexPolygonShape3D_1kalr")
 
 [node name="RampaPChão" type="MeshInstance3D" parent="." unique_id=273334213]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_qga2u")
 
 [node name="StaticBody3D29" type="StaticBody3D" parent="RampaPChão" unique_id=297127127]
@@ -1973,14 +2034,19 @@ mesh = SubResource("ArrayMesh_qga2u")
 shape = SubResource("ConvexPolygonShape3D_0brrx")
 
 [node name="RampaPCristal" type="MeshInstance3D" parent="." unique_id=1599238966]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_ahu65")
 
 [node name="StaticBody3D30" type="StaticBody3D" parent="RampaPCristal" unique_id=930898261]
+script = ExtResource("3_pt8ig")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RampaPCristal/StaticBody3D30" unique_id=1999908386]
 shape = SubResource("ConvexPolygonShape3D_ni8vp")
 
 [node name="RampaPGrama" type="MeshInstance3D" parent="." unique_id=794120977]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_lpld4")
 
 [node name="StaticBody3D31" type="StaticBody3D" parent="RampaPGrama" unique_id=1523321986]
@@ -1989,6 +2055,8 @@ mesh = SubResource("ArrayMesh_lpld4")
 shape = SubResource("ConvexPolygonShape3D_ksf56")
 
 [node name="RampaPGramaAzul" type="MeshInstance3D" parent="." unique_id=786952417]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_0ibuc")
 
 [node name="StaticBody3D32" type="StaticBody3D" parent="RampaPGramaAzul" unique_id=1398325676]
@@ -1997,6 +2065,8 @@ mesh = SubResource("ArrayMesh_0ibuc")
 shape = SubResource("ConvexPolygonShape3D_kxvwm")
 
 [node name="RampaPSofá" type="MeshInstance3D" parent="." unique_id=1075604725]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_pb6e0")
 
 [node name="StaticBody3D33" type="StaticBody3D" parent="RampaPSofá" unique_id=436851511]
@@ -2005,6 +2075,8 @@ mesh = SubResource("ArrayMesh_pb6e0")
 shape = SubResource("ConvexPolygonShape3D_suaa8")
 
 [node name="RampaPWireFrame" type="MeshInstance3D" parent="." unique_id=601508864]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_spqgo")
 
 [node name="StaticBody3D34" type="StaticBody3D" parent="RampaPWireFrame" unique_id=1555797282]
@@ -2013,6 +2085,8 @@ mesh = SubResource("ArrayMesh_spqgo")
 shape = SubResource("ConvexPolygonShape3D_jgekq")
 
 [node name="TrianguloMCarpete" type="MeshInstance3D" parent="." unique_id=1959258799]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_f34r4")
 
 [node name="StaticBody3D35" type="StaticBody3D" parent="TrianguloMCarpete" unique_id=1614139861]
@@ -2021,6 +2095,8 @@ mesh = SubResource("ArrayMesh_f34r4")
 shape = SubResource("ConvexPolygonShape3D_1qjv2")
 
 [node name="TrianguloMChão" type="MeshInstance3D" parent="." unique_id=467051252]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_mt2mm")
 
 [node name="StaticBody3D36" type="StaticBody3D" parent="TrianguloMChão" unique_id=340180953]
@@ -2029,6 +2105,8 @@ mesh = SubResource("ArrayMesh_mt2mm")
 shape = SubResource("ConvexPolygonShape3D_g8bs3")
 
 [node name="TrianguloMCristal" type="MeshInstance3D" parent="." unique_id=401746324]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_k6tcj")
 
 [node name="StaticBody3D37" type="StaticBody3D" parent="TrianguloMCristal" unique_id=1895412112]
@@ -2037,6 +2115,8 @@ mesh = SubResource("ArrayMesh_k6tcj")
 shape = SubResource("ConvexPolygonShape3D_2j075")
 
 [node name="TrianguloMGrama" type="MeshInstance3D" parent="." unique_id=807642190]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_c8qqj")
 
 [node name="StaticBody3D38" type="StaticBody3D" parent="TrianguloMGrama" unique_id=2122468813]
@@ -2045,6 +2125,8 @@ mesh = SubResource("ArrayMesh_c8qqj")
 shape = SubResource("ConvexPolygonShape3D_i1dgy")
 
 [node name="TrianguloMGramaAzul" type="MeshInstance3D" parent="." unique_id=1772754994]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_rod8n")
 
 [node name="StaticBody3D39" type="StaticBody3D" parent="TrianguloMGramaAzul" unique_id=152503113]
@@ -2053,6 +2135,8 @@ mesh = SubResource("ArrayMesh_rod8n")
 shape = SubResource("ConvexPolygonShape3D_yru13")
 
 [node name="TrianguloMSofá" type="MeshInstance3D" parent="." unique_id=849390276]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_ltble")
 
 [node name="StaticBody3D40" type="StaticBody3D" parent="TrianguloMSofá" unique_id=1099141685]
@@ -2061,6 +2145,8 @@ mesh = SubResource("ArrayMesh_ltble")
 shape = SubResource("ConvexPolygonShape3D_lyt34")
 
 [node name="TrianguloMWireFrame" type="MeshInstance3D" parent="." unique_id=1650125238]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_5uktc")
 
 [node name="StaticBody3D41" type="StaticBody3D" parent="TrianguloMWireFrame" unique_id=15749289]
@@ -2069,6 +2155,8 @@ mesh = SubResource("ArrayMesh_5uktc")
 shape = SubResource("ConvexPolygonShape3D_sbukj")
 
 [node name="TrianguloPCarpete" type="MeshInstance3D" parent="." unique_id=1177134584]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_6ox6s")
 
 [node name="StaticBody3D42" type="StaticBody3D" parent="TrianguloPCarpete" unique_id=794032493]
@@ -2077,6 +2165,8 @@ mesh = SubResource("ArrayMesh_6ox6s")
 shape = SubResource("ConvexPolygonShape3D_yqsj4")
 
 [node name="TrianguloPChão" type="MeshInstance3D" parent="." unique_id=1750365577]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_5q88s")
 
 [node name="StaticBody3D43" type="StaticBody3D" parent="TrianguloPChão" unique_id=1802097594]
@@ -2085,14 +2175,19 @@ mesh = SubResource("ArrayMesh_5q88s")
 shape = SubResource("ConvexPolygonShape3D_248d6")
 
 [node name="TrianguloPCristal" type="MeshInstance3D" parent="." unique_id=720481883]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_i0bht")
 
 [node name="StaticBody3D44" type="StaticBody3D" parent="TrianguloPCristal" unique_id=1186594905]
+script = ExtResource("3_pt8ig")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TrianguloPCristal/StaticBody3D44" unique_id=2090020173]
 shape = SubResource("ConvexPolygonShape3D_83gd0")
 
 [node name="TrianguloPGrama" type="MeshInstance3D" parent="." unique_id=1993663800]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_cgl0r")
 
 [node name="StaticBody3D45" type="StaticBody3D" parent="TrianguloPGrama" unique_id=1691571328]
@@ -2101,6 +2196,8 @@ mesh = SubResource("ArrayMesh_cgl0r")
 shape = SubResource("ConvexPolygonShape3D_uy5jy")
 
 [node name="TrianguloPGramaAzul" type="MeshInstance3D" parent="." unique_id=211766727]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_adcpx")
 
 [node name="StaticBody3D46" type="StaticBody3D" parent="TrianguloPGramaAzul" unique_id=1218445992]
@@ -2109,6 +2206,8 @@ mesh = SubResource("ArrayMesh_adcpx")
 shape = SubResource("ConvexPolygonShape3D_ffpk2")
 
 [node name="TrianguloPSofá" type="MeshInstance3D" parent="." unique_id=381180799]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_ltdar")
 
 [node name="StaticBody3D47" type="StaticBody3D" parent="TrianguloPSofá" unique_id=5218422]
@@ -2117,6 +2216,8 @@ mesh = SubResource("ArrayMesh_ltdar")
 shape = SubResource("ConvexPolygonShape3D_mxj0g")
 
 [node name="TrianguloPWireFrame" type="MeshInstance3D" parent="." unique_id=881473135]
+lod_bias = 0.001
+visibility_range_end = 50.0
 mesh = SubResource("ArrayMesh_xu1we")
 
 [node name="StaticBody3D48" type="StaticBody3D" parent="TrianguloPWireFrame" unique_id=1639176628]

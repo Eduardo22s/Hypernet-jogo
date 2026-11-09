@@ -50,7 +50,11 @@ const BALAO_FORCA_DASH = 2.0
 
 @onready var balloon_detector: Area3D = $BalloonDetector
 
+@onready var player_exploration: PlayerExploration = $"." as Node3D
+
 @export var mirror_teleports: Array[Node3D] = []
+
+@onready var mirror_teleport = preload("res://scenes/props_combat/mirror_teleport.tscn")
 
 @onready var mirror_detector: Area3D = $MirrorDetector
 
@@ -63,29 +67,44 @@ const BUMPER_PUSH_DISTANCE = 0.15
 
 var bumper_knockback_timer := 0.0
 const BUMPER_KNOCKBACK_DURATION = 0.18
+const KNOCKBACK_DURATION = 0.25
 
 var throw_velocity = Vector3.ZERO
 var throw_height: float = 0.0
 
+const MIRROR_INTERVALO := 0.5   # segundos de espera entre um teleporte e outro
 var mirror_teleporting = false
 
 var dentro_vendaval := false
-var vendaval_subindo := false
-var vendaval_flutuando := false
+var vendaval_forca :=0.0
 var vendaval_altura_alvo := 0.0
+var vendaval_atual: Area3D = null
 
-const VENDA_VAL_FORCA := 4.0
-const VENDA_VAL_ALTURA := 1.0
 
 var esteira_atual: ConveyorBelt = null
 const FORCA_ESTEIRA := 12.0
+var velocidade_esteira_atual :=Vector3.ZERO
+const DESACELERACAO_ESTEIRA:=6.0
 
+var gelo_atual:IcePlatform=null
+var normal_chao:=Vector3.UP
+const VELOCIDADE_MAX_GELO:=14.0
 
 var call_once = true
 
 var jump_pad_atual: Area3D = null
 
+func _unhandled_input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("ui_accept") && is_on_floor():
+		$AudioStreamPlayer3.play()
+
+	if Input.is_action_just_pressed("dash") and not dashing:
+		$AudioStreamPlayer2.play()
+
 func _ready():
+	#Global.reset_timer()
+	Global.end_game = false
+	call_once = true
 	$HUD/Fade/AnimationPlayer.play_backwards("fade")
 	add_to_group("player")
 	mirror_detector.area_entered.connect(_on_mirror_detector_area_entered)
@@ -96,21 +115,66 @@ func _ready():
 	#global_position = Global.player_return_pos
 	Global.stop_player = false
 	Global.words_in_storage = 0
+	
+	if Global.which_way == "arcade_routeA":
+		global_position = Vector3(-40.3, 71.8, -7.4)
+		
+	if Global.which_way == "arcade_routeB":
+		global_position = Vector3(-27.0, 61.0, 45.0)
+		
+	if Global.which_way == "igloo":
+		global_position = Vector3(-57.1, 136.1, 5.8)
+	
+	if Global.which_way == "fall_to_garden":
+		global_position = Vector3(-23.5, 74.6, 7.5)
+	
+	if Global.which_way == "fall_to_arcade":
+		global_position = Vector3(-28.5, 140.5, -0.6)
 
 func _process(_delta: float) -> void:
 	if Global.end_game:
+		Global.stop_player = true
 		if call_once:
+			Global.which_way = ""
+			$AudioStreamPlayer4.play()
+			$Cameras/AnimationPlayer.play("death")
 			$HUD/Flash/S_ScreenFlashLayer/ScreenFlash.PlayFlash()
 			$HUD/Fade/AnimationPlayer.play("fade")
 			call_once = false
 		
-		await get_tree().create_timer(4.0).timeout
+		set_process(false)
+		set_physics_process(false)
+		await get_tree().create_timer(4.5).timeout
+		await get_tree().process_frame
 		get_tree().change_scene_to_file("res://scenes/stages/game_over_menu.tscn")
+	else:
+		Global.stop_player = false
 
 	if Global.stop_player:
 		SPEED = 0.0
 	else:
 		SPEED = 5.0
+		
+	if Input.is_action_just_pressed("cheat_garden"):
+		Global.which_way = ""
+		set_process(false)
+		set_physics_process(false)
+		await get_tree().process_frame
+		get_tree().change_scene_to_file("res://scenes/stages/fase_jardim.tscn")
+
+	if Input.is_action_just_pressed("cheat_arcade"):
+		Global.which_way = "arcade_routeA"
+		set_process(false)
+		set_physics_process(false)
+		await get_tree().process_frame
+		get_tree().change_scene_to_file("res://scenes/stages/fase_fliperama.tscn")
+
+	if Input.is_action_just_pressed("cheat_igloo"):
+		Global.which_way = "igloo"
+		set_process(false)
+		set_physics_process(false)
+		await get_tree().process_frame
+		get_tree().change_scene_to_file("res://scenes/stages/fase_fliperama.tscn")
 
 
 func _physics_process(delta: float) -> void:
@@ -123,10 +187,11 @@ func _physics_process(delta: float) -> void:
 	var move_down := Input.is_action_pressed("move_backward")
 	
 	if dentro_vendaval:
-		if vendaval_subindo:
-			velocity.y = VENDA_VAL_FORCA
-		elif vendaval_flutuando:
-			velocity.y = 0.0
+		var balanco:= sin(Time.get_ticks_msec()*0.003)*0.2
+		var erro:= (vendaval_altura_alvo+balanco)-global_position.y
+		var vy_alvo:= clampf(erro*4.0,-3.0,vendaval_forca)
+		velocity.y=move_toward(velocity.y,vy_alvo,40.0*delta)
+		
 
 	if move_right and move_up:
 		idle_sprite.visible = false
@@ -200,17 +265,19 @@ func _physics_process(delta: float) -> void:
 			bufferTimer = buffer
 	else:
 		bufferTimer -= delta
-
+	detectar_gelo()
 	detectar_parede_area()
 
-	if bufferTimer > 0.0 and not dentro_vendaval:
-		if na_parede and not wall_jump_usado:
+	if bufferTimer > 0.0:
+		if na_parede and not wall_jump_usado and not dentro_vendaval:
 			wall_jump()
 
 			bufferTimer = 0.0
 			coyoteTimer = 0.0
 
-		elif coyoteTimer > 0.0:
+		elif coyoteTimer > 0.0 or dentro_vendaval:
+			dentro_vendaval = false
+			vendaval_atual= null
 			velocity.y = JUMP_VELOCITY
 			bufferTimer = 0.0
 			coyoteTimer = 0.0
@@ -250,7 +317,6 @@ func _physics_process(delta: float) -> void:
 
 		
 		move_and_slide()
-		finalizar_movimento_vendaval()
 		empurrar_baloes()
 		return
 
@@ -258,34 +324,38 @@ func _physics_process(delta: float) -> void:
 		$VFX_Footstep.emitting = false
 
 		move_and_slide()
-		finalizar_movimento_vendaval()
 		empurrar_baloes()
 		check_dash_wall_collision()
 		return
-	
 
 	if direction:
 		var target_velocity = direction * SPEED
 		var aceleracaoAtual = aceleracao
 		if not is_on_floor():
 			aceleracaoAtual = controleAereo
+		elif gelo_atual:
+			aceleracaoAtual = gelo_atual.aceleracao_gelo
 
 		velocity.x = move_toward(velocity.x,target_velocity.x,aceleracaoAtual * delta)
 		velocity.z = move_toward(velocity.z,target_velocity.z,aceleracaoAtual * delta)
 
-		$AudioStreamPlayer.play()
 		$VFX_Footstep.emitting = true
 
 	else:
-		velocity.x = move_toward(velocity.x,0.0,desaceleracao * delta)
-		velocity.z = move_toward(velocity.z,0.0,desaceleracao * delta)
+		var desacel = desaceleracao
+		if gelo_atual:
+			desacel=gelo_atual.aceleracao_gelo
+		velocity.x = move_toward(velocity.x,0.0,desacel * delta)
+		velocity.z = move_toward(velocity.z,0.0,desacel * delta)
 
 		$VFX_Footstep.emitting = false
 
+	aplicar_gelo(delta)
 	aplicar_esteira(delta, input_dir)
 
+	velocity+=velocidade_esteira_atual
 	move_and_slide()
-	finalizar_movimento_vendaval()
+	velocity-=velocidade_esteira_atual
 	empurrar_baloes()
 
 func get_camera_direction() -> Vector3:
@@ -518,28 +588,62 @@ func empurrar_baloes():
 
 
 func _on_mirror_detector_area_entered(area: Area3D) -> void:
-	if area is MirrorZone:
-		teleport_player()
-
-
-func teleport_player() -> void:
 	if mirror_teleporting:
 		return
 
-	if mirror_teleports.is_empty():
+	if area is PortalZone:
+		var portal := _encontrar_portal(area)
+		if portal == null or portal.destination == null:
+			push_warning("Portal sem destination")
+			return
+		dashing = false
+		velocity = Vector3.ZERO
+		teleport_player(portal.destination)
 		return
 
+	if not (area is MirrorZone):
+		return
+
+	var espelho := _encontrar_espelho(area)
+	if espelho == null or espelho.destination == null:
+		push_warning("Espelho sem destination ou sem MirrorTeleport acima da zona")
+		return
+
+	teleport_player(espelho.destination)
+
+
+func _encontrar_portal(zona: Node) -> PortalTeleport:
+	var no: Node = zona
+	while no != null:
+		if no is PortalTeleport:
+			return no as PortalTeleport
+		no = no.get_parent()
+	return null
+
+func _on_mirror_detector_area_exited(area: Area3D) -> void:
+	if area is MirrorZone:
+		pass
+
+
+func teleport_player(destino: Node3D) -> void:
+	$AudioStreamPlayer5.play()
 	mirror_teleporting = true
+	global_position = destino.global_position
 
-	var random_mirror = randi_range(0, mirror_teleports.size() - 1)
-
-	global_position = mirror_teleports[random_mirror].global_position
-
-	await get_tree().create_timer(0.25).timeout
-
+	await get_tree().create_timer(MIRROR_INTERVALO).timeout
 	mirror_teleporting = false
-	
-	
+
+
+func _encontrar_espelho(zona: Node) -> MirrorTeleport:
+	var no: Node = zona
+	while no != null:
+		if no is MirrorTeleport:
+			return no as MirrorTeleport
+		no = no.get_parent()
+	return null
+
+
+
 func _on_bumper_area_entered(area: Area3D) -> void:
 
 	if not area.is_in_group("player_bumpers"):
@@ -584,23 +688,7 @@ func _on_bumper_area_entered(area: Area3D) -> void:
 	global_position += normal * BUMPER_PUSH_DISTANCE
 	
 	
-func finalizar_movimento_vendaval():
 
-	if not dentro_vendaval:
-		return
-
-	# Enquanto sobe, verifica se chegou ao topo
-	if vendaval_subindo:
-		if global_position.y >= vendaval_altura_alvo:
-			global_position.y = vendaval_altura_alvo
-			velocity.y = 0.0
-			vendaval_subindo = false
-			vendaval_flutuando = true
-
-	# Quando flutua, trava a altura
-	elif vendaval_flutuando:
-		global_position.y = vendaval_altura_alvo
-		velocity.y = 0.0
 
 
 func entrar_esteira(esteira: ConveyorBelt) -> void:
@@ -614,55 +702,104 @@ func sair_esteira(esteira: ConveyorBelt) -> void:
 
 
 func aplicar_esteira(delta: float, input_dir: Vector2) -> void:
+	var esteira_ativada:=esteira_atual !=null and is_on_floor() and not dashing
+	
+	if esteira_ativada:
+		var direcao = esteira_atual.get_direcao()
+		direcao.y=0.0
+		
+		if direcao.length_squared() > 0.001:
+			direcao=direcao.normalized()
+			velocidade_esteira_atual=direcao*esteira_atual.velocidade_esteira
+			return
+		
+	velocidade_esteira_atual=velocidade_esteira_atual.move_toward(Vector3.ZERO,DESACELERACAO_ESTEIRA*delta)
 
-	if esteira_atual == null:
-		return
 
+
+
+func aplicar_knockback(origem:Vector3,forca:float,vertical:float)-> void:
+	var dir:=global_position-origem
+	dir.y=0.0
+	
+	if dir.length_squared()<0.001:
+		dir=player_camera.global_transform.basis.z
+		dir.y=0.0
+	
+	dir=dir.normalized()
+	velocity.x=dir.x*forca
+	velocity.z=dir.z*forca
+	velocity.y=vertical
+	
+	dashing=false
+	bumper_knockback_timer=KNOCKBACK_DURATION
+
+
+func detectar_gelo()->void:
+	gelo_atual=null
+	normal_chao = Vector3.UP
+	
 	if not is_on_floor():
 		return
-
-	if dashing:
+	var space:=get_world_3d().direct_space_state
+	var origem:= global_position + Vector3.UP*0.5
+	var query:= PhysicsRayQueryParameters3D.create(origem, origem + Vector3.DOWN*3.0)
+	query.exclude = [get_rid()]
+	query.collision_mask = collision_mask
+	
+	var hit:= space.intersect_ray(query)
+	if hit.is_empty():
 		return
 
-	# Direção horizontal da esteira
-	var direcao = esteira_atual.get_direcao()
-	direcao.y = 0.0
+	normal_chao= hit.normal
+	if hit.collider is IcePlatform:
+		gelo_atual=hit.collider
 
-	if direcao.length_squared() < 0.001:
+
+func aplicar_gelo(delta:float)->void:
+	floor_stop_on_slope=gelo_atual == null
+	
+	if gelo_atual == null:
 		return
 
-	direcao = direcao.normalized()
+	if normal_chao.y<0.999:
+		var gravidade:=Vector3.DOWN* gelo_atual.gravidade_rampa
+		var deslize:= gravidade.slide(normal_chao)
+		velocity.x += deslize.x* delta
+		velocity.z += deslize.z* delta
+		
+	var horizontal:=Vector2(velocity.x, velocity.z)
+	if horizontal.length() > VELOCIDADE_MAX_GELO:
+		horizontal= horizontal.normalized()*VELOCIDADE_MAX_GELO
+		velocity.x = horizontal.x
+		velocity.z = horizontal.y
 
-	# Utiliza exatamente a mesma orientação do movimento normal
-	var forward = player_camera.global_transform.basis.z
-	var right = player_camera.global_transform.basis.x
 
-	forward.y = 0.0
-	right.y = 0.0
+func _on_collectable_detector_area_entered(area: Area3D) -> void:
+	if area is Collectable1seg:
+		$HUD/Collectables/AnimationPlayer.play("collecting")
+		$HUD/Collectables/AnimatedCollect1.visible = true
+		
+		await get_tree().create_timer(0.75).timeout
+		$HUD/Collectables/AnimatedCollect1.visible = false
 
-	forward = forward.normalized()
-	right = right.normalized()
+	if area is Collectable3seg:
+		$HUD/Collectables/AnimationPlayer.play("collecting")
+		$HUD/Collectables/AnimatedCollect2.visible = true
+		
+		await get_tree().create_timer(0.75).timeout
+		$HUD/Collectables/AnimatedCollect2.visible = false
 
-	# Direção que o jogador está tentando seguir
-	var direcao_jogador = (right * input_dir.x + forward * input_dir.y).normalized()
+	if area is Collectable5seg:
+		$HUD/Collectables/AnimationPlayer.play("collecting")
+		$HUD/Collectables/AnimatedCollect3.visible = true
+		
+		await get_tree().create_timer(0.75).timeout
+		$HUD/Collectables/AnimatedCollect3.visible = false
 
-	# Influência do jogador sobre a esteira
-	var influencia_jogador = 0.0
-
-	if input_dir.length_squared() > 0.001:
-		influencia_jogador = direcao_jogador.dot(direcao)
-
-	# Velocidade desejada
-	var velocidade_alvo = esteira_atual.velocidade_esteira + (influencia_jogador * SPEED)
-
-	# Velocidade atual na direção da esteira
-	var velocidade_atual = Vector3(velocity.x, 0.0, velocity.z)
-	var velocidade_direcional = velocidade_atual.dot(direcao)
-
-	# Ajusta a velocidade
-	var nova_velocidade = move_toward(velocidade_direcional,velocidade_alvo,FORCA_ESTEIRA * delta)
-
-	var diferenca = nova_velocidade - velocidade_direcional
-
-	velocity.x += direcao.x * diferenca
-	velocity.z += direcao.z * diferenca
+	if area is Collectable10seg:
+		$HUD/Collectables/AnimationPlayer.play("collecting")
+		$HUD/Collectables/AnimatedCollect4.visible = true
+		
+		await get_tree().create_timer(0.75).timeout
+		$HUD/Collectables/AnimatedCollect4.visible = false

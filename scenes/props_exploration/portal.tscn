@@ -117,6 +117,7 @@ _data = {
 viewport_path = NodePath("SubViewport")
 
 [node name="Portal" type="Node3D" unique_id=1963125698]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_oasxr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=390165075]

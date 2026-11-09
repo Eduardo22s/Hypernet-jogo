@@ -9,7 +9,7 @@ extends CharacterBody3D
 @export var tempo_preparacao: float = 0.5
 @export var cooldown_dash: float = 1.5
 
-var player: PlayerCombat = null
+var player: PlayerExploration = null
 
 var estado: String = "perseguindo"
 var direcao_dash: Vector3 = Vector3.ZERO
@@ -26,12 +26,12 @@ var acertou_player: bool = false
 
 
 func _ready() -> void:
-	player = encontrar_player_combat()
+	player = encontrar_player()
 
 
 func _physics_process(delta: float) -> void:
 	if not is_instance_valid(player):
-		player = procurar_player_na_arvore(get_tree().root)
+		player = encontrar_player()
 		if player == null:
 			return
 
@@ -151,6 +151,7 @@ func verificar_colisao_dash() -> void:
 		var corpo = colisao.get_collider()
 
 		if corpo == player:
+			$AudioStreamPlayer.play()
 			acertou_player = true
 
 			if player.has_method("aplicar_knockback"):
@@ -158,16 +159,16 @@ func verificar_colisao_dash() -> void:
 			return
 			
 
-func encontrar_player_combat() -> PlayerCombat:
-	for no in get_tree().get_nodes_in_group(""):
-		if no is PlayerCombat:
+func encontrar_player() -> PlayerExploration:
+	for no in get_tree().get_nodes_in_group("player"):
+		if no is PlayerExploration:
 			return no
 
 	return procurar_player_na_arvore(get_tree().root)
 
 
-func procurar_player_na_arvore(no: Node) -> PlayerCombat:
-	if no is PlayerCombat:
+func procurar_player_na_arvore(no: Node) -> PlayerExploration:
+	if no is PlayerExploration:
 		return no
 
 	for filho in no.get_children():

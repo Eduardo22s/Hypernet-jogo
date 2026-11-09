@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://dy7dkwbl6l8kt"]
+
+[ext_resource type="Script" uid="uid://di0k7lwr76qun" path="res://scripts/stages/credits_screen.gd" id="1_1mb6j"]
+[ext_resource type="Texture2D" uid="uid://t7l7pjj1pwwa" path="res://assets/props2D/Menu/Menu.png" id="5_4racj"]
+[ext_resource type="Texture2D" uid="uid://3jlkmfvee2h8" path="res://assets/props2D/Menu/Menu_Credits.png" id="6_brjni"]
+[ext_resource type="Texture2D" uid="uid://bfeaycwfo0w14" path="res://assets/props2D/Menu/Menu_ReturnButtonOff.png" id="7_i67sf"]
+[ext_resource type="Texture2D" uid="uid://dae5myo1kk4u0" path="res://assets/props2D/Menu/Menu_ReturnButtonOn.png" id="8_iam2s"]
+[ext_resource type="Texture2D" uid="uid://1goeftqcon8c" path="res://assets/props2D/Menu/Menu_Half_Off.png" id="9_ln8nv"]
+[ext_resource type="Texture2D" uid="uid://7tda5de51klc" path="res://assets/props2D/Menu/Menu_Half_On.png" id="10_uml8x"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qlemf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_i67sf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_iam2s")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_isfe7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_ln8nv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ln8nv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ln8nv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ln8nv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ln8nv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ln8nv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ln8nv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ln8nv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_uml8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_uml8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_uml8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_uml8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_uml8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_uml8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_uml8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_uml8x")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CreditsScreen" type="Node2D" unique_id=1773018827]
+script = ExtResource("1_1mb6j")
+
+[node name="Menu" type="Sprite2D" parent="." unique_id=85904213]
+position = Vector2(576, 324)
+texture = ExtResource("5_4racj")
+
+[node name="ControlScheme" type="Sprite2D" parent="." unique_id=1892290776]
+position = Vector2(416, 320)
+texture = ExtResource("6_brjni")
+
+[node name="AnimatedReturn" type="AnimatedSprite2D" parent="." unique_id=296806282]
+position = Vector2(142, 488)
+sprite_frames = SubResource("SpriteFrames_qlemf")
+
+[node name="AnimatedIntro" type="AnimatedSprite2D" parent="." unique_id=509189927]
+position = Vector2(582, 324)
+sprite_frames = SubResource("SpriteFrames_isfe7")
+autoplay = "default"
+frame = 16
+frame_progress = 1.0
+
+[node name="ButtonReturn" type="Button" parent="." unique_id=1190688057]
+offset_left = 96.0
+offset_top = 440.0
+offset_right = 188.0
+offset_bottom = 536.0
+flat = true
+
+[connection signal="mouse_entered" from="ButtonReturn" to="." method="_on_button_return_mouse_entered"]
+[connection signal="mouse_exited" from="ButtonReturn" to="." method="_on_button_return_mouse_exited"]
+[connection signal="pressed" from="ButtonReturn" to="." method="_on_button_return_pressed"]

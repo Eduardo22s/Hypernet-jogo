@@ -2,15 +2,18 @@
 
 [ext_resource type="PackedScene" uid="uid://crojo21i1sbpd" path="res://scenes/props_exploration/Placa_dash.glb" id="1_73or5"]
 [ext_resource type="MeshLibrary" uid="uid://bpsb2jq4mm5ut" path="res://meshlib.meshlib" id="1_ihpo2"]
+[ext_resource type="Script" uid="uid://bkggidc7lmovs" path="res://scripts/stages/tutorial.gd" id="1_su8sl"]
 [ext_resource type="PackedScene" uid="uid://e06q4pnu2yil" path="res://scenes/props_exploration/bumper.tscn" id="2_qcukj"]
 [ext_resource type="PackedScene" uid="uid://wit8asc30upq" path="res://scenes/props_exploration/Placa_Wall_Jump.glb" id="2_swigd"]
-[ext_resource type="PackedScene" uid="uid://dawu66n17p2am" path="res://scenes/player/player_exploration.tscn" id="2_udkue"]
 [ext_resource type="PackedScene" uid="uid://c61nsqodydip7" path="res://scenes/props_exploration/moving_platform.tscn" id="3_udkue"]
 [ext_resource type="PackedScene" uid="uid://dvdm56niw2ify" path="res://scenes/props_exploration/light_ball.tscn" id="5_v5c45"]
 [ext_resource type="PackedScene" uid="uid://7rfgvb415s4v" path="res://scenes/props_exploration/Placa_Seta.glb" id="7_jldhp"]
 [ext_resource type="PackedScene" uid="uid://do2ye1g78qxnj" path="res://scenes/props_exploration/Placa_Wall_Jump_Seta.glb" id="9_hp7xp"]
 [ext_resource type="PackedScene" uid="uid://fmid6w50pb7b" path="res://scenes/props_exploration/Placa_Seta_Reversa.glb" id="10_tpsgm"]
 [ext_resource type="Script" uid="uid://dktpbr0qs6kwl" path="res://scripts/stages/mudar_fase_1.gd" id="11_hp7xp"]
+[ext_resource type="Shader" uid="uid://conmejl7vtvgv" path="res://global/cenas/VFX/_Shaders/Flash/S_ScreenFlash.gdshader" id="12_538ju"]
+[ext_resource type="PackedScene" uid="uid://dawu66n17p2am" path="res://scenes/player/player_exploration.tscn" id="13_538ju"]
+[ext_resource type="Script" uid="uid://buvfavh76bi0" path="res://global/cenas/VFX/_Shaders/Flash/S_ScreenFlash.gd" id="13_su8sl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ihpo2"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -101,7 +104,17 @@ _data = {
 &"fade": SubResource("Animation_hp7xp")
 }
 
-[node name="Fase" type="Node3D" unique_id=114406118]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6r586"]
+shader = ExtResource("12_538ju")
+shader_parameter/FlashColor = Color(1, 1, 1, 1)
+shader_parameter/Progress = 0.0
+shader_parameter/Softness = 0.04
+shader_parameter/MaxRadius = 1.2
+shader_parameter/PixelSize = 7.0000002375
+shader_parameter/Fragmentation = 0.70000003325
+
+[node name="Tutorial" type="Node3D" unique_id=114406118]
+script = ExtResource("1_su8sl")
 
 [node name="Environment" type="Node" parent="." unique_id=70703820]
 
@@ -264,10 +277,6 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 2, 0)
 
-[node name="Player" parent="." unique_id=1230296654 node_paths=PackedStringArray("mirror_teleports") instance=ExtResource("2_udkue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8650665, 7.0648227, -0.07504344)
-mirror_teleports = [null, null]
-
 [node name="LightBall" parent="." unique_id=1477888179 instance=ExtResource("5_v5c45")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 7, -2)
 
@@ -389,6 +398,24 @@ offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.26666668, 0.07450981, 0.33333334, 0)
 metadata/_edit_use_anchors_ = true
+
+[node name="Flash" type="Node3D" parent="." unique_id=1364606938]
+
+[node name="S_ScreenFlashLayer" type="CanvasLayer" parent="Flash" unique_id=2136141600]
+
+[node name="ScreenFlash" type="ColorRect" parent="Flash/S_ScreenFlashLayer" unique_id=76346407]
+material = SubResource("ShaderMaterial_6r586")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("13_su8sl")
+TotalDuration = 2.0
+
+[node name="Player" parent="." unique_id=1230296654 instance=ExtResource("13_538ju")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.47288752, 5.6412525, -0.4750446)
 
 [connection signal="area_entered" from="MudarFase1" to="MudarFase1" method="_on_area_entered"]
 [connection signal="body_entered" from="MudarFase1" to="MovingPlataforms/MovingPlatform2" method="_on_mudar_fase_1_body_entered"]

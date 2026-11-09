@@ -8,6 +8,7 @@ func _on_button_return_mouse_exited() -> void:
 
 func _on_button_return_pressed() -> void:
 	$AnimatedReturn.frame = 1
+	$AudioStreamPlayer.play()
 
 	await get_tree().create_timer(1.0).timeout
 	get_tree().change_scene_to_file("res://scenes/stages/menu_options.tscn")

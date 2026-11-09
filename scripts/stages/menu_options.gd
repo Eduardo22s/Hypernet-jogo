@@ -1,16 +1,41 @@
 extends Node2D
 
 
+func _process(_delta: float) -> void:
+	if Global.music_mute == true:
+		$AnimatedMuteMusic.frame = 1
+
+	elif Global.music_mute == false:
+		$AnimatedMuteMusic.frame = 0
+
+
+	if Global.sfx_mute == true:
+		$AnimatedMuteAudio.frame = 1
+
+	elif Global.sfx_mute == false:
+		$AnimatedMuteAudio.frame = 0
+
+
+	if Global.crt == true:
+		$AnimatedCRTFilter.frame = 1
+
+	elif Global.crt == false:
+		$AnimatedCRTFilter.frame = 0
+
+
 func _on_button_mute_audio_pressed() -> void:
-	$AnimatedMuteAudio.frame = 1
+	$AudioStreamPlayer.play()
+	Global.sfx_mute = !Global.sfx_mute
 
 
 func _on_button_mute_music_pressed() -> void:
-	$AnimatedMuteMusic.frame = 1
+	$AudioStreamPlayer.play()
+	Global.music_mute = !Global.music_mute
 
 
 func _on_button_crt_filter_pressed() -> void:
-	$AnimatedCRTFilter.frame = 1
+	$AudioStreamPlayer.play()
+	Global.crt = !Global.crt
 
 
 func _on_button_return_mouse_entered() -> void:
@@ -20,6 +45,7 @@ func _on_button_return_mouse_exited() -> void:
 	$AnimatedReturn.frame = 0
 
 func _on_button_return_pressed() -> void:
+	$AudioStreamPlayer.play()
 	$AnimatedReturn.frame = 1
 
 	await get_tree().create_timer(1.0).timeout
@@ -34,6 +60,7 @@ func _on_button_controls_mouse_exited() -> void:
 	$AnimatedControls.frame = 0
 
 func _on_button_controls_pressed() -> void:
+	$AudioStreamPlayer.play()
 	$AnimatedControls.frame = 1
 
 	await get_tree().create_timer(1.0).timeout

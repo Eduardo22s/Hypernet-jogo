@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://diq7n2cmfi4ar"]
+
+[ext_resource type="Script" uid="uid://5j40ybxonbf6" path="res://scripts/props_exploration/portal_teleport.gd" id="1_ctivl"]
+[ext_resource type="Script" uid="uid://cjaperojs0iyw" path="res://scripts/props_exploration/portal_zone.gd" id="1_qtn3q"]
+[ext_resource type="PackedScene" uid="uid://bj7tqt1ba5cjv" path="res://global/cenas/VFX/_Shaders/Portal/PortalEffect.tscn" id="3_63arg"]
+[ext_resource type="Texture2D" uid="uid://ct2w3xt1qe8d7" path="res://assets/props2D/portal/Portal1.png" id="4_0jp2q"]
+[ext_resource type="Texture2D" uid="uid://dkipin0p3j0fv" path="res://assets/props2D/portal/Portal2.png" id="5_srf1w"]
+[ext_resource type="Texture2D" uid="uid://c8lb4al8k51tp" path="res://assets/props2D/portal/Portal3.png" id="6_qaa0m"]
+[ext_resource type="Texture2D" uid="uid://rkdqoxhoibh6" path="res://assets/props2D/portal/Portal4.png" id="7_ah0jn"]
+[ext_resource type="Texture2D" uid="uid://i4tg072bi3u4" path="res://assets/props2D/portal/Portal5.png" id="8_orhcq"]
+[ext_resource type="Texture2D" uid="uid://iqi1y01nidd5" path="res://assets/props2D/portal/Portal6.png" id="9_gwxoc"]
+[ext_resource type="Texture2D" uid="uid://42kljwwiyvts" path="res://assets/props2D/portal/Portal7.png" id="10_axkt5"]
+[ext_resource type="Texture2D" uid="uid://vnv43xmdro2t" path="res://assets/props2D/portal/Portal8.png" id="11_ioxkw"]
+[ext_resource type="Texture2D" uid="uid://dtti2ol514fn" path="res://assets/props2D/portal/Portal9.png" id="12_mdmmd"]
+[ext_resource type="Texture2D" uid="uid://cofl71b84m05n" path="res://assets/props2D/portal/Portal10.png" id="13_1p20e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t2hhj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_t2hhj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t2hhj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_0jp2q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_srf1w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qaa0m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ah0jn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_orhcq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_gwxoc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_axkt5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ioxkw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_mdmmd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_1p20e")
+}],
+"loop": 1,
+"name": &"abrir",
+"speed": 15.0
+}]
+
+[node name="PortalTeleport" type="Node3D" unique_id=1463533521]
+script = ExtResource("1_ctivl")
+
+[node name="PortalZone" type="Area3D" parent="." unique_id=1477947385]
+script = ExtResource("1_qtn3q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PortalZone" unique_id=1864281374]
+shape = SubResource("BoxShape3D_t2hhj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1898636565]
+visible = false
+mesh = SubResource("BoxMesh_t2hhj")
+
+[node name="PortalEffect" parent="." unique_id=1780792895 instance=ExtResource("3_63arg")]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=67488518]
+sprite_frames = SubResource("SpriteFrames_t2hhj")
+animation = &"abrir"
+frame_progress = 0.0150986025

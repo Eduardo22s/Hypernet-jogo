@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://kgg6xonoh7x3"]
 
 [ext_resource type="Script" uid="uid://dxrhlp1sfyyva" path="res://scripts/stages/menu_options.gd" id="1_8v043"]
-[ext_resource type="Shader" uid="uid://fsl3lmqgpnp5" path="res://global/cenas/VFX/_Shaders/CRTFilter.gdshader" id="2_6xrnc"]
+[ext_resource type="AudioStream" uid="uid://do3ax8b80olkl" path="res://assets/SFX/menu/Botao_de_interacao_sfx.mp3" id="2_vtf88"]
+[ext_resource type="Script" uid="uid://chddutum2qtx" path="res://global/script/audio_stream_player.gd" id="3_enpux"]
 [ext_resource type="Texture2D" uid="uid://t7l7pjj1pwwa" path="res://assets/props2D/Menu/Menu.png" id="3_jppam"]
 [ext_resource type="Texture2D" uid="uid://ddj0twxxbr88" path="res://assets/props2D/Menu/Menu_ControlsButtonOn.png" id="4_3d3xu"]
 [ext_resource type="Texture2D" uid="uid://cxnkwav2lagl7" path="res://assets/props2D/Menu/Menu_ControlsButtonOff.png" id="5_pp2j4"]
@@ -15,9 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://1goeftqcon8c" path="res://assets/props2D/Menu/Menu_Half_Off.png" id="12_t1ggj"]
 [ext_resource type="Texture2D" uid="uid://7tda5de51klc" path="res://assets/props2D/Menu/Menu_Half_On.png" id="13_2webg"]
 [ext_resource type="Texture2D" uid="uid://cenrxmsu6jho4" path="res://assets/props2D/Menu/Menu_CRTFilterOn.png" id="13_vtf88"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jt6de"]
-shader = ExtResource("2_6xrnc")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cuqtw"]
 animations = [{
@@ -151,9 +149,11 @@ animations = [{
 [node name="MenuOptions" type="Node2D" unique_id=1773018827]
 script = ExtResource("1_8v043")
 
-[node name="CRT" type="ColorRect" parent="." unique_id=1258240392]
-material = SubResource("ShaderMaterial_jt6de")
-metadata/_edit_use_anchors_ = true
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1340269850]
+stream = ExtResource("2_vtf88")
+volume_db = -8.0
+script = ExtResource("3_enpux")
+volume = -8.0
 
 [node name="Menu" type="Sprite2D" parent="." unique_id=85904213]
 position = Vector2(576, 324)

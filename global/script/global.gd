@@ -2,6 +2,11 @@ extends Node
 
 signal taking_damage
 
+var tutorial = true
+var crt = true
+var music_mute = false
+var sfx_mute = false
+
 var stop_player = false
 var end_game = false
 
@@ -25,6 +30,8 @@ var word_selected = false
 
 var timer_on = false
 var seconds = 300
+
+var which_way = ""
 
 
 func _process(delta: float) -> void:

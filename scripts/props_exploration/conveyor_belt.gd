@@ -3,6 +3,7 @@ class_name ConveyorBelt
 
 @export var velocidade_esteira: float = 3.0
 
+
 # Desmarcado = frente
 # Marcado = trás
 @export var inverter_direcao: bool = false

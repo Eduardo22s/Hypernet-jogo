@@ -16,7 +16,9 @@ func _on_body_entered(body: Node3D) -> void:
 		if not players_inside.has(body):
 			players_inside.append(body)
 			body.jump_pad_atual = self
-
+		
+		await get_tree().create_timer(2.0).timeout
+		$AnimatedSprite3D.play("Idle")
 
 func _on_body_exited(body: Node3D) -> void:
 	if body is PlayerExploration:
@@ -30,6 +32,8 @@ func ativar(player: PlayerExploration) -> void:
 	if not players_inside.has(player):
 		return
 
+	$AudioStreamPlayer2.play()
+	$AnimatedSprite3D.play("Ativado")
 	player.velocity.y = jump_force
 	player.bufferTimer = 0.0
 	player.coyoteTimer = 0.0

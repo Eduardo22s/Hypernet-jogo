@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dljwn0furdlpb"]
 
-[ext_resource type="Shader" uid="uid://drww2onrt5dqh" path="res://Mirror/Mirror.gdshader" id="1_mn78a"]
-[ext_resource type="Texture2D" uid="uid://lk5i1i501met" path="res://Mirror/TexturaVidro_Alpha.png" id="2_leg5h"]
-[ext_resource type="Script" uid="uid://dx6yiglfttcwc" path="res://Mirror/S_MirrorRipple.gd" id="3_6rta1"]
+[ext_resource type="Shader" uid="uid://drww2onrt5dqh" path="res://global/cenas/VFX/_Shaders/Mirror/Mirror.gdshader" id="1_mn78a"]
+[ext_resource type="Texture2D" uid="uid://lk5i1i501met" path="res://global/cenas/VFX/_Shaders/Mirror/TexturaVidro_Alpha.png" id="2_leg5h"]
+[ext_resource type="Script" uid="uid://dx6yiglfttcwc" path="res://global/cenas/VFX/_Shaders/Mirror/S_MirrorRipple.gd" id="3_6rta1"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_6rta1"]
 viewport_path = NodePath("CameraViewport")
@@ -43,7 +43,10 @@ render_target_update_mode = 4
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="MirrorMesh" type="MeshInstance3D" parent="." unique_id=94687583]
+transform = Transform3D(1, 0, 0, 0, 1.8, 0, 0, 0, 1, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_57qmd")
+lod_bias = 0.001
+visibility_range_end_margin = 50.0
 mesh = SubResource("QuadMesh_yf5fn")
 
 [node name="MirrorCollider" type="Area3D" parent="MirrorMesh" unique_id=818434922 node_paths=PackedStringArray("MirrorMesh")]
@@ -54,4 +57,20 @@ MirrorMesh = NodePath("..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MirrorMesh/MirrorCollider" unique_id=1663100464]
 shape = SubResource("BoxShape3D_g4v7s")
 
+[node name="MirrorMesh2" type="MeshInstance3D" parent="." unique_id=1592064914]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1.8, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_57qmd")
+lod_bias = 0.001
+visibility_range_end_margin = 50.0
+mesh = SubResource("QuadMesh_yf5fn")
+
+[node name="MirrorCollider" type="Area3D" parent="MirrorMesh2" unique_id=1576666911 node_paths=PackedStringArray("MirrorMesh")]
+process_mode = 3
+script = ExtResource("3_6rta1")
+MirrorMesh = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MirrorMesh2/MirrorCollider" unique_id=253412400]
+shape = SubResource("BoxShape3D_g4v7s")
+
 [connection signal="body_entered" from="MirrorMesh/MirrorCollider" to="MirrorMesh/MirrorCollider" method="_on_body_entered"]
+[connection signal="body_entered" from="MirrorMesh2/MirrorCollider" to="MirrorMesh2/MirrorCollider" method="_on_body_entered"]

@@ -32,6 +32,11 @@ func _unhandled_input(event: InputEvent) -> void:
 func _process(_delta: float) -> void:
 	InCombatLabels()
 	$TimerSprite/Label.text = str(roundi(Global.seconds))
+	
+	if Global.tutorial:
+		$TimerSprite.visible = false
+	else:
+		$TimerSprite.visible = true
 
 	if Global.show_DD_profile:
 		$Profiles/DD.visible = true

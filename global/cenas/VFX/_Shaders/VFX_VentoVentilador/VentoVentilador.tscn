@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dvtfpv2vqrpx8"]
+
+[ext_resource type="Material" uid="uid://d3omoisy5itcb" path="res://global/cenas/VFX/_Shaders/VFX_VentoVentilador/M_VentoVentilador.tres" id="1_72bxo"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_lsniq"]
+top_radius = 0.8
+bottom_radius = 0.8
+height = 4.0
+
+[node name="Node3D" type="Node3D" unique_id=904699273]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=717600321]
+material_override = ExtResource("1_72bxo")
+lod_bias = 0.001
+visibility_range_end = 15.0
+mesh = SubResource("CylinderMesh_lsniq")

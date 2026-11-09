@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ctlhejy2ornt8"
+path="res://.godot/imported/DashProtagonista_sfx (2).mp3-b048ca599424cc88cd388eda2f488329.mp3str"
+
+[deps]
+
+source_file="res://assets/SFX/player/DashProtagonista_sfx (2).mp3"
+dest_files=["res://.godot/imported/DashProtagonista_sfx (2).mp3-b048ca599424cc88cd388eda2f488329.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

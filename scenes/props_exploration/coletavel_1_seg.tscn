@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://bxyfa4ecpb3nn"]
 
 [ext_resource type="Script" uid="uid://cani41tc6s31e" path="res://scripts/props_exploration/time_collectible.gd" id="1_4g2uy"]
+[ext_resource type="AudioStream" uid="uid://df4i7hun8ir0q" path="res://assets/SFX/menu/Toque_Hyper_2_sfx.mp3" id="2_4qau4"]
 [ext_resource type="Texture2D" uid="uid://dv5uj4h5fckpg" path="res://ColetáveisZIP/Coletáveis/+1segundo_1.png" id="2_2142d"]
 [ext_resource type="Texture2D" uid="uid://c1gr384lwr1e8" path="res://ColetáveisZIP/Coletáveis/+1segundo_2.png" id="3_nkm81"]
+[ext_resource type="Script" uid="uid://chddutum2qtx" path="res://global/script/audio_stream_player.gd" id="3_rm8al"]
 [ext_resource type="Texture2D" uid="uid://ckc3req3yxxdo" path="res://ColetáveisZIP/Coletáveis/+1segundo_3.png" id="4_7xseu"]
 [ext_resource type="Texture2D" uid="uid://c0v5g3vj0nj6r" path="res://ColetáveisZIP/Coletáveis/+1segundo_4.png" id="5_hrh3h"]
 [ext_resource type="Texture2D" uid="uid://wvkhql6kp88j" path="res://ColetáveisZIP/Coletáveis/+1segundo_5.png" id="6_46xp2"]
@@ -29,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://bs2nxtgncf3xk" path="res://assets/props2D/teleport/Teleport7.png" id="27_30tdx"]
 [ext_resource type="Texture2D" uid="uid://dmpdprghkss8y" path="res://assets/props2D/teleport/Teleport8.png" id="28_fe4nf"]
 [ext_resource type="Texture2D" uid="uid://bvtctujorx1jh" path="res://assets/props2D/teleport/Teleport9.png" id="29_plawe"]
+[ext_resource type="Script" uid="uid://ym6u5dl82bip" path="res://scripts/props_exploration/collectable1.gd" id="30_p4qu6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t2hhj"]
 animations = [{
@@ -119,6 +122,9 @@ radius = 0.6
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
 "texture": ExtResource("26_45ap4")
 }, {
 "duration": 1.0,
@@ -129,29 +135,60 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("29_plawe")
+}, {
+"duration": 1.0,
+"texture": null
 }],
 "loop": 0,
 "name": &"Pop",
 "speed": 15.0
 }]
 
-[node name="TimeCollectible1" type="Area3D" unique_id=1959701394]
+[sub_resource type="SphereShape3D" id="SphereShape3D_45ap4"]
+radius = 0.3
+
+[node name="Coletável1seg" type="Area3D" unique_id=1959701394]
 script = ExtResource("1_4g2uy")
+bonus_seconds = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=515806970]
+stream = ExtResource("2_4qau4")
+volume_db = -6.0
+script = ExtResource("3_rm8al")
+volume = -6.0
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=2147013991]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 billboard = 1
+texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_t2hhj")
 animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.6191703
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=98303415]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("SphereShape3D_t2hhj")
 
 [node name="Bubble" parent="." unique_id=2007721419 instance=ExtResource("14_nkm81")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="." unique_id=2040277189]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 billboard = 1
+texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_f1q28")
 animation = &"Pop"
-frame = 3
-frame_progress = 1.0
+frame_progress = 0.698414
+
+[node name="Area3D" type="Area3D" parent="." unique_id=423165850]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=89813301]
+shape = SubResource("SphereShape3D_45ap4")
+
+[node name="AreaDetector" type="Area3D" parent="." unique_id=1674070315]
+script = ExtResource("30_p4qu6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaDetector" unique_id=547884635]
+shape = SubResource("SphereShape3D_45ap4")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

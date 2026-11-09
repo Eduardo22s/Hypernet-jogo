@@ -1,27 +1,47 @@
 extends Node3D
 
-@onready var mp3: AudioStreamPlayer = $AudioStreamPlayer
-
-var playlist: AudioStreamPlaylist
-var current_track := 0
-
 func _ready() -> void:
-	playlist = mp3.stream as AudioStreamPlaylist
-	play_track(current_track)
+	play_theme()
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("skip_track"):
-		skip_next()
-	
-	if Global.trigger_battle:
-		$AudioStreamPlayer.stop()
+	if Global.music_mute:
+		$AudioStreamPlayer.volume_db = -80.0
+		$AudioStreamPlayer2.volume_db = -80.0
+		$AudioStreamPlayer3.volume_db = -80.0
+		$AudioStreamPlayer4.volume_db = -80.0
+		$AudioStreamPlayer5.volume_db = -80.0
+		$AudioStreamPlayer6.volume_db = -80.0
 	else:
-		return
+		$AudioStreamPlayer.volume_db = -16.0
+		$AudioStreamPlayer2.volume_db = -16.0
+		$AudioStreamPlayer3.volume_db = -16.0
+		$AudioStreamPlayer4.volume_db = -16.0
+		$AudioStreamPlayer5.volume_db = -16.0
+		$AudioStreamPlayer6.volume_db = -16.0
 
-func play_track(index: int) -> void:
-	current_track = wrapi(index, 0, playlist.stream_count)
-	mp3.stream = playlist.get_list_stream(current_track)
-	mp3.play()
 
-func skip_next() -> void:
-	play_track(current_track + 1)
+func play_theme():
+	$AudioStreamPlayer.play()
+
+func play_tutorial():
+	$AudioStreamPlayer6.play()
+
+func play_garden():
+	$AudioStreamPlayer2.play()
+
+func play_arcade():
+	$AudioStreamPlayer3.play()
+
+func play_igloo():
+	$AudioStreamPlayer4.play()
+
+func play_end():
+	$AudioStreamPlayer5.play()
+
+func stop_music():
+		$AudioStreamPlayer.stop()
+		$AudioStreamPlayer2.stop()
+		$AudioStreamPlayer3.stop()
+		$AudioStreamPlayer4.stop()
+		$AudioStreamPlayer5.stop()
+		$AudioStreamPlayer6.stop()
