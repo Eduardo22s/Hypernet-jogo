@@ -52,6 +52,14 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_a3pup")
 }],
+"loop": 0,
+"name": &"dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_a3pup")
+}],
 "loop": 1,
 "name": &"idle",
 "speed": 5.0
@@ -76,4 +84,5 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 billboard = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_t2hhj")
-animation = &"idle"
+animation = &"dash"
+frame_progress = 1.0

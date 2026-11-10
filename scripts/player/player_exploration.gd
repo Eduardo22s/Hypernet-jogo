@@ -64,6 +64,7 @@ const BALAO_FORCA_DASH = 2.0
 
 const BUMPER_MIN_SPEED = 9.0
 const BUMPER_PUSH_DISTANCE = 0.15
+var dash_id := 0
 
 var bumper_knockback_timer := 0.0
 const BUMPER_KNOCKBACK_DURATION = 0.18
@@ -79,6 +80,8 @@ var dentro_vendaval := false
 var vendaval_forca :=0.0
 var vendaval_altura_alvo := 0.0
 var vendaval_atual: Area3D = null
+var vendaval_bloqueio := 0.0
+const VENDAVAL_BLOQUEIO_PULO := 0.35
 
 
 var esteira_atual: ConveyorBelt = null
@@ -186,6 +189,11 @@ func _physics_process(delta: float) -> void:
 	var move_up := Input.is_action_pressed("move_forward")
 	var move_down := Input.is_action_pressed("move_backward")
 	
+	if vendaval_bloqueio > 0.0:
+		vendaval_bloqueio -= delta
+		if vendaval_bloqueio <= 0.0 and vendaval_atual != null and not dentro_vendaval:
+			_ativar_vendaval()
+	
 	if dentro_vendaval:
 		var balanco:= sin(Time.get_ticks_msec()*0.003)*0.2
 		var erro:= (vendaval_altura_alvo+balanco)-global_position.y
@@ -276,8 +284,9 @@ func _physics_process(delta: float) -> void:
 			coyoteTimer = 0.0
 
 		elif coyoteTimer > 0.0 or dentro_vendaval:
-			dentro_vendaval = false
-			vendaval_atual= null
+			if vendaval_atual != null:
+				dentro_vendaval = false
+				vendaval_bloqueio = VENDAVAL_BLOQUEIO_PULO
 			velocity.y = JUMP_VELOCITY
 			bufferTimer = 0.0
 			coyoteTimer = 0.0
@@ -422,6 +431,9 @@ func detectar_parede_area():
 func dash():
 	if dashing:
 		return
+	dashing = true
+	dash_id += 1
+	var meu_id := dash_id
 
 	dashing = true
 
@@ -449,7 +461,7 @@ func dash():
 
 	await get_tree().create_timer(dash_chao_duracao).timeout
 
-	if dashing:
+	if dashing and dash_id == meu_id:
 		dashing = false
 
 func dash_aereo():
@@ -460,6 +472,8 @@ func dash_aereo():
 
 	dash_aereo_disponivel = false
 	dashing = true
+	dash_id += 1
+	var meu_id := dash_id
 
 	var forward = player_camera.global_transform.basis.z
 	var right = player_camera.global_transform.basis.x
@@ -486,7 +500,7 @@ func dash_aereo():
 
 	await get_tree().create_timer(dash_duracao).timeout
 
-	if dashing:
+	if dashing and dash_id == meu_id:
 		dashing = false
 
 func wall_jump():
@@ -678,11 +692,12 @@ func _on_bumper_area_entered(area: Area3D) -> void:
 	# Aplica o ricochete
 	velocity = velocidade_lateral + normal * forca_saida
 
-	# Interrompe dash
+	dash_aereo_disponivel = true
 	dashing = false
+	wall_jump_usado = false
 
 	# Evita que a movimentação anule o impulso
-	bumper_knockback_timer = BUMPER_KNOCKBACK_DURATION
+	#bumper_knockback_timer = BUMPER_KNOCKBACK_DURATION
 
 	# Pequeno afastamento
 	global_position += normal * BUMPER_PUSH_DISTANCE
@@ -803,3 +818,20 @@ func _on_collectable_detector_area_entered(area: Area3D) -> void:
 		
 		await get_tree().create_timer(0.75).timeout
 		$HUD/Collectables/AnimatedCollect4.visible = false
+
+
+func entrar_vendaval(area: Area3D) -> void:
+	vendaval_atual = area
+	vendaval_forca = area.forca_vento
+	bufferTimer = 0.0  # descarta pulo bufferizado ao entrar na zona
+	if vendaval_bloqueio <= 0.0:
+		_ativar_vendaval()
+
+func sair_vendaval(area: Area3D) -> void:
+	if vendaval_atual == area:
+		vendaval_atual = null
+		dentro_vendaval = false
+
+func _ativar_vendaval() -> void:
+	dentro_vendaval = true
+	vendaval_altura_alvo = global_position.y + vendaval_atual.altura_sustentacao

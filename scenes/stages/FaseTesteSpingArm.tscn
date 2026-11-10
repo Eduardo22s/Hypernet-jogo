@@ -166,6 +166,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9000006, 1.2000002, 0.5999
 [node name="Bumper" parent="Balões" unique_id=373709374 instance=ExtResource("10_sql5y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.9748535, 0.7709961, 0.07324219)
 
+[node name="Bumper2" parent="Balões" unique_id=963718821 instance=ExtResource("10_sql5y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2560196, 1.270997, 5.178871)
+
+[node name="Bumper3" parent="Balões" unique_id=1014739566 instance=ExtResource("10_sql5y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2560196, 1.270997, 6.663004)
+
+[node name="Bumper4" parent="Balões" unique_id=824277536 instance=ExtResource("10_sql5y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2560196, 1.270997, 7.9814053)
+
+[node name="Bumper5" parent="Balões" unique_id=584332688 instance=ExtResource("10_sql5y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2560196, 1.270997, 9.536222)
+
+[node name="Bumper6" parent="Balões" unique_id=2002500249 instance=ExtResource("10_sql5y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2560196, 1.270997, 9.536222)
+
+[node name="Bumper7" parent="Balões" unique_id=1878688216 instance=ExtResource("10_sql5y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2560196, 1.270997, 9.536222)
+
+[node name="Bumper8" parent="Balões" unique_id=1484755380 instance=ExtResource("10_sql5y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2560196, 1.270997, 9.536222)
+
+[node name="Bumper9" parent="Balões" unique_id=1913657064 instance=ExtResource("10_sql5y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.553317, 1.270997, 9.536222)
+
+[node name="Bumper10" parent="Balões" unique_id=602676285 instance=ExtResource("10_sql5y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.553317, 1.270997, 8.076399)
+
+[node name="Bumper11" parent="Balões" unique_id=428795614 instance=ExtResource("10_sql5y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.553317, 1.270997, 6.076399)
+
+[node name="Bumper12" parent="Balões" unique_id=2009086795 instance=ExtResource("10_sql5y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.553317, 1.270997, 5.076399)
+
 [node name="WindZone" parent="." unique_id=1723056069 instance=ExtResource("11_qdshp")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.9634094, 0.0847168, 14.769775)
 

@@ -17,17 +17,9 @@ func _ready():
 
 
 func _on_body_entered(body):
-
 	if body is PlayerExploration:
-		body.vendaval_atual=self
-		body.dentro_vendaval = true
-		body.vendaval_forca=forca_vento
-		body.vendaval_altura_alvo = (body.global_position.y + altura_sustentacao)
-
+		body.entrar_vendaval(self)
 
 func _on_body_exited(body):
-
-	if body is PlayerExploration and body.vendaval_atual == self:
-
-		body.dentro_vendaval = false
-		body.vendaval_atual = null
+	if body is PlayerExploration:
+		body.sair_vendaval(self)

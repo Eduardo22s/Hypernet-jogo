@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://cnoce72sco2sm" path="res://Seta_PuloDuplo/SetaNormal_6.png" id="13_4gc3x"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t2hhj"]
+size = Vector3(2, 2, 2)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t2hhj"]
 animations = [{
