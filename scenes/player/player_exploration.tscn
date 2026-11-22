@@ -1652,13 +1652,11 @@ animations = [{
 
 [sub_resource type="LabelSettings" id="LabelSettings_osyi8"]
 font_size = 21
-font_color = Color(1, 0.41960785, 1, 1)
 outline_size = 4
 outline_color = Color(0, 0, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_8ema7"]
 font_size = 21
-font_color = Color(1, 0.41960785, 1, 1)
 outline_size = 4
 outline_color = Color(0, 0, 1, 1)
 
@@ -1673,6 +1671,11 @@ stream_1 = ExtResource("3_nius7")
 stream_2 = ExtResource("4_omgaf")
 stream_3 = ExtResource("5_dpwul")
 stream_4 = ExtResource("6_dk6du")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_300ia"]
+random_pitch = 1.1095694
+streams_count = 1
+stream_0/stream = ExtResource("87_snmgi")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_unwft"]
 
@@ -2011,6 +2014,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_ikwbd")
+
+[node name="Pause" type="ColorRect" parent="HUD" unique_id=70414769]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.044000003
+anchor_top = -0.040000003
+anchor_right = 1.0500001
+anchor_bottom = 1.0400001
+offset_left = -0.31199646
+offset_top = -0.07999802
+offset_right = 0.39990234
+offset_bottom = 0.079956055
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.18431373, 0.18431373, 0.18431373, 0.94509804)
 
 [node name="AnimationHUD" type="AnimationPlayer" parent="HUD" unique_id=158340334]
 libraries/ = SubResource("AnimationLibrary_vw453")
@@ -2401,13 +2420,11 @@ volume = -8.0
 stream = ExtResource("86_t6pno")
 volume_db = -6.0
 script = ExtResource("86_8sy35")
-volume = -6.0
 
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="." unique_id=1201120691]
-stream = ExtResource("87_snmgi")
+stream = SubResource("AudioStreamRandomizer_300ia")
 volume_db = -6.0
 script = ExtResource("86_8sy35")
-volume = -6.0
 
 [node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="." unique_id=1133466153]
 stream = ExtResource("88_snmgi")

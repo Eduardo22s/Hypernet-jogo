@@ -1,5 +1,6 @@
 extends Control
 
+@onready var pause: ColorRect = $Pause
 var break_animation = false
 var last_stage_label = -1
 var game_paused = false
@@ -10,8 +11,12 @@ var question2 = true
 var question3 = true
 var call_once = false
 
+func _ready() -> void:
+	pause.visible = false
+
 func _on_button_main_menu_pressed() -> void:
 	get_tree().paused = false
+	pause.visible = false
 	
 	await get_tree().process_frame
 	get_tree().change_scene_to_file.call_deferred("res://scenes/stages/main_menu.tscn")
@@ -89,6 +94,7 @@ func _process(_delta: float) -> void:
 func open_menu() -> void:
 	game_paused = true
 	get_tree().paused = true
+	pause.visible = true
 	$AnimatedPause.play("open")
 
 	await get_tree().create_timer(1.0).timeout
@@ -98,6 +104,7 @@ func open_menu() -> void:
 func close_menu() -> void:
 	game_paused = false
 	_set_buttons(false)
+	pause.visible = false
 	$AnimatedPause.play("close")
 	get_tree().paused = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -132,3 +139,4 @@ func _set_buttons(show_buttons: bool) -> void:
 	$ButtonQuit.visible = show_buttons
 	$ButtonMainMenu.disabled = !show_buttons
 	$ButtonQuit.disabled = !show_buttons
+	

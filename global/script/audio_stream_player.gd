@@ -1,6 +1,6 @@
 extends AudioStreamPlayer
 
-@export var volume := 0.0
+@export var volume := -6.0
 
 func _process(_delta: float) -> void:
 	if Global.sfx_mute == true:
