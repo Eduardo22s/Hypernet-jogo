@@ -2,6 +2,8 @@ extends Node
 
 signal taking_damage
 
+var menu_intro_played := false
+
 var tutorial = true
 var crt = true
 var music_mute = false

@@ -5,6 +5,14 @@ func _ready() -> void:
 	Global.tutorial = true
 	Global.which_way = ""
 
+	if not Global.menu_intro_played:
+		Global.menu_intro_played = true
+		$AnimatedIntro.visible = true
+		$AnimatedIntro.play("default")
+		await $AnimatedIntro.animation_finished
+	
+	$AnimatedIntro.visible = false
+
 func _on_button_play_mouse_entered() -> void:
 	$AnimatedPlay.frame = 1
 
