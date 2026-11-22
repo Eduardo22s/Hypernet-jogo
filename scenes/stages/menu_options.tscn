@@ -13,8 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://bnvvmjgoixo4o" path="res://assets/props2D/Menu/Menu_MuteMusicOff.png" id="10_cuqtw"]
 [ext_resource type="Texture2D" uid="uid://dyamt62bp3avf" path="res://assets/props2D/Menu/Menu_MuteMusicOn.png" id="11_6xrnc"]
 [ext_resource type="Texture2D" uid="uid://bqud0sismxpxx" path="res://assets/props2D/Menu/Menu_CRTFilterOff.png" id="12_jppam"]
-[ext_resource type="Texture2D" uid="uid://1goeftqcon8c" path="res://assets/props2D/Menu/Menu_Half_Off.png" id="12_t1ggj"]
-[ext_resource type="Texture2D" uid="uid://7tda5de51klc" path="res://assets/props2D/Menu/Menu_Half_On.png" id="13_2webg"]
 [ext_resource type="Texture2D" uid="uid://cenrxmsu6jho4" path="res://assets/props2D/Menu/Menu_CRTFilterOn.png" id="13_vtf88"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cuqtw"]
@@ -87,65 +85,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_isfe7"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("12_t1ggj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_t1ggj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_t1ggj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_t1ggj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_t1ggj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_t1ggj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_t1ggj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_t1ggj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_2webg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_2webg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_2webg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_2webg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_2webg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_2webg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_2webg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_2webg")
-}, {
-"duration": 1.0,
-"texture": null
-}],
-"loop": 0,
-"name": &"default",
-"speed": 10.0
-}]
-
 [node name="MenuOptions" type="Node2D" unique_id=1773018827]
 script = ExtResource("1_8v043")
 
@@ -178,13 +117,6 @@ sprite_frames = SubResource("SpriteFrames_qlemf")
 [node name="AnimatedControls" type="AnimatedSprite2D" parent="." unique_id=1223193525]
 position = Vector2(414, 488)
 sprite_frames = SubResource("SpriteFrames_vaj5l")
-
-[node name="AnimatedIntro" type="AnimatedSprite2D" parent="." unique_id=509189927]
-position = Vector2(582, 324)
-sprite_frames = SubResource("SpriteFrames_isfe7")
-autoplay = "default"
-frame = 16
-frame_progress = 1.0
 
 [node name="ButtonMuteAudio" type="Button" parent="." unique_id=1294048554]
 offset_left = 216.0

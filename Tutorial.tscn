@@ -14,6 +14,7 @@
 [ext_resource type="Shader" uid="uid://conmejl7vtvgv" path="res://global/cenas/VFX/_Shaders/Flash/S_ScreenFlash.gdshader" id="12_538ju"]
 [ext_resource type="PackedScene" uid="uid://dawu66n17p2am" path="res://scenes/player/player_exploration.tscn" id="13_538ju"]
 [ext_resource type="Script" uid="uid://buvfavh76bi0" path="res://global/cenas/VFX/_Shaders/Flash/S_ScreenFlash.gd" id="13_su8sl"]
+[ext_resource type="PackedScene" uid="uid://bc88058fw6d72" path="res://scenes/props_exploration/Placa_WallSlide.glb" id="15_6r586"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ihpo2"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -416,6 +417,15 @@ TotalDuration = 2.0
 
 [node name="Player" parent="." unique_id=1230296654 instance=ExtResource("13_538ju")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.47288752, 5.6412525, -0.4750446)
+
+[node name="Placa_WallSlide" parent="." unique_id=1030530278 instance=ExtResource("15_6r586")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.7, 14.1, -16.036911)
+
+[node name="Placa_WallSlide2" parent="." unique_id=442587564 instance=ExtResource("15_6r586")]
+transform = Transform3D(-2.1855692e-08, 0, 0.49999997, 0, 0.5, 0, -0.49999997, 0, -2.1855692e-08, -50.152107, 27.948866, 19.772444)
+
+[node name="Placa_WallSlide3" parent="." unique_id=2059329904 instance=ExtResource("15_6r586")]
+transform = Transform3D(-2.1855692e-08, 0, 0.49999997, 0, 0.5, 0, -0.49999997, 0, -2.1855692e-08, -50.87561, 27.948866, 2.55577)
 
 [connection signal="area_entered" from="MudarFase1" to="MudarFase1" method="_on_area_entered"]
 [connection signal="body_entered" from="MudarFase1" to="MovingPlataforms/MovingPlatform2" method="_on_mudar_fase_1_body_entered"]

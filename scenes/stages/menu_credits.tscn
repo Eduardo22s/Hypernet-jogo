@@ -8,8 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://3jlkmfvee2h8" path="res://assets/props2D/Menu/Menu_Credits.png" id="4_x0601"]
 [ext_resource type="Texture2D" uid="uid://bfeaycwfo0w14" path="res://assets/props2D/Menu/Menu_ReturnButtonOff.png" id="5_qjoaq"]
 [ext_resource type="Texture2D" uid="uid://dae5myo1kk4u0" path="res://assets/props2D/Menu/Menu_ReturnButtonOn.png" id="6_6ph7j"]
-[ext_resource type="Texture2D" uid="uid://1goeftqcon8c" path="res://assets/props2D/Menu/Menu_Half_Off.png" id="7_gcxvn"]
-[ext_resource type="Texture2D" uid="uid://7tda5de51klc" path="res://assets/props2D/Menu/Menu_Half_On.png" id="8_2kgya"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jt6de"]
 shader = ExtResource("2_aqsou")
@@ -26,65 +24,6 @@ animations = [{
 "loop": 1,
 "name": &"default",
 "speed": 5.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_isfe7"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_gcxvn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_gcxvn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_gcxvn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_gcxvn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_gcxvn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_gcxvn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_gcxvn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_gcxvn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_2kgya")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_2kgya")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_2kgya")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_2kgya")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_2kgya")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_2kgya")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_2kgya")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_2kgya")
-}, {
-"duration": 1.0,
-"texture": null
-}],
-"loop": 0,
-"name": &"default",
-"speed": 10.0
 }]
 
 [node name="MenuOptions" type="Node2D" unique_id=1773018827]
@@ -111,13 +50,6 @@ texture = ExtResource("4_x0601")
 [node name="AnimatedReturn" type="AnimatedSprite2D" parent="." unique_id=296806282]
 position = Vector2(142, 488)
 sprite_frames = SubResource("SpriteFrames_qlemf")
-
-[node name="AnimatedIntro" type="AnimatedSprite2D" parent="." unique_id=509189927]
-position = Vector2(582, 324)
-sprite_frames = SubResource("SpriteFrames_isfe7")
-autoplay = "default"
-frame = 16
-frame_progress = 1.0
 
 [node name="ButtonReturn" type="Button" parent="." unique_id=1190688057]
 offset_left = 96.0
