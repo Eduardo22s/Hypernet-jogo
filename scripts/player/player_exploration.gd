@@ -1,6 +1,15 @@
 extends CharacterBody3D
 class_name PlayerExploration
 
+# --- MODO VOO (debug) ---
+var modo_voo := false
+const VOO_VELOCIDADE := 12.0
+const VOO_VELOCIDADE_RAPIDA := 30.0   # segurando Shift
+const VOO_SUAVIZACAO := 10.0
+const CODIGO_VOO := "VOAR"
+var codigo_digitado := ""
+var mascara_colisao_original := 0
+
 const JUMP_VELOCITY = 8.0
 const velQueda = 1.7
 const controleAereo = 5.0
@@ -36,6 +45,15 @@ var ultima_parede_normal := Vector3.ZERO
 
 @onready var wall_area: Area3D = $Wall
 
+const WALL_SLIDE_VELOCIDADE := -1.0   # velocidade máxima de queda na parede
+const WALL_SLIDE_SUAVIZACAO := 20.0   # quão rápido a queda é "freada"
+const WALL_SLIDE_ANGULO_MIN := 0.3    # exige estar minimamente virado/pressionando a parede
+
+var wall_sliding := false
+
+const WALL_COYOTE := 0.12
+var wall_coyote_timer := 0.0
+var normal_parede_coyote := Vector3.ZERO
 
 var SPEED = 5.0
 var bufferTimer = 0.0
@@ -98,6 +116,8 @@ var call_once = true
 var jump_pad_atual: Area3D = null
 
 func _unhandled_input(_event: InputEvent) -> void:
+	if modo_voo:
+		return
 	if Input.is_action_just_pressed("ui_accept") && is_on_floor():
 		$AudioStreamPlayer3.play()
 
@@ -181,6 +201,9 @@ func _process(_delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if modo_voo:
+		_processar_voo(delta)
+		return
 	var moving_sprite = $SubViewport/Player2dModel/AnimatedMoving
 	var idle_sprite = $SubViewport/Player2dModel/AnimatedIdle
 
@@ -276,10 +299,21 @@ func _physics_process(delta: float) -> void:
 	detectar_gelo()
 	detectar_parede_area()
 
-	if bufferTimer > 0.0:
-		if na_parede and not wall_jump_usado and not dentro_vendaval:
-			wall_jump()
+	if na_parede:
+		wall_coyote_timer = WALL_COYOTE
+		normal_parede_coyote = normal_parede
+	else:
+		wall_coyote_timer -= delta
 
+	if bufferTimer > 0.0:
+		var pode_wall_jump := (na_parede or wall_coyote_timer > 0.0) and not wall_jump_usado and not dentro_vendaval and not is_on_floor()
+
+		if pode_wall_jump:
+			if not na_parede:
+				na_parede = true
+				normal_parede = normal_parede_coyote
+			wall_coyote_timer = 0.0
+			wall_jump()
 			bufferTimer = 0.0
 			coyoteTimer = 0.0
 
@@ -310,6 +344,7 @@ func _physics_process(delta: float) -> void:
 	var direction = (right * input_dir.x +forward * input_dir.y).normalized()
 	if direction.length_squared() > 0.001:
 		direction = direction.normalized()
+	atualizar_wall_slide(delta, direction)
 
 	# O dash agora possui um comando próprio, sem depender de ataque.
 	if Input.is_action_just_pressed("dash") and not dashing:
@@ -565,6 +600,7 @@ func wall_kick_dash():
 
 
 func _input(event):
+	_checar_codigo_voo(event)
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		# Rotação horizontal
 		$Cameras.rotate_y(-event.relative.x * SENSIBILIDADE_MOUSE)
@@ -791,33 +827,25 @@ func aplicar_gelo(delta:float)->void:
 
 
 func _on_collectable_detector_area_entered(area: Area3D) -> void:
+	var icone: Node = null
+
 	if area is Collectable1seg:
-		$HUD/Collectables/AnimationPlayer.play("collecting")
-		$HUD/Collectables/AnimatedCollect1.visible = true
-		
-		await get_tree().create_timer(0.75).timeout
-		$HUD/Collectables/AnimatedCollect1.visible = false
+		icone = $HUD/Collectables/AnimatedCollect1
+	elif area is Collectable3seg:
+		icone = $HUD/Collectables/AnimatedCollect2
+	elif area is Collectable5seg:
+		icone = $HUD/Collectables/AnimatedCollect3
+	elif area is Collectable10seg:
+		icone = $HUD/Collectables/AnimatedCollect4
+	else:
+		return
 
-	if area is Collectable3seg:
-		$HUD/Collectables/AnimationPlayer.play("collecting")
-		$HUD/Collectables/AnimatedCollect2.visible = true
-		
-		await get_tree().create_timer(0.75).timeout
-		$HUD/Collectables/AnimatedCollect2.visible = false
+	$HUD/Collectables/AnimationPlayer.play("collecting")
+	icone.visible = true
 
-	if area is Collectable5seg:
-		$HUD/Collectables/AnimationPlayer.play("collecting")
-		$HUD/Collectables/AnimatedCollect3.visible = true
-		
-		await get_tree().create_timer(0.75).timeout
-		$HUD/Collectables/AnimatedCollect3.visible = false
+	await get_tree().create_timer(0.75).timeout
 
-	if area is Collectable10seg:
-		$HUD/Collectables/AnimationPlayer.play("collecting")
-		$HUD/Collectables/AnimatedCollect4.visible = true
-		
-		await get_tree().create_timer(0.75).timeout
-		$HUD/Collectables/AnimatedCollect4.visible = false
+	icone.visible = false
 
 
 func entrar_vendaval(area: Area3D) -> void:
@@ -835,3 +863,82 @@ func sair_vendaval(area: Area3D) -> void:
 func _ativar_vendaval() -> void:
 	dentro_vendaval = true
 	vendaval_altura_alvo = global_position.y + vendaval_atual.altura_sustentacao
+
+
+func atualizar_wall_slide(delta: float, direction: Vector3) -> void:
+	wall_sliding = false
+
+	if is_on_floor() or dashing or dentro_vendaval:
+		return
+	if not na_parede:
+		return
+	if velocity.y > 0.0:   # só desliza quando está caindo
+		return
+
+	# Só desliza se o jogador estiver empurrando na direção da parede
+	# (normal_parede aponta para fora da parede, então o input contra ela é o oposto)
+	if direction.length_squared() > 0.001:
+		if direction.dot(-normal_parede) < WALL_SLIDE_ANGULO_MIN:
+			return
+	else:
+		return
+
+	wall_sliding = true
+	velocity.y = move_toward(velocity.y, WALL_SLIDE_VELOCIDADE, WALL_SLIDE_SUAVIZACAO * delta)
+
+
+func _checar_codigo_voo(event: InputEvent) -> void:
+	if not (event is InputEventKey) or not event.pressed or event.echo:
+		return
+
+	var letra := OS.get_keycode_string(event.keycode).to_upper()
+	if letra.length() != 1:
+		return
+
+	codigo_digitado += letra
+	if codigo_digitado.length() > CODIGO_VOO.length():
+		codigo_digitado = codigo_digitado.substr(codigo_digitado.length() - CODIGO_VOO.length())
+
+	if codigo_digitado == CODIGO_VOO:
+		codigo_digitado = ""
+		alternar_modo_voo()
+
+
+func alternar_modo_voo() -> void:
+	modo_voo = not modo_voo
+
+	if modo_voo:
+		mascara_colisao_original = collision_mask
+		collision_mask = 0          # atravessa tudo (noclip). Comente esta linha se quiser colidir.
+		velocity = Vector3.ZERO
+		dashing = false
+		wall_sliding = false
+		dentro_vendaval = false
+		velocidade_esteira_atual = Vector3.ZERO
+		bumper_knockback_timer = 0.0
+	else:
+		collision_mask = mascara_colisao_original
+		velocity = Vector3.ZERO
+		dash_aereo_disponivel = true
+		wall_jump_usado = false
+
+	print("Modo voo: ", "ATIVADO" if modo_voo else "DESATIVADO")
+	
+func _processar_voo(delta: float) -> void:
+	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
+
+	# Usa a câmera inteira (com o pitch), então voa para onde você olha
+	var cam := player_camera.global_transform.basis
+	var direcao := cam.x * input_dir.x + cam.z * input_dir.y
+
+	# Sobe com Espaço, desce com Ctrl
+	if Input.is_key_pressed(KEY_SPACE):
+		direcao += Vector3.UP
+	if Input.is_key_pressed(KEY_CTRL):
+		direcao += Vector3.DOWN
+
+	var vel := VOO_VELOCIDADE_RAPIDA if Input.is_key_pressed(KEY_SHIFT) else VOO_VELOCIDADE
+	var alvo := direcao.normalized() * vel if direcao.length_squared() > 0.001 else Vector3.ZERO
+
+	velocity = velocity.lerp(alvo, clampf(VOO_SUAVIZACAO * delta, 0.0, 1.0))
+	move_and_slide()

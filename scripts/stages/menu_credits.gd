@@ -1,5 +1,8 @@
 extends Node2D
 
+func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
 func _on_button_return_mouse_entered() -> void:
 	$AnimatedReturn.frame = 1
 
