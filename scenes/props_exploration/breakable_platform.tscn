@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ct5grivbunkt8" path="res://scenes/props_exploration/PlataformaNuvem_Cutscene_Nuvens2.png" id="7_b2d7f"]
 [ext_resource type="Texture2D" uid="uid://bg4mdr6mlg6cf" path="res://scenes/props_exploration/PlataformaNuvem_Cutscene_Nuvens4.png" id="8_q1gak"]
 [ext_resource type="Texture2D" uid="uid://krg3lnpkhwoa" path="res://scenes/props_exploration/PlataformaNuvem_Cutscene_Nuvens9.png" id="9_6bq8v"]
+[ext_resource type="PackedScene" uid="uid://x5wd76lei58e" path="res://assets/props3D/decorations/Nuvem.glb" id="10_76gvx"]
 
 [sub_resource type="Animation" id="Animation_4fxi7"]
 length = 0.001
@@ -35,6 +36,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlataformaNuvem/Nuvem:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_totkn"]
@@ -381,8 +394,12 @@ libraries/ = SubResource("AnimationLibrary_rago5")
 [node name="PlataformaNuvem" type="Node3D" parent="." unique_id=148862988]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.3, 0, 0)
 
+[node name="Nuvem" parent="PlataformaNuvem" unique_id=1887032423 instance=ExtResource("10_76gvx")]
+transform = Transform3D(1.4999998, 0, 0, 0, 1.4999998, 0, 0, 0, 1.4999999, -0.054017603, -1.4872696, -0.044678047)
+
 [node name="Cube_247" type="MeshInstance3D" parent="PlataformaNuvem" unique_id=39746454]
 transform = Transform3D(3.6034272, 0, 0, 0, 1, 0, 0, 0, 0.5234065, 0, 0, 0)
+visible = false
 mesh = SubResource("ArrayMesh_vs4jt")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=53449120]
