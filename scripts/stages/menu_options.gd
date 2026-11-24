@@ -39,6 +39,7 @@ func _on_button_crt_filter_pressed() -> void:
 
 
 func _on_button_return_mouse_entered() -> void:
+	$AudioStreamPlayer2.play()
 	$AnimatedReturn.frame = 1
 
 func _on_button_return_mouse_exited() -> void:
@@ -54,6 +55,7 @@ func _on_button_return_pressed() -> void:
 
 
 func _on_button_controls_mouse_entered() -> void:
+	$AudioStreamPlayer2.play()
 	$AnimatedControls.frame = 1
 
 func _on_button_controls_mouse_exited() -> void:

@@ -13,6 +13,7 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is PlayerExploration:
+		$EdgeGlow.visible = true
 		if not players_inside.has(body):
 			players_inside.append(body)
 			body.jump_pad_atual = self
@@ -22,6 +23,7 @@ func _on_body_entered(body: Node3D) -> void:
 
 func _on_body_exited(body: Node3D) -> void:
 	if body is PlayerExploration:
+		$EdgeGlow.visible = false
 		players_inside.erase(body)
 
 		if body.jump_pad_atual == self:

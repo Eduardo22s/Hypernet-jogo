@@ -15,7 +15,7 @@ func _process(_delta: float) -> void:
 		$AudioStreamPlayer.volume_db = -16.0
 		$AudioStreamPlayer2.volume_db = -16.0
 		$AudioStreamPlayer3.volume_db = -16.0
-		$AudioStreamPlayer4.volume_db = -16.0
+		$AudioStreamPlayer4.volume_db = -24.0
 		$AudioStreamPlayer5.volume_db = -16.0
 		$AudioStreamPlayer6.volume_db = -16.0
 

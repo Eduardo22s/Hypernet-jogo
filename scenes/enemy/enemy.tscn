@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://omfs14j4lf7m" path="res://assets/player/walking/Frente/Protag_MovFront6.png" id="8_5woo5"]
 [ext_resource type="Texture2D" uid="uid://dmemiw3saterr" path="res://assets/player/walking/Frente/Protag_MovFront7.png" id="9_pb0yv"]
 [ext_resource type="Texture2D" uid="uid://cl5t0x62qv64o" path="res://assets/player/walking/Frente/Protag_MovFront8.png" id="10_prup0"]
+[ext_resource type="PackedScene" uid="uid://c221x5588v6xe" path="res://global/cenas/VFX/_Shaders/Sprint/DashEffect.tscn" id="13_dtxhd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t2hhj"]
 radius = 0.8
@@ -65,6 +66,66 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_k218s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VFX_Sprint:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VFX_Sprint:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1)]
+}
+
+[sub_resource type="Animation" id="Animation_h2iks"]
+resource_name = "attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VFX_Sprint:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VFX_Sprint:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1), Vector3(1.5, 1.5, 1.5), Vector3(1.5, 1.5, 1.5), Vector3(0.1, 0.1, 0.1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_so3kp"]
+_data = {
+&"RESET": SubResource("Animation_k218s"),
+&"attack": SubResource("Animation_h2iks")
+}
+
 [node name="Enemy" type="CharacterBody3D" unique_id=1788365876]
 collision_layer = 3
 collision_mask = 3
@@ -86,3 +147,10 @@ texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_t2hhj")
 animation = &"dash"
 frame_progress = 1.0
+
+[node name="AnimationAttack" type="AnimationPlayer" parent="." unique_id=1484688215]
+libraries/ = SubResource("AnimationLibrary_so3kp")
+
+[node name="VFX_Sprint" parent="." unique_id=1033056611 instance=ExtResource("13_dtxhd")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+visible = false

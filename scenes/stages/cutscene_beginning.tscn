@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://y8dpr1rc4gq2" path="res://scripts/stages/cutscene_beginning.gd" id="1_cu63e"]
 [ext_resource type="VideoStream" uid="uid://kyp6fjn4uaki" path="res://assets/cutscenes/CutsceneInicial.ogv" id="2_cu63e"]
+[ext_resource type="Texture2D" uid="uid://dwjxajqjkwylf" path="res://assets/props2D/SKIP_CUTSCENE_UI.png" id="3_1t4hk"]
 
 [sub_resource type="Animation" id="Animation_ikwbd"]
 length = 0.001
@@ -47,7 +48,7 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 scale = Vector2(0.6, 0.6)
 stream = ExtResource("2_cu63e")
-volume_db = -15.999996
+volume_db = -15.999995
 autoplay = true
 
 [node name="Fade" type="Node" parent="." unique_id=1695584669]
@@ -61,5 +62,10 @@ offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.26666668, 0.07450981, 0.33333334, 0)
 metadata/_edit_use_anchors_ = true
+
+[node name="SkipCutsceneUi" type="Sprite2D" parent="." unique_id=1897217050]
+position = Vector2(1064, 560)
+scale = Vector2(2, 2)
+texture = ExtResource("3_1t4hk")
 
 [connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]

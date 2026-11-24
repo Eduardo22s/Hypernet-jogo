@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://caehv37trwkd8"]
+
+[ext_resource type="Shader" uid="uid://dwmr75qo3coxs" path="res://global/cenas/VFX/_Shaders/EdgeGlow/SH_EdgeGlow.gdshader" id="1_uyfbo"]
+
+[sub_resource type="Gradient" id="Gradient_uyfbo"]
+colors = PackedColorArray(0.51193035, 0.0005629373, 0.5963927, 1, 0.9999998, 0.42047158, 0.17750084, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uyfbo"]
+gradient = SubResource("Gradient_uyfbo")
+
+[resource]
+shader = ExtResource("1_uyfbo")
+shader_parameter/ColorRamp = SubResource("GradientTexture2D_uyfbo")
+shader_parameter/Opacity = 0.30000001425
+shader_parameter/Emission = 2.0
+shader_parameter/Size = 0.20000000880148
+shader_parameter/Softness = 0.5

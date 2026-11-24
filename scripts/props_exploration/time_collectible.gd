@@ -1,10 +1,10 @@
 extends Area3D
 
-@export var bonus_seconds: int
+@export var bonus_points: int
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	if area is BumperDetector:
-		Global.seconds += bonus_seconds
+		Global.points += bonus_points
 		$AnimatedSprite3D.visible = false
 		$Bubble.visible = false
 		$AnimatedSprite3D2.play("Pop")

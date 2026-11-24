@@ -1,7 +1,363 @@
-[gd_scene format=3 uid="uid://cm4qlwgwdhxl5"]
+[gd_scene format=4 uid="uid://cm4qlwgwdhxl5"]
 
 [ext_resource type="Script" uid="uid://bfqa6vr2kbjfu" path="res://scripts/stages/breakable_platform.gd" id="1_1fv5j"]
-[ext_resource type="PackedScene" uid="uid://8d0sokrxeo06" path="res://scenes/props_exploration/PlataformaNuvem.glb" id="2_4fxi7"]
+[ext_resource type="Texture2D" uid="uid://b7q834abskc1j" path="res://scenes/props_exploration/PlataformaNuvem_Nuvem1.png" id="2_qhbsj"]
+[ext_resource type="Texture2D" uid="uid://c4egst2a8jjxc" path="res://scenes/props_exploration/PlataformaNuvem_Nuvem2.png" id="3_76gvx"]
+[ext_resource type="Texture2D" uid="uid://b3aj0carfvsxm" path="res://scenes/props_exploration/PlataformaNuvem_Nuvem3.png" id="4_cmb5v"]
+[ext_resource type="Texture2D" uid="uid://cr1p4qoaywj7m" path="res://scenes/props_exploration/PlataformaNuvem_NuvemMenorAtrás.png" id="5_h6r8n"]
+[ext_resource type="Texture2D" uid="uid://bgb8whofap8fk" path="res://scenes/props_exploration/PlataformaNuvem_NuvemMenorFrente.png" id="6_vo2vh"]
+[ext_resource type="Texture2D" uid="uid://ct5grivbunkt8" path="res://scenes/props_exploration/PlataformaNuvem_Cutscene_Nuvens2.png" id="7_b2d7f"]
+[ext_resource type="Texture2D" uid="uid://bg4mdr6mlg6cf" path="res://scenes/props_exploration/PlataformaNuvem_Cutscene_Nuvens4.png" id="8_q1gak"]
+[ext_resource type="Texture2D" uid="uid://krg3lnpkhwoa" path="res://scenes/props_exploration/PlataformaNuvem_Cutscene_Nuvens9.png" id="9_6bq8v"]
+
+[sub_resource type="Animation" id="Animation_4fxi7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlataformaNuvem:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlataformaNuvem/Cube_247:transparency")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_totkn"]
+resource_name = "breaking"
+length = 2.5000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlataformaNuvem:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlataformaNuvem/Cube_247:transparency")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rago5"]
+_data = {
+&"RESET": SubResource("Animation_4fxi7"),
+&"breaking": SubResource("Animation_totkn")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qjlw4"]
+resource_name = "Material.006"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uathw"]
+resource_name = "Nuvem1"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("2_qhbsj")
+roughness = 0.5
+texture_repeat = false
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jkidf"]
+resource_name = "Nuvem2"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("3_76gvx")
+roughness = 0.5
+texture_repeat = false
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0twt"]
+resource_name = "Nuvem3"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("4_cmb5v")
+roughness = 0.5
+texture_repeat = false
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tg16t"]
+resource_name = "NuvemMenorAtrás"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("5_h6r8n")
+roughness = 0.5
+texture_repeat = false
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kcgok"]
+resource_name = "NuvemMenorFrente"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("6_vo2vh")
+roughness = 0.5
+texture_repeat = false
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_05bb0"]
+resource_name = "Cutscene_Nuvens2"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("7_b2d7f")
+roughness = 0.5
+texture_repeat = false
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rtt40"]
+resource_name = "Cutscene_Nuvens4"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("8_q1gak")
+roughness = 0.5
+texture_repeat = false
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_murqm"]
+resource_name = "Cutscene_Nuvens9"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("9_6bq8v")
+roughness = 0.5
+texture_repeat = false
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_p32mg"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
+"name": "Material.006",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAD/////AAAAAP//AAD//wAA////////AAD//wAAAAAAAA==")
+}, {
+"aabb": AABB(-1.4198593, -0.8633519, -3.6702719, 2.7512438, 2.5200558, 7.556065),
+"format": 34896613377,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0A"),
+"name": "Nuvem1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 32,
+"vertex_data": PackedByteArray("3aZ2H4vFAACD2QKxi8UAAIPZdh+LxQAA3aYCsYvFAABaAgVaYcsAAAE1kethywAAATUFWmHLAABaApHrYcsAAP//AADY/gAAWM2Mkf//AABYzQAA//8AAP//jJHY/gAArV8jZqP3AAAHLa/3yvgAAActI2bK+AAArV+v96P3AAAUWcUnqToAAG4mUrliOgAAbibFJ2I6AAAUWVK5qToAAJj9VWK7NQAA8srh83Q1AADyylVidDUAAJj94fO7NQAAAABPCN4AAACmMtuZAAAAAKYyTwgAAAAAAADbmd4AAABPoHJu9QgAAPbS//8WCAAA9tJybhYIAABPoP//9QgAAA==")
+}, {
+"aabb": AABB(-1.5051019, -0.91871834, -3.4597542, 2.9212713, 2.6682692, 7.1523657),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"name": "Nuvem2",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("t1AAAMXZAACUiumPxdkAAJSKAADF2QAAt1Dpj8XZAAAixjxoONIAAP//Jfg40gAA//88aDjSAAAixiX4ONIAADKeZWaG/gAAVmRO9v//AABWZGVm//8AADKeTvaG/gAASK/ZB1gmAABrdcKX/CUAAGt12Qf8JQAASK/Cl1gmAADcORVwKy0AAAAA///QLAAAAAAVcNAsAADcOf//Ky0AANRhPm4dAQAAsZso/gAAAACxmz5uAAAAANRhKP4dAQAA")
+}, {
+"aabb": AABB(-1.3844254, -1.2889469, -3.7575157, 2.680382, 2.3353944, 7.7438173),
+"format": 34896613377,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0A"),
+"name": "Nuvem3",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 32,
+"vertex_data": PackedByteArray("u3A7R/DfAAC6wQf38N8AALrBO0fw3wAAu3AH9/DfAAAWBwATJdUAABRYzMIl1QAAFFgAEyXVAAAWB8zCJdUAAP1QABMK+wAAAADMwsn8AAAAAAATyfwAAP1QzMIK+wAAjcwAAD/+AACQe8yv//8AAJB7AAD//wAAjczMrz/+AAA8jzJQHSAAAD4+//+wHwAAPj4yULAfAAA8j///HSAAAN/4+Bt1KwAA4afEywgrAADhp/gbCCsAAN/4xMt1KwAAAa/4Gy0FAAD//8TL2wMAAP//+BvbAwAAAa/Eyy0FAABxM/cIUgEAAG+Ew7gAAAAAb4T3CAAAAABxM8O4UgEAAA==")
+}, {
+"aabb": AABB(-2.040824, -1.9197111, -3.0508003, 3.992456, 4.546123, 6.347142),
+"format": 34896613377,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0A"),
+"name": "NuvemMenorAtrás",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 32,
+"vertex_data": PackedByteArray("AABPG468AAAoSjjPjrwAAChKTxuOvAAAAAA4z468AAB/cXpH5bkAAKe7Y/vluQAAp7t6R+W5AAB/cWP75bkAADetUgoXqgAAX/c6vheqAABf91IKF6oAADetOr4XqgAAGoAAABf9AADzNeiz/v8AAPM1AAD//wAAGoDosxf9AAD//+of80MAANe109M/QwAA17XqHz9DAAD//9PT80MAAH+OFkyIRQAAV0T//9NEAABXRBZM00QAAH+O//+IRQAAxVLtDsRUAACdCNbCEFQAAJ0I7Q4QVAAAxVLWwsRUAADsf5sEMwIAABTKhLgAAAAAFMqbBAAAAADsf4S4MwIAAA==")
+}, {
+"aabb": AABB(-2.110946, -0.68635356, -1.9104592, 4.132863, 2.9389362, 4.017772),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0A"),
+"name": "NuvemMenorFrente",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("eUcAAH3/AACMhGf4ff8AAIyEAAB9/wAAeUdn+H3/AADswncA/v8AAP//3vj+/wAA//93AP7/AADswt74//8AAIW4IAdgAwAAcnuH/20CAAByeyAHbQIAAIW4h/9gAwAAEj2XB/MAAAAAAP//AAAAAAAAlwcAAAAAEj3///MAAAA=")
+}, {
+"aabb": AABB(-1.8366474, 0.1580736, -1.0001825, 3.5839763, 3.874553, 2.201367),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
+"name": "Cutscene_Nuvens2",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("dxEAAPL0AAD//5f6//8AAP//AAD+/wAAdxGX+vL0AACH7mcF6hAAAAAA//8AAAAAAABnBQAAAACH7v//6hAAAA==")
+}, {
+"aabb": AABB(-1.6388309, 0.2665569, -0.6645707, 3.1882367, 4.3983955, 1.5331335),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
+"name": "Cutscene_Nuvens4",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("lwMAAA/xAAD//zz7//8AAP//AAD+/wAAlwM8+w/xAABm/MIE3RYAAAAA//8AAAAAAADCBAAAAABm/P//3RYAAA==")
+}, {
+"aabb": AABB(-1.7283528, -0.018184602, -0.10861404, 3.367066, 3.5963871, 0.42060542),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
+"name": "Cutscene_Nuvens9",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAIjGAABL/Cz6//8AAEv8AAD+/wAAAAAs+ojGAAD//9IF/FcAALQD//8AAAAAtAPSBQAAAAD//////FcAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vs4jt"]
+resource_name = "PlataformaNuvem_Cube_178"
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("///9gAF/Av79gAF/Av7///9//38A/wD//38A/wD//3//f/9/AP8A//9/AP8A//9///8C/gF//YAC/gF//YD///9/AP8A//9/AP8A//9//3//fwD/AP//fwD/AP//f/9/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_qjlw4"),
+"name": "Material.006",
+"primitive": 3,
+"uv_scale": Vector4(2.015625, 2.015625, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP//9tQAAP//AAD21AAA//////bUAAAAAAAA9tQAAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAP//////////////////AAD/////AAD///////8AAP//ooAAAP////+igP///////6KAAAAAAP//ooAAAAAAAAD/v///AAD///+///8AAAAA/78AAAAA////v/////8AAP//AAD///////8AAP//AAD/////////////jlUcq45VHKuOVRyrjlUcq////3////9/////f////3//v/9//7//f/+//3//v/9//3//f/9//3//f/9//3//fwAA/38AAP9/AAD/fwAA/3//f/+//3//v/9//7//f/+/")
+}, {
+"aabb": AABB(-1.4198593, -0.8633519, -3.6702719, 2.7512438, 2.5200558, 7.556065),
+"attribute_data": PackedByteArray("AAD/////AAD/////AAAAAAAA/////wAA/////wAAAAAAAP////8AAP////8AAAAAAAD/////AAD/////AAAAAAAA/////wAA/////wAAAAAAAP////8AAP////8AAAAAAAD/////AAD/////AAAAAAAA/////wAA/////wAAAAA="),
+"format": 34896613399,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0A"),
+"material": SubResource("StandardMaterial3D_uathw"),
+"name": "Nuvem1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 32,
+"vertex_data": PackedByteArray("3aZ2H4vFAICD2QKxi8UAgIPZdh+LxQCA3aYCsYvFAIBaAgVaYcsAgAE1kethywCAATUFWmHLAIBaApHrYcsAgP//AADY/nX9WM2Mkf//df1YzQAA//91/f//jJHY/nX9rV8jZqP3df0HLa/3yvh1/QctI2bK+HX9rV+v96P3df0UWcUnqTph/24mUrliOmH/bibFJ2I6Yf8UWVK5qTph/5j9VWK7NWH/8srh83Q1Yf/yylVidDVh/5j94fO7NWH/AABPCN4A6oGmMtuZAADqgaYyTwgAAOqBAADbmd4A6oFPoHJu9QjqgfbS//8WCOqB9tJybhYI6oFPoP//9Qjqgf9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA")
+}, {
+"aabb": AABB(-1.5051019, -0.91871834, -3.4597542, 2.9212713, 2.6682692, 7.1523657),
+"attribute_data": PackedByteArray("AAD/////AAD/////AAAAAAAA/////wAA/////wAAAAAAAP////8AAP////8AAAAAAAD/////AAD/////AAAAAAAA/////wAA/////wAAAAAAAP////8AAP////8AAAAA"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_jkidf"),
+"name": "Nuvem2",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("t1AAAMXZAICUiumPxdkAgJSKAADF2QCAt1Dpj8XZAIAixjxoONIAgP//Jfg40gCA//88aDjSAIAixiX4ONIAgDKeZWaG/nX9VmRO9v//df1WZGVm//91/TKeTvaG/nX9SK/ZB1gmYf9rdcKX/CVh/2t12Qf8JWH/SK/Cl1gmYf/cORVwKy1h/wAA///QLGH/AAAVcNAsYf/cOf//Ky1h/9RhPm4dAeqBsZso/gAA6oGxmz5uAADqgdRhKP4dAeqB/3////9/////f////3////9/////f////3////9/////f////3////9/////f////38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA")
+}, {
+"aabb": AABB(-1.3844254, -1.2889469, -3.7575157, 2.680382, 2.3353944, 7.7438173),
+"attribute_data": PackedByteArray("AAD/////AAD/////AAAAAAAA/////wAA/////wAAAAAAAP////8AAP////8AAAAAAAD/////AAD/////AAAAAAAA/////wAA/////wAAAAAAAP////8AAP////8AAAAAAAD/////AAD/////AAAAAAAA/////wAA/////wAAAAA="),
+"format": 34896613399,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0A"),
+"material": SubResource("StandardMaterial3D_a0twt"),
+"name": "Nuvem3",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 32,
+"vertex_data": PackedByteArray("u3A7R/DfAIC6wQf38N8AgLrBO0fw3wCAu3AH9/DfAIAWBwATJdUAgBRYzMIl1QCAFFgAEyXVAIAWB8zCJdUAgP1QABMK+3X9AADMwsn8df0AAAATyfx1/f1QzMIK+3X9jcwAAD/+df2Qe8yv//91/ZB7AAD//3X9jczMrz/+df08jzJQHSBh/z4+//+wH2H/Pj4yULAfYf88j///HSBh/9/4+Bt1K2H/4afEywgrYf/hp/gbCCth/9/4xMt1K2H/Aa/4Gy0F6oH//8TL2wPqgf//+BvbA+qBAa/Eyy0F6oFxM/cIUgHqgW+Ew7gAAOqBb4T3CAAA6oFxM8O4UgHqgf9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA")
+}, {
+"aabb": AABB(-2.040824, -1.9197111, -3.0508003, 3.992456, 4.546123, 6.347142),
+"attribute_data": PackedByteArray("AAD/////AAD/////AAAAAAAA/////wAA/////wAAAAAAAP////8AAP////8AAAAAAAD/////AAD/////AAAAAAAA/////wAA/////wAAAAAAAP////8AAP////8AAAAAAAD/////AAD/////AAAAAAAA/////wAA/////wAAAAA="),
+"format": 34896613399,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0A"),
+"material": SubResource("StandardMaterial3D_tg16t"),
+"name": "NuvemMenorAtrás",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 32,
+"vertex_data": PackedByteArray("AABPG468AIAoSjjPjrwAgChKTxuOvACAAAA4z468AIB/cXpH5bkAgKe7Y/vluQCAp7t6R+W5AIB/cWP75bkAgDetUgoXqgCAX/c6vheqAIBf91IKF6oAgDetOr4XqgCAGoAAABf9df3zNeiz/v91/fM1AAD//3X9GoDosxf9df3//+of80Nh/9e109M/Q2H/17XqHz9DYf///9PT80Nh/3+OFkyIRWH/V0T//9NEYf9XRBZM00Rh/3+O//+IRWH/xVLtDsRUYf+dCNbCEFRh/50I7Q4QVGH/xVLWwsRUYf/sf5sEMwLqgRTKhLgAAOqBFMqbBAAA6oHsf4S4MwLqgf9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA")
+}, {
+"aabb": AABB(-2.110946, -0.68635356, -1.9104592, 4.132863, 2.9389362, 4.017772),
+"attribute_data": PackedByteArray("AAD/////AAD/////AAAAAAAA/////wAA/////wAAAAAAAP////8AAP////8AAAAAAAD/////AAD/////AAAAAA=="),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0A"),
+"material": SubResource("StandardMaterial3D_kcgok"),
+"name": "NuvemMenorFrente",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("eUcAAH3/AICMhGf4ff8AgIyEAAB9/wCAeUdn+H3/AIDswncA/v8AgP//3vj+/wCA//93AP7/AIDswt74//8AgIW4IAdgA2H/cnuH/20CYf9yeyAHbQJh/4W4h/9gA2H/Ej2XB/MAYf8AAP//AABh/wAAlwcAAGH/Ej3///MAYf//f////3////9/////f////3////9/////f////3////9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA")
+}, {
+"aabb": AABB(-1.8366474, 0.1580736, -1.0001825, 3.5839763, 3.874553, 2.201367),
+"attribute_data": PackedByteArray("AAD/////AAD/////AAAAAAAA/////wAA/////wAAAAA="),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
+"material": SubResource("StandardMaterial3D_05bb0"),
+"name": "Cutscene_Nuvens2",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("dxEAAPL0J4H//5f6//8ngf//AAD+/yeBdxGX+vL0J4GH7mcF6hA5/gAA//8AADn+AABnBQAAOf6H7v//6hA5/v9/////f////3////9/////fwAA/38AAP9/AAD/fwAA")
+}, {
+"aabb": AABB(-1.6388309, 0.2665569, -0.6645707, 3.1882367, 4.3983955, 1.5331335),
+"attribute_data": PackedByteArray("AAD/////AAD/////AAAAAAAA/////wAA/////wAAAAA="),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
+"material": SubResource("StandardMaterial3D_rtt40"),
+"name": "Cutscene_Nuvens4",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("lwMAAA/xJ4H//zz7//8ngf//AAD+/yeBlwM8+w/xJ4Fm/MIE3RY5/gAA//8AADn+AADCBAAAOf5m/P//3RY5/v9/////f////3////9/////fwAA/38AAP9/AAD/fwAA")
+}, {
+"aabb": AABB(-1.7283528, -0.018184602, -0.10861404, 3.367066, 3.5963871, 0.42060542),
+"attribute_data": PackedByteArray("AAD/////AAD/////AAAAAAAA/////wAA/////wAAAAA="),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
+"material": SubResource("StandardMaterial3D_murqm"),
+"name": "Cutscene_Nuvens9",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAIjGJ4FL/Cz6//8ngUv8AAD+/yeBAAAs+ojGJ4H//9IF/Fc5/rQD//8AADn+tAPSBQAAOf7//////Fc5/v9/////f////3////9/////fwAA/38AAP9/AAD/fwAA")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_p32mg")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bha02"]
 albedo_color = Color(0, 1, 0, 1)
@@ -19,8 +375,15 @@ size = Vector3(6, 0.2, 3)
 [node name="BreakablePlatform" type="StaticBody3D" unique_id=917541548]
 script = ExtResource("1_1fv5j")
 
-[node name="PlataformaNuvem" parent="." unique_id=148862988 instance=ExtResource("2_4fxi7")]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1680436575]
+libraries/ = SubResource("AnimationLibrary_rago5")
+
+[node name="PlataformaNuvem" type="Node3D" parent="." unique_id=148862988]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.3, 0, 0)
+
+[node name="Cube_247" type="MeshInstance3D" parent="PlataformaNuvem" unique_id=39746454]
+transform = Transform3D(3.6034272, 0, 0, 0, 1, 0, 0, 0, 0.5234065, 0, 0, 0)
+mesh = SubResource("ArrayMesh_vs4jt")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=53449120]
 visible = false

@@ -149,13 +149,12 @@ radius = 0.3
 [node name="Coletavel5seg" type="Area3D" unique_id=427384727]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_kq25m")
-bonus_seconds = 5
+bonus_points = 5
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1506850330]
 stream = ExtResource("2_8ohix")
 volume_db = -6.0
 script = ExtResource("3_rha72")
-volume = -6.0
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1727465504]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

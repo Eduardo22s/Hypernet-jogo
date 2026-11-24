@@ -84,7 +84,7 @@ shape = SubResource("BoxShape3D_f1q28")
 [node name="PatrolCenter" type="Node3D" parent="." unique_id=1746022771]
 
 [node name="Enemy" parent="." unique_id=1788365876 instance=ExtResource("6_1kras")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9274025, 1.2709961, -15.634666)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.027402, 1.2709961, 34.265335)
 
 [node name="coletáveis" type="Node" parent="." unique_id=401269972]
 

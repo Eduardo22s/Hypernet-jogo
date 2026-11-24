@@ -14,6 +14,7 @@ func _ready() -> void:
 	$AnimatedIntro.visible = false
 
 func _on_button_play_mouse_entered() -> void:
+	$AudioStreamPlayer2.play()
 	$AnimatedPlay.frame = 1
 
 func _on_button_play_mouse_exited() -> void:
@@ -29,6 +30,7 @@ func _on_button_play_pressed() -> void:
 
 
 func _on_button_options_mouse_entered() -> void:
+	$AudioStreamPlayer2.play()
 	$AnimatedOptions.frame = 1
 
 func _on_button_options_mouse_exited() -> void:
@@ -44,6 +46,7 @@ func _on_button_options_pressed() -> void:
 
 
 func _on_button_credits_mouse_entered() -> void:
+	$AudioStreamPlayer2.play()
 	$AnimatedCredits.frame = 1
 
 func _on_button_credits_mouse_exited() -> void:
@@ -58,6 +61,7 @@ func _on_button_credits_pressed() -> void:
 
 
 func _on_button_exit_mouse_entered() -> void:
+	$AudioStreamPlayer2.play()
 	$AnimatedExit.frame = 1
 
 func _on_button_exit_mouse_exited() -> void:

@@ -29,9 +29,13 @@ var word_selected = false
 
 #var player_return_pos = Vector3(-0.235, 5.0, 0.525)
 
+var points = 0
+var checkpoints = 0
+var checkpoint_pos = Vector3()
+var checkpoint_in_scene = false
 
 var timer_on = false
-var seconds = 300
+var seconds = 0
 
 var which_way = ""
 
@@ -40,15 +44,14 @@ func _process(delta: float) -> void:
 	if !timer_on:
 		return
 	else:
-		seconds -= delta
-		if seconds <= 0:
-			seconds = 0
+		seconds += delta
+		if end_game:
+			seconds = seconds
 			timer_on = false
-			end_game = true
 
 func reset_timer():
 	timer_on = false
-	seconds = 300
+	seconds = 0
 
 
 func invert_bools(var_names: Array):

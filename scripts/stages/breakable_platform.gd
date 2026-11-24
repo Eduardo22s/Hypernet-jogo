@@ -41,6 +41,7 @@ func _on_detector_body_entered(body: Node3D) -> void:
 
 func iniciar_quebra() -> void:
 	tremendo = true
+	$AnimationPlayer.play("breaking")
 
 	await get_tree().create_timer(tempo_antes_quebrar).timeout
 
@@ -54,7 +55,6 @@ func quebrar() -> void:
 
 	# set_deferred evita erro ao mexer na física durante o callback de colisão
 	colisao.set_deferred("disabled", true)
-	$PlataformaNuvem.visible = false
 
 	if not respawn_ativo:
 		return
@@ -66,7 +66,7 @@ func quebrar() -> void:
 
 func restaurar() -> void:
 	colisao.set_deferred("disabled", false)
-	$PlataformaNuvem.visible = true
+	$AnimationPlayer.play_backwards("breaking")
 	quebrada = false
 	ativada = false
 

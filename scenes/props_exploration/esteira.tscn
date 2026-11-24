@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://dgtt716tuphq5"]
+
+[ext_resource type="Texture2D" uid="uid://dhwp4gvlr44l3" path="res://assets/props2D/esteira/EsteiraAtrásAnim1.png" id="1_mhph3"]
+[ext_resource type="Script" uid="uid://cdlu820qg3tl4" path="res://scripts/props_exploration/esteira.gd" id="1_tyydm"]
+[ext_resource type="Texture2D" uid="uid://bosa5atmf6300" path="res://assets/props2D/esteira/EsteiraAtrásAnim2.png" id="2_tyydm"]
+[ext_resource type="Texture2D" uid="uid://b8newmrs8wo8m" path="res://assets/props2D/esteira/EsteiraAtrásAnim3.png" id="3_dkjdt"]
+[ext_resource type="Texture2D" uid="uid://dedcomjw3qf1t" path="res://assets/props2D/esteira/EsteiraAtrásAnim4.png" id="4_rw8uj"]
+[ext_resource type="Texture2D" uid="uid://bwhe4g0f4yaiw" path="res://assets/props2D/esteira/EsteiraAtrásAnim5.png" id="5_25ibc"]
+[ext_resource type="Texture2D" uid="uid://bo6p0udd6iy3p" path="res://assets/props2D/esteira/EsteiraAtrásAnim6.png" id="6_p5fux"]
+[ext_resource type="Texture2D" uid="uid://cndn50ouwhp5f" path="res://assets/props2D/esteira/EsteiraAtrásAnim7.png" id="7_cwygb"]
+[ext_resource type="Texture2D" uid="uid://dlijma388ll3y" path="res://assets/props2D/esteira/EsteiraAtrásAnim8.png" id="8_421y3"]
+[ext_resource type="Texture2D" uid="uid://f5h1u86mrpfv" path="res://assets/props2D/esteira/EsteiraAtrásAnim9.png" id="9_ikliy"]
+[ext_resource type="Texture2D" uid="uid://cyfk5fevr6rvy" path="res://assets/props2D/esteira/EsteiraFrenteAnim1.png" id="10_cdgy6"]
+[ext_resource type="Texture2D" uid="uid://dsqumhqbj5lfe" path="res://assets/props2D/esteira/EsteiraFrenteAnim2.png" id="11_1ve7h"]
+[ext_resource type="Texture2D" uid="uid://b78m4gmr0s0s" path="res://assets/props2D/esteira/EsteiraFrenteAnim3.png" id="12_ukage"]
+[ext_resource type="Texture2D" uid="uid://cf6vfsgt0rpm6" path="res://assets/props2D/esteira/EsteiraFrenteAnim4.png" id="13_bmjyp"]
+[ext_resource type="Texture2D" uid="uid://cvyiijw0uj0vc" path="res://assets/props2D/esteira/EsteiraFrenteAnim5.png" id="14_d0nwk"]
+[ext_resource type="Texture2D" uid="uid://cb6ljaq5rxedn" path="res://assets/props2D/esteira/EsteiraFrenteAnim6.png" id="15_1oion"]
+[ext_resource type="Texture2D" uid="uid://bk7q366dw2yov" path="res://assets/props2D/esteira/EsteiraFrenteAnim7.png" id="16_s17di"]
+[ext_resource type="Texture2D" uid="uid://v3u021vqitxq" path="res://assets/props2D/esteira/EsteiraFrenteAnim8.png" id="17_gpwq3"]
+[ext_resource type="Texture2D" uid="uid://c4yqeq8bvnawg" path="res://assets/props2D/esteira/EsteiraFrenteAnim9.png" id="18_oo8xa"]
+[ext_resource type="Texture2D" uid="uid://cu4a1wpwgrxqu" path="res://assets/props2D/esteira/EsteiraFrenteAnim10.png" id="19_djj58"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_isfe7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mhph3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_tyydm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dkjdt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rw8uj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_25ibc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_p5fux")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_cwygb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_421y3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ikliy")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vaj5l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_cdgy6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_1ve7h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ukage")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_bmjyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_d0nwk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_1oion")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_s17di")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_gpwq3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_oo8xa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_djj58")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="Esteira" type="Node3D" unique_id=808304230]
+script = ExtResource("1_tyydm")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=945461248]
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_isfe7")
+autoplay = "default"
+frame_progress = 0.02483952
+
+[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="." unique_id=1849513013]
+visible = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_vaj5l")
+autoplay = "default"
+frame_progress = 0.13822734

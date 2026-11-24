@@ -5,6 +5,7 @@
 [ext_resource type="Shader" uid="uid://fsl3lmqgpnp5" path="res://global/cenas/VFX/_Shaders/CRTFilter.gdshader" id="2_i27me"]
 [ext_resource type="Script" uid="uid://chddutum2qtx" path="res://global/script/audio_stream_player.gd" id="3_5xcs4"]
 [ext_resource type="Texture2D" uid="uid://t7l7pjj1pwwa" path="res://assets/props2D/Menu/Menu.png" id="3_6m68e"]
+[ext_resource type="AudioStream" uid="uid://bq5l55id642nt" path="res://assets/SFX/menu/Botaomelhor_sfx.mp3" id="4_pn05m"]
 [ext_resource type="Texture2D" uid="uid://7ahik08edrud" path="res://assets/props2D/Menu/Menu_PlayButtonOff.png" id="6_kqh46"]
 [ext_resource type="Texture2D" uid="uid://c1b3ecg1s714q" path="res://assets/props2D/Menu/Menu_PlayButtonOn.png" id="7_dicog"]
 [ext_resource type="Texture2D" uid="uid://crvywrwqqpvry" path="res://assets/props2D/Menu/Menu_PlayOptionsOff.png" id="8_5xcs4"]
@@ -139,6 +140,12 @@ script = ExtResource("1_4wiys")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=882612883]
 stream = ExtResource("2_dicog")
+volume_db = -8.0
+script = ExtResource("3_5xcs4")
+volume = -8.0
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=1954535552]
+stream = ExtResource("4_pn05m")
 volume_db = -8.0
 script = ExtResource("3_5xcs4")
 volume = -8.0

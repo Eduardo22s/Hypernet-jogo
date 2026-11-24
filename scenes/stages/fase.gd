@@ -1,6 +1,7 @@
 extends Node3D
 
 func _ready() -> void:
+	Global.checkpoint_in_scene = false
 	Global.timer_on = true
 	Global.tutorial = false
 	MusicMenu.stop_music()

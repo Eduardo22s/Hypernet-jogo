@@ -149,13 +149,12 @@ radius = 0.3
 
 [node name="Coletável1seg" type="Area3D" unique_id=1959701394]
 script = ExtResource("1_4g2uy")
-bonus_seconds = 1
+bonus_points = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=515806970]
 stream = ExtResource("2_4qau4")
 volume_db = -6.0
 script = ExtResource("3_rm8al")
-volume = -6.0
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=2147013991]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

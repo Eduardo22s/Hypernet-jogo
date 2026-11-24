@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bwcnyj34s5j48"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_73g4r"]
+albedo_color = Color(18.892157, 0, 18.892157, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_isfe7"]
+material = SubResource("StandardMaterial3D_73g4r")
+
+[node name="Checkpoint" type="Node3D" unique_id=95456059]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1185617746]
+mesh = SubResource("SphereMesh_isfe7")

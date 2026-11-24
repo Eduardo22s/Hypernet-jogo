@@ -1,6 +1,7 @@
 extends Node2D
 
 func _on_button_return_mouse_entered() -> void:
+	$AudioStreamPlayer2.play()
 	$AnimatedReturn.frame = 1
 
 func _on_button_return_mouse_exited() -> void:

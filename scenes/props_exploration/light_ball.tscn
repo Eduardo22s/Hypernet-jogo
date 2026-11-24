@@ -10,6 +10,7 @@ material = SubResource("StandardMaterial3D_re0hu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1926356352]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+visible = false
 mesh = SubResource("SphereMesh_g4v7s")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1485268520]

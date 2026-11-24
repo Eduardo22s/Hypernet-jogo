@@ -1,0 +1,55 @@
+[gd_scene format=4 uid="uid://dh2rk0mw2j4qv"]
+
+[ext_resource type="Texture2D" uid="uid://ibd812ymdim3" path="res://assets/props3D/decorations/JardimBloco_Textura_QuartzoLunar(Parede).png" id="1_y2jms"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uskbn"]
+resource_name = "Parede"
+cull_mode = 2
+albedo_texture = ExtResource("1_y2jms")
+roughness = 0.5
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_gj334"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAAAEAAEAAwAFAAIABQAAAAIABgAEAAAABQAGAAAABwABAAQABwADAAEABgAHAAQABQADAAcABQAHAAYA"),
+"name": "Parede",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/////wAAAAAAAP////8AAAAA//8AAAAAAAAAAP//AAD///////8AAAAAAAAAAAAA//8AAAAAAAD//wAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_w2bbo"]
+resource_name = "JardimBloco_Cube_022"
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("KYCW/9r/AH/a/5b/KYAAf3h/l3/O////SH9t////KIDq/yt/XIBr/3mA1X7N/8H/c4CW/+///3/v/5b/c4D/f2x/lv/m//9/5v+W/2x//3/j/kj/SH9Nf9D+E39bf4P/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_uskbn"),
+"name": "Parede",
+"primitive": 3,
+"uv_scale": Vector4(2.0125542, 2.0063946, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/////wAA//8AAP///////wAA//8AAP///////////////wAA///Q/wAA/////9D/////////0P8AAAAA///Q/wAAAAD//0TVAAD//wAARNUAAP////9E1QAAAAAAAETVAAAAAAAA/7///wAA////v///AAAAAP+/AAAAAP///7///wAAAABU1f///////1TV/////wAAVNX//wAA//9U1QAAAAAAAP///////wAA//8AAP//AAD/////AAAAAP///3//v/9//7//f/+//3//v/9//3//f/9//3//f/9//39eVb2qXlW9ql5VvapeVb2qAAD/fwAA/38AAP9/AAD/f6oqqiqqKqoqqiqqKqoqqirif+H/4n/h/+J/4f/if+H/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_gj334")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_apty2"]
+data = PackedVector3Array(1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1)
+
+[node name="TileMapWallGarden" type="Node3D" unique_id=59897989]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=682961495]
+
+[node name="BlocoChão_003" type="MeshInstance3D" parent="StaticBody3D" unique_id=948453063]
+mesh = SubResource("ArrayMesh_w2bbo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1291140373]
+shape = SubResource("ConcavePolygonShape3D_apty2")

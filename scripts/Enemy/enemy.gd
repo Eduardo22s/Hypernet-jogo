@@ -118,6 +118,7 @@ func preparar_dash(delta: float) -> void:
 
 func executar_dash(delta: float) -> void:
 	sprite.play("dash")
+	$AnimationAttack.play("attack")
 	timer -= delta
 
 	velocity.x = direcao_dash.x * forca_dash
