@@ -31,6 +31,7 @@
 [ext_resource type="AudioStream" uid="uid://dv15bokwcx3yp" path="res://assets/SFX/stages/Vozes_de_fundoHyperNetsfx.mp3" id="46_k01b8"]
 [ext_resource type="Script" uid="uid://chddutum2qtx" path="res://global/script/audio_stream_player.gd" id="47_1d880"]
 [ext_resource type="PackedScene" uid="uid://dgtt716tuphq5" path="res://scenes/props_exploration/esteira.tscn" id="47_lrpnu"]
+[ext_resource type="PackedScene" uid="uid://7rfgvb415s4v" path="res://scenes/props_exploration/Placa_Seta.glb" id="48_lrpnu"]
 [ext_resource type="PackedScene" uid="uid://dl6xys51ckhg6" path="res://assets/props3D/decorations/EstalactiteGelo.glb" id="52_20qn0"]
 [ext_resource type="Texture2D" uid="uid://b2h2bebv0q0i" path="res://assets/props3D/decorations/Arcade/ParedeArcade_Textura_Sofá.png" id="54_a3qy8"]
 [ext_resource type="ArrayMesh" uid="uid://2m2mft2irn6s" path="res://assets/props3D/decorations/Piramide/Piramide.obj" id="55_csw42"]
@@ -5138,6 +5139,26 @@ tipo_esteira = 1
 [node name="Esteira119" parent="Node" unique_id=1459935645 instance=ExtResource("47_lrpnu")]
 transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -44.990025, 198, -9.089999)
 tipo_esteira = 1
+
+[node name="Placas" type="Node" parent="." unique_id=1574696495]
+
+[node name="Placa_Seta" parent="Placas" unique_id=532504819 instance=ExtResource("48_lrpnu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.196205, 135.6916, 50.210613)
+
+[node name="Placa_Seta2" parent="Placas" unique_id=372747187 instance=ExtResource("48_lrpnu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.958169, 143.7904, 48.459854)
+
+[node name="Placa_Seta3" parent="Placas" unique_id=59627083 instance=ExtResource("48_lrpnu")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.44361305, 151.87836, -4.356742)
+
+[node name="Placa_Seta4" parent="Placas" unique_id=811652068 instance=ExtResource("48_lrpnu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.047514, 160.15439, -37.027676)
+
+[node name="Placa_Seta5" parent="Placas" unique_id=1856632580 instance=ExtResource("48_lrpnu")]
+transform = Transform3D(0.8974745, 0, -0.44106624, 0, 1, 0, 0.44106624, 0, 0.8974745, -40.76704, 165.84393, -18.032)
+
+[node name="Placa_Seta6" parent="Placas" unique_id=868993079 instance=ExtResource("48_lrpnu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.23238, 165.84393, -16.576042)
 
 [connection signal="area_entered" from="EndGameDetector" to="EndGameDetector" method="_on_area_entered"]
 [connection signal="body_entered" from="FallingToArcadeDetector" to="FallingToArcadeDetector" method="_on_body_entered"]
