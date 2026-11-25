@@ -5,8 +5,10 @@
 [ext_resource type="AudioStream" uid="uid://vclec3auu6ab" path="res://assets/SFX/player/hypernetpassosgrama1sfx.mp3" id="2_w0700"]
 [ext_resource type="AudioStream" uid="uid://6x3cyxxci611" path="res://assets/SFX/player/hypernetpassosgrama2sfx.mp3" id="3_nius7"]
 [ext_resource type="Shader" uid="uid://conmejl7vtvgv" path="res://global/cenas/VFX/_Shaders/Flash/S_ScreenFlash.gdshader" id="3_qjg5c"]
+[ext_resource type="Material" uid="uid://bjjcuiyeteph2" path="res://global/cenas/VFX/_Shaders/Glitch/SM_Glitch.tres" id="3_u38lx"]
 [ext_resource type="Script" uid="uid://buvfavh76bi0" path="res://global/cenas/VFX/_Shaders/Flash/S_ScreenFlash.gd" id="4_fmlvb"]
 [ext_resource type="AudioStream" uid="uid://dlyvbtpeuxoi3" path="res://assets/SFX/player/hypernetpassosgrama3sfx.mp3" id="4_omgaf"]
+[ext_resource type="Script" uid="uid://bks483b3m0ti1" path="res://global/cenas/VFX/_Shaders/Glitch/S_GlitchController.gd" id="4_r1gee"]
 [ext_resource type="AudioStream" uid="uid://b2a2labg0tde4" path="res://assets/SFX/player/hypernetpassosgrama4sfx.mp3" id="5_dpwul"]
 [ext_resource type="Texture2D" uid="uid://bwpv6he7qy4jq" path="res://assets/UIs/Icone_PrincipalV3.png" id="5_guvr8"]
 [ext_resource type="AudioStream" uid="uid://w7la3nl8m27h" path="res://assets/SFX/player/hypernetpassosgrama5sfx.mp3" id="6_dk6du"]
@@ -136,6 +138,7 @@
 [ext_resource type="Texture2D" uid="uid://4a5o33xsixls" path="res://ColetáveisZIP/Coletáveis/+10segundos_10.png" id="59_ww0n1"]
 [ext_resource type="Texture2D" uid="uid://jh6kratnaw45" path="res://ColetáveisZIP/Coletáveis/+10segundos_11.png" id="60_vbegw"]
 [ext_resource type="Texture2D" uid="uid://brjx4e73p0wov" path="res://ColetáveisZIP/Coletáveis/+10segundos_12.png" id="61_8pu61"]
+[ext_resource type="Texture2D" uid="uid://db6iflw35xdfo" path="res://assets/UIs/SaveStateUIV2.png" id="65_r1gee"]
 [ext_resource type="Script" uid="uid://b1an37kybkb4q" path="res://global/script/crt.gd" id="81_efltc"]
 [ext_resource type="Script" uid="uid://chddutum2qtx" path="res://global/script/audio_stream_player.gd" id="86_8sy35"]
 [ext_resource type="AudioStream" uid="uid://ctlhejy2ornt8" path="res://assets/SFX/player/DashProtagonista_sfx (2).mp3" id="86_t6pno"]
@@ -144,6 +147,8 @@
 [ext_resource type="Script" uid="uid://cu2n27i2nbocr" path="res://scenes/player/change_scene_detector.gd" id="90_guvr8"]
 [ext_resource type="Script" uid="uid://dpehvhcmo8423" path="res://scripts/player/bumper_detector.gd" id="90_ikwbd"]
 [ext_resource type="AudioStream" uid="uid://clvylj5og7lw3" path="res://assets/SFX/stages/PortalDoEspelho_sfx.mp3" id="90_x28bd"]
+[ext_resource type="AudioStream" uid="uid://cfklxykvct0mp" path="res://assets/SFX/player/PuloProtagonista_sfx (1).mp3" id="93_vbegw"]
+[ext_resource type="AudioStream" uid="uid://bj77l75bov47q" path="res://assets/SFX/player/PuloProtagonista_sfx (2).mp3" id="94_8pu61"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7rux2"]
 
@@ -173,6 +178,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(973, 102)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CheckpointSprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1030, -139)]
+}
 
 [sub_resource type="Animation" id="Animation_47ly8"]
 resource_name = "init"
@@ -200,6 +217,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(165, -104), Vector2(165, -104), Vector2(165, 102)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CheckpointSprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1030, -139), Vector2(1030, -139), Vector2(1030, 139)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vw453"]
@@ -1535,6 +1564,14 @@ animations = [{
 font = ExtResource("17_f8jxg")
 font_size = 32
 
+[sub_resource type="LabelSettings" id="LabelSettings_ww0n1"]
+font = ExtResource("17_f8jxg")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_vbegw"]
+font = ExtResource("17_f8jxg")
+font_size = 28
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_vj4h4"]
 animations = [{
 "frames": [{
@@ -1672,10 +1709,11 @@ stream_2 = ExtResource("4_omgaf")
 stream_3 = ExtResource("5_dpwul")
 stream_4 = ExtResource("6_dk6du")
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_300ia"]
-random_pitch = 1.122462
-streams_count = 1
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vbegw"]
+streams_count = 3
 stream_0/stream = ExtResource("87_snmgi")
+stream_1/stream = ExtResource("93_vbegw")
+stream_2/stream = ExtResource("94_8pu61")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_unwft"]
 radius = 0.4
@@ -2036,6 +2074,21 @@ color = Color(0.18431373, 0.18431373, 0.18431373, 0.94509804)
 libraries/ = SubResource("AnimationLibrary_vw453")
 autoplay = &"init"
 
+[node name="GlitchEffect" type="CanvasLayer" parent="HUD" unique_id=954886917]
+layer = 10
+
+[node name="ColorRect" type="ColorRect" parent="HUD/GlitchEffect" unique_id=272865542]
+material = ExtResource("3_u38lx")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+script = ExtResource("4_r1gee")
+metadata/_edit_use_anchors_ = true
+
 [node name="Flash" type="Node3D" parent="HUD" unique_id=761872685]
 
 [node name="S_ScreenFlashLayer" type="CanvasLayer" parent="HUD/Flash" unique_id=1773077474]
@@ -2324,18 +2377,6 @@ sprite_frames = SubResource("SpriteFrames_bnbdx")
 autoplay = "default"
 frame_progress = 0.35574487
 
-[node name="Points" type="Label" parent="HUD/Collectables" unique_id=297058539]
-offset_left = 1011.0
-offset_top = 35.0
-offset_right = 1051.0
-offset_bottom = 58.0
-
-[node name="UsesLeft" type="Label" parent="HUD/Collectables" unique_id=1925799755]
-offset_left = 1023.0
-offset_top = 76.0
-offset_right = 1063.0
-offset_bottom = 99.0
-
 [node name="TimerSprite" type="Sprite2D" parent="HUD" unique_id=618407219]
 z_index = -2
 position = Vector2(973, 102)
@@ -2348,6 +2389,34 @@ offset_right = 44.04348
 offset_bottom = 50.0
 text = "5:59"
 label_settings = SubResource("LabelSettings_isfe7")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CheckpointSprite" type="Sprite2D" parent="HUD" unique_id=2028627616]
+z_index = -2
+position = Vector2(1030, -139)
+texture = ExtResource("65_r1gee")
+
+[node name="Label" type="Label" parent="HUD/CheckpointSprite" unique_id=402053186]
+offset_left = 17.999977
+offset_top = -75.0
+offset_right = 104.08694
+offset_bottom = -41.0
+text = "100
+"
+label_settings = SubResource("LabelSettings_ww0n1")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="HUD/CheckpointSprite" unique_id=665172029]
+offset_left = 17.999977
+offset_top = -42.0
+offset_right = 104.08694
+offset_bottom = 3.0
+text = "0/3"
+label_settings = SubResource("LabelSettings_vbegw")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -2436,10 +2505,10 @@ volume_db = -6.0
 script = ExtResource("86_8sy35")
 
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="." unique_id=1201120691]
-stream = SubResource("AudioStreamRandomizer_300ia")
-volume_db = -6.0
-pitch_scale = 0.9
+stream = SubResource("AudioStreamRandomizer_vbegw")
+volume_db = -8.0
 script = ExtResource("86_8sy35")
+volume = -8.0
 
 [node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="." unique_id=1133466153]
 stream = ExtResource("88_snmgi")

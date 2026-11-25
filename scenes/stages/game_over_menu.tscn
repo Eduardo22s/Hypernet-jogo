@@ -1,29 +1,34 @@
 [gd_scene format=3 uid="uid://cbp1s24sv7o"]
 
-[ext_resource type="Texture2D" uid="uid://ijo6jm30cxow" path="res://assets/UIs/GameOver/GameOver.png" id="1_ksmik"]
 [ext_resource type="Script" uid="uid://cp31dkhjj1hjp" path="res://scripts/stages/game_over_menu.gd" id="1_vfr1v"]
 [ext_resource type="Shader" uid="uid://conmejl7vtvgv" path="res://global/cenas/VFX/_Shaders/Flash/S_ScreenFlash.gdshader" id="2_1thhk"]
-[ext_resource type="Shader" uid="uid://fsl3lmqgpnp5" path="res://global/cenas/VFX/_Shaders/CRTFilter.gdshader" id="2_4jcs2"]
 [ext_resource type="Texture2D" uid="uid://ogvxg55im8u" path="res://assets/player/idle/ProtagRotacao1.png" id="2_k7i1t"]
 [ext_resource type="AudioStream" uid="uid://crwu5bhqcj1mi" path="res://assets/SFX/menu/GameOver_sfx (3).mp3" id="2_rsf7e"]
-[ext_resource type="Texture2D" uid="uid://ck6rm4dxehj4u" path="res://assets/UIs/GameOver/GameOver_BackToMenu.png" id="2_vfr1v"]
 [ext_resource type="Script" uid="uid://buvfavh76bi0" path="res://global/cenas/VFX/_Shaders/Flash/S_ScreenFlash.gd" id="3_4jcs2"]
-[ext_resource type="Texture2D" uid="uid://cf3336l0x5yvv" path="res://assets/UIs/GameOver/GameOver_BackToMenu_Selected.png" id="3_ipdyc"]
-[ext_resource type="AudioStream" uid="uid://do3ax8b80olkl" path="res://assets/SFX/menu/Botao_de_interacao_sfx.mp3" id="3_nrw3q"]
 [ext_resource type="Script" uid="uid://chddutum2qtx" path="res://global/script/audio_stream_player.gd" id="3_r7ban"]
 [ext_resource type="Texture2D" uid="uid://21gc83yk0hjs" path="res://assets/player/idle/ProtagRotacao2.png" id="3_rsf7e"]
-[ext_resource type="Texture2D" uid="uid://cqa5eipu5h5jo" path="res://assets/UIs/GameOver/GameOver_KeepPlaying.png" id="4_1thhk"]
 [ext_resource type="Texture2D" uid="uid://duwbgkspxqxtr" path="res://assets/player/idle/ProtagRotacao3.png" id="4_nrw3q"]
-[ext_resource type="Texture2D" uid="uid://c2fup32lsoi11" path="res://assets/UIs/GameOver/GameOver_KeepPlaying_Selected.png" id="5_4jcs2"]
+[ext_resource type="AudioStream" uid="uid://dolchvhih3nic" path="res://assets/SFX/menu/Checklist_Marcar_sfx.mp3" id="4_x1o6q"]
+[ext_resource type="AudioStream" uid="uid://b0rjc5l6nfs03" path="res://assets/SFX/menu/Checklist_Nota_sfx.mp3" id="5_mg413"]
 [ext_resource type="Texture2D" uid="uid://6loq5aj34fxn" path="res://assets/player/idle/ProtagRotacao4.png" id="5_r7ban"]
-[ext_resource type="Script" uid="uid://b1an37kybkb4q" path="res://global/script/crt.gd" id="6_bdxbk"]
 [ext_resource type="Texture2D" uid="uid://ceennm55jy7t3" path="res://assets/player/idle/ProtagRotacao5.png" id="6_l24ib"]
 [ext_resource type="Texture2D" uid="uid://cymoswu8rv8ho" path="res://assets/player/idle/ProtagRotacao6.png" id="7_bdxbk"]
 [ext_resource type="Texture2D" uid="uid://8vyvlpgytp4u" path="res://assets/player/idle/ProtagRotacao7.png" id="8_00gep"]
 [ext_resource type="Texture2D" uid="uid://cjraf7hwovl2x" path="res://assets/player/idle/ProtagRotacao8.png" id="9_bx5rg"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ek6yr"]
-shader = ExtResource("2_4jcs2")
+[ext_resource type="Texture2D" uid="uid://dermgus6a4ikx" path="res://assets/UIs/ENDOFGAME/TelaFinal.png" id="14_t4pnq"]
+[ext_resource type="Texture2D" uid="uid://gouimc3aqor" path="res://assets/UIs/ENDOFGAME/ContadorDePulos.png" id="15_x1o6q"]
+[ext_resource type="FontFile" uid="uid://bcgyc0ombka2d" path="res://assets/fonts/Rayman 1.ttf" id="16_mg413"]
+[ext_resource type="Texture2D" uid="uid://ctn64ox1108mb" path="res://assets/UIs/ENDOFGAME/ContadorDeDashes.png" id="17_cxldu"]
+[ext_resource type="Texture2D" uid="uid://dgk08pfcxoc86" path="res://assets/UIs/ENDOFGAME/TerminouOJogo_Normal.png" id="18_b828w"]
+[ext_resource type="Texture2D" uid="uid://daf2whc3iv2vx" path="res://assets/UIs/ENDOFGAME/TerminouOJogo_Marcado.png" id="19_ji0og"]
+[ext_resource type="Texture2D" uid="uid://dwlm4d1gb1rnn" path="res://assets/UIs/ENDOFGAME/MenosDe300_Normal.png" id="20_c5rd6"]
+[ext_resource type="Texture2D" uid="uid://dl7l3plyowv05" path="res://assets/UIs/ENDOFGAME/MenosDe300_Marcado.png" id="21_tvka0"]
+[ext_resource type="Texture2D" uid="uid://bmuk3s3lh1ell" path="res://assets/UIs/ENDOFGAME/PassarSemCheckpoint_Normal.png" id="22_g8bju"]
+[ext_resource type="Texture2D" uid="uid://dfsj3bii2ceq8" path="res://assets/UIs/ENDOFGAME/PassarSemCheckpoint_Marcado.png" id="23_7pr01"]
+[ext_resource type="Texture2D" uid="uid://x3dq6gc0e6fm" path="res://assets/UIs/ENDOFGAME/NotaFinalLOGO.png" id="24_1vlej"]
+[ext_resource type="Texture2D" uid="uid://dtudtypvyfr5l" path="res://assets/UIs/ENDOFGAME/NotaA (melhor).png" id="25_4of0n"]
+[ext_resource type="Texture2D" uid="uid://dfkbwkdytnoof" path="res://assets/UIs/ENDOFGAME/NotaB(meio).png" id="26_xvkxx"]
+[ext_resource type="Texture2D" uid="uid://bnwc45xbvgjim" path="res://assets/UIs/ENDOFGAME/NotaC (pior).png" id="27_2mlrc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_av6ho"]
 shader = ExtResource("2_1thhk")
@@ -111,34 +116,10 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../ButtonMenu:visible")
+tracks/3/path = NodePath("../AudioStreamPlayer:playing")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../ButtonReplay:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../AudioStreamPlayer:playing")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -187,34 +168,10 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../ButtonMenu:visible")
+tracks/3/path = NodePath("../AudioStreamPlayer:playing")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(7),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../ButtonReplay:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(7),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../AudioStreamPlayer:playing")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(1.0666667),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -259,6 +216,70 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_0o7al"]
+font = ExtResource("16_mg413")
+font_size = 32
+font_color = Color(18.892157, 0, 0, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6tkk0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_b828w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_ji0og")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7n6li"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_c5rd6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_tvka0")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5epgs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_g8bju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_7pr01")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4o0tb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("27_2mlrc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_xvkxx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_4of0n")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="GameOverMenu" type="Control" unique_id=846988517]
 layout_mode = 3
 anchors_preset = 15
@@ -274,25 +295,17 @@ volume_db = -8.0
 script = ExtResource("3_r7ban")
 volume = -8.0
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=505812301]
-stream = ExtResource("3_nrw3q")
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=1652788402]
+stream = ExtResource("4_x1o6q")
 volume_db = -8.0
 script = ExtResource("3_r7ban")
 volume = -8.0
 
-[node name="CRT" type="ColorRect" parent="." unique_id=1777907682]
-z_index = -1
-material = SubResource("ShaderMaterial_ek6yr")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -2.0
-offset_bottom = -2.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-script = ExtResource("6_bdxbk")
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="." unique_id=915249423]
+stream = ExtResource("5_mg413")
+volume_db = -8.0
+script = ExtResource("3_r7ban")
+volume = -8.0
 
 [node name="Flash" type="Node3D" parent="." unique_id=1877286434]
 
@@ -346,62 +359,61 @@ sprite_frames = SubResource("SpriteFrames_4jcs2")
 autoplay = "default"
 frame_progress = 0.10086462
 
-[node name="GameOver" type="Sprite2D" parent="." unique_id=973253807]
+[node name="Menu" type="Sprite2D" parent="." unique_id=529531789]
 z_index = -2
-position = Vector2(574, 325)
-texture = ExtResource("1_ksmik")
+position = Vector2(576, 324)
+texture = ExtResource("14_t4pnq")
 
-[node name="ButtonMenu" type="Button" parent="." unique_id=48498822]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0625
-anchor_top = 0.75308645
-anchor_right = 0.20833333
-anchor_bottom = 0.83950615
-offset_right = 8.0
-offset_bottom = 8.0
-flat = true
+[node name="JumpCounter" type="Sprite2D" parent="." unique_id=1190025869]
+z_index = -2
+position = Vector2(850.5, 250.5)
+texture = ExtResource("15_x1o6q")
+
+[node name="Label" type="Label" parent="JumpCounter" unique_id=899259064]
+offset_left = 77.5
+offset_top = -18.5
+offset_right = 158.5
+offset_bottom = 15.5
+text = "1000"
+label_settings = SubResource("LabelSettings_0o7al")
 metadata/_edit_use_anchors_ = true
 
-[node name="MainMenuLabel" type="Sprite2D" parent="ButtonMenu" unique_id=1999304122]
+[node name="DashCounter" type="Sprite2D" parent="." unique_id=1955859467]
 z_index = -2
-position = Vector2(88, 31.99997)
-texture = ExtResource("2_vfr1v")
+position = Vector2(850.5, 386.5)
+texture = ExtResource("17_cxldu")
 
-[node name="MainMenuSelected" type="Sprite2D" parent="ButtonMenu" unique_id=22352522]
-visible = false
-z_index = -2
-position = Vector2(96, 15.9999695)
-texture = ExtResource("3_ipdyc")
-
-[node name="ButtonReplay" type="Button" parent="." unique_id=1111428529]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.7361111
-anchor_top = 0.75308645
-anchor_right = 0.9375
-anchor_bottom = 0.83950615
-offset_right = 8.0
-offset_bottom = 8.0
-flat = true
+[node name="Label" type="Label" parent="DashCounter" unique_id=1926917129]
+offset_left = 77.5
+offset_top = -18.5
+offset_right = 158.5
+offset_bottom = 15.5
+text = "1000"
+label_settings = SubResource("LabelSettings_0o7al")
 metadata/_edit_use_anchors_ = true
 
-[node name="ReplayLabel" type="Sprite2D" parent="ButtonReplay" unique_id=426193692]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2070830479]
 z_index = -2
-position = Vector2(120, 31.99997)
-texture = ExtResource("4_1thhk")
+position = Vector2(315, 250)
+sprite_frames = SubResource("SpriteFrames_6tkk0")
 
-[node name="ReplaySelected" type="Sprite2D" parent="ButtonReplay" unique_id=1007571908]
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=584577593]
+z_index = -2
+position = Vector2(312, 384)
+sprite_frames = SubResource("SpriteFrames_7n6li")
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="." unique_id=1752080977]
+z_index = -2
+position = Vector2(312, 520)
+sprite_frames = SubResource("SpriteFrames_5epgs")
+
+[node name="Rank" type="Sprite2D" parent="." unique_id=1914794534]
+z_index = -2
+position = Vector2(776, 512)
+texture = ExtResource("24_1vlej")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Rank" unique_id=1040760832]
 visible = false
-z_index = -2
-position = Vector2(120, 15.9999695)
-texture = ExtResource("5_4jcs2")
-
-[connection signal="mouse_entered" from="ButtonMenu" to="." method="_on_button_menu_mouse_entered"]
-[connection signal="mouse_exited" from="ButtonMenu" to="." method="_on_button_menu_mouse_exited"]
-[connection signal="pressed" from="ButtonMenu" to="." method="_on_button_menu_pressed"]
-[connection signal="mouse_entered" from="ButtonReplay" to="." method="_on_button_replay_mouse_entered"]
-[connection signal="mouse_exited" from="ButtonReplay" to="." method="_on_button_replay_mouse_exited"]
-[connection signal="pressed" from="ButtonReplay" to="." method="_on_button_replay_pressed"]
+position = Vector2(224, 0)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_4o0tb")

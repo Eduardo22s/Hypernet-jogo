@@ -1,65 +1,54 @@
 extends Control
 
+var rank = 1
+
 func _ready() -> void:
 	$Fade/AnimationPlayer.play_backwards("fade")
 	$DeathAnimation/AnimationPlayer.play("death")
+	$JumpCounter/Label.text = str(Global.how_many_jumps)
+	$DashCounter/Label.text = str(Global.how_many_dashes)
 	
 	Global.reset_timer()
 	MusicMenu.stop_music()
-
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("menu"):
-		$ButtonMenu/MainMenuLabel.visible = false
-		$ButtonMenu/MainMenuSelected.visible = true
-		$Flash/S_ScreenFlashLayer/ScreenFlash.PlayFlash()
-		$Fade/AnimationPlayer.play("fade")
-		$AudioStreamPlayer2.play()
-		MusicMenu.play_theme()
-		
-		await get_tree().create_timer(2.5).timeout
-		get_tree().change_scene_to_file("res://scenes/stages/main_menu.tscn")
 	
-	if Input.is_action_just_pressed("ui_accept"):
-		$ButtonReplay/ReplayLabel.visible = false
-		$ButtonReplay/ReplaySelected.visible = true
-		$Flash/S_ScreenFlashLayer/ScreenFlash.PlayFlash()
-		$Fade/AnimationPlayer.play("fade")
+	await get_tree().create_timer(8.0).timeout
+	$AudioStreamPlayer2.play()
+	$AnimatedSprite2D.frame = 1
+	
+	if Global.seconds < 300:
+		await get_tree().create_timer(2.0).timeout
 		$AudioStreamPlayer2.play()
-		
-		await get_tree().create_timer(2.5).timeout
-		get_tree().change_scene_to_file("res://scenes/stages/fase_jardim.tscn")
+		$AnimatedSprite2D2.frame = 1
+		rank += 1
 
+	if !Global.checkpoint_used:
+		await get_tree().create_timer(2.0).timeout
+		$AudioStreamPlayer2.play()
+		$AnimatedSprite2D3.frame = 1
+		rank += 1
 
-func _on_button_menu_mouse_entered() -> void:
-	$ButtonMenu/MainMenuLabel.scale = Vector2(1.25, 1.25)
-
-func _on_button_menu_mouse_exited() -> void:
-	$ButtonMenu/MainMenuLabel.scale = Vector2(1.0, 1.0)
-
-func _on_button_menu_pressed() -> void:
-	$ButtonMenu/MainMenuLabel.visible = false
-	$ButtonMenu/MainMenuSelected.visible = true
+	if rank <= 1:
+		await get_tree().create_timer(2.0).timeout
+		$AudioStreamPlayer3.play()
+		$Rank/AnimatedSprite2D.visible = true
+		$Rank/AnimatedSprite2D.frame = 0
+	elif rank <= 2:
+		await get_tree().create_timer(2.0).timeout
+		$AudioStreamPlayer3.play()
+		$Rank/AnimatedSprite2D.visible = true
+		$Rank/AnimatedSprite2D.frame = 1
+	else:
+		await get_tree().create_timer(2.0).timeout
+		$AudioStreamPlayer3.play()
+		$Rank/AnimatedSprite2D.visible = true
+		$Rank/AnimatedSprite2D.frame = 2
+	
+	
+	await get_tree().create_timer(5.0).timeout
 	$Flash/S_ScreenFlashLayer/ScreenFlash.PlayFlash()
 	$Fade/AnimationPlayer.play("fade")
+	$AudioStreamPlayer2.play()
 	
-	await get_tree().create_timer(1.0).timeout
-	get_tree().change_scene_to_file("res://scenes/stages/main_menu.tscn")
-
-
-func _on_button_replay_mouse_entered() -> void:
-	$ButtonReplay/ReplayLabel.scale = Vector2(1.25, 1.25)
-
-func _on_button_replay_mouse_exited() -> void:
-	$ButtonReplay/ReplayLabel.scale = Vector2(1.0, 1.0)
-
-func _on_button_replay_pressed() -> void:
-	Global.reset_timer()
-	Global.end_game = false
-	
-	$ButtonReplay/ReplayLabel.visible = false
-	$ButtonReplay/ReplaySelected.visible = true
-	$Flash/S_ScreenFlashLayer/ScreenFlash.PlayFlash()
-	$Fade/AnimationPlayer.play("fade")
-	
-	await get_tree().create_timer(1.0).timeout
-	get_tree().change_scene_to_file("res://scenes/stages/fase_jardim.tscn")
+	await get_tree().create_timer(2.5).timeout
+	await get_tree().process_frame
+	get_tree().change_scene_to_file("res://scenes/stages/credits_screen.tscn")

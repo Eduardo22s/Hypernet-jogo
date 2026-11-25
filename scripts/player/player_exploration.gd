@@ -218,8 +218,10 @@ func _unhandled_input(_event: InputEvent) -> void:
 	if modo_voo:
 		return
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		Global.how_many_jumps += 1
 		$AudioStreamPlayer3.play()
 	if Input.is_action_just_pressed("dash") and not dashing:
+		Global.how_many_dashes += 1
 		$AudioStreamPlayer2.play()
 
 
@@ -824,8 +826,10 @@ func create_checkpoints() -> void:
 
 func jump_to_checkpoint():
 	if Input.is_action_just_pressed("jump_to_checkpoint") && Global.checkpoint_in_scene:
+		Global.checkpoint_used = true
 		global_position = Global.checkpoint_pos
 		$AudioStreamPlayer5.play()
+		$HUD/GlitchEffect/ColorRect.PlayGlitch()
 	else:
 		return
 
@@ -856,6 +860,7 @@ func _on_mirror_detector_area_entered(area: Area3D) -> void:
 			return
 		velocity = Vector3.ZERO
 		teleport_player(portal.destination)
+		
 
 	elif area is MirrorZone:
 		var espelho := _encontrar_ancestral(area, MirrorTeleport) as MirrorTeleport
@@ -881,6 +886,7 @@ func _encontrar_ancestral(no: Node, tipo: Variant) -> Node:
 
 func teleport_player(destino: Node3D) -> void:
 	$AudioStreamPlayer5.play()
+	$HUD/GlitchEffect/ColorRect.PlayGlitch()
 	set_physics_process(false)
 	mirror_teleporting = true
 	dashing = false   # o dash não pode continuar "congelado" durante o teleporte

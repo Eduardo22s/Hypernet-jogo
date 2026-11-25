@@ -3,7 +3,7 @@ class_name BreakablePlatform
 
 
 @export var tempo_antes_quebrar := 1      # tempo entre pisar e quebrar
-@export var tempo_respawn := 3.0            # tempo para voltar (0 = nunca volta)
+@export var tempo_respawn := 2.5            # tempo para voltar (0 = nunca volta)
 @export var intensidade_tremor := 0.04
 @export var respawn_ativo := true
 

@@ -13,6 +13,8 @@
 [ext_resource type="Script" uid="uid://dktpbr0qs6kwl" path="res://scripts/stages/mudar_fase_1.gd" id="11_hp7xp"]
 [ext_resource type="Texture2D" uid="uid://ct2w3xt1qe8d7" path="res://assets/props2D/portal/Portal1.png" id="12_7kah5"]
 [ext_resource type="Shader" uid="uid://conmejl7vtvgv" path="res://global/cenas/VFX/_Shaders/Flash/S_ScreenFlash.gdshader" id="12_538ju"]
+[ext_resource type="AudioStream" uid="uid://dl3edaul1dwe3" path="res://assets/SFX/stages/Transicao_de_fase_sfx.mp3" id="12_p2ppl"]
+[ext_resource type="Script" uid="uid://chddutum2qtx" path="res://global/script/audio_stream_player.gd" id="13_6i0bb"]
 [ext_resource type="PackedScene" uid="uid://dawu66n17p2am" path="res://scenes/player/player_exploration.tscn" id="13_538ju"]
 [ext_resource type="Texture2D" uid="uid://dkipin0p3j0fv" path="res://assets/props2D/portal/Portal2.png" id="13_q1sef"]
 [ext_resource type="Script" uid="uid://buvfavh76bi0" path="res://global/cenas/VFX/_Shaders/Flash/S_ScreenFlash.gd" id="13_su8sl"]
@@ -434,6 +436,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3, 19.5, -12.900001)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.199997, 45.800003, 11)
 script = ExtResource("11_hp7xp")
 metadata/_edit_group_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MudarFase1" unique_id=497602426]
+stream = ExtResource("12_p2ppl")
+volume_db = -6.0
+script = ExtResource("13_6i0bb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MudarFase1" unique_id=1259132515]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.099998474, 1.5, 0.05000019)

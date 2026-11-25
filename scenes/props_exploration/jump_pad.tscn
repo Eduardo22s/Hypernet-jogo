@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bxl4yfd152dwq" path="res://Seta_PuloDuplo/SetaAcertada_2.png" id="3_rksny"]
 [ext_resource type="Texture2D" uid="uid://cejltku7jjowu" path="res://Seta_PuloDuplo/SetaAcertada_3.png" id="4_c6fpx"]
 [ext_resource type="Texture2D" uid="uid://bc1rrwacgu0pu" path="res://Seta_PuloDuplo/SetaAcertada_4.png" id="5_gnqcw"]
+[ext_resource type="AudioStream" uid="uid://dalfngxtq4o6g" path="res://assets/SFX/stages/Seta_de_pulo_duplo_sfx.mp3" id="6_1cslc"]
 [ext_resource type="Texture2D" uid="uid://dqyqj5pdalsro" path="res://Seta_PuloDuplo/SetaAcertada_5.png" id="6_d3l37"]
 [ext_resource type="Texture2D" uid="uid://dj640s46ommon" path="res://Seta_PuloDuplo/SetaAcertada_6.png" id="7_5fqfu"]
 [ext_resource type="Texture2D" uid="uid://djf2falgynjku" path="res://Seta_PuloDuplo/SetaNormal_1.png" id="8_1cslc"]
@@ -86,6 +87,12 @@ stream = ExtResource("3_c6fpx")
 volume_db = -6.0
 script = ExtResource("3_gnqcw")
 
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="." unique_id=1150390123]
+stream = ExtResource("6_1cslc")
+volume_db = -12.0
+script = ExtResource("3_gnqcw")
+volume = -12.0
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=11302717]
 shape = SubResource("BoxShape3D_t2hhj")
 
@@ -99,4 +106,5 @@ autoplay = "Idle"
 frame_progress = 0.5138277
 
 [node name="EdgeGlow" parent="." unique_id=954886917 instance=ExtResource("18_5fqfu")]
+layer = -1
 visible = false

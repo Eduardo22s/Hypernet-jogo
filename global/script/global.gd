@@ -29,6 +29,10 @@ var word_selected = false
 
 #var player_return_pos = Vector3(-0.235, 5.0, 0.525)
 
+var how_many_jumps = 0
+var how_many_dashes = 0
+var checkpoint_used = false
+
 var points = 0
 var checkpoints = 0
 var checkpoint_pos = Vector3()

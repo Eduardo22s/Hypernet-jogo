@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://btymqbwwcj345" path="res://assets/props2D/NPC/doorman/BatendoAmão/PorteiroBateMão2.png" id="3_qf4rg"]
 [ext_resource type="Script" uid="uid://chddutum2qtx" path="res://global/script/audio_stream_player.gd" id="3_yr6tg"]
 [ext_resource type="Texture2D" uid="uid://by2yrrsq07g6s" path="res://assets/props2D/NPC/doorman/BatendoAmão/PorteiroBateMão3.png" id="4_oe30k"]
+[ext_resource type="AudioStream" uid="uid://c37urr77gd5u5" path="res://assets/SFX/enemies/Portal_porteiro_sfx.mp3" id="5_7y3xn"]
 [ext_resource type="Texture2D" uid="uid://cr7xw1dg7rcte" path="res://assets/props2D/NPC/doorman/BatendoAmão/PorteiroBateMão4.png" id="5_bipjb"]
 [ext_resource type="Texture2D" uid="uid://p3jjqqn1cg4g" path="res://assets/props2D/NPC/doorman/BatendoAmão/PorteiroBateMão5.png" id="6_xfmbg"]
 [ext_resource type="Texture2D" uid="uid://cododkc12c8dp" path="res://assets/props2D/NPC/doorman/BatendoAmão/PorteiroBateMão6.png" id="7_vgv8x"]
@@ -228,6 +229,11 @@ stream = ExtResource("3_26nkm")
 volume_db = -8.0
 script = ExtResource("3_yr6tg")
 volume = -8.0
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="." unique_id=1300911636]
+stream = ExtResource("5_7y3xn")
+volume_db = -6.0
+script = ExtResource("3_yr6tg")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1422105610]
 billboard = 1

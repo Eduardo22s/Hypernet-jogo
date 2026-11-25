@@ -4,6 +4,11 @@ func _ready() -> void:
 	Global.reset_timer()
 	Global.tutorial = true
 	Global.which_way = ""
+	Global.points = 0
+	Global.checkpoints = 0
+	Global.how_many_jumps = 0
+	Global.how_many_dashes = 0
+	Global.checkpoint_used = false
 
 	if not Global.menu_intro_played:
 		Global.menu_intro_played = true

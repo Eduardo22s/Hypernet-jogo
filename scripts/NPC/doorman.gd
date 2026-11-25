@@ -25,8 +25,8 @@ func _process(_delta: float) -> void:
 
 
 func pode_passar() -> bool:
-	# Só passa se tiver MAIS tempo do que o segurança exige
-	return Global.seconds > seconds
+	# Só passa se tiver MENOS tempo do que o segurança exige
+	return Global.seconds < seconds
 
 
 func liberar() -> void:
@@ -40,6 +40,7 @@ func liberar() -> void:
 
 
 func spawnar_portal() -> void:
+	$AudioStreamPlayer3.play()
 	if portal_criado or portal_scene == null or portal_spawn_point == null:
 		return
 	portal_criado = true

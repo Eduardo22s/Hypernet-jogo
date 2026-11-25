@@ -18,6 +18,7 @@ func _ready():
 
 func _on_body_entered(body):
 	if body is PlayerExploration:
+		$AudioStreamPlayer.play()
 		body.entrar_vendaval(self)
 
 func _on_body_exited(body):

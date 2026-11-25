@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b08skoj6sw6u1" path="res://scenes/NPC/overseer.tscn" id="7_kafjm"]
 [ext_resource type="Script" uid="uid://i1kirnb10mih" path="res://scripts/props_exploration/end_game_detector.gd" id="8_48urs"]
 [ext_resource type="PackedScene" uid="uid://dawu66n17p2am" path="res://scenes/player/player_exploration.tscn" id="9_mboi4"]
+[ext_resource type="AudioStream" uid="uid://dl3edaul1dwe3" path="res://assets/SFX/stages/Transicao_de_fase_sfx.mp3" id="10_3qcos"]
 [ext_resource type="MeshLibrary" uid="uid://bpsb2jq4mm5ut" path="res://meshlib.meshlib" id="10_f8pve"]
 [ext_resource type="PackedScene" uid="uid://cm4qlwgwdhxl5" path="res://scenes/props_exploration/breakable_platform.tscn" id="11_7a4ip"]
 [ext_resource type="PackedScene" uid="uid://bdouyidvauvot" path="res://scenes/props_exploration/wind_zone.tscn" id="11_udk1j"]
@@ -609,6 +610,11 @@ script = ExtResource("8_48urs")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EndGameDetector" unique_id=1202858089]
 transform = Transform3D(0.9999996, 0, 0, 0, 0.9999996, 0, 0, 0, 0.9999996, 0, -1.3250046, 0)
 shape = SubResource("CylinderShape3D_isfe7")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="EndGameDetector" unique_id=484645972]
+stream = ExtResource("10_3qcos")
+volume_db = -6.0
+script = ExtResource("47_1d880")
 
 [node name="WindZones" type="Node" parent="." unique_id=339968555]
 
@@ -1586,19 +1592,19 @@ velocidade = 0.0
 [node name="MovingPlatform7" parent="MovingPlatforms" unique_id=1834408351 instance=ExtResource("22_jan4l")]
 transform = Transform3D(4.330127, 0, 2.5, 0, 5, 0, -2.5, 0, 4.330127, -28, 273, -24)
 tipo_movimento = 1
-velocidade = 3.0
+velocidade = 2.5
 distancia = 3.0
 
 [node name="MovingPlatform9" parent="MovingPlatforms" unique_id=652774053 instance=ExtResource("22_jan4l")]
 transform = Transform3D(4.829629, 0, -1.2940953, 0, 5, 0, 1.2940953, 0, 4.829629, -10, 283, -6)
 tipo_movimento = 1
-velocidade = 3.0
+velocidade = 2.5
 distancia = 2.0
 
 [node name="MovingPlatform11" parent="MovingPlatforms" unique_id=514563276 instance=ExtResource("22_jan4l")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -26, 290.9, 19)
 tipo_movimento = 1
-velocidade = 1.0
+velocidade = 2.5
 distancia = 2.0
 
 [node name="GridMapFliperama" type="GridMap" parent="." unique_id=2053642657]
@@ -4853,498 +4859,498 @@ script = ExtResource("47_1d880")
 [node name="Node" type="Node" parent="." unique_id=1670528883]
 
 [node name="Esteira" parent="Node" unique_id=808304230 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, 0, 0, 0, 0, 2.75, 0, -2.75, 0, -61, 164.00002, -17.000002)
+transform = Transform3D(2.75, 0, 0, 0, 0, 2.75, 0, -2.75, 0, -61, 164.01445, -17.000002)
 
 [node name="Esteira2" parent="Node" unique_id=254184682 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, 0, 0, 0, 0, 2.75, 0, -2.75, 0, -53, 164.00002, -17.000002)
+transform = Transform3D(2.75, 0, 0, 0, 0, 2.75, 0, -2.75, 0, -53, 164.01445, -17.000002)
 
 [node name="Esteira3" parent="Node" unique_id=230813326 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, 0, 0, 0, 0, 2.75, 0, -2.75, 0, -45, 164.00002, -17.000002)
+transform = Transform3D(2.75, 0, 0, 0, 0, 2.75, 0, -2.75, 0, -45, 164.01445, -17.000002)
 
 [node name="Esteira4" parent="Node" unique_id=287718625 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, 0, 0, 0, 0, 2.75, 0, -2.75, 0, -65, 164.00002, -11.100001)
+transform = Transform3D(2.75, 0, 0, 0, 0, 2.75, 0, -2.75, 0, -65, 164.01445, -11.100001)
 tipo_esteira = 1
 
 [node name="Esteira5" parent="Node" unique_id=2115570637 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, 0, 0, 0, 0, 2.75, 0, -2.75, 0, -57, 164.00002, -11.100001)
+transform = Transform3D(2.75, 0, 0, 0, 0, 2.75, 0, -2.75, 0, -57, 164.01445, -11.100001)
 tipo_esteira = 1
 
 [node name="Esteira6" parent="Node" unique_id=2049446646 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, 0, 0, 0, 0, 2.75, 0, -2.75, 0, -49, 164.00002, -11.100001)
+transform = Transform3D(2.75, 0, 0, 0, 0, 2.75, 0, -2.75, 0, -49, 164.01445, -11.100001)
 tipo_esteira = 1
 
 [node name="Esteira7" parent="Node" unique_id=90468490 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, 0, 0, 0, -2.4041265e-07, -2.75, 0, 2.75, -2.4041265e-07, -47, 190, -7.000001)
+transform = Transform3D(2.75, 0, 0, 0, -2.4041265e-07, -2.75, 0, 2.75, -2.4041265e-07, -47, 190.01443, -7.000001)
 
 [node name="Esteira8" parent="Node" unique_id=1146077209 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, 0, 0, 0, -2.4041265e-07, -2.75, 0, 2.75, -2.4041265e-07, -47, 190, -5.000001)
+transform = Transform3D(2.75, 0, 0, 0, -2.4041265e-07, -2.75, 0, 2.75, -2.4041265e-07, -47, 190.01443, -5.000001)
 
 [node name="Esteira9" parent="Node" unique_id=304987465 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, 0, 0, 0, -2.4041265e-07, -2.75, 0, 2.75, -2.4041265e-07, -47, 190, -2.9000008)
+transform = Transform3D(2.75, 0, 0, 0, -2.4041265e-07, -2.75, 0, 2.75, -2.4041265e-07, -47, 190.01443, -2.9000008)
 
 [node name="Esteira10" parent="Node" unique_id=876330147 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, 0, 0, 0, -2.4041265e-07, -2.75, 0, 2.75, -2.4041265e-07, -47, 190, -1.0000008)
+transform = Transform3D(2.75, 0, 0, 0, -2.4041265e-07, -2.75, 0, 2.75, -2.4041265e-07, -47, 190.01443, -1.0000008)
 
 [node name="Esteira11" parent="Node" unique_id=666736124 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, 0, 0, 0, -2.4041265e-07, -2.75, 0, 2.75, -2.4041265e-07, -47, 190, 0.99999917)
+transform = Transform3D(2.75, 0, 0, 0, -2.4041265e-07, -2.75, 0, 2.75, -2.4041265e-07, -47, 190.01443, 0.99999917)
 
 [node name="Esteira12" parent="Node" unique_id=772330634 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, 0, 0, 0, -2.4041265e-07, -2.75, 0, 2.75, -2.4041265e-07, -47, 190, 2.999999)
+transform = Transform3D(2.75, 0, 0, 0, -2.4041265e-07, -2.75, 0, 2.75, -2.4041265e-07, -47, 190.01443, 2.999999)
 
 [node name="Esteira13" parent="Node" unique_id=1874283070 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, 0, 0, 0, -2.4041265e-07, -2.75, 0, 2.75, -2.4041265e-07, -47, 190, 4.999999)
+transform = Transform3D(2.75, 0, 0, 0, -2.4041265e-07, -2.75, 0, 2.75, -2.4041265e-07, -47, 190.01443, 4.999999)
 
 [node name="Esteira14" parent="Node" unique_id=164428767 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, 0, 0, 0, -2.4041265e-07, -2.75, 0, 2.75, -2.4041265e-07, -47, 190, 6.9999995)
+transform = Transform3D(2.75, 0, 0, 0, -2.4041265e-07, -2.75, 0, 2.75, -2.4041265e-07, -47, 190.01443, 6.9999995)
 
 [node name="Esteira15" parent="Node" unique_id=54038456 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, 0, 0, 0, -2.4041265e-07, -2.75, 0, 2.75, -2.4041265e-07, -47, 190, 9)
+transform = Transform3D(2.75, 0, 0, 0, -2.4041265e-07, -2.75, 0, 2.75, -2.4041265e-07, -47, 190.01443, 9)
 
 [node name="Esteira16" parent="Node" unique_id=1662472041 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, 0, 0, 0, -2.4041265e-07, -2.75, 0, 2.75, -2.4041265e-07, -47, 190, 11)
+transform = Transform3D(2.75, 0, 0, 0, -2.4041265e-07, -2.75, 0, 2.75, -2.4041265e-07, -47, 190.01443, 11)
 
 [node name="Esteira17" parent="Node" unique_id=1063493596 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -30.989998, 190, -9.090001)
+transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -30.989998, 190.01443, -9.090001)
 
 [node name="Esteira18" parent="Node" unique_id=399575629 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -32.989998, 190, -9.090001)
+transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -32.989998, 190.01443, -9.090001)
 
 [node name="Esteira19" parent="Node" unique_id=1321768556 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -35.09, 190, -9.090001)
+transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -35.09, 190.01443, -9.090001)
 
 [node name="Esteira20" parent="Node" unique_id=1728678553 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -36.99, 190, -9.090001)
+transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -36.99, 190.01443, -9.090001)
 
 [node name="Esteira21" parent="Node" unique_id=448656332 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -38.99, 190, -9.090001)
+transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -38.99, 190.01443, -9.090001)
 
 [node name="Esteira22" parent="Node" unique_id=829474887 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -40.99, 190, -9.090001)
+transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -40.99, 190.01443, -9.090001)
 
 [node name="Esteira23" parent="Node" unique_id=1329690700 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -42.99, 190, -9.090001)
+transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -42.99, 190.01443, -9.090001)
 
 [node name="Esteira24" parent="Node" unique_id=107381030 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -44.99, 190, -9.090001)
+transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -44.99, 190.01443, -9.090001)
 
 [node name="Esteira25" parent="Node" unique_id=1711046552 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -46.99, 190, -9.090001)
+transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -46.99, 190.01443, -9.090001)
 
 [node name="Esteira26" parent="Node" unique_id=1999654273 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-2.75, 2.4041265e-07, -2.1017542e-14, 0, -2.4041267e-07, -2.75, -2.4041265e-07, -2.75, 2.4041267e-07, -28.922096, 190, 8.904209)
+transform = Transform3D(-2.75, 2.4041265e-07, -2.1017542e-14, 0, -2.4041267e-07, -2.75, -2.4041265e-07, -2.75, 2.4041267e-07, -28.922096, 190.01443, 8.904209)
 
 [node name="Esteira27" parent="Node" unique_id=340665308 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-2.75, 2.4041265e-07, -2.1017542e-14, 0, -2.4041267e-07, -2.75, -2.4041265e-07, -2.75, 2.4041267e-07, -28.922096, 190, 6.9042106)
+transform = Transform3D(-2.75, 2.4041265e-07, -2.1017542e-14, 0, -2.4041267e-07, -2.75, -2.4041265e-07, -2.75, 2.4041267e-07, -28.922096, 190.01443, 6.9042106)
 
 [node name="Esteira28" parent="Node" unique_id=827266426 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-2.75, 2.4041265e-07, -2.1017542e-14, 0, -2.4041267e-07, -2.75, -2.4041265e-07, -2.75, 2.4041267e-07, -28.922096, 190, 4.80421)
+transform = Transform3D(-2.75, 2.4041265e-07, -2.1017542e-14, 0, -2.4041267e-07, -2.75, -2.4041265e-07, -2.75, 2.4041267e-07, -28.922096, 190.01443, 4.80421)
 
 [node name="Esteira29" parent="Node" unique_id=1962817514 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-2.75, 2.4041265e-07, -2.1017542e-14, 0, -2.4041267e-07, -2.75, -2.4041265e-07, -2.75, 2.4041267e-07, -28.922096, 190, 2.90421)
+transform = Transform3D(-2.75, 2.4041265e-07, -2.1017542e-14, 0, -2.4041267e-07, -2.75, -2.4041265e-07, -2.75, 2.4041267e-07, -28.922096, 190.01443, 2.90421)
 
 [node name="Esteira30" parent="Node" unique_id=574033730 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-2.75, 2.4041265e-07, -2.1017542e-14, 0, -2.4041267e-07, -2.75, -2.4041265e-07, -2.75, 2.4041267e-07, -28.922096, 190, 0.90421045)
+transform = Transform3D(-2.75, 2.4041265e-07, -2.1017542e-14, 0, -2.4041267e-07, -2.75, -2.4041265e-07, -2.75, 2.4041267e-07, -28.922096, 190.01443, 0.90421045)
 
 [node name="Esteira31" parent="Node" unique_id=1402376027 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-2.75, 2.4041265e-07, -2.1017542e-14, 0, -2.4041267e-07, -2.75, -2.4041265e-07, -2.75, 2.4041267e-07, -28.922096, 190, -1.0957896)
+transform = Transform3D(-2.75, 2.4041265e-07, -2.1017542e-14, 0, -2.4041267e-07, -2.75, -2.4041265e-07, -2.75, 2.4041267e-07, -28.922096, 190.01443, -1.0957896)
 
 [node name="Esteira32" parent="Node" unique_id=1401053572 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-2.75, 2.4041265e-07, -2.1017542e-14, 0, -2.4041267e-07, -2.75, -2.4041265e-07, -2.75, 2.4041267e-07, -28.922096, 190, -3.0957894)
+transform = Transform3D(-2.75, 2.4041265e-07, -2.1017542e-14, 0, -2.4041267e-07, -2.75, -2.4041265e-07, -2.75, 2.4041267e-07, -28.922096, 190.01443, -3.0957894)
 
 [node name="Esteira33" parent="Node" unique_id=2105560823 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-2.75, 2.4041265e-07, -2.1017542e-14, 0, -2.4041267e-07, -2.75, -2.4041265e-07, -2.75, 2.4041267e-07, -28.922096, 190, -5.0957904)
+transform = Transform3D(-2.75, 2.4041265e-07, -2.1017542e-14, 0, -2.4041267e-07, -2.75, -2.4041265e-07, -2.75, 2.4041267e-07, -28.922096, 190.01443, -5.0957904)
 
 [node name="Esteira34" parent="Node" unique_id=394161972 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-2.75, 2.4041265e-07, -2.1017542e-14, 0, -2.4041267e-07, -2.75, -2.4041265e-07, -2.75, 2.4041267e-07, -28.922096, 190, -7.09579)
+transform = Transform3D(-2.75, 2.4041265e-07, -2.1017542e-14, 0, -2.4041267e-07, -2.75, -2.4041265e-07, -2.75, 2.4041267e-07, -28.922096, 190.01443, -7.09579)
 
 [node name="Esteira35" parent="Node" unique_id=292751451 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-2.75, 2.4041265e-07, -2.1017542e-14, 0, -2.4041267e-07, -2.75, -2.4041265e-07, -2.75, 2.4041267e-07, -28.922096, 190, -9.095791)
+transform = Transform3D(-2.75, 2.4041265e-07, -2.1017542e-14, 0, -2.4041267e-07, -2.75, -2.4041265e-07, -2.75, 2.4041267e-07, -28.922096, 190.01443, -9.095791)
 
 [node name="Esteira36" parent="Node" unique_id=1228574513 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(3.6061897e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, 3.6061897e-07, -3.1526316e-14, -44.9321, 190, 10.994209)
+transform = Transform3D(3.6061897e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, 3.6061897e-07, -3.1526316e-14, -44.9321, 190.01443, 10.994209)
 
 [node name="Esteira37" parent="Node" unique_id=1417422880 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(3.6061897e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, 3.6061897e-07, -3.1526316e-14, -42.9321, 190, 10.994209)
+transform = Transform3D(3.6061897e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, 3.6061897e-07, -3.1526316e-14, -42.9321, 190.01443, 10.994209)
 
 [node name="Esteira38" parent="Node" unique_id=771505827 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(3.6061897e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, 3.6061897e-07, -3.1526316e-14, -40.832096, 190, 10.994209)
+transform = Transform3D(3.6061897e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, 3.6061897e-07, -3.1526316e-14, -40.832096, 190.01443, 10.994209)
 
 [node name="Esteira39" parent="Node" unique_id=1213325730 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(3.6061897e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, 3.6061897e-07, -3.1526316e-14, -38.932095, 190, 10.994209)
+transform = Transform3D(3.6061897e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, 3.6061897e-07, -3.1526316e-14, -38.932095, 190.01443, 10.994209)
 
 [node name="Esteira40" parent="Node" unique_id=393969467 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(3.6061897e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, 3.6061897e-07, -3.1526316e-14, -36.932095, 190, 10.994209)
+transform = Transform3D(3.6061897e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, 3.6061897e-07, -3.1526316e-14, -36.932095, 190.01443, 10.994209)
 
 [node name="Esteira41" parent="Node" unique_id=527215054 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(3.6061897e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, 3.6061897e-07, -3.1526316e-14, -34.932095, 190, 10.994209)
+transform = Transform3D(3.6061897e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, 3.6061897e-07, -3.1526316e-14, -34.932095, 190.01443, 10.994209)
 
 [node name="Esteira42" parent="Node" unique_id=117555070 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(3.6061897e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, 3.6061897e-07, -3.1526316e-14, -32.932095, 190, 10.994209)
+transform = Transform3D(3.6061897e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, 3.6061897e-07, -3.1526316e-14, -32.932095, 190.01443, 10.994209)
 
 [node name="Esteira43" parent="Node" unique_id=997461852 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(3.6061897e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, 3.6061897e-07, -3.1526316e-14, -30.932095, 190, 10.994209)
+transform = Transform3D(3.6061897e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, 3.6061897e-07, -3.1526316e-14, -30.932095, 190.01443, 10.994209)
 
 [node name="Esteira44" parent="Node" unique_id=1406738054 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(3.6061897e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, 3.6061897e-07, -3.1526316e-14, -28.932095, 190, 10.994211)
+transform = Transform3D(3.6061897e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, 3.6061897e-07, -3.1526316e-14, -28.932095, 190.01443, 10.994211)
 
 [node name="Esteira45" parent="Node" unique_id=381589821 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 204, 8.904208)
+transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 204.01443, 8.904208)
 
 [node name="Esteira46" parent="Node" unique_id=54756584 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 204, 6.904208)
+transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 204.01443, 6.904208)
 
 [node name="Esteira47" parent="Node" unique_id=1407613733 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 204, 4.8042088)
+transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 204.01443, 4.8042088)
 
 [node name="Esteira48" parent="Node" unique_id=677668756 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 204, 2.9042084)
+transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 204.01443, 2.9042084)
 
 [node name="Esteira49" parent="Node" unique_id=1545285158 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 204, 0.9042086)
+transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 204.01443, 0.9042086)
 
 [node name="Esteira50" parent="Node" unique_id=240864223 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 204, -1.0957911)
+transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 204.01443, -1.0957911)
 
 [node name="Esteira51" parent="Node" unique_id=485913727 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 204, -3.0957916)
+transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 204.01443, -3.0957916)
 
 [node name="Esteira52" parent="Node" unique_id=838450626 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 204, -5.0957923)
+transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 204.01443, -5.0957923)
 
 [node name="Esteira53" parent="Node" unique_id=1295947569 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 204, -7.0957923)
+transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 204.01443, -7.0957923)
 
 [node name="Esteira54" parent="Node" unique_id=133538029 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 204, -9.095792)
+transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 204.01443, -9.095792)
 
 [node name="Esteira55" parent="Node" unique_id=541955153 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -44.93212, 204, 10.994211)
+transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -44.93212, 204.01443, 10.994211)
 
 [node name="Esteira56" parent="Node" unique_id=1904125840 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -42.93212, 204, 10.99421)
+transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -42.93212, 204.01443, 10.99421)
 
 [node name="Esteira57" parent="Node" unique_id=1810218979 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -40.83212, 204, 10.99421)
+transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -40.83212, 204.01443, 10.99421)
 
 [node name="Esteira58" parent="Node" unique_id=710978562 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -38.932117, 204, 10.99421)
+transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -38.932117, 204.01443, 10.99421)
 
 [node name="Esteira59" parent="Node" unique_id=1302004027 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -36.932117, 204, 10.99421)
+transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -36.932117, 204.01443, 10.99421)
 
 [node name="Esteira60" parent="Node" unique_id=1089757727 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -34.932117, 204, 10.99421)
+transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -34.932117, 204.01443, 10.99421)
 
 [node name="Esteira61" parent="Node" unique_id=968345480 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -32.932117, 204, 10.99421)
+transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -32.932117, 204.01443, 10.99421)
 
 [node name="Esteira62" parent="Node" unique_id=290105008 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -30.932117, 204, 10.994209)
+transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -30.932117, 204.01443, 10.994209)
 
 [node name="Esteira63" parent="Node" unique_id=2136678937 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -28.932117, 204, 10.994209)
+transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -28.932117, 204.01443, 10.994209)
 
 [node name="Esteira64" parent="Node" unique_id=1849497424 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 204, -7)
+transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 204.01443, -7)
 
 [node name="Esteira65" parent="Node" unique_id=693027746 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 204, -5.0000014)
+transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 204.01443, -5.0000014)
 
 [node name="Esteira66" parent="Node" unique_id=561822142 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 204, -2.9000008)
+transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 204.01443, -2.9000008)
 
 [node name="Esteira67" parent="Node" unique_id=278739433 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 204, -1.0000007)
+transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 204.01443, -1.0000007)
 
 [node name="Esteira68" parent="Node" unique_id=849043692 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 204, 0.99999887)
+transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 204.01443, 0.99999887)
 
 [node name="Esteira69" parent="Node" unique_id=779481750 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 204, 2.9999988)
+transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 204.01443, 2.9999988)
 
 [node name="Esteira70" parent="Node" unique_id=2060122897 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 204, 4.9999986)
+transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 204.01443, 4.9999986)
 
 [node name="Esteira71" parent="Node" unique_id=1215254908 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 204, 6.9999995)
+transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 204.01443, 6.9999995)
 
 [node name="Esteira72" parent="Node" unique_id=395968839 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 204, 9)
+transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 204.01443, 9)
 
 [node name="Esteira73" parent="Node" unique_id=1352278800 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 204, 11.000001)
+transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 204.01443, 11.000001)
 
 [node name="Esteira74" parent="Node" unique_id=455232384 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -30.99002, 204, -9.090001)
+transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -30.99002, 204.01443, -9.090001)
 
 [node name="Esteira75" parent="Node" unique_id=2144181231 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -32.99002, 204, -9.09)
+transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -32.99002, 204.01443, -9.09)
 
 [node name="Esteira76" parent="Node" unique_id=457481812 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -35.090023, 204, -9.09)
+transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -35.090023, 204.01443, -9.09)
 
 [node name="Esteira77" parent="Node" unique_id=237002052 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -36.990025, 204, -9.09)
+transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -36.990025, 204.01443, -9.09)
 
 [node name="Esteira78" parent="Node" unique_id=2049841447 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -38.990025, 204, -9.09)
+transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -38.990025, 204.01443, -9.09)
 
 [node name="Esteira79" parent="Node" unique_id=5926446 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -40.990025, 204, -9.09)
+transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -40.990025, 204.01443, -9.09)
 
 [node name="Esteira80" parent="Node" unique_id=1787315835 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -42.990025, 204, -9.09)
+transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -42.990025, 204.01443, -9.09)
 
 [node name="Esteira81" parent="Node" unique_id=624771517 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -44.990025, 204, -9.089999)
+transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -44.990025, 204.01443, -9.089999)
 
 [node name="Esteira82" parent="Node" unique_id=771621543 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -46.990025, 204, -9.090001)
+transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -46.990025, 204.01443, -9.090001)
 
 [node name="Esteira83" parent="Node" unique_id=1783085022 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 198, 8.904208)
+transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 198.01443, 8.904208)
 tipo_esteira = 1
 
 [node name="Esteira101" parent="Node" unique_id=1710533646 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 198, 11.004209)
+transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 198.01443, 11.004209)
 tipo_esteira = 1
 
 [node name="Esteira84" parent="Node" unique_id=167081935 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 198, 6.904208)
+transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 198.01443, 6.904208)
 tipo_esteira = 1
 
 [node name="Esteira85" parent="Node" unique_id=837010157 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 198, 4.8042088)
+transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 198.01443, 4.8042088)
 tipo_esteira = 1
 
 [node name="Esteira86" parent="Node" unique_id=1396472299 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 198, 2.9042084)
+transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 198.01443, 2.9042084)
 tipo_esteira = 1
 
 [node name="Esteira87" parent="Node" unique_id=1617055210 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 198, 0.9042086)
+transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 198.01443, 0.9042086)
 tipo_esteira = 1
 
 [node name="Esteira88" parent="Node" unique_id=572910495 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 198, -1.0957911)
+transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 198.01443, -1.0957911)
 tipo_esteira = 1
 
 [node name="Esteira89" parent="Node" unique_id=223531800 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 198, -3.0957916)
+transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 198.01443, -3.0957916)
 tipo_esteira = 1
 
 [node name="Esteira90" parent="Node" unique_id=1903184583 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 198, -5.0957923)
+transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 198.01443, -5.0957923)
 tipo_esteira = 1
 
 [node name="Esteira91" parent="Node" unique_id=844118782 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 198, -7.0957923)
+transform = Transform3D(-2.75, -2.4041265e-07, 2.1017542e-14, 0, -2.4041267e-07, -2.75, 2.4041265e-07, -2.75, 2.4041267e-07, -28.92212, 198.01443, -7.0957923)
 tipo_esteira = 1
 
 [node name="Esteira93" parent="Node" unique_id=2022779941 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -44.93212, 198, 10.994211)
+transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -44.93212, 198.01443, 10.994211)
 tipo_esteira = 1
 
 [node name="Esteira111" parent="Node" unique_id=249354838 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -46.93212, 198, 10.994211)
+transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -46.93212, 198.01443, 10.994211)
 tipo_esteira = 1
 
 [node name="Esteira94" parent="Node" unique_id=1639397638 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -42.93212, 198, 10.99421)
+transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -42.93212, 198.01443, 10.99421)
 tipo_esteira = 1
 
 [node name="Esteira95" parent="Node" unique_id=442550716 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -40.83212, 198, 10.99421)
+transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -40.83212, 198.01443, 10.99421)
 tipo_esteira = 1
 
 [node name="Esteira96" parent="Node" unique_id=1311038725 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -38.932117, 198, 10.99421)
+transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -38.932117, 198.01443, 10.99421)
 tipo_esteira = 1
 
 [node name="Esteira97" parent="Node" unique_id=820365914 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -36.932117, 198, 10.99421)
+transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -36.932117, 198.01443, 10.99421)
 tipo_esteira = 1
 
 [node name="Esteira98" parent="Node" unique_id=2100665494 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -34.932117, 198, 10.99421)
+transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -34.932117, 198.01443, 10.99421)
 tipo_esteira = 1
 
 [node name="Esteira99" parent="Node" unique_id=2022825289 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -32.932117, 198, 10.99421)
+transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -32.932117, 198.01443, 10.99421)
 tipo_esteira = 1
 
 [node name="Esteira100" parent="Node" unique_id=1617157545 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -30.932117, 198, 10.994209)
+transform = Transform3D(-1.2020632e-07, 2.75, -2.4041267e-07, 0, -2.4041267e-07, -2.75, -2.75, -1.202063e-07, 1.0508772e-14, -30.932117, 198.01443, 10.994209)
 tipo_esteira = 1
 
 [node name="Esteira102" parent="Node" unique_id=615141673 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 198, -7)
+transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 198.01443, -7)
 tipo_esteira = 1
 
 [node name="Esteira120" parent="Node" unique_id=2017748053 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 198, -9.1)
+transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 198.01443, -9.1)
 tipo_esteira = 1
 
 [node name="Esteira103" parent="Node" unique_id=1675063421 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 198, -5.0000014)
+transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 198.01443, -5.0000014)
 tipo_esteira = 1
 
 [node name="Esteira104" parent="Node" unique_id=2030343388 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 198, -2.9000008)
+transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 198.01443, -2.9000008)
 tipo_esteira = 1
 
 [node name="Esteira105" parent="Node" unique_id=1492120874 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 198, -1.0000007)
+transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 198.01443, -1.0000007)
 tipo_esteira = 1
 
 [node name="Esteira106" parent="Node" unique_id=1005144666 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 198, 0.99999887)
+transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 198.01443, 0.99999887)
 tipo_esteira = 1
 
 [node name="Esteira107" parent="Node" unique_id=1193547798 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 198, 2.9999988)
+transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 198.01443, 2.9999988)
 tipo_esteira = 1
 
 [node name="Esteira108" parent="Node" unique_id=1260100245 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 198, 4.9999986)
+transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 198.01443, 4.9999986)
 tipo_esteira = 1
 
 [node name="Esteira109" parent="Node" unique_id=1142907935 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 198, 6.9999995)
+transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 198.01443, 6.9999995)
 tipo_esteira = 1
 
 [node name="Esteira110" parent="Node" unique_id=1567899882 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 198, 9)
+transform = Transform3D(2.75, -2.842171e-14, 0, 0, -2.4041267e-07, -2.75, 2.842171e-14, 2.75, -2.4041267e-07, -47.000023, 198.01443, 9)
 tipo_esteira = 1
 
 [node name="Esteira112" parent="Node" unique_id=1339708373 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -30.99002, 198, -9.090001)
+transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -30.99002, 198.01443, -9.090001)
 tipo_esteira = 1
 
 [node name="Esteira121" parent="Node" unique_id=326800478 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -28.89002, 198, -9.090001)
+transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -28.89002, 198.01443, -9.090001)
 tipo_esteira = 1
 
 [node name="Esteira113" parent="Node" unique_id=1924357635 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -32.99002, 198, -9.09)
+transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -32.99002, 198.01443, -9.09)
 tipo_esteira = 1
 
 [node name="Esteira114" parent="Node" unique_id=1476436486 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -35.090023, 198, -9.09)
+transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -35.090023, 198.01443, -9.09)
 tipo_esteira = 1
 
 [node name="Esteira115" parent="Node" unique_id=831572689 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -36.990025, 198, -9.09)
+transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -36.990025, 198.01443, -9.09)
 tipo_esteira = 1
 
 [node name="Esteira116" parent="Node" unique_id=1372690740 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -38.990025, 198, -9.09)
+transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -38.990025, 198.01443, -9.09)
 tipo_esteira = 1
 
 [node name="Esteira117" parent="Node" unique_id=718214024 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -40.990025, 198, -9.09)
+transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -40.990025, 198.01443, -9.09)
 tipo_esteira = 1
 
 [node name="Esteira118" parent="Node" unique_id=1534381234 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -42.990025, 198, -9.09)
+transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -42.990025, 198.01443, -9.09)
 tipo_esteira = 1
 
 [node name="Esteira119" parent="Node" unique_id=1459935645 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -44.990025, 198, -9.089999)
+transform = Transform3D(-1.2020632e-07, -2.75, 2.4041267e-07, 0, -2.4041267e-07, -2.75, 2.75, -1.2020632e-07, 1.050877e-14, -44.990025, 198.01443, -9.089999)
 tipo_esteira = 1
 
 [node name="Esteira122" parent="Node" unique_id=384207203 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, 0, 0, 0, -1.2020632e-07, -2.75, 0, 2.75, -1.2020632e-07, -6.957995, 286.11563, 7.0230484)
+transform = Transform3D(2.75, 0, 0, 0, -1.2020632e-07, -2.75, 0, 2.75, -1.2020632e-07, -6.957995, 286.13007, 7.0230484)
 tipo_esteira = 1
 
 [node name="Esteira136" parent="Node" unique_id=118338780 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, 0, 0, 0, -1.2020632e-07, -2.75, 0, 2.75, -1.2020632e-07, -8.912401, 286.11563, 11.019254)
+transform = Transform3D(2.75, 0, 0, 0, -1.2020632e-07, -2.75, 0, 2.75, -1.2020632e-07, -8.912401, 286.13007, 11.019254)
 
 [node name="Esteira142" parent="Node" unique_id=1861683495 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, 0, 0, 0, -1.2020632e-07, -2.75, 0, 2.75, -1.2020632e-07, -8.912401, 286.11563, 9.033807)
+transform = Transform3D(2.75, 0, 0, 0, -1.2020632e-07, -2.75, 0, 2.75, -1.2020632e-07, -8.912401, 286.13007, 9.033807)
 
 [node name="Esteira143" parent="Node" unique_id=1780467307 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, 0, 0, 0, -1.2020632e-07, -2.75, 0, 2.75, -1.2020632e-07, -8.912401, 286.11563, 7.061555)
+transform = Transform3D(2.75, 0, 0, 0, -1.2020632e-07, -2.75, 0, 2.75, -1.2020632e-07, -8.912401, 286.13007, 7.061555)
 
 [node name="Esteira137" parent="Node" unique_id=834428052 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, 0, 0, 0, -1.2020632e-07, -2.75, 0, 2.75, -1.2020632e-07, -8.912401, 286.11563, 12.958218)
+transform = Transform3D(2.75, 0, 0, 0, -1.2020632e-07, -2.75, 0, 2.75, -1.2020632e-07, -8.912401, 286.13007, 12.958218)
 
 [node name="Esteira146" parent="Node" unique_id=2056616231 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, 0, 0, 0, -1.2020632e-07, -2.75, 0, 2.75, -1.2020632e-07, -8.912401, 286.11563, 11.019254)
+transform = Transform3D(2.75, 0, 0, 0, -1.2020632e-07, -2.75, 0, 2.75, -1.2020632e-07, -8.912401, 286.13007, 11.019254)
 
 [node name="Esteira147" parent="Node" unique_id=1959054489 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, 0, 0, 0, -1.2020632e-07, -2.75, 0, 2.75, -1.2020632e-07, -8.912401, 286.11563, 9.033807)
+transform = Transform3D(2.75, 0, 0, 0, -1.2020632e-07, -2.75, 0, 2.75, -1.2020632e-07, -8.912401, 286.13007, 9.033807)
 
 [node name="Esteira148" parent="Node" unique_id=1918465119 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, 0, 0, 0, -1.2020632e-07, -2.75, 0, 2.75, -1.2020632e-07, -8.912401, 286.11563, 7.061555)
+transform = Transform3D(2.75, 0, 0, 0, -1.2020632e-07, -2.75, 0, 2.75, -1.2020632e-07, -8.912401, 286.13007, 7.061555)
 
 [node name="Esteira149" parent="Node" unique_id=1206136258 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, 0, 0, 0, -1.2020632e-07, -2.75, 0, 2.75, -1.2020632e-07, -8.912401, 286.11563, 12.958218)
+transform = Transform3D(2.75, 0, 0, 0, -1.2020632e-07, -2.75, 0, 2.75, -1.2020632e-07, -8.912401, 286.13007, 12.958218)
 
 [node name="Esteira138" parent="Node" unique_id=472920337 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, 2.75, -1.2020632e-07, 0, -1.2020632e-07, -2.75, -2.75, -1.2020632e-07, 5.254385e-15, -6.972504, 288.01794, 16.995535)
+transform = Transform3D(-1.2020632e-07, 2.75, -1.2020632e-07, 0, -1.2020632e-07, -2.75, -2.75, -1.2020632e-07, 5.254385e-15, -6.972504, 288.03238, 16.995535)
 
 [node name="Esteira139" parent="Node" unique_id=1418847665 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, 2.75, -1.2020632e-07, 0, -1.2020632e-07, -2.75, -2.75, -1.2020632e-07, 5.254385e-15, -8.957266, 288.01794, 16.995535)
+transform = Transform3D(-1.2020632e-07, 2.75, -1.2020632e-07, 0, -1.2020632e-07, -2.75, -2.75, -1.2020632e-07, 5.254385e-15, -8.957266, 288.03238, 16.995535)
 
 [node name="Esteira140" parent="Node" unique_id=764357283 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, 2.75, -1.2020632e-07, 0, -1.2020632e-07, -2.75, -2.75, -1.2020632e-07, 5.254385e-15, -11.062414, 288.01794, 16.995535)
+transform = Transform3D(-1.2020632e-07, 2.75, -1.2020632e-07, 0, -1.2020632e-07, -2.75, -2.75, -1.2020632e-07, 5.254385e-15, -11.062414, 288.03238, 16.995535)
 
 [node name="Esteira141" parent="Node" unique_id=1912733094 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, 2.75, -1.2020632e-07, 0, -1.2020632e-07, -2.75, -2.75, -1.2020632e-07, 5.254385e-15, -13.0447235, 288.01794, 16.995535)
+transform = Transform3D(-1.2020632e-07, 2.75, -1.2020632e-07, 0, -1.2020632e-07, -2.75, -2.75, -1.2020632e-07, 5.254385e-15, -13.0447235, 288.03238, 16.995535)
 
 [node name="Esteira123" parent="Node" unique_id=2050212924 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, 0, 0, 0, -1.2020632e-07, -2.75, 0, 2.75, -1.2020632e-07, -6.957995, 286.11563, 8.957744)
+transform = Transform3D(2.75, 0, 0, 0, -1.2020632e-07, -2.75, 0, 2.75, -1.2020632e-07, -6.957995, 286.13007, 8.957744)
 tipo_esteira = 1
 
 [node name="Esteira124" parent="Node" unique_id=1289288076 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, 0, 0, 0, -1.2020632e-07, -2.75, 0, 2.75, -1.2020632e-07, -6.957995, 286.11563, 10.927376)
+transform = Transform3D(2.75, 0, 0, 0, -1.2020632e-07, -2.75, 0, 2.75, -1.2020632e-07, -6.957995, 286.13007, 10.927376)
 tipo_esteira = 1
 
 [node name="Esteira125" parent="Node" unique_id=984483193 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, 0, 0, 0, -1.2020632e-07, -2.75, 0, 2.75, -1.2020632e-07, -6.957995, 286.11563, 12.862071)
+transform = Transform3D(2.75, 0, 0, 0, -1.2020632e-07, -2.75, 0, 2.75, -1.2020632e-07, -6.957995, 286.13007, 12.862071)
 tipo_esteira = 1
 
 [node name="Esteira130" parent="Node" unique_id=357420384 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, 0, 0, 0, -1.2020632e-07, -2.75, 0, 2.75, -1.2020632e-07, -6.957995, 286.11563, 7.0230484)
+transform = Transform3D(2.75, 0, 0, 0, -1.2020632e-07, -2.75, 0, 2.75, -1.2020632e-07, -6.957995, 286.13007, 7.0230484)
 tipo_esteira = 1
 
 [node name="Esteira131" parent="Node" unique_id=1153845457 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, 0, 0, 0, -1.2020632e-07, -2.75, 0, 2.75, -1.2020632e-07, -6.957995, 286.11563, 8.957744)
+transform = Transform3D(2.75, 0, 0, 0, -1.2020632e-07, -2.75, 0, 2.75, -1.2020632e-07, -6.957995, 286.13007, 8.957744)
 tipo_esteira = 1
 
 [node name="Esteira132" parent="Node" unique_id=1212425747 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, 0, 0, 0, -1.2020632e-07, -2.75, 0, 2.75, -1.2020632e-07, -6.957995, 286.11563, 10.927376)
+transform = Transform3D(2.75, 0, 0, 0, -1.2020632e-07, -2.75, 0, 2.75, -1.2020632e-07, -6.957995, 286.13007, 10.927376)
 tipo_esteira = 1
 
 [node name="Esteira133" parent="Node" unique_id=959104511 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(2.75, 0, 0, 0, -1.2020632e-07, -2.75, 0, 2.75, -1.2020632e-07, -6.957995, 286.11563, 12.862071)
+transform = Transform3D(2.75, 0, 0, 0, -1.2020632e-07, -2.75, 0, 2.75, -1.2020632e-07, -6.957995, 286.13007, 12.862071)
 tipo_esteira = 1
 
 [node name="Esteira126" parent="Node" unique_id=1738543092 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, 2.75, -1.2020632e-07, 0, -1.2020632e-07, -2.75, -2.75, -1.2020632e-07, 5.254385e-15, -12.87961, 288.06052, 14.941252)
+transform = Transform3D(-1.2020632e-07, 2.75, -1.2020632e-07, 0, -1.2020632e-07, -2.75, -2.75, -1.2020632e-07, 5.254385e-15, -12.87961, 288.07495, 14.941252)
 tipo_esteira = 1
 
 [node name="Esteira127" parent="Node" unique_id=2064207898 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, 2.75, -1.2020632e-07, 0, -1.2020632e-07, -2.75, -2.75, -1.2020632e-07, 5.254385e-15, -11.021637, 288.06052, 14.9309025)
+transform = Transform3D(-1.2020632e-07, 2.75, -1.2020632e-07, 0, -1.2020632e-07, -2.75, -2.75, -1.2020632e-07, 5.254385e-15, -11.021637, 288.07495, 14.9309025)
 tipo_esteira = 1
 
 [node name="Esteira134" parent="Node" unique_id=551653917 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, 2.75, -1.2020632e-07, 0, -1.2020632e-07, -2.75, -2.75, -1.2020632e-07, 5.254385e-15, -16.99924, 290.02225, 15.019608)
+transform = Transform3D(-1.2020632e-07, 2.75, -1.2020632e-07, 0, -1.2020632e-07, -2.75, -2.75, -1.2020632e-07, 5.254385e-15, -16.99924, 290.03668, 15.019608)
 
 [node name="Esteira135" parent="Node" unique_id=1725964240 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, 2.75, -1.2020632e-07, 0, -1.2020632e-07, -2.75, -2.75, -1.2020632e-07, 5.254385e-15, -14.981414, 290.02225, 15.009258)
+transform = Transform3D(-1.2020632e-07, 2.75, -1.2020632e-07, 0, -1.2020632e-07, -2.75, -2.75, -1.2020632e-07, 5.254385e-15, -14.981414, 290.03668, 15.009258)
 
 [node name="Esteira144" parent="Node" unique_id=811192385 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, 2.75, -1.2020632e-07, 0, -1.2020632e-07, -2.75, -2.75, -1.2020632e-07, 5.254385e-15, -16.99924, 290.02225, 16.987022)
+transform = Transform3D(-1.2020632e-07, 2.75, -1.2020632e-07, 0, -1.2020632e-07, -2.75, -2.75, -1.2020632e-07, 5.254385e-15, -16.99924, 290.03668, 16.987022)
 tipo_esteira = 1
 
 [node name="Esteira145" parent="Node" unique_id=1973716573 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, 2.75, -1.2020632e-07, 0, -1.2020632e-07, -2.75, -2.75, -1.2020632e-07, 5.254385e-15, -14.981414, 290.02225, 16.976673)
+transform = Transform3D(-1.2020632e-07, 2.75, -1.2020632e-07, 0, -1.2020632e-07, -2.75, -2.75, -1.2020632e-07, 5.254385e-15, -14.981414, 290.03668, 16.976673)
 tipo_esteira = 1
 
 [node name="Esteira128" parent="Node" unique_id=69241453 instance=ExtResource("47_lrpnu")]
-transform = Transform3D(-1.2020632e-07, 2.75, -1.2020632e-07, 0, -1.2020632e-07, -2.75, -2.75, -1.2020632e-07, 5.254385e-15, -8.864784, 288.06052, 14.920366)
+transform = Transform3D(-1.2020632e-07, 2.75, -1.2020632e-07, 0, -1.2020632e-07, -2.75, -2.75, -1.2020632e-07, 5.254385e-15, -8.864784, 288.07495, 14.920366)
 tipo_esteira = 1
 
 [node name="Esteira129" parent="Node" unique_id=27025909 instance=ExtResource("47_lrpnu")]

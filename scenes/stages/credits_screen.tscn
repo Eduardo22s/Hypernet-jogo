@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dae5myo1kk4u0" path="res://assets/props2D/Menu/Menu_ReturnButtonOn.png" id="8_iam2s"]
 [ext_resource type="Script" uid="uid://chddutum2qtx" path="res://global/script/audio_stream_player.gd" id="9_5tjs0"]
 [ext_resource type="Texture2D" uid="uid://1goeftqcon8c" path="res://assets/props2D/Menu/Menu_Half_Off.png" id="9_ln8nv"]
+[ext_resource type="AudioStream" uid="uid://bq5l55id642nt" path="res://assets/SFX/menu/Botaomelhor_sfx.mp3" id="10_5tjs0"]
 [ext_resource type="Texture2D" uid="uid://7tda5de51klc" path="res://assets/props2D/Menu/Menu_Half_On.png" id="10_uml8x"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qlemf"]
@@ -116,6 +117,12 @@ flat = true
 stream = ExtResource("8_1mb6j")
 volume_db = -8.0
 script = ExtResource("9_5tjs0")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=1686714045]
+stream = ExtResource("10_5tjs0")
+volume_db = -8.0
+script = ExtResource("9_5tjs0")
+volume = -8.0
 
 [connection signal="mouse_entered" from="ButtonReturn" to="." method="_on_button_return_mouse_entered"]
 [connection signal="mouse_exited" from="ButtonReturn" to="." method="_on_button_return_mouse_exited"]

@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bjjcuiyeteph2"]
+
+[ext_resource type="Shader" uid="uid://0dpb1fdf63tb" path="res://global/cenas/VFX/_Shaders/Glitch/Glitch.gdshader" id="1_2htlr"]
+
+[sub_resource type="Gradient" id="Gradient_2htlr"]
+offsets = PackedFloat32Array(0, 0.3556338, 0.6866197, 1)
+colors = PackedColorArray(0.6207705, 0.0006586212, 0.6948113, 1, 0.7662557, 4.0911138e-05, 0.5817819, 1, 0.33207074, 0.44850522, 1, 1, 2.382472e-06, 0.51772344, 0.19303536, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pkncm"]
+gradient = SubResource("Gradient_2htlr")
+
+[resource]
+shader = ExtResource("1_2htlr")
+shader_parameter/ColorRamp = SubResource("GradientTexture1D_pkncm")
+shader_parameter/EffectProgress = 0.0
+shader_parameter/FadeOut = 0.3
+shader_parameter/GlitchSize = 20.0
+shader_parameter/GlitchIntensity = 0.5
+shader_parameter/RGBSplit = 0.015
+shader_parameter/NoiseStrength = 0.15
+shader_parameter/BlockDensity = 30.0
+shader_parameter/Speed = 8.0

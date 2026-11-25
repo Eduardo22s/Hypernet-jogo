@@ -3,6 +3,7 @@ extends Area3D
 func _on_body_entered(body: Node3D) -> void:
 	if body is PlayerExploration:
 		Global.which_way = "igloo"
+		$AudioStreamPlayer.play()
 		$"../Fade/AnimationPlayer".play("fade")
 		$"../Flash/S_ScreenFlashLayer/ScreenFlash".PlayFlash()
 		
